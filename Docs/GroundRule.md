@@ -38,9 +38,16 @@
 ### 브랜치 가이드
 - main : 게임의 빌드를 생성할 운영 브랜치입니다. 모든 신규브랜치는 여기서 생성합니다.
 - feature : 깃헙 이슈페이지에서 Create Branch 버튼을 통해 만들고 prod 브랜치로부터 생성합니다. 브랜치 명은 feature-이름-기능 으로 정합니다. (ex-feature-swchoi-player_구르기_기능_추가)
+
 PR 생성 후 머지된 feature 브랜치는 삭제합니다.
 
 <img width="803" height="409" alt="image" src="https://github.com/user-attachments/assets/623d619c-54dd-4840-88dc-ac3a109259ac" />
+
+### PR 가이드
+1. 미리 정해진 PR 양식에 맞춰 내용을 작성합니다.
+2. PR의 담당자는 팀원 모두에게 할당합니다.
+3. 한명이 승인하면 바로 머지가 되도록 합니다.
+4. 머지 후 브랜치를 삭제하도록 합니다.
 
 ### 작업폴더 구조
 ```text

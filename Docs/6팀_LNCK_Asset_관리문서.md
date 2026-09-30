@@ -6,7 +6,7 @@
 
 ## 플레이어 무기
 
-- [Rusty Sword](https://assetstore.unity.com/packages/3d/props/weapons/rusty-sword-315378)
+- [Heroic Broad Sword](https://assetstore.unity.com/packages/3d/props/weapons/heroic-broad-sword-74280)
 
 ## 애니메이션
 
@@ -21,8 +21,6 @@
 ## 몬스터
 
 - 보스 : [minotaur1](https://assetstore.unity.com/packages/3d/characters/minotaur1-196863)
-- 추가 보스 : [DemonLord2](https://www.fab.com/listings/19b9f286-1345-4d78-8066-f115aa27a319)
-- 일반 몬스터 A : [Creep Horror Creature](https://assetstore.unity.com/packages/3d/characters/creatures/creep-horror-creature-244853)
 - 일반 몬스터 B : [Zombie](https://assetstore.unity.com/packages/3d/characters/humanoids/zombie-30232)
 
 ## 맵
@@ -32,15 +30,14 @@
 
 ## 오브젝트
 
-- [아이템 박스](https://tridentgame.itch.io/3d-cartoon-chests-model)
-- [코인](http://fab.com/listings/5b9e6360-3d6d-42d1-b36b-d8540f2862d0)
+- 아이템 박스, 회복 물약, 코인 : [Potions, Coin And Box of Pandora Pack](https://assetstore.unity.com/packages/3d/props/potions-coin-and-box-of-pandora-pack-71778)
 
 ## BGM
 
-- [보스몹 BGM](https://www.fab.com/listings/cd324e8c-28f8-4d23-ba49-6d45b2b7b614)
-- [일반몹 BGM](https://www.fab.com/listings/2dc72b9d-34c6-4979-8118-7b19e109d75d)
+- 타이틀씬, 비전투시 BGM : [Exploration Fantasy Free Pack](https://www.fab.com/listings/66a8abde-a304-44ce-856f-2f71c43f24e6?tab=reviews)
+- 엔딩씬 BGM : [Narrative Fantasy Free Pack](https://www.fab.com/listings/2dc72b9d-34c6-4979-8118-7b19e109d75d)
+- 일반/보스몹 BGM : [Combat Fantasy Free Pack](https://www.fab.com/listings/cd324e8c-28f8-4d23-ba49-6d45b2b7b614)
 
 ## 이펙트
 
-- 공격 이펙트 A : [Slash Effects FREE](https://assetstore.unity.com/packages/vfx/particles/spells/slash-effects-free-295209)
-- 공격 이펙트 B : [Simple Stylized Slash Pack 1](https://assetstore.unity.com/packages/vfx/particles/simple-stylized-slash-pack-1-232943)
+추가 구현 시

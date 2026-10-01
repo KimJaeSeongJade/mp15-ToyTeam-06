@@ -11,6 +11,8 @@ public class PlayerStat : MonoBehaviour
 	public ObservableProperty<int> currentHealth = new(0); // 현재 체력
 	public ObservableProperty<int> currentStamina = new(0); // 현재 스테미나
 
+	public float MoveSpeed => moveSpeed;
+
 	// -------이벤트 함수--------
 
 	private void Start() => Init();

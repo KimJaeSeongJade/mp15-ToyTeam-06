@@ -2,44 +2,59 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	[SerializeField] private float moveSpeed;
+	private PlayerContext _ctx;
 	private PlayerInput _input;
-	private Rigidbody _rigidBody;
+
+	private StateMachine<PlayerContext> _machine;
+	private Rigidbody _rigidbody;
+	private PlayerStat _stat;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
 	{
 		CacheComponets();
+		BindContext();
+		InitStateMachine();
 	}
+
+	private void Start() => _machine.ChangeState(StateType.Idle);
 
 	private void Update()
 	{
 		_input.Read();
-		Rotate();
+		_machine.Tick();
 	}
 
 	private void FixedUpdate()
 	{
-		Movement();
+		_machine.FixedTick();
 	}
 
 	// --------------------------------
 
-	private void Movement()
-	{
-		Vector3 movement = new Vector3(_input.MoveAxis.x, 0, _input.MoveAxis.z);
-		_rigidBody.velocity = movement * moveSpeed;
-	}
-
-	private void Rotate()
-	{
-		//좌우 -> 회전
-		transform.Rotate(0, _input.MouseDelta.y, 0, Space.Self);
-	}
-
 	private void CacheComponets()
 	{
-		_rigidBody = GetComponent<Rigidbody>();
+		_rigidbody = GetComponent<Rigidbody>();
 		_input = GetComponent<PlayerInput>();
+		_stat = GetComponent<PlayerStat>();
+	}
+
+	private void BindContext()
+	{
+		_ctx = new()
+		{
+			rigidbody = _rigidbody,
+			transform = transform,
+			input = _input,
+			stat = _stat
+		};
+	}
+
+	private void InitStateMachine()
+	{
+		_machine = new StateMachine<PlayerContext>();
+
+		_machine.Add(StateType.Idle, new PlayerIdleState(_ctx, _machine));
+		_machine.Add(StateType.Move, new PlayerMoveState(_ctx, _machine));
 	}
 }

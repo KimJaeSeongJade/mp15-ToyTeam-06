@@ -2,11 +2,20 @@ using UnityEngine;
 
 public class PlayerBase : MonoBehaviour
 {
-	private const int PlayerMaxHealth = 100; // 플레이어 최대체력
-	private const int PlayerMaxStamina = 100; // 플레이어 최대 스테미나
-	[SerializeField] private int playerHealth; // 플레이어 체력
-	[SerializeField] private int playerStamina; // 플레이어 스테미나
-	[SerializeField] private int attackPower; // 공격력
-	[SerializeField] private float invincibleTime; // 무적시간
-	[SerializeField] private float moveSpeed; // 이동속도
+	[SerializeField] private int playerMaxHealth; // 최대체력
+	[SerializeField] private int playerMaxStamina; // 최대 스테미나
+	[SerializeField] private int playerAttackPower; // 공격력
+	[SerializeField] private float moveSpeed; // 이동 속도
+	[SerializeField] private float invincibleTime; // 무적 시간
+
+	public ObservableProperty<int> currentHealth; // 현재 체력
+	public ObservableProperty<int> currentStamina; // 현재 스테미나
+
+	private void Start() => Init();
+
+	private void Init()
+	{
+		currentHealth = new ObservableProperty<int>(playerMaxHealth);
+		currentStamina = new ObservableProperty<int>(playerMaxStamina);
+	}
 }

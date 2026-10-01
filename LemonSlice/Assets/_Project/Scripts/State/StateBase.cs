@@ -1,13 +1,13 @@
 public abstract class StateBase<T> where T : IContext
 {
 	public T _ctx;
-	public StateMachine _fsm;
+	public StateMachine<T> _fsm;
 
 	public StateBase()
 	{
 	}
 
-	public StateBase(T context, StateMachine stateMachine)
+	public StateBase(T context, StateMachine<T> stateMachine)
 	{
 		_ctx = context;
 		_fsm = stateMachine;

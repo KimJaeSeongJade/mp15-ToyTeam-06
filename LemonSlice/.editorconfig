@@ -1,0 +1,142 @@
+root = true
+
+# Team C# convention (Unity)
+# 들여쓰기: 탭 / 중괄호: 다음 줄 / using 정리 / 네이밍은 검사만 (자동 개명하지 않음)
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.cs]
+indent_style = tab
+indent_size = 4
+tab_width = 4
+
+# Allman: 중괄호는 줄을 바꿔서 연다
+csharp_new_line_before_open_brace = all
+resharper_csharp_brace_style = next_line
+resharper_csharp_type_declaration_braces = next_line
+resharper_csharp_invocable_declaration_braces = next_line
+resharper_csharp_accessor_owner_declaration_braces = next_line
+resharper_csharp_anonymous_method_declaration_braces = next_line
+resharper_csharp_empty_brace_style = on_separate_lines
+
+# using
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = false
+resharper_using_directive_placement = inside_namespace
+resharper_qualified_using_at_nested_scope = false
+
+# 접근 제한자는 명시 (private void Awake)
+csharp_preferred_modifier_order = public,private,protected,internal,file,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,required,volatile,async
+default_private_modifier = explicit
+default_internal_modifier = explicit
+
+# var: 컨벤션에 없음. 기존 코드 유지, 강제 변환하지 않음
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_elsewhere = false:suggestion
+
+# expression body: 짧은 프로퍼티만 (CurrentHp => currentHp)
+csharp_style_expression_bodied_properties = when_on_single_line:suggestion
+csharp_style_expression_bodied_methods = false:none
+csharp_style_expression_bodied_constructors = false:none
+csharp_style_expression_bodied_operators = false:none
+csharp_style_expression_bodied_accessors = when_on_single_line:suggestion
+csharp_style_expression_bodied_lambdas = true:suggestion
+csharp_style_expression_bodied_local_functions = false:none
+csharp_style_expression_bodied_indexers = false:none
+
+# 네임스페이스: 기존 Unity 관례(블록) 유지
+csharp_style_namespace_declarations = block_scoped:suggestion
+
+# this. 은 강제하지 않음
+resharper_this_qualifier_style = implicit
+
+# ---------- 네이밍 (경고만, Cleanup이 이름을 바꾸진 않음) ----------
+# 클래스 / 메서드 / public 멤버 / 상수: PascalCase
+# private 필드 / 지역 / 매개변수: camelCase (접두사 _ 없음)
+
+dotnet_naming_style.pascal.capitalization = pascal_case
+dotnet_naming_style.camel.capitalization = camel_case
+
+dotnet_naming_symbols.types.applicable_kinds = class,struct,interface,enum,delegate
+dotnet_naming_symbols.types.applicable_accessibilities = *
+
+dotnet_naming_symbols.methods.applicable_kinds = method
+dotnet_naming_symbols.methods.applicable_accessibilities = *
+
+dotnet_naming_symbols.public_members.applicable_kinds = property,event,field
+dotnet_naming_symbols.public_members.applicable_accessibilities = public,internal,protected,protected_internal
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+
+dotnet_naming_symbols.constants.applicable_kinds = field
+dotnet_naming_symbols.constants.required_modifiers = const
+
+dotnet_naming_symbols.locals.applicable_kinds = local,parameter
+
+dotnet_naming_rule.types_pascal.symbols = types
+dotnet_naming_rule.types_pascal.style = pascal
+dotnet_naming_rule.types_pascal.severity = warning
+
+dotnet_naming_rule.methods_pascal.symbols = methods
+dotnet_naming_rule.methods_pascal.style = pascal
+dotnet_naming_rule.methods_pascal.severity = warning
+
+dotnet_naming_rule.public_members_pascal.symbols = public_members
+dotnet_naming_rule.public_members_pascal.style = pascal
+dotnet_naming_rule.public_members_pascal.severity = warning
+
+dotnet_naming_rule.private_fields_camel.symbols = private_fields
+dotnet_naming_rule.private_fields_camel.style = camel
+dotnet_naming_rule.private_fields_camel.severity = warning
+
+dotnet_naming_rule.constants_pascal.symbols = constants
+dotnet_naming_rule.constants_pascal.style = pascal
+dotnet_naming_rule.constants_pascal.severity = warning
+
+dotnet_naming_rule.locals_camel.symbols = locals
+dotnet_naming_rule.locals_camel.style = camel
+dotnet_naming_rule.locals_camel.severity = warning
+
+# private (비직렬화) 필드는 _camelCase 허용
+resharper_csharp_naming_rule.private_instance_fields = _aaBb
+resharper_csharp_naming_rule.private_static_fields = _aaBb
+resharper_csharp_naming_rule.unity_serialised_field = aaBb
+resharper_csharp_naming_rule.public_fields = AaBb
+resharper_csharp_naming_rule.constants = AaBb
+resharper_csharp_naming_rule.private_constants = AaBb
+resharper_csharp_naming_rule.method = AaBb
+resharper_csharp_naming_rule.property = AaBb
+resharper_csharp_naming_rule.event = AaBb
+resharper_csharp_naming_rule.locals = aaBb
+resharper_csharp_naming_rule.parameters = aaBb
+
+# 한 줄짜리 for/if도 중괄호 필수
+csharp_prefer_braces = true:warning
+
+resharper_braces_for_for = required
+resharper_braces_for_ifelse = required
+resharper_braces_for_while = required
+resharper_braces_for_foreach = required
+resharper_braces_for_using = required
+resharper_braces_for_lock = required
+resharper_braces_for_fixed = required
+
+
+
+
+# # 인스펙터용은 접두사 없음 (팀 문서)
+# resharper_csharp_naming_rule.unity_serialised_field = aaBb,_aaBb
+
+# ---------- 저장 시 Cleanup이 건드리지 말아야 할 진단 ----------
+# public 필드를 인스펙터용으로 쓰는 관례를 경고로 (자동 수정 아님)
+dotnet_diagnostic.IDE0044.severity = suggestion
+
+[*.{asmdef,json,xml,uxml,uss,shader,compute,cginc}]
+indent_style = tab
+indent_size = 4

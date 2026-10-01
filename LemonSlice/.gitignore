@@ -33,6 +33,11 @@
 /[Aa]ssets/Plugins/Editor/JetBrains*
 # Jetbrains Rider personal-layer settings
 *.DotSettings.user
+# Rider / IntelliJ local IDE files
+.idea/
+**/.idea/
+*.idea/
+*.iml
 # Asset/Imports 제외
 /[Aa]ssets/Imports*
 

@@ -456,7 +456,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6104087531057728386, guid: bb29638f33527924083fc7626676e18e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.67
+      value: 2.161
       objectReference: {fileID: 0}
     - target: {fileID: 6104087531057728386, guid: bb29638f33527924083fc7626676e18e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -507,7 +507,7 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 636003941}
   m_SourcePrefab: {fileID: 100100000, guid: bb29638f33527924083fc7626676e18e, type: 3}
---- !u!1001 &2119913714
+--- !u!1001 &1772922356
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -570,6 +570,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 463334451}
   - {fileID: 402429253}
-  - {fileID: 2119913714}
   - {fileID: 174734768}
   - {fileID: 1220112260}
+  - {fileID: 1772922356}

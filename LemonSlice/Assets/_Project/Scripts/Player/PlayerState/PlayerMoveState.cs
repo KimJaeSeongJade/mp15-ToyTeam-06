@@ -20,12 +20,21 @@ public class PlayerMoveState : StateBase<PlayerContext>
 
 	public override void FixedTick()
 	{
-		Vector3 movement = new Vector3(_ctx.input.MoveAxis.x, 0, _ctx.input.MoveAxis.z);
-		_ctx.rigidbody.velocity = movement * _ctx.stat.MoveSpeed;
+		Move();
 	}
 
 	private void Rotate()
 	{
 		_ctx.transform.Rotate(0, _ctx.input.MouseDelta.y, 0, Space.Self);
+	}
+
+	private void Move()
+	{
+		Vector3 moveDirection = _ctx.transform.TransformDirection(_ctx.input.MoveAxis);
+
+		_ctx.rigidbody.velocity = new Vector3(
+			moveDirection.x * _ctx.stat.MoveSpeed,
+			_ctx.rigidbody.velocity.y,
+			moveDirection.z * _ctx.stat.MoveSpeed);
 	}
 }

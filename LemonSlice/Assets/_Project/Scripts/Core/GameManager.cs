@@ -21,7 +21,12 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     private void Start()
     {
+		ChangeState(GameState.Title);
+    }
 
+    private void Update()
+    {
+	    PlayingTime();
     }
 
     public void ChangeState(GameState state)
@@ -32,5 +37,19 @@ public class GameManager : SingletonBehaviour<GameManager>
     public void AddScore(int score)
     {
 	    CurrentScore += score; // 코인 획득시 점수 추가
+    }
+
+    private void PlayingTime()
+    {
+	    if (CurrentState == GameState.Main)
+	    {
+		    PlayTime += Time.deltaTime;
+	    }
+    }
+    public void ResetGameData()
+    {
+	    // 게임 오버 -> 점수, 시간 초기화
+	    CurrentScore = 0;
+	    PlayTime = 0f;
     }
 }

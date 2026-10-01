@@ -39,7 +39,8 @@
 - main : 게임의 빌드를 생성할 운영 브랜치입니다. 모든 신규브랜치는 여기서 생성합니다.
 - feature : 깃헙 이슈페이지에서 Create Branch 버튼을 통해 만들고 prod 브랜치로부터 생성합니다. 브랜치 명은 feature-이름-기능 으로 정합니다. (ex-feature-swchoi-player_구르기_기능_추가)
 
-PR 생성 후 머지된 feature 브랜치는 삭제합니다.
+PR이 승인되어 병합한 브랜치는 **PR 승인자가 책임지고** 삭제합니다.
+**브랜치 주인도 로컬 브랜치 삭제합니다.**
 
 <img width="803" height="409" alt="image" src="https://github.com/user-attachments/assets/623d619c-54dd-4840-88dc-ac3a109259ac" />
 

@@ -11,6 +11,8 @@ public class PlayerBase : MonoBehaviour
 	public ObservableProperty<int> currentHealth; // 현재 체력
 	public ObservableProperty<int> currentStamina; // 현재 스테미나
 
+	public float MoveSpeed => moveSpeed;
+
 	private void Start() => Init();
 
 	private void Init()

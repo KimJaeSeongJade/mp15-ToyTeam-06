@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour
@@ -14,6 +12,7 @@ public abstract class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehavi
 			{
 				_instance = FindObjectOfType<T>();
 			}
+
 			return _instance;
 		}
 	}

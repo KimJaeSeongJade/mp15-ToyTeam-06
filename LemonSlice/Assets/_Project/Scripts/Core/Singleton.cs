@@ -4,6 +4,7 @@ public abstract class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehavi
 {
 	private static T _instance;
 
+	[SerializeField] private bool _isDestroyedOnManager;
 	public static T Instance
 	{
 		get
@@ -26,7 +27,11 @@ public abstract class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehavi
 		else
 		{
 			_instance = GetComponent<T>();
-			DontDestroyOnLoad(_instance.gameObject);
+			if (_isDestroyedOnManager)
+			{
+				DontDestroyOnLoad(_instance.gameObject);
+
+			}
 		}
 	}
 }

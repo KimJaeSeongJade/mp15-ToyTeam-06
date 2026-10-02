@@ -11,6 +11,8 @@ public class PlayerUIController : MonoBehaviour
 	[SerializeField] private Sprite _filledHeart;
 	[SerializeField] private Sprite _blankHeart; // 빈하트 UI 프리팹 참조
 	[SerializeField] private GameObject _heartPosition; // 하트 배치 기준점
+	[SerializeField] private Image _playerStamina; // 스테미나 UI 참조
+	[SerializeField] private float _recoveryStamina; // 1초에 스테미나 차오르는 양
 
 	[SerializeField] private int _heartCount; // 생성할 하트 수
 
@@ -46,6 +48,8 @@ public class PlayerUIController : MonoBehaviour
 	{
 		DiscountHeart();
 		AddcountHeart();
+		DiscountStamina();
+		AddStamina();
 	}
 
 	private void DiscountHeart()
@@ -63,6 +67,36 @@ public class PlayerUIController : MonoBehaviour
 		{
 			playerHearts[currentHeart].sprite = _filledHeart;
 			currentHeart++;
+		}
+	}
+
+	private void DiscountStamina()
+	{
+		if (_playerStamina.fillAmount == 1f && Input.GetKeyDown(KeyCode.Space))
+		{
+			_playerStamina.fillAmount -= 0.125f;
+		}
+		else if (_playerStamina.fillAmount != 1f && Input.GetKeyDown(KeyCode.Space) && _playerStamina.fillAmount > 0.125f)
+		{
+			StopCoroutine(addStaminaCoroutine);
+			_playerStamina.fillAmount -= 0.125f;
+		}
+		addStaminaCoroutine = StartCoroutine(AddStaminaRoutine());
+	}
+
+	private Coroutine addStaminaCoroutine;
+
+	private IEnumerator AddStaminaRoutine()
+	{
+		yield return new WaitForSeconds (0.5f);
+
+	}
+
+	private void AddStamina()
+	{
+		if (_playerStamina.fillAmount < 1f)
+		{
+			_playerStamina.fillAmount += Time.deltaTime * (0.1f * _recoveryStamina);
 		}
 	}
 }

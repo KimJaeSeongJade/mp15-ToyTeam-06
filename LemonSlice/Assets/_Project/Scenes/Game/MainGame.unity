@@ -514,6 +514,8 @@ MonoBehaviour:
   _filledHeart: {fileID: 21300000, guid: 9aed212e9462cf948bc04c42cdfc58b2, type: 3}
   _blankHeart: {fileID: 21300000, guid: 5a4b15dc804f17f4eabd62c59d9757d7, type: 3}
   _heartPosition: {fileID: 2062175151}
+  _playerStamina: {fileID: 483095497}
+  _recoveryStamina: 5
   _heartCount: 19
 --- !u!1 &1056097974
 GameObject:
@@ -724,6 +726,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2062175152}
   - {fileID: 483095496}
   m_Father: {fileID: 2111440777}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1861,7 +1864,7 @@ GameObject:
   - component: {fileID: 2062175152}
   - component: {fileID: 2062175154}
   m_Layer: 5
-  m_Name: PlayerHearts
+  m_Name: PlayerHeartsPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1874,16 +1877,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062175151}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2111440777}
+  m_Father: {fileID: 1225223123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -450}
+  m_AnchoredPosition: {x: -1670, y: 580}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2062175154
@@ -2066,7 +2069,6 @@ RectTransform:
   - {fileID: 1104402921}
   - {fileID: 1225223123}
   - {fileID: 694095972}
-  - {fileID: 2062175152}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

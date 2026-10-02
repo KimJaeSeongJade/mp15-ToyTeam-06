@@ -2,25 +2,32 @@ using UnityEngine;
 
 public class PlayerAnimationHandler : MonoBehaviour
 {
-	[SerializeField] private Animator _animator;
+	[SerializeField] private Animator animator;
+	[SerializeField] private string moveXParam;
+	[SerializeField] private string moveZParam;
 
 	private void Awake()
 	{
 		CacheComponents();
 	}
 
-	public void PlayerIdleAnimation()
+	public void PlayerIdleAnim()
 	{
-		_animator.Play("PlayerIdle");
+		animator.Play("PlayerIdle");
 	}
 
-	public void PlayerRollAnimation()
+	public void PlayerRollAnim()
 	{
-		_animator.Play("PlayerRoll");
+		animator.Play("PlayerRoll");
+	}
+
+	public void SetMoveParam(Vector3 input)
+	{
+		animator.SetFloat(moveXParam, input.x);
+		animator.SetFloat(moveZParam, input.z);
 	}
 
 	private void CacheComponents()
 	{
-		_animator = GetComponent<Animator>();
 	}
 }

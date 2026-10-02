@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	[SerializeField] private Animator _animator;
-
+	private PlayerAnimationHandler _animHandler;
 	private PlayerContext _ctx;
 	private PlayerInput _input;
 
@@ -39,13 +38,14 @@ public class PlayerController : MonoBehaviour
 		_rigidbody = GetComponent<Rigidbody>();
 		_input = GetComponent<PlayerInput>();
 		_stat = GetComponent<PlayerStat>();
+		_animHandler = GetComponent<PlayerAnimationHandler>();
 	}
 
 	private void BindContext()
 	{
 		_ctx = new()
 		{
-			animator = _animator,
+			animHandler = _animHandler,
 			rigidbody = _rigidbody,
 			transform = transform,
 			input = _input,

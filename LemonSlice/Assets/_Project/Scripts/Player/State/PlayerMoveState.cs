@@ -9,11 +9,13 @@ public class PlayerMoveState : StateBase<PlayerContext>
 
 	public override void Tick()
 	{
-		if (_ctx.input.MoveAxis == Vector3.zero)
+		if (_ctx.input.MoveAxisRaw == Vector3.zero)
 		{
 			_fsm.ChangeState(StateType.Idle);
 			return;
 		}
+
+		_ctx.animHandler.SetMoveParam(_ctx.input.MoveAxisRaw);
 
 		Rotate();
 	}
@@ -30,7 +32,7 @@ public class PlayerMoveState : StateBase<PlayerContext>
 
 	private void Move()
 	{
-		Vector3 moveDirection = _ctx.transform.TransformDirection(_ctx.input.MoveAxis);
+		Vector3 moveDirection = _ctx.transform.TransformDirection(_ctx.input.MoveAxis).normalized;
 
 		_ctx.rigidbody.velocity = new Vector3(
 			moveDirection.x * _ctx.stat.MoveSpeed,

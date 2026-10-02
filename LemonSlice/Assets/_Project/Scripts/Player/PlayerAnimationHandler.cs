@@ -11,14 +11,14 @@ public class PlayerAnimationHandler : MonoBehaviour
 		CacheComponents();
 	}
 
-	public void PlayerIdleAnim()
+	public void PlayBlendAnim()
 	{
-		animator.Play("PlayerIdle");
+		animator.Play("IdleAndMove");
 	}
 
-	public void PlayerRollAnim()
+	public void PlayRollAnim()
 	{
-		animator.Play("PlayerRoll");
+		animator.Play("PaladinRoll");
 	}
 
 	public void SetMoveParam(Vector3 input)

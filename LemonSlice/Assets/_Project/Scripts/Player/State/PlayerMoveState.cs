@@ -12,12 +12,22 @@ public class PlayerMoveState : StateBase<PlayerContext>
 	{
 	}
 
+	public override void Enter()
+	{
+	}
+
 	//----------------State Method------------------
 	public override void Tick()
 	{
 		if (_ctx.input.MoveAxisRaw == Vector3.zero)
 		{
 			_fsm.ChangeState(StateType.Idle);
+			return;
+		}
+
+		if (_ctx.input.IsSpacePressed)
+		{
+			_fsm.ChangeState(StateType.Roll);
 			return;
 		}
 
@@ -48,6 +58,7 @@ public class PlayerMoveState : StateBase<PlayerContext>
 	public override void Exit()
 	{
 		_ctx.rigidbody.velocity = Vector3.zero;
+		_ctx.animHandler.SetMoveParam(Vector3.zero);
 	}
 
 	//----------------State Method------------------

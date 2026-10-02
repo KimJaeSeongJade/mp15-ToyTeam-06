@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	private StateMachine<PlayerContext> _machine;
 	private Rigidbody _rigidbody;
 	private PlayerStat _stat;
+	private MonsterDetection _monsterDetection;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
 		_input = GetComponent<PlayerInput>();
 		_stat = GetComponent<PlayerStat>();
 		_animHandler = GetComponent<PlayerAnimationHandler>();
+		_monsterDetection = GetComponentInChildren<MonsterDetection>();
 	}
 
 	private void BindContext()
@@ -49,7 +51,8 @@ public class PlayerController : MonoBehaviour
 			rigidbody = _rigidbody,
 			transform = transform,
 			input = _input,
-			stat = _stat
+			stat = _stat,
+			MonsterDetection = _monsterDetection
 		};
 	}
 

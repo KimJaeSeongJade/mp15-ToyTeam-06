@@ -6,11 +6,13 @@ public class MonsterController : MonoBehaviour
 	private MonsterContext _ctx;
 	private StateMachine<MonsterContext> _machine;
 	private MonsterStat _stat;
+	private SphereCollider _sphereCollider;// Trigger Collider Player가 들어왔는지 판별용
+	public LayerMask TargetLayer;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
 	{
-		CacheComponets();
+		CacheComponents();
 		BindContext();
 		InitStateMachine();
 	}
@@ -24,8 +26,9 @@ public class MonsterController : MonoBehaviour
 
 	// --------------------------------
 
-	private void CacheComponets()
+	private void CacheComponents()
 	{
+		_sphereCollider =  GetComponent<SphereCollider>();
 	}
 
 	private void BindContext()
@@ -36,6 +39,17 @@ public class MonsterController : MonoBehaviour
 			animHandler = _animHandler,
 			stat = _stat,
 		};
+	}
+	void OnTriggerEnter(Collider other)
+	{
+		int layer = (1 << other.gameObject.layer);
+
+		if ((TargetLayer.value & layer) != 0)
+		{
+
+			_ctx.isPlayerEnter = true;
+		}
+
 	}
 
 	private void InitStateMachine()

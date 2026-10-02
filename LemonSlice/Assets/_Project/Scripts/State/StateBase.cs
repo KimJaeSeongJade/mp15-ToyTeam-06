@@ -28,4 +28,8 @@ public abstract class StateBase<T> where T : IContext
 	public virtual void Exit()
 	{
 	}
+
+	public virtual void OnAnimEvent(string animEvent)
+	{
+	}
 }

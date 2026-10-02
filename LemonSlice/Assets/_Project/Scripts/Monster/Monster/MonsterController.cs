@@ -6,6 +6,9 @@ public class MonsterController : MonoBehaviour
 	private MonsterContext _ctx;
 	private StateMachine<MonsterContext> _machine;
 	private MonsterStat _stat;
+	private bool _isPlayerEnter;
+	private SphereCollider _sphereCollider;
+	public LayerMask TileLayer;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -26,6 +29,7 @@ public class MonsterController : MonoBehaviour
 
 	private void CacheComponets()
 	{
+		_sphereCollider =  GetComponent<SphereCollider>();
 	}
 
 	private void BindContext()
@@ -35,7 +39,14 @@ public class MonsterController : MonoBehaviour
 			transform = transform,
 			animHandler = _animHandler,
 			stat = _stat,
+			isPlayerEnter = _isPlayerEnter
 		};
+	}
+	void OnTriggerEnter(Collider other)
+	{
+		if (!(other.gameObject.layer == LayerMask.NameToLayer("Player"))) return;
+
+		_isPlayerEnter = true;
 	}
 
 	private void InitStateMachine()

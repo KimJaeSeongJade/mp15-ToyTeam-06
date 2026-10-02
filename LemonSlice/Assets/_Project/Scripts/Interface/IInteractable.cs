@@ -4,5 +4,5 @@ public interface IInteractable
 {
 	public GameObject GameObject { get; }
 
-	public void Interact();
+	public void Interact(GameObject interactor);
 }

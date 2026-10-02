@@ -7,15 +7,17 @@ public class PlayerIdleState : StateBase<PlayerContext>
 	{
 	}
 
+	//----------------State Method------------------
 	public override void Tick()
 	{
-		if (_ctx.input.MoveAxis != Vector3.zero)
+		if (_ctx.input.MoveAxisRaw != Vector3.zero)
 		{
 			_fsm.ChangeState(StateType.Move);
 		}
 
 		Rotate();
 	}
+	//----------------State Method------------------
 
 	private void Rotate()
 	{

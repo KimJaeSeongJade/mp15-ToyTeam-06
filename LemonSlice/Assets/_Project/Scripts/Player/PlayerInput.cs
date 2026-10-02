@@ -6,6 +6,9 @@ public class PlayerInput : MonoBehaviour
 	public Vector3 MoveAxis { get; private set; }
 	public Vector3 MoveAxisRaw { get; private set; }
 
+	public bool LockOnPressed { get; private set; }
+	public bool TargetChangePressed { get; private set; }
+
 	public void Read()
 	{
 		// (-y, x, 0)
@@ -27,5 +30,8 @@ public class PlayerInput : MonoBehaviour
 			0,
 			Input.GetAxis("Vertical")
 		);
+
+		LockOnPressed = Input.GetMouseButtonDown(2);
+		TargetChangePressed = Input.GetKeyDown(KeyCode.Tab);
 	}
 }

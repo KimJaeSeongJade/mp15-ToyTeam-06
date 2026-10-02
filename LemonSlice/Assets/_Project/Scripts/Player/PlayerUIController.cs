@@ -1,7 +1,5 @@
-
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,13 +14,25 @@ public class PlayerUIController : MonoBehaviour
 
 	[SerializeField] private int _heartCount; // 생성할 하트 수
 
+	private Coroutine addStaminaCoroutine;
+
 	private int currentHeart; // 현재 하트 수
 	private List<Image> playerHearts = new List<Image>(); // 하트 배열
 
 	private void Start() => Init();
 
+	private void Update()
+	{
+		DiscountHeart();
+		AddcountHeart();
+		DiscountStamina();
+		AddStamina();
+	}
+
 	private void Init()
 	{
+		_playerStamina.gameObject.SetActive(false);
+
 		currentHeart = _heartCount;
 
 		for (int i = 0; i < _heartCount; i++)
@@ -37,19 +47,11 @@ public class PlayerUIController : MonoBehaviour
 			}
 			else if (i < 20)
 			{
-				x *= (i-10);
+				x *= (i - 10);
 				playerHearts.Add(Instantiate(_playerHeart, _heartPosition.transform));
 				playerHearts[i].rectTransform.anchoredPosition = new Vector2(x, -y);
 			}
 		}
-	}
-
-	private void Update()
-	{
-		DiscountHeart();
-		AddcountHeart();
-		DiscountStamina();
-		AddStamina();
 	}
 
 	private void DiscountHeart()
@@ -75,28 +77,33 @@ public class PlayerUIController : MonoBehaviour
 		if (_playerStamina.fillAmount == 1f && Input.GetKeyDown(KeyCode.Space))
 		{
 			_playerStamina.fillAmount -= 0.125f;
-		}
-		else if (_playerStamina.fillAmount != 1f && Input.GetKeyDown(KeyCode.Space) && _playerStamina.fillAmount > 0.125f)
-		{
 			StopCoroutine(addStaminaCoroutine);
-			_playerStamina.fillAmount -= 0.125f;
 		}
-		addStaminaCoroutine = StartCoroutine(AddStaminaRoutine());
+		else if (_playerStamina.fillAmount != 1f && Input.GetKeyDown(KeyCode.Space) &&
+		         _playerStamina.fillAmount > 0.125f)
+		{
+			_playerStamina.fillAmount -= 0.125f;
+			StopCoroutine(addStaminaCoroutine);
+		}
 	}
-
-	private Coroutine addStaminaCoroutine;
 
 	private IEnumerator AddStaminaRoutine()
 	{
-		yield return new WaitForSeconds (0.5f);
-
+		yield return new WaitForSeconds(0.5f);
+		_playerStamina.fillAmount += Time.deltaTime * (0.1f * _recoveryStamina);
 	}
 
 	private void AddStamina()
 	{
 		if (_playerStamina.fillAmount < 1f)
 		{
-			_playerStamina.fillAmount += Time.deltaTime * (0.1f * _recoveryStamina);
+			_playerStamina.gameObject.SetActive(true);
+			addStaminaCoroutine = StartCoroutine(AddStaminaRoutine());
+		}
+		else if (_playerStamina.fillAmount == 1f)
+		{
+			StopCoroutine(addStaminaCoroutine);
+			_playerStamina.gameObject.SetActive(false);
 		}
 	}
 }

@@ -7,8 +7,8 @@ public class MonsterController : MonoBehaviour
 	private StateMachine<MonsterContext> _machine;
 	private MonsterStat _stat;
 	private bool _isPlayerEnter;
-	private SphereCollider _sphereCollider;
-	public LayerMask TileLayer;
+	private SphereCollider _sphereCollider;// Trigger Collider Player가 들어왔는지 판별용
+	public LayerMask TargetLayer;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -44,7 +44,9 @@ public class MonsterController : MonoBehaviour
 	}
 	void OnTriggerEnter(Collider other)
 	{
-		if (!(other.gameObject.layer == LayerMask.NameToLayer("Player"))) return;
+		int layer = (1 << other.gameObject.layer);
+
+		if (TargetLayer.value == layer) return;
 
 		_isPlayerEnter = true;
 	}

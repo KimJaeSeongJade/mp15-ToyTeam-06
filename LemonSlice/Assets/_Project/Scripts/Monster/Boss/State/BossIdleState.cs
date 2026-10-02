@@ -1,12 +1,7 @@
 public class BossIdleState : StateBase<BossContext>
 {
-	// Start is called before the first frame update
-	private void Start()
-	{
-	}
-
-	// Update is called once per frame
-	private void Update()
+	public BossIdleState(BossContext context, StateMachine<BossContext> stateMachine) : base(context,
+		stateMachine)
 	{
 	}
 }

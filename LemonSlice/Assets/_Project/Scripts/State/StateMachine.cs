@@ -31,4 +31,5 @@ public class StateMachine<T> where T : IContext
 
 	public void Tick() => _current?.Tick();
 	public void FixedTick() => _current?.FixedTick();
+	public void OnAnimEvent(string animEvent) => _current?.OnAnimEvent(animEvent);
 }

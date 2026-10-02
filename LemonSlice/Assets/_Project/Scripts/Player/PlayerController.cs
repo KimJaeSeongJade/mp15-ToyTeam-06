@@ -61,4 +61,9 @@ public class PlayerController : MonoBehaviour
 		_machine.Add(StateType.Move, new PlayerMoveState(_ctx, _machine));
 		_machine.Add(StateType.Roll, new PlayerRollState(_ctx, _machine));
 	}
+
+	public void OnAnimEvent(string animEvent)
+	{
+		_machine.OnAnimEvent(animEvent);
+	}
 }

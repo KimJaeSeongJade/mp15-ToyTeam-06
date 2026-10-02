@@ -15,6 +15,12 @@ public class PlayerIdleState : StateBase<PlayerContext>
 			_fsm.ChangeState(StateType.Move);
 		}
 
+		if (_ctx.input.IsSpacePressed)
+		{
+			_fsm.ChangeState(StateType.Roll);
+			return;
+		}
+
 		Rotate();
 	}
 	//----------------State Method------------------

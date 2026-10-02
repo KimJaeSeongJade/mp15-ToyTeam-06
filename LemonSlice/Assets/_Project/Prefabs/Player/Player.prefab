@@ -1643,6 +1643,7 @@ GameObject:
   - component: {fileID: 3135441434192055237}
   - component: {fileID: 2399499429369943420}
   - component: {fileID: 6409730923320831175}
+  - component: {fileID: 2742753561888817850}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1723,7 +1724,7 @@ Rigidbody:
   m_GameObject: {fileID: 6334943611611487210}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 25
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -1758,6 +1759,21 @@ MonoBehaviour:
   attackPower: 0
   moveSpeed: 5
   invincibleTime: 0
+--- !u!114 &2742753561888817850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334943611611487210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1d3ac3b9546384e883e768470eec04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1123290915511357033}
+  moveXParam: moveX
+  moveZParam: moveZ
 --- !u!1 &6357094980701122142
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,7 +2627,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9044303212076653014}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 0b9f1ad4f62386b4a83c36baa38e7180, type: 3}
   m_Controller: {fileID: 9100000, guid: 4cd0aea01c979f846af15f66cc89d7ae, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0

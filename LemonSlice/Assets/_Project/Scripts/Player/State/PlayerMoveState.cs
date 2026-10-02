@@ -7,6 +7,7 @@ public class PlayerMoveState : StateBase<PlayerContext>
 	{
 	}
 
+	//----------------State Method------------------
 	public override void Tick()
 	{
 		if (_ctx.input.MoveAxisRaw == Vector3.zero)
@@ -25,6 +26,13 @@ public class PlayerMoveState : StateBase<PlayerContext>
 		Move();
 	}
 
+	public override void Exit()
+	{
+		_ctx.rigidbody.velocity = Vector3.zero;
+	}
+
+	//----------------State Method------------------
+
 	private void Rotate()
 	{
 		_ctx.transform.Rotate(0, _ctx.input.MouseDelta.y, 0, Space.Self);
@@ -32,7 +40,7 @@ public class PlayerMoveState : StateBase<PlayerContext>
 
 	private void Move()
 	{
-		Vector3 moveDirection = _ctx.transform.TransformDirection(_ctx.input.MoveAxis).normalized;
+		Vector3 moveDirection = _ctx.transform.TransformDirection(_ctx.input.MoveAxisRaw).normalized;
 
 		_ctx.rigidbody.velocity = new Vector3(
 			moveDirection.x * _ctx.stat.MoveSpeed,

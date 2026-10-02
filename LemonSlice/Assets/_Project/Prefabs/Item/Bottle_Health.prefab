@@ -4954,6 +4954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3161263423855481566}
   - component: {fileID: 9116333815565821347}
+  - component: {fileID: 3424695391542481708}
   m_Layer: 0
   m_Name: Bottle_Health
   m_TagString: Untagged
@@ -5000,3 +5001,15 @@ CapsuleCollider:
   m_Height: 0.31
   m_Direction: 1
   m_Center: {x: 0, y: 1.09, z: 0}
+--- !u!114 &3424695391542481708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909986089514754791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e8c6cf9bebbed4c9e9d7ac072152a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

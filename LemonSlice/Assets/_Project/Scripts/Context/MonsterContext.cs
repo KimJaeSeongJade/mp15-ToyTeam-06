@@ -6,4 +6,5 @@ public class MonsterContext : IContext
 	public MonsterStat stat;
 	public Transform transform;
 	public bool isPlayerEnter;
+	public bool deadth;
 }

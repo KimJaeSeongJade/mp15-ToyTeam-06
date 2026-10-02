@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
+	public LayerMask TargetLayer;
 	private MonsterAnimationHandler _animHandler;
 	private MonsterContext _ctx;
 	private StateMachine<MonsterContext> _machine;
+	private SphereCollider _sphereCollider; // Trigger Collider Player가 들어왔는지 판별용
 	private MonsterStat _stat;
-	private SphereCollider _sphereCollider;// Trigger Collider Player가 들어왔는지 판별용
-	public LayerMask TargetLayer;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -24,11 +24,30 @@ public class MonsterController : MonoBehaviour
 		_machine.Tick();
 	}
 
+	private void OnTriggerEnter(Collider other)
+	{
+		int layer = (1 << other.gameObject.layer);
+
+		if ((TargetLayer.value & layer) != 0)
+		{
+			_ctx.isPlayerEnter = true;
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		int layer = (1 << other.gameObject.layer);
+		if ((TargetLayer.value & layer) !=0)
+		{
+			_ctx.isPlayerEnter = false;
+		}
+	}
+
 	// --------------------------------
 
 	private void CacheComponents()
 	{
-		_sphereCollider =  GetComponent<SphereCollider>();
+		_sphereCollider = GetComponent<SphereCollider>();
 	}
 
 	private void BindContext()
@@ -39,17 +58,6 @@ public class MonsterController : MonoBehaviour
 			animHandler = _animHandler,
 			stat = _stat,
 		};
-	}
-	void OnTriggerEnter(Collider other)
-	{
-		int layer = (1 << other.gameObject.layer);
-
-		if ((TargetLayer.value & layer) != 0)
-		{
-
-			_ctx.isPlayerEnter = true;
-		}
-
 	}
 
 	private void InitStateMachine()

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+	[SerializeField] private Animator _animator;
+
 	private PlayerContext _ctx;
 	private PlayerInput _input;
 
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
 	{
 		_ctx = new()
 		{
+			animator = _animator,
 			rigidbody = _rigidbody,
 			transform = transform,
 			input = _input,

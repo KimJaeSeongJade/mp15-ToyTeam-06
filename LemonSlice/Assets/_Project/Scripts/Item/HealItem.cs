@@ -15,5 +15,6 @@ public class HealItem : MonoBehaviour, IInteractable
 		}
 
 		healingPack.Heal();
+		Destroy(gameObject);
 	}
 }

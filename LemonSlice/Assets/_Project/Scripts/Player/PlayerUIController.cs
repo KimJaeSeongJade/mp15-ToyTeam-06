@@ -10,29 +10,34 @@ public class PlayerUIController : MonoBehaviour
 	[SerializeField] private Sprite _blankHeart; // 빈하트 UI 프리팹 참조
 	[SerializeField] private GameObject _heartPosition; // 하트 배치 기준점
 	[SerializeField] private Image _playerStamina; // 스테미나 UI 참조
-	[SerializeField] private float _recoveryStamina; // 1초에 스테미나 차오르는 양
+	[SerializeField] private float _fillStaminaDelay; // 스테미나 차오르는 딜레이
 
 	[SerializeField] private int _heartCount; // 생성할 하트 수
 
-	private Coroutine addStaminaCoroutine;
+	private Coroutine fillStaminaCoroutine; // 스테미나 회복 코루틴
 
 	private int currentHeart; // 현재 하트 수
 	private List<Image> playerHearts = new List<Image>(); // 하트 배열
+	private bool isStaminaActive; // 스테미나 꺼짐 켜짐 여부
+	private bool isActionRunning; // 플레이어가 행동 중인가
+	private WaitForSeconds fillStaminaDelay;
 
-	private void Start() => Init();
+	private void Start()
+	{
+		SetPlayerHeart();
+		SetStamina();
+	}
 
 	private void Update()
 	{
-		DiscountHeart();
-		AddcountHeart();
-		DiscountStamina();
-		AddStamina();
+		DecreaseHeart();
+		IncreaseHeart();
+		DecreaseStamina();
+		FillStamina();
 	}
 
-	private void Init()
+	private void SetPlayerHeart()
 	{
-		_playerStamina.gameObject.SetActive(false);
-
 		currentHeart = _heartCount;
 
 		for (int i = 0; i < _heartCount; i++)
@@ -54,7 +59,7 @@ public class PlayerUIController : MonoBehaviour
 		}
 	}
 
-	private void DiscountHeart()
+	private void DecreaseHeart()
 	{
 		if (Input.GetKeyDown(KeyCode.E) && currentHeart > 0)
 		{
@@ -63,7 +68,7 @@ public class PlayerUIController : MonoBehaviour
 		}
 	}
 
-	private void AddcountHeart()
+	private void IncreaseHeart()
 	{
 		if (Input.GetKeyDown(KeyCode.F) && currentHeart < _heartCount)
 		{
@@ -72,38 +77,60 @@ public class PlayerUIController : MonoBehaviour
 		}
 	}
 
-	private void DiscountStamina()
+	private void SetStamina() // 스테미나 초기화
 	{
-		if (_playerStamina.fillAmount == 1f && Input.GetKeyDown(KeyCode.Space))
-		{
-			_playerStamina.fillAmount -= 0.125f;
-			StopCoroutine(addStaminaCoroutine);
-		}
-		else if (_playerStamina.fillAmount != 1f && Input.GetKeyDown(KeyCode.Space) &&
-		         _playerStamina.fillAmount > 0.125f)
-		{
-			_playerStamina.fillAmount -= 0.125f;
-			StopCoroutine(addStaminaCoroutine);
-		}
+		fillStaminaDelay = new WaitForSeconds(_fillStaminaDelay);
+		HideStamina();
 	}
 
-	private IEnumerator AddStaminaRoutine()
+	private void HideStamina() // 스테미나 UI 숨기기
 	{
-		yield return new WaitForSeconds(0.5f);
-		_playerStamina.fillAmount += Time.deltaTime * (0.1f * _recoveryStamina);
+		_playerStamina.gameObject.SetActive(false);
+		isStaminaActive = false;
 	}
 
-	private void AddStamina()
+	private void ShowStamina() // 스테미나 UI 보이기
 	{
-		if (_playerStamina.fillAmount < 1f)
+		if (!isStaminaActive)
 		{
 			_playerStamina.gameObject.SetActive(true);
-			addStaminaCoroutine = StartCoroutine(AddStaminaRoutine());
+			isStaminaActive = true;
 		}
-		else if (_playerStamina.fillAmount == 1f)
+	}
+
+	private void DecreaseStamina() // 스테미나 사용
+	{
+		if (Input.GetKeyDown(KeyCode.Space) && _playerStamina.fillAmount == 1) // 스테미나 꽉 찼을 때
 		{
-			StopCoroutine(addStaminaCoroutine);
-			_playerStamina.gameObject.SetActive(false);
+			ShowStamina();
+			_playerStamina.fillAmount -= 0.125f;
+			isActionRunning = true;
+			fillStaminaCoroutine = StartCoroutine(FillStaminaRoutine()); // 스테미나 회복 딜레이의 첫 발생
+		}
+		else if (_playerStamina.fillAmount < 1 && _playerStamina.fillAmount >= 0.125f && Input.GetKeyDown(KeyCode.Space))
+		{
+			StopCoroutine(fillStaminaCoroutine);// 스테미나 회복 딜레이를 멈춤
+			_playerStamina.fillAmount -= 0.125f;
+			isActionRunning = true;
+			fillStaminaCoroutine = StartCoroutine(FillStaminaRoutine());// 스테미나 회복 딜레이의 갱신
+		}
+	}
+
+	private IEnumerator FillStaminaRoutine() // 스테미나 회복 코루틴
+	{
+		yield return fillStaminaDelay;
+		isActionRunning = false;
+	}
+
+	private void FillStamina()
+	{
+		if (_playerStamina.fillAmount < 1 && !isActionRunning)
+		{
+			_playerStamina.fillAmount += Time.deltaTime * 0.125f;
+		}
+		else if (_playerStamina.fillAmount == 1)
+		{
+			HideStamina();
 		}
 	}
 }

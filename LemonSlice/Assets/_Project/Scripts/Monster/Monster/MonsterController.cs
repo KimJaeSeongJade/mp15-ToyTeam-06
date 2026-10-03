@@ -69,5 +69,6 @@ public class MonsterController : MonoBehaviour
 		_machine.Add(StateType.Idle, new MonsterIdleState(_ctx, _machine));
 		_machine.Add(StateType.Move, new MonsterChaseState(_ctx, _machine));
 		_machine.Add(StateType.Attack, new MonsterAttackState(_ctx, _machine));
+		_machine.Add(StateType.Die, new MonsterDieState(_ctx, _machine));
 	}
 }

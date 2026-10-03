@@ -18,7 +18,7 @@ public class PlayerRollState : StateBase<PlayerContext>
 	public override void Exit()
 	{
 		// PlayerLayerMask 원복
-		_ctx.animHandler.PlayBlendAnim();
+		_ctx.animHandler.PlayMoveAnim();
 		_ctx.rigidbody.velocity = Vector3.zero;
 		_ctx.animHandler.SetMoveParam(Vector3.zero);
 	}

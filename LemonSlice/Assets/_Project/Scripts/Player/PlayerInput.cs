@@ -2,13 +2,19 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+	[SerializeField] private KeyCode attack = KeyCode.Mouse0;
+	[SerializeField] private KeyCode roll = KeyCode.Space;
+	[SerializeField] private KeyCode changeLockOn = KeyCode.Tab;
+	[SerializeField] private KeyCode lcokOn = KeyCode.Mouse2;
+
 	public Vector3 MouseDelta { get; private set; }
 	public Vector3 MoveAxis { get; private set; }
 	public Vector3 MoveAxisRaw { get; private set; }
 
 	public bool LockOnPressed { get; private set; }
 	public bool TargetChangePressed { get; private set; }
-	public bool IsSpacePressed { get; private set; }
+	public bool IsRollPressed { get; private set; }
+	public bool IsAttackPressed { get; private set; }
 
 	public void Read()
 	{
@@ -16,7 +22,10 @@ public class PlayerInput : MonoBehaviour
 		ReadMoveAxis();
 		ReadMoveAxisRaw();
 
-		IsSpacePressed = Input.GetKeyDown(KeyCode.Space);
+		IsRollPressed = Input.GetKeyDown(roll);
+		LockOnPressed = Input.GetKeyDown(lcokOn);
+		TargetChangePressed = Input.GetKeyDown(changeLockOn);
+		IsAttackPressed = Input.GetKeyDown(attack);
 	}
 
 	private void ReadMouseDelta()
@@ -46,8 +55,5 @@ public class PlayerInput : MonoBehaviour
 			0,
 			Input.GetAxis("Vertical")
 		);
-
-		LockOnPressed = Input.GetMouseButtonDown(2);
-		TargetChangePressed = Input.GetKeyDown(KeyCode.Tab);
 	}
 }

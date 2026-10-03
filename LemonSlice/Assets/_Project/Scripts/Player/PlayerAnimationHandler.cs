@@ -11,7 +11,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 		CacheComponents();
 	}
 
-	public void PlayBlendAnim()
+	public void PlayMoveAnim()
 	{
 		animator.Play("IdleAndMove");
 	}

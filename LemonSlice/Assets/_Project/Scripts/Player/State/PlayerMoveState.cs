@@ -25,9 +25,15 @@ public class PlayerMoveState : StateBase<PlayerContext>
 			return;
 		}
 
-		if (_ctx.input.IsSpacePressed)
+		if (_ctx.input.IsRollPressed)
 		{
 			_fsm.ChangeState(StateType.Roll);
+			return;
+		}
+
+		if (_ctx.input.IsAttackPressed)
+		{
+			_fsm.ChangeState(StateType.Attack);
 			return;
 		}
 

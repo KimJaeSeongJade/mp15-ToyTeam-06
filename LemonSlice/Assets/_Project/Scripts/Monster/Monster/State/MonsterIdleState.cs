@@ -11,6 +11,7 @@ public class MonsterIdleState : StateBase<MonsterContext>
 	{
 		if (_ctx.isPlayerEnter)
 		{
+			Debug.Log("Player 들어옴");
 			_fsm.ChangeState(StateType.Move);
 		}
 	}

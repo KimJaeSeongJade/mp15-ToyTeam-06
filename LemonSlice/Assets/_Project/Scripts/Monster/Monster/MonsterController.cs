@@ -31,6 +31,7 @@ public class MonsterController : MonoBehaviour
 		if ((TargetLayer.value & layer) != 0)
 		{
 			_ctx.isPlayerEnter = true;
+			_ctx.targetTransform = other.transform;
 		}
 	}
 
@@ -48,6 +49,7 @@ public class MonsterController : MonoBehaviour
 	private void CacheComponents()
 	{
 		_sphereCollider = GetComponent<SphereCollider>();
+		_stat = GetComponent<MonsterStat>();
 	}
 
 	private void BindContext()
@@ -65,5 +67,6 @@ public class MonsterController : MonoBehaviour
 		_machine = new StateMachine<MonsterContext>();
 
 		_machine.Add(StateType.Idle, new MonsterIdleState(_ctx, _machine));
+		_machine.Add(StateType.Move, new MonsterChaseState(_ctx, _machine));
 	}
 }

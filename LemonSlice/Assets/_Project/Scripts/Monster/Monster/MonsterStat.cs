@@ -8,7 +8,7 @@ public class MonsterStat : MonoBehaviour
 	[SerializeField] private int attackPower;
 
 	public ObservableProperty<int> currentHealth = new(0);
-
+	public float MoveSpeed => moveSpeed;
 	private void Awake() => Init();
 
 	private void Init()

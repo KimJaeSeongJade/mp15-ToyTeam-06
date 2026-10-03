@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class PlayerContext : IContext
 {
-	public PlayerAnimationHandler animHandler;
+	public MonsterDetection MonsterDetection;
+	public PlayerAnimHandler animHandler;
 	public PlayerInput input;
+
+	public bool isLockOn;
+	public int lockOnIndex;
 	public Rigidbody rigidbody;
 	public PlayerStat stat;
 	public Transform transform;
-	public MonsterDetection MonsterDetection;
-	public bool isLockOn;
-	public int lockOnIndex;
 }

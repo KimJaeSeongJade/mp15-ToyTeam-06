@@ -13,6 +13,11 @@ public class PlayerIdleState : StateBase<PlayerContext>
 	}
 
 	//----------------State Method------------------
+	public override void Enter()
+	{
+		_ctx.animHandler.PlayIdleAndMoveAnim();
+	}
+
 	public override void Tick()
 	{
 		if (_ctx.input.MoveAxisRaw != Vector3.zero)

@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
 	private PlayerInput _input;
 
 	private StateMachine<PlayerContext> _machine;
+	private MonsterDetection _monsterDetection;
 	private Rigidbody _rigidbody;
 	private PlayerStat _stat;
-	private MonsterDetection _monsterDetection;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
 		_machine.Add(StateType.Idle, new PlayerIdleState(_ctx, _machine));
 		_machine.Add(StateType.Move, new PlayerMoveState(_ctx, _machine));
 		_machine.Add(StateType.Roll, new PlayerRollState(_ctx, _machine));
+		_machine.Add(StateType.Attack, new PlayerAttackState(_ctx, _machine));
 	}
 
 	public void OnAnimEvent(string animEvent)

@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class PlayerIdleState : StateBase<PlayerContext>
 {
+	private List<Transform> enemyList = new List<Transform>();
+
+	private int maxIndex;
+
 	public PlayerIdleState(PlayerContext context, StateMachine<PlayerContext> stateMachine) : base(context,
 		stateMachine)
 	{
 	}
-
-	private int maxIndex;
-	private List<Transform> enemyList =  new List<Transform>();
 
 	//----------------State Method------------------
 	public override void Tick()
@@ -18,20 +19,20 @@ public class PlayerIdleState : StateBase<PlayerContext>
 		{
 			_fsm.ChangeState(StateType.Move);
 		}
-    
-    if (_ctx.input.IsSpacePressed)
+
+		if (_ctx.input.IsSpacePressed)
 		{
 			_fsm.ChangeState(StateType.Roll);
 			return;
 		}
-    
+
 		if (_ctx.input.LockOnPressed)
 		{
 			_ctx.isLockOn = !_ctx.isLockOn;
 			_ctx.lockOnIndex = 0;
 		}
 
-		if(!_ctx.isLockOn)
+		if (!_ctx.isLockOn)
 		{
 			Rotate();
 		}

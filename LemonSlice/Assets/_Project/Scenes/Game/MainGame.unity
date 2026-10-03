@@ -515,7 +515,7 @@ MonoBehaviour:
   _blankHeart: {fileID: 21300000, guid: 5a4b15dc804f17f4eabd62c59d9757d7, type: 3}
   _heartPosition: {fileID: 2062175151}
   _playerStamina: {fileID: 483095497}
-  _recoveryStamina: 5
+  _fillStaminaDelay: 0.5
   _heartCount: 19
 --- !u!1 &1056097974
 GameObject:

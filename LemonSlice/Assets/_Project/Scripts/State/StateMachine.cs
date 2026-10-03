@@ -10,6 +10,8 @@ public class StateMachine<T> where T : IContext
 		_stateDict = new();
 	}
 
+	public StateBase<T> Current => _current;
+
 	public void ChangeState(StateType stateType)
 	{
 		StateBase<T> next = _stateDict[stateType];

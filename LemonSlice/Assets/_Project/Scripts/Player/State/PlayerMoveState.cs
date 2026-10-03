@@ -12,11 +12,12 @@ public class PlayerMoveState : StateBase<PlayerContext>
 	{
 	}
 
+	//----------------State Method------------------
 	public override void Enter()
 	{
+		_ctx.animHandler.PlayIdleAndMoveAnim();
 	}
 
-	//----------------State Method------------------
 	public override void Tick()
 	{
 		if (_ctx.input.MoveAxisRaw == Vector3.zero)

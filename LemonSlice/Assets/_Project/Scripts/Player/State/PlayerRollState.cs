@@ -18,18 +18,16 @@ public class PlayerRollState : StateBase<PlayerContext>
 	public override void Exit()
 	{
 		// PlayerLayerMask 원복
-		_ctx.animHandler.PlayMoveAnim();
+		_ctx.animHandler.PlayIdleAndMoveAnim();
 		_ctx.rigidbody.velocity = Vector3.zero;
 		_ctx.animHandler.SetMoveParam(Vector3.zero);
 	}
 
 	public override void OnAnimEvent(string animEvent)
 	{
-		switch (animEvent)
+		if (animEvent == _ctx.animHandler.EndRollAnim)
 		{
-			case "EndRollAnim":
-				_fsm.ChangeState(StateType.Idle);
-				break;
+			_fsm.ChangeState(StateType.Idle);
 		}
 	}
 

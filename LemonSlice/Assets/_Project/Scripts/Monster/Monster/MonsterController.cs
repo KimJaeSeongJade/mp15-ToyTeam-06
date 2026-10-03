@@ -38,7 +38,7 @@ public class MonsterController : MonoBehaviour
 	private void OnTriggerExit(Collider other)
 	{
 		int layer = (1 << other.gameObject.layer);
-		if ((TargetLayer.value & layer) !=0)
+		if ((TargetLayer.value & layer) != 0)
 		{
 			_ctx.isPlayerEnter = false;
 		}
@@ -70,5 +70,10 @@ public class MonsterController : MonoBehaviour
 		_machine.Add(StateType.Move, new MonsterChaseState(_ctx, _machine));
 		_machine.Add(StateType.Attack, new MonsterAttackState(_ctx, _machine));
 		_machine.Add(StateType.Die, new MonsterDieState(_ctx, _machine));
+	}
+
+	public void OnAnimEvent(string animEvent)
+	{
+		_machine.OnAnimEvent(animEvent);
 	}
 }

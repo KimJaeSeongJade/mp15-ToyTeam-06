@@ -44,4 +44,9 @@ public class BossController : MonoBehaviour
 
 		_machine.Add(StateType.Idle, new BossIdleState(_ctx, _machine));
 	}
+
+	public void OnAnimEvent(string animEvent)
+	{
+		_machine.OnAnimEvent(animEvent);
+	}
 }

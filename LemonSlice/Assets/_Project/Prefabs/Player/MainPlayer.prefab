@@ -1734,6 +1734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25c9d99d9355404d993282eb262849f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stateType: 
 --- !u!114 &3135441434192055237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1809,6 +1810,13 @@ MonoBehaviour:
   animator: {fileID: 1123290915511357033}
   moveXParam: moveX
   moveZParam: moveZ
+  moveAnimParam: IdleAndMove
+  rollAnimParam: PaladinRoll
+  attackAnimParam: PaladinAttack
+  endRollAnim: EndRollAnim
+  endAttackAnim: EndAttackAnim
+  openCombo: OpenCombo
+  closeCombo: CloseCombo
 --- !u!1 &6357094980701122142
 GameObject:
   m_ObjectHideFlags: 0

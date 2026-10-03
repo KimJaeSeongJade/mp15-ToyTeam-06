@@ -31,6 +31,12 @@ public class PlayerMoveState : StateBase<PlayerContext>
 			return;
 		}
 
+		if (_ctx.input.IsAttackPressed)
+		{
+			_fsm.ChangeState(StateType.Attack);
+			return;
+		}
+
 		_ctx.animHandler.SetMoveParam(_ctx.input.MoveAxisRaw);
 
 

@@ -18,11 +18,18 @@ public class PlayerIdleState : StateBase<PlayerContext>
 		if (_ctx.input.MoveAxisRaw != Vector3.zero)
 		{
 			_fsm.ChangeState(StateType.Move);
+			return;
 		}
 
 		if (_ctx.input.IsRollPressed)
 		{
 			_fsm.ChangeState(StateType.Roll);
+			return;
+		}
+
+		if (_ctx.input.IsAttackPressed)
+		{
+			_fsm.ChangeState(StateType.Attack);
 			return;
 		}
 

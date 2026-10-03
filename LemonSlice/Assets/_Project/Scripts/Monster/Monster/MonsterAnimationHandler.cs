@@ -15,4 +15,9 @@ public class MonsterAnimationHandler : MonoBehaviour
     {
 
     }
+
+    public void PlayMonsterDieAnim()
+    {
+		// 사망 애니메이션 재생
+    }
 }

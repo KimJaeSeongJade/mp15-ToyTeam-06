@@ -7,9 +7,14 @@ public class MonsterStat : MonoBehaviour
 	[SerializeField] private float moveSpeed; // 이동속도
 	[SerializeField] private int attackPower;
 	[SerializeField] private float rotationSpeed;
+	[SerializeField] private float attackDelay;
+	[SerializeField] private float attackDistance;
+
 
 	public ObservableProperty<int> currentHealth = new(0);
 	public float MoveSpeed => moveSpeed;
+	public float AttackDelay => attackDelay;
+	public float AttackDistance => attackDistance;
 	private void Awake() => Init();
 
 	private void Init()

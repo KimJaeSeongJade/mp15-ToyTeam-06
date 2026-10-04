@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class StateMachine<T> where T : IContext
 {
@@ -19,6 +20,11 @@ public class StateMachine<T> where T : IContext
 		if (_current == next)
 		{
 			return;
+		}
+
+		if (_current != null)
+		{
+			Debug.Log($"{_current.GetType().Name} => {next.GetType().Name}");
 		}
 
 		_current?.Exit();

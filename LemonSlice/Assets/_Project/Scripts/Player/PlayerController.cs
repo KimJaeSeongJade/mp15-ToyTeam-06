@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	[SerializeField] private string _stateType;
 	private PlayerAnimHandler _animHandler;
 	private PlayerContext _ctx;
 	private PlayerInput _input;
@@ -26,7 +25,6 @@ public class PlayerController : MonoBehaviour
 	{
 		_input.Read();
 		_machine.Tick();
-		_stateType = _machine.Current.GetType().ToString();
 	}
 
 	private void FixedUpdate()
@@ -54,7 +52,7 @@ public class PlayerController : MonoBehaviour
 			transform = transform,
 			input = _input,
 			stat = _stat,
-			MonsterDetection = _monsterDetection
+			monsterDetection = _monsterDetection,
 		};
 	}
 

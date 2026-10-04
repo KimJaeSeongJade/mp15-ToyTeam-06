@@ -1,20 +1,24 @@
 using UnityEngine;
-using System;
-public class ItemBox : MonoBehaviour, IInteractable
+
+public class ItemBox : MonoBehaviour, IInteractable, IPoolable
 {
-	[SerializeField] HealItem _healItem;
+	[SerializeField] private HealItem _healItem;
+
 	public LayerMask InteractedLayer;
 	public GameObject GameObject => this.gameObject;
 
 
 	private void Update()
 	{
-
 	}
 
 	public void Interact(GameObject interactor)
 	{
-		if (!(interactor.layer == LayerMask.NameToLayer("Weapon"))) return;
+		if (!(interactor.layer == LayerMask.NameToLayer("Weapon")))
+		{
+			return;
+		}
+
 		Destroy(gameObject);
 		SpawnHealPotion();
 	}
@@ -22,8 +26,8 @@ public class ItemBox : MonoBehaviour, IInteractable
 
 	private void SpawnHealPotion()
 	{
-
 		Instantiate(_healItem, transform.position, Quaternion.identity);
 	}
 
+	public PoolType PoolId => PoolType.ItemBox;
 }

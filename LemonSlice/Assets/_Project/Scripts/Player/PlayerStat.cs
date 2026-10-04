@@ -7,11 +7,13 @@ public class PlayerStat : MonoBehaviour
 	[SerializeField] private int attackPower; // 공격력
 	[SerializeField] private float moveSpeed; // 이동 속도
 	[SerializeField] private float invincibleTime; // 무적 시간
+	[SerializeField] private float rollSpeed;
 
 	public ObservableProperty<int> currentHealth = new(0); // 현재 체력
 	public ObservableProperty<int> currentStamina = new(0); // 현재 스테미나
 
 	public float MoveSpeed => moveSpeed;
+	public float RollSpeed => rollSpeed;
 
 	// -------이벤트 함수--------
 

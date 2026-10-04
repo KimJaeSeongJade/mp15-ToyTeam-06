@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class HealItem : MonoBehaviour, IInteractable
+public class HealItem : MonoBehaviour, IInteractable, IPoolable
 {
 	private HealingPack healingPack;
-
 
 	public GameObject GameObject => gameObject;
 
@@ -17,4 +16,6 @@ public class HealItem : MonoBehaviour, IInteractable
 		healingPack.Heal();
 		Destroy(gameObject);
 	}
+
+	public PoolType PoolId => PoolType.HealPotion;
 }

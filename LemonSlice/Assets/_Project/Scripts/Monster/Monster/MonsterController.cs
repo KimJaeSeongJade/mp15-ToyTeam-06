@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MonsterController : MonoBehaviour
+public class MonsterController : MonoBehaviour, IPoolable
 {
 	[SerializeField] private string _stateType;
 
@@ -24,7 +24,26 @@ public class MonsterController : MonoBehaviour
 	private void Update()
 	{
 		_machine.Tick();
-		_stateType = _machine.Current.GetType().ToString();
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		int layer = (1 << other.gameObject.layer);
+
+		if ((TargetLayer.value & layer) != 0)
+		{
+			_ctx.isPlayerEnter = true;
+			_ctx.targetTransform = other.transform;
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		int layer = (1 << other.gameObject.layer);
+		if ((TargetLayer.value & layer) != 0)
+		{
+			_ctx.isPlayerEnter = false;
+		}
 	}
 
 	// --------------------------------
@@ -64,4 +83,6 @@ public class MonsterController : MonoBehaviour
 	{
 		_machine.OnAnimEvent(animEvent);
 	}
+
+	public PoolType PoolId => PoolType.Monster;
 }

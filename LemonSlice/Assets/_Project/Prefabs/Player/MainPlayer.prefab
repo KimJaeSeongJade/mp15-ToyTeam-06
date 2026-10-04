@@ -1805,7 +1805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25c9d99d9355404d993282eb262849f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateType: 
 --- !u!114 &3135441434192055237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1866,6 +1865,7 @@ MonoBehaviour:
   attackPower: 0
   moveSpeed: 5
   invincibleTime: 0
+  rollSpeed: 1.5
 --- !u!114 &2742753561888817850
 MonoBehaviour:
   m_ObjectHideFlags: 0

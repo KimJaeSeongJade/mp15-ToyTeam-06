@@ -1762,7 +1762,7 @@ Transform:
   m_GameObject: {fileID: 6334943611611487210}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 4.71, z: 0.42}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2742,20 +2742,14 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9044303212076653014}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0b9f1ad4f62386b4a83c36baa38e7180, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 979c658befd11e544813957f855b63d0, type: 3}
   m_Controller: {fileID: 9100000, guid: 4cd0aea01c979f846af15f66cc89d7ae, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-    'mixamorig:LeftHandIndex1'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
-    'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
-    'mixamorig:LeftHandMiddle1'\n\tTransform 'mixamorig:LeftHandRing1'\n\tand more
-    ...\n\tFrom animation clip 'PaladinAttack1'\n\tFrom animation clip 'PaladinAttack2'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0

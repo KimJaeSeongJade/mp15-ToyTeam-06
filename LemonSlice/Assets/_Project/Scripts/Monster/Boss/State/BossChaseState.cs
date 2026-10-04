@@ -9,6 +9,12 @@ public class BossChaseState : StateBase<BossContext>
 
 	public override void Tick()
 	{
+		// TODO Knockback 테스트용 추후에 지워야 함
+		if (Input.GetKeyDown(KeyCode.O))
+		{
+			_fsm.ChangeState(StateType.Knockback);
+		}
+
 		float distance = Vector3.Distance(
 			_ctx.transform.position,
 			_ctx.playerDetection.TargetTransform.position
@@ -18,8 +24,6 @@ public class BossChaseState : StateBase<BossContext>
 		{
 			_fsm.ChangeState(StateType.Attack);
 		}
-
-		// _ctx.transform.LookAt(_ctx.playerDetection.TargetTransform);
 
 		Vector3 direction = (_ctx.playerDetection.TargetTransform.position - _ctx.transform.position).normalized;
 		direction.y = 0;

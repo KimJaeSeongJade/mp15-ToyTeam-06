@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,14 +5,21 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 {
 	[SerializeField] private GameObject monsterPrefab;
 	[SerializeField] private int monsterPoolSize;
+	[SerializeField] private string monsterPoolId;
+
 	[SerializeField] private GameObject coinPrefab;
 	[SerializeField] private int coinPoolSize;
+	[SerializeField] private string coinPoolId;
+
 	[SerializeField] private GameObject itemBoxPrefab;
 	[SerializeField] private int itemBoxPoolSize;
+	[SerializeField] private string itemBoxPoolId;
+
 	[SerializeField] private GameObject healPotionPrefab;
 	[SerializeField] private int healPotionPoolSize;
+	[SerializeField] private string healPotionPoolId;
 
-	private Dictionary<Type, Stack<GameObject>> _dict;
+	private Dictionary<PoolType, Stack<GameObject>> _dict;
 
 	private Stack<GameObject> _monsterPool;
 	private Stack<GameObject> _coinPool;
@@ -25,27 +31,27 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		InitPool();
 	}
 
-	public GameObjectBuilder Take(Component component)
+	public GameObjectBuilder Take(GameObject gameObject)
 	{
-		Type type = component.GetType();
-		if (!_dict.ContainsKey(type))
+		PoolType poolId = gameObject.GetComponent<IPoolable>().PoolId;
+		if (!_dict.ContainsKey(poolId))
 		{
 			return null;
 		}
 
-		return new GameObjectBuilder(_dict[type].Pop());
+		return new GameObjectBuilder(_dict[poolId].Pop());
 	}
 
-	public bool TryReturn(GameObject go)
+	public bool TryReturn(GameObject gameObject)
 	{
-		Type type = go.GetType();
-		if (!_dict.ContainsKey(type))
+		PoolType poolId = gameObject.GetComponent<IPoolable>().PoolId;
+		if (!_dict.ContainsKey(poolId))
 		{
 			return false;
 		}
 
-		go.SetActive(false);
-		_dict[type].Push(go);
+		gameObject.SetActive(false);
+		_dict[poolId].Push(gameObject);
 		return true;
 	}
 
@@ -58,10 +64,10 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_itemBoxPool = GetPool(itemBoxPrefab, itemBoxPoolSize);
 		_healPotionPool = GetPool(healPotionPrefab, healPotionPoolSize);
 
-		_dict.Add(monsterPrefab.GetType(), _monsterPool);
-		_dict.Add(coinPrefab.GetType(), _coinPool);
-		_dict.Add(itemBoxPrefab.GetType(), _itemBoxPool);
-		_dict.Add(healPotionPrefab.GetType(), _healPotionPool);
+		_dict.Add(PoolType.Monster, _monsterPool);
+		_dict.Add(PoolType.Coin, _coinPool);
+		_dict.Add(PoolType.ItemBox, _itemBoxPool);
+		_dict.Add(PoolType.HealPotion, _healPotionPool);
 	}
 
 	public Stack<GameObject> GetPool(GameObject go, int poolSize)
@@ -73,6 +79,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 			gameObject.SetActive(false);
 			pool.Push(gameObject);
 		}
+
 		return pool;
 	}
 }

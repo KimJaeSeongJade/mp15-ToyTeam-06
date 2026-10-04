@@ -39,8 +39,8 @@ public class PlayerRollState : StateBase<PlayerContext>
 		Vector3 moveDirection = _ctx.transform.TransformDirection(_ctx.input.MoveAxisRaw).normalized;
 
 		_ctx.rigidbody.velocity = new Vector3(
-			moveDirection.x * _ctx.stat.MoveSpeed * 1.5f,
+			moveDirection.x * _ctx.stat.MoveSpeed * _ctx.stat.RollSpeed,
 			_ctx.rigidbody.velocity.y,
-			moveDirection.z * _ctx.stat.MoveSpeed * 1.5f);
+			moveDirection.z * _ctx.stat.MoveSpeed * _ctx.stat.RollSpeed);
 	}
 }

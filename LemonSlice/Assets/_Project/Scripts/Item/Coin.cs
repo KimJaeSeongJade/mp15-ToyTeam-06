@@ -1,15 +1,13 @@
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour, IInteractable
+public class Coin : MonoBehaviour, IInteractable, IPoolable
 {
 	private int score;
-    public GameObject GameObject =>  gameObject;
+	public GameObject GameObject => gameObject;
 
-    public void Interact(GameObject interactor)
-    {
-	    
-    }
+	public void Interact(GameObject interactor)
+	{
+	}
+
+	public PoolType PoolId => PoolType.Coin;
 }

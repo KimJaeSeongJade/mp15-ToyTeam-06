@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MonsterController : MonoBehaviour
+public class MonsterController : MonoBehaviour, IPoolable
 {
 	public LayerMask TargetLayer;
 	private MonsterAnimHandler _animHandler;
@@ -23,7 +23,6 @@ public class MonsterController : MonoBehaviour
 	private void Update()
 	{
 		_machine.Tick();
-
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -63,7 +62,7 @@ public class MonsterController : MonoBehaviour
 			transform = transform,
 			animHandler = _animHandler,
 			stat = _stat,
-			rigidbody =  _rigidbody,
+			rigidbody = _rigidbody,
 		};
 	}
 
@@ -82,4 +81,6 @@ public class MonsterController : MonoBehaviour
 	{
 		_machine.OnAnimEvent(animEvent);
 	}
+
+	public PoolType PoolId => PoolType.Monster;
 }

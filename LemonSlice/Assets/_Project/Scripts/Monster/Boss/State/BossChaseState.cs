@@ -9,7 +9,7 @@ public class BossChaseState : StateBase<BossContext>
 
 	public override void Enter()
 	{
-
+		_ctx.animHandler.PlayChaseAnim();
 	}
 
 	public override void Tick()

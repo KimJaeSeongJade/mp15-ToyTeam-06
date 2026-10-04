@@ -4,4 +4,12 @@ public class BossIdleState : StateBase<BossContext>
 		stateMachine)
 	{
 	}
+
+	public override void Tick()
+	{
+		if (_ctx.playerDetection.IsPlayerEnter)
+		{
+			_fsm.ChangeState(StateType.Move);
+		}
+	}
 }

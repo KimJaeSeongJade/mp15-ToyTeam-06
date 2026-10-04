@@ -17,8 +17,13 @@ public class MonsterDetection : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
+		if (sphereCollider == null)
+		{
+			return;
+		}
+
 		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(transform.position, 7);
+		Gizmos.DrawWireSphere(transform.position, detectRange);
 	}
 
 	private void OnTriggerEnter(Collider other)

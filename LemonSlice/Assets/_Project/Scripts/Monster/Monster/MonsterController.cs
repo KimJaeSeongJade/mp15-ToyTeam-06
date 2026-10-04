@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MonsterController : MonoBehaviour, IPoolable
+public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 {
 	[SerializeField] private string _stateType;
 
@@ -62,6 +62,16 @@ public class MonsterController : MonoBehaviour, IPoolable
 	public void OnAnimEvent(string animEvent)
 	{
 		_machine.OnAnimEvent(animEvent);
+	}
+
+	public void TakeDamage(DamageInfo damageInfo)
+	{
+		_stat.currentHealth.Value -= damageInfo.Damage;
+
+		if (_stat.currentHealth.Value <= 0)
+		{
+			_machine.ChangeState(StateType.Die);
+		}
 	}
 
 	public PoolType PoolId => PoolType.Monster;

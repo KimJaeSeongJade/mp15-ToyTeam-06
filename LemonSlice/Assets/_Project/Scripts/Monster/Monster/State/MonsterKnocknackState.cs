@@ -13,9 +13,6 @@ public class MonsterKnockbackState : StateBase<MonsterContext>
 	public override void Enter()
 	{
 		_timer = 0f;
-
-		//  애니메이션을 실행합니다.
-		Debug.Log("몬스터 넉백 시작!");
 	}
 
 	public override void Tick()

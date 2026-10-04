@@ -23,10 +23,7 @@ public class MonsterController : MonoBehaviour
 	private void Update()
 	{
 		_machine.Tick();
-		if (Input.GetKeyDown(KeyCode.Alpha1))
-		{
-			_machine.ChangeState(StateType.Knockback);
-		}
+
 	}
 
 	private void OnTriggerEnter(Collider other)

@@ -4,7 +4,7 @@ public class BossController : MonoBehaviour, ILockonable
 {
 	[SerializeField] private string _stateType;
 
-	private BossAnimationHandler _animHandler;
+	private BossAnimHandler _animHandler;
 	private BossContext _ctx;
 	private StateMachine<BossContext> _machine;
 	private PlayerDetection _playerDetection;

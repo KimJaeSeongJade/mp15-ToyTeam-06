@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class BossAnimHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] private Animator animator;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	[SerializeField] private string idleAnimParam;
 }

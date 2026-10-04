@@ -4,5 +4,9 @@ using UnityEngine;
 
 public enum BackGroundAudioType
 {
-    
+    Title,
+    Idle,
+    MonsterBattle,
+    BossBattle,
+    Ending
 }

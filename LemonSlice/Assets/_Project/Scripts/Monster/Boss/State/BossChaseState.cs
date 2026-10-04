@@ -1,21 +1,24 @@
 using UnityEngine;
 
-public class MonsterChaseState : StateBase<MonsterContext>
+public class BossChaseState : StateBase<BossContext>
 {
-	public MonsterChaseState(MonsterContext context, StateMachine<MonsterContext> stateMachine) : base(context,
+	public BossChaseState(BossContext context, StateMachine<BossContext> stateMachine) : base(context,
 		stateMachine)
 	{
 	}
 
 	public override void Tick()
 	{
-		if (_ctx.playerDetection.TargetTransform == null)
+		// TODO Knockback 테스트용 추후에 지워야 함
+		if (Input.GetKeyDown(KeyCode.O))
 		{
-			_fsm.ChangeState(StateType.Idle);
-			return;
+			_fsm.ChangeState(StateType.Knockback);
 		}
 
-		float distance = Vector3.Distance(_ctx.transform.position, _ctx.playerDetection.TargetTransform.position);
+		float distance = Vector3.Distance(
+			_ctx.transform.position,
+			_ctx.playerDetection.TargetTransform.position
+		);
 
 		if (distance < _ctx.stat.AttackDistance)
 		{

@@ -6,7 +6,8 @@ public class MonsterKnockbackState : StateBase<MonsterContext>
 	private float _knockbackSpeed = 2f;
 	private float _timer;
 
-	public MonsterKnockbackState(MonsterContext context, StateMachine<MonsterContext> stateMachine) : base(context, stateMachine)
+	public MonsterKnockbackState(MonsterContext context, StateMachine<MonsterContext> stateMachine) : base(context,
+		stateMachine)
 	{
 	}
 
@@ -26,9 +27,9 @@ public class MonsterKnockbackState : StateBase<MonsterContext>
 			return;
 		}
 
-		if (_ctx.targetTransform != null)
+		if (_ctx.playerDetection.TargetTransform != null)
 		{
-			Vector3 direction = (_ctx.transform.position - _ctx.targetTransform.position).normalized;
+			Vector3 direction = (_ctx.transform.position - _ctx.playerDetection.TargetTransform.position).normalized;
 			direction.y = 0;
 
 			_ctx.transform.Translate(direction * (_knockbackSpeed * Time.deltaTime), Space.World);

@@ -62,8 +62,7 @@ public class PlayerIdleState : StateBase<PlayerContext>
 
 	private void LockOn()
 	{
-		enemyList = _ctx.monsterDetection.GetEnemyList();
-		maxIndex = enemyList.Count - 1;
+		enemyList = _ctx.MonsterDetection.GetEnemyList();
 
 		// 락온을 했지만 락온거리에 적이 없을 때
 		if (enemyList.Count == 0)
@@ -71,6 +70,8 @@ public class PlayerIdleState : StateBase<PlayerContext>
 			_ctx.isLockOn = false;
 			return;
 		}
+
+		maxIndex = enemyList.Count - 1;
 
 		if (Input.GetKeyDown(KeyCode.Tab))
 		{
@@ -84,9 +85,6 @@ public class PlayerIdleState : StateBase<PlayerContext>
 			}
 		}
 
-		// TODO 추후에 몬스터 스크립트 생기면 변경 필요
-		TempMonster target = enemyList[_ctx.lockOnIndex].GetComponent<TempMonster>();
-
-		_ctx.transform.LookAt(target.transform);
+		_ctx.transform.LookAt(enemyList[_ctx.lockOnIndex]);
 	}
 }

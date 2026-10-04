@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class MonsterAttackState : StateBase<MonsterContext>
+public class BossAttackState : StateBase<BossContext>
 {
 	private float attackTime;
 
-	public MonsterAttackState(MonsterContext context, StateMachine<MonsterContext> stateMachine) : base(context,
+	public BossAttackState(BossContext context, StateMachine<BossContext> stateMachine) : base(context,
 		stateMachine)
 	{
 	}
@@ -18,16 +18,7 @@ public class MonsterAttackState : StateBase<MonsterContext>
 	public override void Tick()
 	{
 		// TODO 추후에 애니메이션 작업 후에 Attack중이라면 return
-		// TODO Attack 애니메이션 끝나면 시간초 세는 구조로 변경 필요\
-
-		if (_ctx.playerDetection.TargetTransform == null)
-		{
-			// TODO 애니메이션 연결 후에 애니메이션 이벤트에 따라 if 필요
-			// if(애니메이션이 끝났다면)
-			// { _fsm.ChangeState(StateType.Idle); }
-			_fsm.ChangeState(StateType.Idle);
-			return;
-		}
+		// TODO Attack 애니메이션 끝나면 시간초 세는 구조로 변경 필요
 
 		attackTime += Time.deltaTime;
 
@@ -48,7 +39,7 @@ public class MonsterAttackState : StateBase<MonsterContext>
 		}
 		else
 		{
-			Debug.Log("몬스터 공격중");
+			Debug.Log("보스 공격중");
 		}
 	}
 }

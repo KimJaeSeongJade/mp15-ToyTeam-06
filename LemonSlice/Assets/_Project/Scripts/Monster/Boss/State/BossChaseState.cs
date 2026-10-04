@@ -7,6 +7,11 @@ public class BossChaseState : StateBase<BossContext>
 	{
 	}
 
+	public override void Enter()
+	{
+
+	}
+
 	public override void Tick()
 	{
 		// TODO Knockback 테스트용 추후에 지워야 함

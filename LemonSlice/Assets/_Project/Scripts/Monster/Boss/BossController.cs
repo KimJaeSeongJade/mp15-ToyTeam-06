@@ -36,6 +36,7 @@ public class BossController : MonoBehaviour, ILockonable
 	private void CacheComponets()
 	{
 		_stat = GetComponent<BossStat>();
+		_animHandler = GetComponent<BossAnimationHandler>();
 		_playerDetection = GetComponentInChildren<PlayerDetection>();
 	}
 

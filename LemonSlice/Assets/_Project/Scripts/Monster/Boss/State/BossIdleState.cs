@@ -5,6 +5,11 @@ public class BossIdleState : StateBase<BossContext>
 	{
 	}
 
+	public override void Enter()
+	{
+		_ctx.animHandler.PlayIdleAnim();
+	}
+
 	public override void Tick()
 	{
 		if (_ctx.playerDetection.IsPlayerEnter)

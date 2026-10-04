@@ -198,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 986187921890765404}
   m_Layer: 0
-  m_Name: MapPrefab1
+  m_Name: Map1Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

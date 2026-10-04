@@ -26,26 +26,6 @@ public class MonsterController : MonoBehaviour, IPoolable
 		_machine.Tick();
 	}
 
-	private void OnTriggerEnter(Collider other)
-	{
-		int layer = (1 << other.gameObject.layer);
-
-		if ((TargetLayer.value & layer) != 0)
-		{
-			_ctx.isPlayerEnter = true;
-			_ctx.targetTransform = other.transform;
-		}
-	}
-
-	private void OnTriggerExit(Collider other)
-	{
-		int layer = (1 << other.gameObject.layer);
-		if ((TargetLayer.value & layer) != 0)
-		{
-			_ctx.isPlayerEnter = false;
-		}
-	}
-
 	// --------------------------------
 
 	private void CacheComponents()

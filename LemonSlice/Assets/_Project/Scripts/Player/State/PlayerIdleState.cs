@@ -62,7 +62,7 @@ public class PlayerIdleState : StateBase<PlayerContext>
 
 	private void LockOn()
 	{
-		enemyList = _ctx.MonsterDetection.GetEnemyList();
+		enemyList = _ctx.monsterDetection.GetEnemyList();
 
 		// 락온을 했지만 락온거리에 적이 없을 때
 		if (enemyList.Count == 0)

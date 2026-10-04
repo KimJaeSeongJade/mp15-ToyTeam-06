@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonBehaviour<GameManager>
@@ -40,10 +37,10 @@ public class GameManager : SingletonBehaviour<GameManager>
 		CurrentState = state; // 게임 상태 변경
 		if (CurrentState == GameState.Playing)
 		{
-			SceneManager.LoadScene("");// 씬 이름 추후에 추가
+			SceneManager.LoadScene(""); // 씬 이름 추후에 추가
 			PlayingTime();
 			LockCursor();
-			
+
 			Time.timeScale = 1;
 		}
 
@@ -60,32 +57,35 @@ public class GameManager : SingletonBehaviour<GameManager>
 		}
 	}
 
-public void AddScore(int score)
-    {
-	    CurrentScore += score; // 코인 획득시 점수 추가
-    }
+	public void AddScore(int score)
+	{
+		CurrentScore += score; // 코인 획득시 점수 추가
+	}
 
-    private void PlayingTime()
-    {
-	    if (CurrentState == GameState.Playing)
-	    {
-		    PlayTime += Time.deltaTime;
-	    }
-    }
-    public void ResetGameData()
-    {
-	    // 게임 오버 -> 점수, 시간 초기화
-	    CurrentScore = 0;
-	    PlayTime = 0f;
-    }
-    private void LockCursor() // 마우스 잠금
-    {
-	    Cursor.lockState = CursorLockMode.Locked;
-	    Cursor.visible = false;
-    }
-    private void UnlockCursor() // 마우스 활성화
-    {
-	    Cursor.lockState = CursorLockMode.None;
-	    Cursor.visible = true;
-    }
+	private void PlayingTime()
+	{
+		if (CurrentState == GameState.Playing)
+		{
+			PlayTime += Time.deltaTime;
+		}
+	}
+
+	public void ResetGameData()
+	{
+		// 게임 오버 -> 점수, 시간 초기화
+		CurrentScore = 0;
+		PlayTime = 0f;
+	}
+
+	private void LockCursor() // 마우스 잠금
+	{
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+	}
+
+	private void UnlockCursor() // 마우스 활성화
+	{
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+	}
 }

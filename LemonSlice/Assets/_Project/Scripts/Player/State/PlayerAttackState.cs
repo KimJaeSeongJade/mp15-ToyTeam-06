@@ -1,9 +1,16 @@
 public class PlayerAttackState : StateBase<PlayerContext>
 {
-	private const int MAX_COMBO = 3;
 	private bool canCombo;
 	private bool canNextAttack;
 	private int comboIndex;
+
+	// TODO 콤보마다 데미지와 다운게이지를 다르게 주기
+	// 무기 변경 시 세트로 바뀌도록?
+	// Inspector에서 리스트로 더하더록?
+	private const int MAX_COMBO = 3;
+	private int[] weaponDamage = { 20, 30, 50 };
+	private int[] weaponDownValue = { 10, 20, 50 };
+
 
 	public PlayerAttackState(PlayerContext context, StateMachine<PlayerContext> stateMachine) : base(context,
 		stateMachine)
@@ -58,7 +65,10 @@ public class PlayerAttackState : StateBase<PlayerContext>
 
 		if (animEvent == _ctx.animHandler.OpenCombo)
 		{
+			int baseDamage = _ctx.stat.AttackPower;
+			int extraDamage = weaponDamage[comboIndex - 1];
 			canCombo = true;
+			_ctx.hitBox.Open(baseDamage + extraDamage, weaponDownValue[comboIndex - 1]);
 		}
 
 		if (animEvent == _ctx.animHandler.CloseCombo)

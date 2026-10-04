@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	private MonsterDetection _monsterDetection;
 	private Rigidbody _rigidbody;
 	private PlayerStat _stat;
+	private AttackHitBox _hitBox;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
 		_stat = GetComponent<PlayerStat>();
 		_animHandler = GetComponent<PlayerAnimHandler>();
 		_monsterDetection = GetComponentInChildren<MonsterDetection>();
+		_hitBox = GetComponentInChildren<AttackHitBox>();
 	}
 
 	private void BindContext()
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
 			input = _input,
 			stat = _stat,
 			monsterDetection = _monsterDetection,
+			hitBox = _hitBox,
 		};
 	}
 

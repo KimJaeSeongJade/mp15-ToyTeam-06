@@ -5,6 +5,7 @@ public class PlayerContext : IContext
 	public MonsterDetection monsterDetection;
 	public PlayerAnimHandler animHandler;
 	public PlayerInput input;
+	public AttackHitBox hitBox;
 
 	public bool isLockOn;
 	public int lockOnIndex;

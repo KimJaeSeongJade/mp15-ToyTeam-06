@@ -14,6 +14,7 @@ public class PlayerStat : MonoBehaviour
 
 	public float MoveSpeed => moveSpeed;
 	public float RollSpeed => rollSpeed;
+	public int AttackPower => attackPower;
 
 	// -------이벤트 함수--------
 

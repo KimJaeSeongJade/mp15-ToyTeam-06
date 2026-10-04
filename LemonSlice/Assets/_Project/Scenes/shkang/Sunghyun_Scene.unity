@@ -1056,14 +1056,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2452185569834478213, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
-      propertyPath: attackDelay
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2452185569834478213, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
-      propertyPath: attackDistance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6834765088764081975, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.8778188
@@ -1104,38 +1096,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6898748341372869017, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
-      propertyPath: dieAnimParam
-      value: ZombieDie
-      objectReference: {fileID: 0}
-    - target: {fileID: 6898748341372869017, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
-      propertyPath: endAttackAnim
-      value: EndAttackAnim
-      objectReference: {fileID: 0}
-    - target: {fileID: 6898748341372869017, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
-      propertyPath: idleAnimParam
-      value: ZombieIdle
-      objectReference: {fileID: 0}
-    - target: {fileID: 6898748341372869017, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
-      propertyPath: chaseAnimParam
-      value: ZombieChase
-      objectReference: {fileID: 0}
-    - target: {fileID: 6898748341372869017, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
-      propertyPath: attackAnimParam
-      value: ZombieAttack
-      objectReference: {fileID: 0}
     - target: {fileID: 8472229039808612870, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
       propertyPath: m_Name
       value: NormalMonster
       objectReference: {fileID: 0}
-    - target: {fileID: 9081114533677686802, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
-      propertyPath: m_Avatar
-      value: 
-      objectReference: {fileID: 9000000, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
-    - target: {fileID: 9081114533677686802, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 1dab27944cc838746bf308b1d5ada0ed, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

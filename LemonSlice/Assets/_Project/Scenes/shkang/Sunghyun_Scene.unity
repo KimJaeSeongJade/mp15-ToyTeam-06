@@ -390,6 +390,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1674432011145243247, guid: 019b92c1b78cf654e8765752ad6d3ed6, type: 3}
+      propertyPath: attackDelay
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3760173861702002831, guid: 019b92c1b78cf654e8765752ad6d3ed6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.17
@@ -472,6 +476,7 @@ MonoBehaviour:
   attackAnimParam: MinoAttack
   dieAnimParam: MinoDie
   knockbackAnimParam: MinoKnockback
+  endMinoAttack: EndMinoAttack
 --- !u!1 &480401580
 GameObject:
   m_ObjectHideFlags: 0

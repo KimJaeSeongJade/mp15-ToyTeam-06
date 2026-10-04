@@ -10,6 +10,10 @@ public class BossAnimationHandler : MonoBehaviour
 	[SerializeField] private string dieAnimParam;
 	[SerializeField] private string knockbackAnimParam;
 
+	[SerializeField] private string endMinoAttack;
+
+	public string EndMinoAttack => endMinoAttack;
+
 	private void Awake()
 	{
 		CacheComponents();

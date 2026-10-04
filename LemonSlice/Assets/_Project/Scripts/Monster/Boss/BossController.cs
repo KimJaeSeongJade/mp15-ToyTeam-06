@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class BossController : MonoBehaviour
+public class BossController : MonoBehaviour, ILockonable
 {
 	[SerializeField] private string _stateType;
 
 	private BossAnimationHandler _animHandler;
 	private BossContext _ctx;
 	private StateMachine<BossContext> _machine;
-	private BossStat _stat;
 	private PlayerDetection _playerDetection;
+	private BossStat _stat;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -28,6 +28,8 @@ public class BossController : MonoBehaviour
 		_machine.Tick();
 		_stateType = _machine.Current.GetType().ToString();
 	}
+
+	public GameObject GameObject { get; }
 
 	// --------------------------------
 

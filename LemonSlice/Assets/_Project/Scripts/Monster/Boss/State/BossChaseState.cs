@@ -19,6 +19,18 @@ public class BossChaseState : StateBase<BossContext>
 			_fsm.ChangeState(StateType.Attack);
 		}
 
-		_ctx.transform.LookAt(_ctx.playerDetection.TargetTransform);
+		// _ctx.transform.LookAt(_ctx.playerDetection.TargetTransform);
+
+		Vector3 direction = (_ctx.playerDetection.TargetTransform.position - _ctx.transform.position).normalized;
+		direction.y = 0;
+
+		if (direction != Vector3.zero)
+		{
+			Quaternion targetRotation = Quaternion.LookRotation(direction);
+			_ctx.transform.rotation = Quaternion.Slerp(_ctx.transform.rotation, targetRotation,
+				Time.deltaTime * _ctx.stat.MoveSpeed);
+		}
+
+		_ctx.transform.Translate(Vector3.forward * (_ctx.stat.MoveSpeed * Time.deltaTime));
 	}
 }

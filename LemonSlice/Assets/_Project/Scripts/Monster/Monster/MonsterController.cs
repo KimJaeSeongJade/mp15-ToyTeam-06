@@ -8,6 +8,7 @@ public class MonsterController : MonoBehaviour
 	private StateMachine<MonsterContext> _machine;
 	private SphereCollider _sphereCollider; // Trigger Collider Player가 들어왔는지 판별용
 	private MonsterStat _stat;
+	private Rigidbody _rigidbody;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -22,6 +23,10 @@ public class MonsterController : MonoBehaviour
 	private void Update()
 	{
 		_machine.Tick();
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			_machine.ChangeState(StateType.Knockback);
+		}
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -50,6 +55,7 @@ public class MonsterController : MonoBehaviour
 	{
 		_sphereCollider = GetComponent<SphereCollider>();
 		_stat = GetComponent<MonsterStat>();
+		_rigidbody = GetComponent<Rigidbody>();
 	}
 
 	private void BindContext()
@@ -59,6 +65,7 @@ public class MonsterController : MonoBehaviour
 			transform = transform,
 			animHandler = _animHandler,
 			stat = _stat,
+			rigidbody =  _rigidbody,
 		};
 	}
 
@@ -70,6 +77,7 @@ public class MonsterController : MonoBehaviour
 		_machine.Add(StateType.Move, new MonsterChaseState(_ctx, _machine));
 		_machine.Add(StateType.Attack, new MonsterAttackState(_ctx, _machine));
 		_machine.Add(StateType.Die, new MonsterDieState(_ctx, _machine));
+		_machine.Add(StateType.Knockback, new MonsterKnockbackState(_ctx, _machine));
 	}
 
 	public void OnAnimEvent(string animEvent)

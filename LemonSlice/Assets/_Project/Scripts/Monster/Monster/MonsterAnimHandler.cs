@@ -16,7 +16,7 @@ public class MonsterAnimHandler : MonoBehaviour
 
 	public void PlayIdleAnim()
 	{
-		//animator.Play(idleAnimParam);
+		animator.Play(idleAnimParam);
 	}
 
 	public void PlayChaseAnim()

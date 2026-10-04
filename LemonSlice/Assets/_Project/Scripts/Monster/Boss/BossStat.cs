@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class BossStat : MonoBehaviour
 {
-	// [SerializeField] private Transform lockonPosition; // 락온포지션
 	[SerializeField] private int maxHealth; // 최대 체력
 	[SerializeField] private int maxGroggy; // 최대 그로기 수치
 	[SerializeField] private float moveSpeed; // 이동속도

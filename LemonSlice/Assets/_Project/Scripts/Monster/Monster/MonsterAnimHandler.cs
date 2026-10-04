@@ -9,6 +9,10 @@ public class MonsterAnimHandler : MonoBehaviour
 	[SerializeField] private string attackAnimParam;
 	[SerializeField] private string dieAnimParam;
 
+	[SerializeField] private string endAttackAnim;
+
+	public string EndAttackAnim => endAttackAnim;
+
 	private void Awake()
 	{
 		CacheComponents();
@@ -16,16 +20,22 @@ public class MonsterAnimHandler : MonoBehaviour
 
 	public void PlayIdleAnim()
 	{
-		//animator.Play(idleAnimParam);
+		animator.Play(idleAnimParam);
 	}
 
 	public void PlayChaseAnim()
 	{
-		//animator.Play(chaseAnimParam);
+		animator.Play(chaseAnimParam);
 	}
 
 	public void PlayAttackAnim()
 	{
+		animator.Play(attackAnimParam);
+	}
+
+	public void PlayDieAnim()
+	{
+		animator.Play(dieAnimParam);
 	}
 
 	private void CacheComponents()

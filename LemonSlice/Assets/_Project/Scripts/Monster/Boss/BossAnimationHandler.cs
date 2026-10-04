@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossAnimationHandler : MonoBehaviour
@@ -26,14 +24,14 @@ public class BossAnimationHandler : MonoBehaviour
 		animator.Play(chaseAnimParam);
 	}
 
-	public void PlayAttackAnim()
+	public void PlayAttackAnim(int animIndex)
 	{
-		animator.Play(attackAnimParam);
+		animator.Play($"{attackAnimParam}{animIndex}");
 	}
 
-	public void PlayDieAnim(int animIndex)
+	public void PlayDieAnim()
 	{
-		animator.Play($"{dieAnimParam}{animIndex}");
+		animator.Play(dieAnimParam);
 	}
 
 	private void CacheComponents()

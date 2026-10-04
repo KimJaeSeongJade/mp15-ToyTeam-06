@@ -1746,7 +1746,7 @@ GameObject:
   - component: {fileID: 2399499429369943420}
   - component: {fileID: 6409730923320831175}
   - component: {fileID: 2742753561888817850}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MainPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2058,6 +2058,8 @@ GameObject:
   - component: {fileID: 6562165883828715425}
   - component: {fileID: 6587209015109992421}
   - component: {fileID: 6579473753764264427}
+  - component: {fileID: 99287773310014919}
+  - component: {fileID: 1811497412867972984}
   m_Layer: 0
   m_Name: BroadSword_Mesh
   m_TagString: Untagged
@@ -2130,6 +2132,42 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &99287773310014919
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6565341599634926525}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.32, y: 0.89, z: 0.06355611}
+  m_Center: {x: 0.00000039137842, y: 0.49, z: 0.00000020001774}
+--- !u!114 &1811497412867972984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6565341599634926525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fe430408e8259499f554c6a95078fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &6565341601730959071
 GameObject:
   m_ObjectHideFlags: 0

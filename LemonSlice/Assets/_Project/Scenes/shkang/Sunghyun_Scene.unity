@@ -471,6 +471,7 @@ MonoBehaviour:
   chaseAnimParam: MinoChase
   attackAnimParam: MinoAttack
   dieAnimParam: MinoDie
+  knockbackAnimParam: MinoKnockback
 --- !u!1 &480401580
 GameObject:
   m_ObjectHideFlags: 0

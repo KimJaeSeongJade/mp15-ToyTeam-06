@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BossKnockbackState : StateBase<BossContext>
 {
-	private float _knockbackDuration = 0.5f;
+	private float _knockbackDuration = 1f;
 	private float _knockbackSpeed = 2f;
 	private float _timer;
 
@@ -13,6 +13,7 @@ public class BossKnockbackState : StateBase<BossContext>
 
 	public override void Enter()
 	{
+		_ctx.animHandler.PlayKnockbackAnim();
 		_timer = 0f;
 	}
 

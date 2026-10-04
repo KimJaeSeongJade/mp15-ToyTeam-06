@@ -159,8 +159,8 @@ MonoBehaviour:
   moveSpeed: 4
   attackPower: 1
   rotationSpeed: 3
-  attackDelay: 2
-  attackDistance: 2
+  attackDelay: 0.7
+  attackDistance: 1
 --- !u!114 &6898748341372869017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,10 +174,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9081114533677686802}
-  idleAnimParam: 
-  chaseAnimParam: 
-  attackAnimParam: 
-  dieAnimParam: 
+  idleAnimParam: ZombieIdle
+  chaseAnimParam: ZombieChase
+  attackAnimParam: ZombieAttack
+  dieAnimParam: ZombieDie
+  endAttackAnim: EndAttackAnim
 --- !u!1001 &5734652938412017569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -269,8 +270,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7547014646205685762}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
+  m_Controller: {fileID: 9100000, guid: 1dab27944cc838746bf308b1d5ada0ed, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -7,6 +7,12 @@ public class MonsterIdleState : StateBase<MonsterContext>
 		stateMachine)
 	{
 	}
+
+	public override void Enter()
+	{
+		_ctx.animHandler.PlayIdleAnim();
+	}
+
 	public override void Tick()
 	{
 		if (_ctx.isPlayerEnter)

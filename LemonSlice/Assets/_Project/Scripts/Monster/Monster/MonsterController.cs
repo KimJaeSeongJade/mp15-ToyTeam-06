@@ -3,7 +3,7 @@ using UnityEngine;
 public class MonsterController : MonoBehaviour
 {
 	public LayerMask TargetLayer;
-	private MonsterAnimationHandler _animHandler;
+	private MonsterAnimHandler _animHandler;
 	private MonsterContext _ctx;
 	private StateMachine<MonsterContext> _machine;
 	private SphereCollider _sphereCollider; // Trigger Collider Player가 들어왔는지 판별용
@@ -53,6 +53,7 @@ public class MonsterController : MonoBehaviour
 		_sphereCollider = GetComponent<SphereCollider>();
 		_stat = GetComponent<MonsterStat>();
 		_rigidbody = GetComponent<Rigidbody>();
+		_animHandler = GetComponent<MonsterAnimHandler>();
 	}
 
 	private void BindContext()

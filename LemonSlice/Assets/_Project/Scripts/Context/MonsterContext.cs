@@ -8,4 +8,5 @@ public class MonsterContext : IContext
 	public bool isPlayerEnter; // Player가 들어왔나?
 	public MonsterStat stat; // 스탯
 	public Transform transform; // 자신
+	public Rigidbody rigidbody;
 }

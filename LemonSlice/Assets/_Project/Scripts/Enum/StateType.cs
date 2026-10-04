@@ -4,5 +4,6 @@ public enum StateType
 	Move,
 	Attack,
 	Roll,
+	Knockback,
 	Die
 }

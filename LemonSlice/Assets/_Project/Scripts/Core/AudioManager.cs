@@ -17,6 +17,14 @@ public class AudioManager : SingletonBehaviour<AudioManager>
 		SetSingleton();
 	}
 
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+
+		}
+	}
+
 	private void CacheComponents()
 	{
 		audioSource = GetComponent<AudioSource>();

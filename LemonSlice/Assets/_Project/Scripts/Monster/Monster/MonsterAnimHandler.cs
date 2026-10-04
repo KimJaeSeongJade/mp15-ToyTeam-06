@@ -28,7 +28,7 @@ public class MonsterAnimHandler : MonoBehaviour
 
     public void PlayAttackAnim()
     {
-	    
+
     }
 
     private void CacheComponents()

@@ -1,6 +1,3 @@
-using Unity.VisualScripting;
-using UnityEngine;
-
 public class MonsterIdleState : StateBase<MonsterContext>
 {
 	public MonsterIdleState(MonsterContext context, StateMachine<MonsterContext> stateMachine) : base(context,
@@ -15,10 +12,9 @@ public class MonsterIdleState : StateBase<MonsterContext>
 
 	public override void Tick()
 	{
-		if (_ctx.isPlayerEnter)
+		if (_ctx.playerDetection.IsPlayerEnter)
 		{
 			_fsm.ChangeState(StateType.Move);
 		}
 	}
-
 }

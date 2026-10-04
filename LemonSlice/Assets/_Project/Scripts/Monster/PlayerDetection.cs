@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerDetection : MonoBehaviour
@@ -42,11 +40,15 @@ public class PlayerDetection : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (isBoss) return; // 보스면 TriggerExit 로직 수행x
+		if (isBoss)
+		{
+			return; // 보스면 TriggerExit 로직 수행x
+		}
 
 		if (IsInPlayerLayer(other.gameObject))
 		{
 			IsPlayerEnter = false;
+			TargetTransform = null;
 		}
 	}
 

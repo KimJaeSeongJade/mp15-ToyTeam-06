@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class BossAttackState : StateBase<BossContext>
@@ -24,8 +23,6 @@ public class BossAttackState : StateBase<BossContext>
 		attackTime += Time.deltaTime;
 
 		float distance = Vector3.Distance(_ctx.transform.position, _ctx.playerDetection.TargetTransform.position);
-
-
 
 		if (attackTime >= _ctx.stat.AttackDelay)
 		{

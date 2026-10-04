@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
-	public LayerMask TargetLayer;
+	[SerializeField] private string _stateType;
+
 	private MonsterAnimHandler _animHandler;
 	private MonsterContext _ctx;
 	private StateMachine<MonsterContext> _machine;
-	private SphereCollider _sphereCollider; // Trigger Collider Player가 들어왔는지 판별용
-	private MonsterStat _stat;
+	private PlayerDetection _playerDetection;
 	private Rigidbody _rigidbody;
+	private MonsterStat _stat;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -23,37 +24,17 @@ public class MonsterController : MonoBehaviour
 	private void Update()
 	{
 		_machine.Tick();
-
-	}
-
-	private void OnTriggerEnter(Collider other)
-	{
-		int layer = (1 << other.gameObject.layer);
-
-		if ((TargetLayer.value & layer) != 0)
-		{
-			_ctx.isPlayerEnter = true;
-			_ctx.targetTransform = other.transform;
-		}
-	}
-
-	private void OnTriggerExit(Collider other)
-	{
-		int layer = (1 << other.gameObject.layer);
-		if ((TargetLayer.value & layer) != 0)
-		{
-			_ctx.isPlayerEnter = false;
-		}
+		_stateType = _machine.Current.GetType().ToString();
 	}
 
 	// --------------------------------
 
 	private void CacheComponents()
 	{
-		_sphereCollider = GetComponent<SphereCollider>();
 		_stat = GetComponent<MonsterStat>();
 		_rigidbody = GetComponent<Rigidbody>();
 		_animHandler = GetComponent<MonsterAnimHandler>();
+		_playerDetection = GetComponentInChildren<PlayerDetection>();
 	}
 
 	private void BindContext()
@@ -63,7 +44,8 @@ public class MonsterController : MonoBehaviour
 			transform = transform,
 			animHandler = _animHandler,
 			stat = _stat,
-			rigidbody =  _rigidbody,
+			rigidbody = _rigidbody,
+			playerDetection = _playerDetection
 		};
 	}
 

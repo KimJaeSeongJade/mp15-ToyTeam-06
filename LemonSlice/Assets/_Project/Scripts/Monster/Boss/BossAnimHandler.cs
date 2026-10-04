@@ -7,4 +7,9 @@ public class BossAnimHandler : MonoBehaviour
 	[SerializeField] private Animator animator;
 
 	[SerializeField] private string idleAnimParam;
+
+	public void PlayIdleAnim()
+	{
+		animator.Play(idleAnimParam);
+	}
 }

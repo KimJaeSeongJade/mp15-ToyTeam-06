@@ -1,18 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossAnimationHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] private Animator animator;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	[SerializeField] private string idleAnimParam;
+	[SerializeField] private string chaseAnimParam;
+	[SerializeField] private string attackAnimParam;
+	[SerializeField] private string dieAnimParam;
+	[SerializeField] private string knockbackAnimParam;
+
+	[SerializeField] private string endMinoAttack;
+
+	public string EndMinoAttack => endMinoAttack;
+
+	private void Awake()
+	{
+		CacheComponents();
+	}
+
+	public void PlayIdleAnim()
+	{
+		animator.Play(idleAnimParam);
+	}
+
+	public void PlayChaseAnim()
+	{
+		animator.Play(chaseAnimParam);
+	}
+
+	public void PlayAttackAnim(int animIndex)
+	{
+		animator.Play($"{attackAnimParam}{animIndex}");
+	}
+
+	public void PlayKnockbackAnim()
+	{
+		animator.Play(knockbackAnimParam);
+	}
+
+	public void PlayDieAnim()
+	{
+		animator.Play(dieAnimParam);
+	}
+
+	private void CacheComponents()
+	{
+		if (animator == null)
+		{
+			animator = GetComponent<Animator>();
+		}
+	}
 }

@@ -5,7 +5,6 @@ public class MonsterAttackState : StateBase<MonsterContext>
 	private float attackTime;
 	private bool isAttacking;
 
-
 	public MonsterAttackState(MonsterContext context, StateMachine<MonsterContext> stateMachine) : base(context,
 		stateMachine)
 	{

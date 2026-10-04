@@ -390,6 +390,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1674432011145243247, guid: 019b92c1b78cf654e8765752ad6d3ed6, type: 3}
+      propertyPath: attackDelay
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3760173861702002831, guid: 019b92c1b78cf654e8765752ad6d3ed6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.17
@@ -430,6 +434,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8475101392033167828, guid: 019b92c1b78cf654e8765752ad6d3ed6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c711283ef1d184741bc8d77cf58e979a, type: 2}
     - target: {fileID: 9085860942653895676, guid: 019b92c1b78cf654e8765752ad6d3ed6, type: 3}
       propertyPath: m_Name
       value: Boss_Minotaurs
@@ -437,8 +445,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9085860942653895676, guid: 019b92c1b78cf654e8765752ad6d3ed6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 475885913}
+    - targetCorrespondingSourceObject: {fileID: 8475101392033167829, guid: 019b92c1b78cf654e8765752ad6d3ed6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 701726762}
   m_SourcePrefab: {fileID: 100100000, guid: 019b92c1b78cf654e8765752ad6d3ed6, type: 3}
+--- !u!1 &475885908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9085860942653895676, guid: 019b92c1b78cf654e8765752ad6d3ed6, type: 3}
+  m_PrefabInstance: {fileID: 430576048}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &475885913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475885908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b016b688dd17645bbcebfc3640c2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 701726763}
+  idleAnimParam: MinoIdle
+  chaseAnimParam: MinoChase
+  attackAnimParam: MinoAttack
+  dieAnimParam: MinoDie
+  knockbackAnimParam: MinoKnockback
+  endMinoAttack: EndMinoAttack
 --- !u!1 &480401580
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +546,28 @@ Transform:
   - {fileID: 65192320}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &701726760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8475101392033167829, guid: 019b92c1b78cf654e8765752ad6d3ed6, type: 3}
+  m_PrefabInstance: {fileID: 430576048}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &701726762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701726760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8544089868cb62049bdc4cdac0a3bd4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &701726763 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8475101392033167828, guid: 019b92c1b78cf654e8765752ad6d3ed6, type: 3}
+  m_PrefabInstance: {fileID: 430576048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &918789280
 GameObject:
   m_ObjectHideFlags: 0

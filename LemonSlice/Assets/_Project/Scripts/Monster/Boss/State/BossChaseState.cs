@@ -7,12 +7,17 @@ public class BossChaseState : StateBase<BossContext>
 	{
 	}
 
+	public override void Enter()
+	{
+		_ctx.animHandler.PlayChaseAnim();
+	}
+
 	public override void Tick()
 	{
-		// TODO Knockback 테스트용 추후에 지워야 함
-		if (Input.GetKeyDown(KeyCode.O))
+		// TODO Die 테스트용 추후에 지워야 함
+		if (Input.GetKeyDown(KeyCode.P))
 		{
-			_fsm.ChangeState(StateType.Knockback);
+			_fsm.ChangeState(StateType.Die);
 		}
 
 		float distance = Vector3.Distance(

@@ -12,7 +12,7 @@ public class MonsterAttackState : StateBase<MonsterContext>
 	public override void Enter()
 	{
 		attackTime = 0f;
-		// Animation 실행
+		_ctx.animHandler.PlayAttackAnim();
 	}
 
 	public override void Tick()

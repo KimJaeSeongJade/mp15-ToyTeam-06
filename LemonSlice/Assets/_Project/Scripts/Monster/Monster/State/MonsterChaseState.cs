@@ -7,6 +7,11 @@ public class MonsterChaseState : StateBase<MonsterContext>
 	{
 	}
 
+	public override void Enter()
+	{
+		_ctx.animHandler.PlayChaseAnim();
+	}
+
 	public override void Tick()
 	{
 		if (_ctx.playerDetection.TargetTransform == null)

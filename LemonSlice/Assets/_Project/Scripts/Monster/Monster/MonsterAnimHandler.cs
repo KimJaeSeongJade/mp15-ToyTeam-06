@@ -21,11 +21,12 @@ public class MonsterAnimHandler : MonoBehaviour
 
 	public void PlayChaseAnim()
 	{
-		//animator.Play(chaseAnimParam);
+		animator.Play(chaseAnimParam);
 	}
 
 	public void PlayAttackAnim()
 	{
+		animator.Play(attackAnimParam);
 	}
 
 	private void CacheComponents()

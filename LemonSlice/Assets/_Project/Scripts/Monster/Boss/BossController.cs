@@ -7,7 +7,7 @@ public class BossController : MonoBehaviour, ILockonable
 	private BossAnimationHandler _animHandler;
 	private BossContext _ctx;
 	private StateMachine<BossContext> _machine;
-	private PlayerDetection _playerDetection;
+	private MonsterDetection _monsterDetection;
 	private BossStat _stat;
 
 	// --------- 이벤트 함수 ------------
@@ -37,7 +37,7 @@ public class BossController : MonoBehaviour, ILockonable
 	{
 		_stat = GetComponent<BossStat>();
 		_animHandler = GetComponent<BossAnimationHandler>();
-		_playerDetection = GetComponentInChildren<PlayerDetection>();
+		_monsterDetection = GetComponentInChildren<MonsterDetection>();
 	}
 
 	private void BindContext()
@@ -47,7 +47,7 @@ public class BossController : MonoBehaviour, ILockonable
 			transform = transform,
 			animHandler = _animHandler,
 			stat = _stat,
-			playerDetection = _playerDetection
+			monsterDetection = _monsterDetection
 		};
 	}
 

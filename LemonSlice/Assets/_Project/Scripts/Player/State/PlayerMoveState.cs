@@ -87,7 +87,7 @@ public class PlayerMoveState : StateBase<PlayerContext>
 
 	private void LockOn()
 	{
-		enemyList = _ctx.monsterDetection.GetEnemyList();
+		enemyList = _ctx.playerDetection.GetEnemyList();
 
 		// 락온을 했지만 락온거리에 적이 없을 때
 		if (enemyList.Count == 0)

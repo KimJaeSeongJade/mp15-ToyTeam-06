@@ -22,7 +22,7 @@ public class BossChaseState : StateBase<BossContext>
 
 		float distance = Vector3.Distance(
 			_ctx.transform.position,
-			_ctx.playerDetection.TargetTransform.position
+			_ctx.monsterDetection.TargetTransform.position
 		);
 
 		if (distance < _ctx.stat.AttackDistance)
@@ -30,7 +30,7 @@ public class BossChaseState : StateBase<BossContext>
 			_fsm.ChangeState(StateType.Attack);
 		}
 
-		Vector3 direction = (_ctx.playerDetection.TargetTransform.position - _ctx.transform.position).normalized;
+		Vector3 direction = (_ctx.monsterDetection.TargetTransform.position - _ctx.transform.position).normalized;
 		direction.y = 0;
 
 		if (direction != Vector3.zero)

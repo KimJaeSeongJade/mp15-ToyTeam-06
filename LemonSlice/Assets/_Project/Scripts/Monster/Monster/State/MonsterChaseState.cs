@@ -14,20 +14,20 @@ public class MonsterChaseState : StateBase<MonsterContext>
 
 	public override void Tick()
 	{
-		if (_ctx.playerDetection.TargetTransform == null)
+		if (_ctx.monsterDetection.TargetTransform == null)
 		{
 			_fsm.ChangeState(StateType.Idle);
 			return;
 		}
 
-		float distance = Vector3.Distance(_ctx.transform.position, _ctx.playerDetection.TargetTransform.position);
+		float distance = Vector3.Distance(_ctx.transform.position, _ctx.monsterDetection.TargetTransform.position);
 
 		if (distance < _ctx.stat.AttackDistance)
 		{
 			_fsm.ChangeState(StateType.Attack);
 		}
 
-		Vector3 direction = (_ctx.playerDetection.TargetTransform.position - _ctx.transform.position).normalized;
+		Vector3 direction = (_ctx.monsterDetection.TargetTransform.position - _ctx.transform.position).normalized;
 		direction.y = 0;
 
 		if (direction != Vector3.zero)

@@ -27,7 +27,7 @@ public class BossKnockbackState : StateBase<BossContext>
 			return;
 		}
 
-		Vector3 direction = (_ctx.transform.position - _ctx.playerDetection.TargetTransform.position).normalized;
+		Vector3 direction = (_ctx.transform.position - _ctx.monsterDetection.TargetTransform.position).normalized;
 		direction.y = 0;
 
 		_ctx.transform.Translate(direction * (_knockbackSpeed * Time.deltaTime), Space.World);

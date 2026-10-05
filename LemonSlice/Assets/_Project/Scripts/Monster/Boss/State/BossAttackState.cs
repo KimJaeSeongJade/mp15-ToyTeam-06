@@ -29,7 +29,7 @@ public class BossAttackState : StateBase<BossContext>
 
 		if (CanAttack)
 		{
-			float distance = Vector3.Distance(_ctx.transform.position, _ctx.playerDetection.TargetTransform.position);
+			float distance = Vector3.Distance(_ctx.transform.position, _ctx.monsterDetection.TargetTransform.position);
 
 			if (distance > _ctx.stat.AttackDistance)
 			{

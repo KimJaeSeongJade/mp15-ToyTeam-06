@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterDetection : MonoBehaviour
+public class PlayerDetection : MonoBehaviour
 {
 	[SerializeField] private LayerMask layermask;
 	[SerializeField] private List<Transform> intriggerEnemies;

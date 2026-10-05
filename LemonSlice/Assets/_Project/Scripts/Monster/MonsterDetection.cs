@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerDetection : MonoBehaviour
+public class MonsterDetection : MonoBehaviour
 {
 	[SerializeField] private LayerMask targetLayer;
 	[SerializeField] private bool isBoss; // 보스가 아니라면 체크 해제

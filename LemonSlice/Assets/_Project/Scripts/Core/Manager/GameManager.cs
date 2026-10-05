@@ -21,6 +21,7 @@ public class GameManager : SingletonBehaviour<GameManager>
 		{
 			PlayTime += Time.deltaTime;
 		}
+		Debug.Log($"{CurrentScore}");
 	}
 
 	public void ChangeState(GameState state)

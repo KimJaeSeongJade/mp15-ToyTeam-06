@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5676075831292402568}
   - component: {fileID: -4602946828469088233}
   - component: {fileID: -3574196577065341483}
+  - component: {fileID: 7766953667561365502}
+  - component: {fileID: 2029941428089255041}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -132,4 +134,37 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.12568371
+  m_Center: {x: 0.0000004991889, y: 0.0066943862, z: -0.00022950774}
+--- !u!114 &7766953667561365502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7101525390938221927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2e226c24a360a43917e6617b79394c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &2029941428089255041
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7101525390938221927}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.39
   m_Center: {x: 0.0000004991889, y: 0.0066943862, z: -0.00022950774}

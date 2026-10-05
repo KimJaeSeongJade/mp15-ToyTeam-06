@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BossController : MonoBehaviour, ILockonable
+public class BossController : MonoBehaviour, IDamageable
 {
 	[SerializeField] private string _stateType;
 
@@ -9,6 +9,7 @@ public class BossController : MonoBehaviour, ILockonable
 	private StateMachine<BossContext> _machine;
 	private MonsterDetection _monsterDetection;
 	private BossStat _stat;
+	private AttackHitBox _hitBox;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -29,8 +30,6 @@ public class BossController : MonoBehaviour, ILockonable
 		_stateType = _machine.Current.GetType().ToString();
 	}
 
-	public GameObject GameObject { get; }
-
 	// --------------------------------
 
 	private void CacheComponets()
@@ -38,6 +37,7 @@ public class BossController : MonoBehaviour, ILockonable
 		_stat = GetComponent<BossStat>();
 		_animHandler = GetComponent<BossAnimationHandler>();
 		_monsterDetection = GetComponentInChildren<MonsterDetection>();
+		_hitBox = GetComponentInChildren<AttackHitBox>();
 	}
 
 	private void BindContext()
@@ -47,7 +47,8 @@ public class BossController : MonoBehaviour, ILockonable
 			transform = transform,
 			animHandler = _animHandler,
 			stat = _stat,
-			monsterDetection = _monsterDetection
+			monsterDetection = _monsterDetection,
+			hitBox = _hitBox
 		};
 	}
 
@@ -58,12 +59,30 @@ public class BossController : MonoBehaviour, ILockonable
 		_machine.Add(StateType.Idle, new BossIdleState(_ctx, _machine));
 		_machine.Add(StateType.Move, new BossChaseState(_ctx, _machine));
 		_machine.Add(StateType.Attack, new BossAttackState(_ctx, _machine));
-		_machine.Add(StateType.Die, new BossDieState(_ctx, _machine));
 		_machine.Add(StateType.Knockback, new BossKnockbackState(_ctx, _machine));
+		_machine.Add(StateType.Groggy, new BossGroggyState(_ctx, _machine));
+		_machine.Add(StateType.Die, new BossDieState(_ctx, _machine));
 	}
 
 	public void OnAnimEvent(string animEvent)
 	{
 		_machine.OnAnimEvent(animEvent);
+	}
+
+	public void TakeDamage(DamageInfo damageInfo)
+	{
+		_stat.currentHealth.Value -= damageInfo.Damage;
+		_stat.currentGroggy.Value -= damageInfo.DownValue;
+
+		if (_stat.currentHealth.Value > 0 && _stat.currentGroggy.Value <= 0)
+		{
+			_stat.SetFullGroggy();
+			_machine.ChangeState(StateType.Groggy);
+		}
+
+		if (_stat.currentHealth.Value <= 0)
+		{
+			_machine.ChangeState(StateType.Die);
+		}
 	}
 }

@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 {
 	[SerializeField] private string _stateType;
+	[SerializeField] private GameObject _coin;
+	[SerializeField] private Image _lockOnUi;
 
 	private MonsterAnimHandler _animHandler;
 	private MonsterContext _ctx;
@@ -10,6 +13,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 	private MonsterDetection _monsterDetection;
 	private Rigidbody _rigidbody;
 	private MonsterStat _stat;
+	private AttackHitBox _hitBox;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -34,6 +38,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 		_rigidbody = GetComponent<Rigidbody>();
 		_animHandler = GetComponent<MonsterAnimHandler>();
 		_monsterDetection = GetComponentInChildren<MonsterDetection>();
+		_hitBox = GetComponentInChildren<AttackHitBox>();
 	}
 
 	private void BindContext()
@@ -44,7 +49,9 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 			animHandler = _animHandler,
 			stat = _stat,
 			rigidbody = _rigidbody,
-			monsterDetection = _monsterDetection
+			monsterDetection = _monsterDetection,
+			coin = _coin,
+			hitBox = _hitBox
 		};
 	}
 
@@ -72,6 +79,11 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 		{
 			_machine.ChangeState(StateType.Die);
 		}
+	}
+
+	public void SetLockOnUi(bool lockOn)
+	{
+		_lockOnUi.gameObject.SetActive(lockOn);
 	}
 
 	public PoolType PoolId => PoolType.Monster;

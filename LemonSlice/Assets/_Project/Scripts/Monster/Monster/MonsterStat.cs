@@ -14,6 +14,7 @@ public class MonsterStat : MonoBehaviour
 	public float MoveSpeed => moveSpeed;
 	public float AttackDelay => attackDelay;
 	public float AttackDistance => attackDistance;
+	public int AttackPower => attackPower;
 	private void Awake() => Init();
 
 	private void Init()

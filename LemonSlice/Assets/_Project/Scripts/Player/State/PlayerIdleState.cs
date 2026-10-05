@@ -74,6 +74,8 @@ public class PlayerIdleState : StateBase<PlayerContext>
 
 		if (Input.GetKeyDown(KeyCode.Tab))
 		{
+			enemyList[_ctx.lockOnIndex].GetComponent<MonsterController>().SetLockOnUi(false);
+
 			if (_ctx.lockOnIndex >= maxIndex)
 			{
 				_ctx.lockOnIndex = 0;
@@ -84,6 +86,12 @@ public class PlayerIdleState : StateBase<PlayerContext>
 			}
 		}
 
+		if (enemyList.Count - 1 < _ctx.lockOnIndex)
+		{
+			return;
+		}
+
 		_ctx.transform.LookAt(enemyList[_ctx.lockOnIndex]);
+		enemyList[_ctx.lockOnIndex].GetComponent<MonsterController>().SetLockOnUi(true);
 	}
 }

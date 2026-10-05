@@ -7,7 +7,7 @@ public class Coin : MonoBehaviour, IInteractable, IPoolable
 
 	public void Interact(GameObject interactor)
 	{
-		
+		GameManager.Instance.AddScore(score);
 	}
 
 	public PoolType PoolId => PoolType.Coin;

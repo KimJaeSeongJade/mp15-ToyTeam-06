@@ -74,7 +74,7 @@ public class PlayerAttackState : StateBase<PlayerContext>
 		if (animEvent == _ctx.animHandler.CloseCombo)
 		{
 			canCombo = false;
-
+			_ctx.hitBox.Close();
 		}
 	}
 	//----------------State Method------------------

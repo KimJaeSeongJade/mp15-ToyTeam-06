@@ -9,6 +9,7 @@ public class BossController : MonoBehaviour, IDamageable
 	private StateMachine<BossContext> _machine;
 	private MonsterDetection _monsterDetection;
 	private BossStat _stat;
+	private AttackHitBox _hitBox;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -36,6 +37,7 @@ public class BossController : MonoBehaviour, IDamageable
 		_stat = GetComponent<BossStat>();
 		_animHandler = GetComponent<BossAnimationHandler>();
 		_monsterDetection = GetComponentInChildren<MonsterDetection>();
+		_hitBox = GetComponentInChildren<AttackHitBox>();
 	}
 
 	private void BindContext()
@@ -45,7 +47,8 @@ public class BossController : MonoBehaviour, IDamageable
 			transform = transform,
 			animHandler = _animHandler,
 			stat = _stat,
-			monsterDetection = _monsterDetection
+			monsterDetection = _monsterDetection,
+			hitBox = _hitBox
 		};
 	}
 

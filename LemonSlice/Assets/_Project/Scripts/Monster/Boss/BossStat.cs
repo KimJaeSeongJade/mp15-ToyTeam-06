@@ -16,6 +16,7 @@ public class BossStat : MonoBehaviour
 
 	public float GroggyTime => groggyTime;
 	public float MoveSpeed => moveSpeed;
+	public int AttackPower => attackPower;
 	public float AttackDelay => attackDelay;
 	public float AttackDistance => attackDistance;
 

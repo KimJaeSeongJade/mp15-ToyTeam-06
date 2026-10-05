@@ -4,6 +4,7 @@ public class BossAttackState : StateBase<BossContext>
 {
 	private float attackTime;
 	private bool isAttacking;
+	private int groggyDamage = 30;
 
 	public BossAttackState(BossContext context, StateMachine<BossContext> stateMachine) : base(context,
 		stateMachine)
@@ -16,8 +17,8 @@ public class BossAttackState : StateBase<BossContext>
 	{
 		attackTime = 0f;
 		_ctx.attackIndex = 1;
-		_ctx.animHandler.PlayAttackAnim(_ctx.attackIndex);
 		isAttacking = true;
+		Attack();
 	}
 
 	public override void Tick()
@@ -39,5 +40,11 @@ public class BossAttackState : StateBase<BossContext>
 		{
 			isAttacking = false;
 		}
+	}
+
+	private void Attack()
+	{
+		_ctx.hitBox.Open(_ctx.stat.AttackPower, groggyDamage);
+		_ctx.animHandler.PlayAttackAnim(_ctx.attackIndex);
 	}
 }

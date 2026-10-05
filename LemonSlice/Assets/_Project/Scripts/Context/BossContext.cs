@@ -7,4 +7,5 @@ public class BossContext : IContext
 	public MonsterDetection monsterDetection;
 	public BossStat stat;
 	public Transform transform;
+	public AttackHitBox hitBox;
 }

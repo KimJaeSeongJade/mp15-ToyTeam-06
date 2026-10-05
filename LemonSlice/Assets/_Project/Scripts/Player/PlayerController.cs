@@ -53,6 +53,9 @@ public class PlayerController : MonoBehaviour, IDamageable
 	{
 		_stat.currentHealth.Value -= damageInfo.Damage;
 
+		// TODO 플레이어 그로기관련 데이터 추가 후 구현
+		Debug.Log(damageInfo.DownValue);
+
 		if (_stat.currentHealth.Value <= 0)
 		{
 			_machine.ChangeState(StateType.Die);

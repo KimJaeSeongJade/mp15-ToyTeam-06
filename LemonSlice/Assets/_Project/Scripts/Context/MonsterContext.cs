@@ -9,4 +9,5 @@ public class MonsterContext : IContext
 	public MonsterStat stat; // 스탯
 	public Transform transform; // 자신
 	public GameObject coin;
+	public AttackHitBox hitBox;
 }

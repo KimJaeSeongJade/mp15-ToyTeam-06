@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 	private PlayerInput _input;
 
 	private StateMachine<PlayerContext> _machine;
-	private MonsterDetection _monsterDetection;
+	private PlayerDetection _playerDetection;
 	private Rigidbody _rigidbody;
 	private PlayerStat _stat;
 	private AttackHitBox _hitBox;
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 		_input = GetComponent<PlayerInput>();
 		_stat = GetComponent<PlayerStat>();
 		_animHandler = GetComponent<PlayerAnimHandler>();
-		_monsterDetection = GetComponentInChildren<MonsterDetection>();
+		_playerDetection = GetComponentInChildren<PlayerDetection>();
 		_hitBox = GetComponentInChildren<AttackHitBox>();
 	}
 
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 			transform = transform,
 			input = _input,
 			stat = _stat,
-			monsterDetection = _monsterDetection,
+			playerDetection = _playerDetection,
 			hitBox = _hitBox,
 		};
 	}

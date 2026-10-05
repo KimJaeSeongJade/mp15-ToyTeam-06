@@ -12,7 +12,7 @@ public class MonsterIdleState : StateBase<MonsterContext>
 
 	public override void Tick()
 	{
-		if (_ctx.playerDetection.IsPlayerEnter)
+		if (_ctx.monsterDetection.IsPlayerEnter)
 		{
 			_fsm.ChangeState(StateType.Move);
 		}

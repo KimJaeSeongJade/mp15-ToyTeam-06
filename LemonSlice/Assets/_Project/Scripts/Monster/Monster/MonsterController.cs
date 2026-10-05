@@ -7,7 +7,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 	private MonsterAnimHandler _animHandler;
 	private MonsterContext _ctx;
 	private StateMachine<MonsterContext> _machine;
-	private PlayerDetection _playerDetection;
+	private MonsterDetection _monsterDetection;
 	private Rigidbody _rigidbody;
 	private MonsterStat _stat;
 
@@ -33,7 +33,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 		_stat = GetComponent<MonsterStat>();
 		_rigidbody = GetComponent<Rigidbody>();
 		_animHandler = GetComponent<MonsterAnimHandler>();
-		_playerDetection = GetComponentInChildren<PlayerDetection>();
+		_monsterDetection = GetComponentInChildren<MonsterDetection>();
 	}
 
 	private void BindContext()
@@ -44,7 +44,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 			animHandler = _animHandler,
 			stat = _stat,
 			rigidbody = _rigidbody,
-			playerDetection = _playerDetection
+			monsterDetection = _monsterDetection
 		};
 	}
 

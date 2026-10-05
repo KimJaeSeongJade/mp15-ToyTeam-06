@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerContext : IContext
 {
-	public MonsterDetection monsterDetection;
+	public PlayerDetection playerDetection;
 	public PlayerAnimHandler animHandler;
 	public PlayerInput input;
 	public AttackHitBox hitBox;

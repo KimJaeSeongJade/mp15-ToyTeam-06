@@ -21,7 +21,7 @@ public class MonsterAttackState : StateBase<MonsterContext>
 
 	public override void Tick()
 	{
-		if (_ctx.playerDetection.TargetTransform == null)
+		if (_ctx.monsterDetection.TargetTransform == null)
 		{
 			if (isAttacking)
 			{
@@ -40,7 +40,7 @@ public class MonsterAttackState : StateBase<MonsterContext>
 
 		if (CanAttack)
 		{
-			float distance = Vector3.Distance(_ctx.transform.position, _ctx.playerDetection.TargetTransform.position);
+			float distance = Vector3.Distance(_ctx.transform.position, _ctx.monsterDetection.TargetTransform.position);
 
 			if (distance > _ctx.stat.AttackDistance)
 			{

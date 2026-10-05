@@ -20,7 +20,7 @@ public class GameManager : SingletonBehaviour<GameManager>
 
 	private void Start()
 	{
-		ChangeState(GameState.Paused);
+		ChangeState(GameState.Playing);
 		Debug.Log("GameManager Start");
 	}
 

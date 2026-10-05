@@ -1884,6 +1884,7 @@ MonoBehaviour:
   moveAnimParam: IdleAndMove
   rollAnimParam: PaladinRoll
   attackAnimParam: PaladinAttack
+  dieAnimParam: PaladinDeath
   endRollAnim: EndRollAnim
   endAttackAnim: EndAttackAnim
   openCombo: OpenCombo

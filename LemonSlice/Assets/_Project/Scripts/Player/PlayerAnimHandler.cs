@@ -9,6 +9,7 @@ public class PlayerAnimHandler : MonoBehaviour
 	[SerializeField] private string moveAnimParam;
 	[SerializeField] private string rollAnimParam;
 	[SerializeField] private string attackAnimParam;
+	[SerializeField] private string dieAnimParam;
 
 	[SerializeField] private string endRollAnim;
 	[SerializeField] private string endAttackAnim;
@@ -38,6 +39,11 @@ public class PlayerAnimHandler : MonoBehaviour
 	public void PlayAttackAnim(int animIndex)
 	{
 		animator.Play($"{attackAnimParam}{animIndex}");
+	}
+
+	public void PlayDieAnim()
+	{
+		animator.Play(dieAnimParam);
 	}
 
 	public void SetMoveParam(Vector3 input)

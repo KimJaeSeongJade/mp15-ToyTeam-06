@@ -4,6 +4,7 @@ public class BossAttackState : StateBase<BossContext>
 {
 	private float attackTime;
 	private bool isAttacking;
+	private int groggyDamage = 30;
 
 	public BossAttackState(BossContext context, StateMachine<BossContext> stateMachine) : base(context,
 		stateMachine)
@@ -16,8 +17,8 @@ public class BossAttackState : StateBase<BossContext>
 	{
 		attackTime = 0f;
 		_ctx.attackIndex = 1;
-		_ctx.animHandler.PlayAttackAnim(_ctx.attackIndex);
 		isAttacking = true;
+		Attack();
 	}
 
 	public override void Tick()
@@ -29,15 +30,7 @@ public class BossAttackState : StateBase<BossContext>
 
 		if (CanAttack)
 		{
-			float distance = Vector3.Distance(_ctx.transform.position, _ctx.monsterDetection.TargetTransform.position);
-
-			if (distance > _ctx.stat.AttackDistance)
-			{
-				_fsm.ChangeState(StateType.Move);
-			}
-
-			_ctx.animHandler.PlayAttackAnim(_ctx.attackIndex);
-			attackTime = 0;
+			_fsm.ChangeState(StateType.Move);
 		}
 	}
 
@@ -45,8 +38,13 @@ public class BossAttackState : StateBase<BossContext>
 	{
 		if (animEvent == _ctx.animHandler.EndMinoAttack)
 		{
-			Debug.Log("미노 공격 모션 끝");
 			isAttacking = false;
 		}
+	}
+
+	private void Attack()
+	{
+		_ctx.hitBox.Open(_ctx.stat.AttackPower, groggyDamage);
+		_ctx.animHandler.PlayAttackAnim(_ctx.attackIndex);
 	}
 }

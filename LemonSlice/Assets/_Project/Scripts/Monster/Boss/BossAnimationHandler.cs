@@ -7,8 +7,9 @@ public class BossAnimationHandler : MonoBehaviour
 	[SerializeField] private string idleAnimParam;
 	[SerializeField] private string chaseAnimParam;
 	[SerializeField] private string attackAnimParam;
-	[SerializeField] private string dieAnimParam;
 	[SerializeField] private string knockbackAnimParam;
+	[SerializeField] private string groggyAnimParam;
+	[SerializeField] private string dieAnimParam;
 
 	[SerializeField] private string endMinoAttack;
 
@@ -37,6 +38,11 @@ public class BossAnimationHandler : MonoBehaviour
 	public void PlayKnockbackAnim()
 	{
 		animator.Play(knockbackAnimParam);
+	}
+
+	public void PlayGroggyAnim()
+	{
+		animator.Play(groggyAnimParam);
 	}
 
 	public void PlayDieAnim()

@@ -5,5 +5,6 @@ public enum StateType
 	Attack,
 	Roll,
 	Knockback,
+	Groggy,
 	Die
 }

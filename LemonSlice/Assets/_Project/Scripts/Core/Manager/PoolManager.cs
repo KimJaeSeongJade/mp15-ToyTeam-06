@@ -5,19 +5,15 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 {
 	[SerializeField] private GameObject monsterPrefab;
 	[SerializeField] private int monsterPoolSize;
-	[SerializeField] private string monsterPoolId;
 
 	[SerializeField] private GameObject coinPrefab;
 	[SerializeField] private int coinPoolSize;
-	[SerializeField] private string coinPoolId;
 
 	[SerializeField] private GameObject itemBoxPrefab;
 	[SerializeField] private int itemBoxPoolSize;
-	[SerializeField] private string itemBoxPoolId;
 
 	[SerializeField] private GameObject healPotionPrefab;
 	[SerializeField] private int healPotionPoolSize;
-	[SerializeField] private string healPotionPoolId;
 
 	private Dictionary<PoolType, Stack<GameObject>> _dict;
 

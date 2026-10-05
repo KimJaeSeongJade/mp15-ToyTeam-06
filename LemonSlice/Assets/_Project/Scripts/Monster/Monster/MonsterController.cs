@@ -3,6 +3,7 @@ using UnityEngine;
 public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 {
 	[SerializeField] private string _stateType;
+	[SerializeField] private GameObject _coin;
 
 	private MonsterAnimHandler _animHandler;
 	private MonsterContext _ctx;
@@ -44,7 +45,8 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 			animHandler = _animHandler,
 			stat = _stat,
 			rigidbody = _rigidbody,
-			monsterDetection = _monsterDetection
+			monsterDetection = _monsterDetection,
+			coin = _coin
 		};
 	}
 

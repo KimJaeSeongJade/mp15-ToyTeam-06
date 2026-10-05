@@ -38,7 +38,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		{
 			return null;
 		}
-
+		gameObject.SetActive(true);
 		return new GameObjectBuilder(_dict[poolId].Pop());
 	}
 

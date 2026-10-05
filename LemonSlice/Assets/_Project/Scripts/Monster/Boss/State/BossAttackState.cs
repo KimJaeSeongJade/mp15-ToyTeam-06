@@ -45,7 +45,6 @@ public class BossAttackState : StateBase<BossContext>
 	{
 		if (animEvent == _ctx.animHandler.EndMinoAttack)
 		{
-			Debug.Log("미노 공격 모션 끝");
 			isAttacking = false;
 		}
 	}

@@ -56,8 +56,9 @@ public class BossController : MonoBehaviour, IDamageable
 		_machine.Add(StateType.Idle, new BossIdleState(_ctx, _machine));
 		_machine.Add(StateType.Move, new BossChaseState(_ctx, _machine));
 		_machine.Add(StateType.Attack, new BossAttackState(_ctx, _machine));
-		_machine.Add(StateType.Die, new BossDieState(_ctx, _machine));
 		_machine.Add(StateType.Knockback, new BossKnockbackState(_ctx, _machine));
+		_machine.Add(StateType.Groggy, new BossGroggyState(_ctx, _machine));
+		_machine.Add(StateType.Die, new BossDieState(_ctx, _machine));
 	}
 
 	public void OnAnimEvent(string animEvent)
@@ -68,6 +69,13 @@ public class BossController : MonoBehaviour, IDamageable
 	public void TakeDamage(DamageInfo damageInfo)
 	{
 		_stat.currentHealth.Value -= damageInfo.Damage;
+		_stat.currentGroggy.Value -= damageInfo.DownValue;
+
+		if (_stat.currentHealth.Value > 0 && _stat.currentGroggy.Value <= 0)
+		{
+			_stat.SetFullGroggy();
+			_machine.ChangeState(StateType.Groggy);
+		}
 
 		if (_stat.currentHealth.Value <= 0)
 		{

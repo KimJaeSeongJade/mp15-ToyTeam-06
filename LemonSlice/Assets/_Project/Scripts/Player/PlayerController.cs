@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
 	private PlayerAnimHandler _animHandler;
 	private PlayerContext _ctx;
@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
 	{
 		_input.Read();
 		_machine.Tick();
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			_machine.ChangeState(StateType.Die);
+		}
 	}
 
 	private void FixedUpdate()
@@ -43,6 +47,16 @@ public class PlayerController : MonoBehaviour
 		_animHandler = GetComponent<PlayerAnimHandler>();
 		_monsterDetection = GetComponentInChildren<MonsterDetection>();
 		_hitBox = GetComponentInChildren<AttackHitBox>();
+	}
+
+	public void TakeDamage(DamageInfo damageInfo)
+	{
+		_stat.currentHealth.Value -= damageInfo.Damage;
+
+		if (_stat.currentHealth.Value <= 0)
+		{
+			_machine.ChangeState(StateType.Die);
+		}
 	}
 
 	private void BindContext()
@@ -67,6 +81,7 @@ public class PlayerController : MonoBehaviour
 		_machine.Add(StateType.Move, new PlayerMoveState(_ctx, _machine));
 		_machine.Add(StateType.Roll, new PlayerRollState(_ctx, _machine));
 		_machine.Add(StateType.Attack, new PlayerAttackState(_ctx, _machine));
+		_machine.Add(StateType.Die, new PlayerDieState(_ctx, _machine));
 	}
 
 	public void OnAnimEvent(string animEvent)

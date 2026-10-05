@@ -2,19 +2,29 @@ using UnityEngine;
 
 public class HealItem : MonoBehaviour, IInteractable, IPoolable
 {
+	public LayerMask targetLayer;
 	private HealingPack healingPack;
+
+	private void OnTriggerEnter(Collider other)
+	{
+		int layer = (1 << other.gameObject.layer);
+		if ((targetLayer.value & layer) != 0)
+		{
+			Interact(other.gameObject);
+		}
+	}
 
 	public GameObject GameObject => gameObject;
 
+
 	public void Interact(GameObject interactor)
 	{
-		if (!(interactor.tag == "Player")) // IInteractor 인터패이스가 없어서 태그로 처리했습니다.
+		int layer = (1 << interactor.layer);
+		if ((targetLayer.value & layer) != 0)
 		{
-			return;
+			// healingPack.Heal();
+			PoolManager.Instance.TryReturn(gameObject);
 		}
-
-		healingPack.Heal();
-		Destroy(gameObject);
 	}
 
 	public PoolType PoolId => PoolType.HealPotion;

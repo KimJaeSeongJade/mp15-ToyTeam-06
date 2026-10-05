@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerAttackState : StateBase<PlayerContext>
 {
 	private bool canCombo;
@@ -10,6 +12,7 @@ public class PlayerAttackState : StateBase<PlayerContext>
 	private const int MAX_COMBO = 3;
 	private int[] weaponDamage = { 20, 30, 50 };
 	private int[] weaponDownValue = { 10, 20, 50 };
+	private float[] moveForce = { 0, 3.5f, 5f };
 
 
 	public PlayerAttackState(PlayerContext context, StateMachine<PlayerContext> stateMachine) : base(context,
@@ -27,6 +30,11 @@ public class PlayerAttackState : StateBase<PlayerContext>
 
 	public override void Tick()
 	{
+		if (comboIndex < MAX_COMBO)
+		{
+			Rotate();
+		}
+
 		if (_ctx.input.IsRollPressed && comboIndex < MAX_COMBO)
 		{
 			_fsm.ChangeState(StateType.Roll);
@@ -45,37 +53,62 @@ public class PlayerAttackState : StateBase<PlayerContext>
 
 	public override void OnAnimEvent(string animEvent)
 	{
-		if (animEvent == _ctx.animHandler.EndAttackAnim)
+		switch (animEvent)
 		{
-			if (canNextAttack)
-			{
-				canNextAttack = false;
-				if (comboIndex < MAX_COMBO)
-				{
-					comboIndex++;
-				}
-
-				_ctx.animHandler.PlayAttackAnim(comboIndex);
-			}
-			else
-			{
-				_fsm.ChangeState(StateType.Idle);
-			}
-		}
-
-		if (animEvent == _ctx.animHandler.OpenCombo)
-		{
-			int baseDamage = _ctx.stat.AttackPower;
-			int extraDamage = weaponDamage[comboIndex - 1];
-			canCombo = true;
-			_ctx.hitBox.Open(baseDamage + extraDamage, weaponDownValue[comboIndex - 1]);
-		}
-
-		if (animEvent == _ctx.animHandler.CloseCombo)
-		{
-			canCombo = false;
-			_ctx.hitBox.Close();
+			case AnimEvents.EndAttackAnim:
+				EndAttackAnim();
+				break;
+			case AnimEvents.OpenCombo:
+				OpenCombo();
+				break;
+			case AnimEvents.CloseCombo:
+				CloseCombo();
+				break;
 		}
 	}
 	//----------------State Method------------------
+
+	private void Rotate()
+	{
+		_ctx.transform.Rotate(0, _ctx.input.MouseDelta.y, 0, Space.Self);
+	}
+
+	private void AddAttackForce(int comboIndex)
+	{
+		Vector3 direction = _ctx.transform.forward.normalized;
+		_ctx.rigidbody.AddForce(direction * moveForce[comboIndex - 1], ForceMode.Impulse);
+	}
+
+	private void OpenCombo()
+	{
+		int baseDamage = _ctx.stat.AttackPower;
+		int extraDamage = weaponDamage[comboIndex - 1];
+		canCombo = true;
+		_ctx.hitBox.Open(baseDamage + extraDamage, weaponDownValue[comboIndex - 1]);
+	}
+
+	private void CloseCombo()
+	{
+		canCombo = false;
+		_ctx.hitBox.Close();
+	}
+
+	private void EndAttackAnim()
+	{
+		if (canNextAttack)
+		{
+			canNextAttack = false;
+			if (comboIndex < MAX_COMBO)
+			{
+				comboIndex++;
+			}
+
+			_ctx.animHandler.PlayAttackAnim(comboIndex);
+			AddAttackForce(comboIndex);
+		}
+		else
+		{
+			_fsm.ChangeState(StateType.Idle);
+		}
+	}
 }

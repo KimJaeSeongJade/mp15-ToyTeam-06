@@ -1,16 +1,7 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
-	public enum GameState
-	{
-		Title, // 타이틀
-		Playing, // 인게임
-		Paused, // 상태
-		GameOver // 게임 오버
-	}
-
 	public GameState CurrentState { get; private set; }
 
 	public int CurrentScore { get; private set; }
@@ -38,16 +29,23 @@ public class GameManager : SingletonBehaviour<GameManager>
 		CurrentState = state; // 게임 상태 변경
 		if (CurrentState == GameState.Playing)
 		{
-			SceneManager.LoadScene(""); // 씬 이름 추후에 추가
+			// 씬 이름 추후에 추가
+			// SceneManager.LoadScene("");
 			PlayingTime();
 			LockCursor();
 
 			Time.timeScale = 1;
 		}
 
+		if (CurrentState == GameState.StageClear)
+		{
+			// stageClear 처리
+			// 스테이지 추가가 없다면 여기서 게임 클리어
+		}
+
 		if (CurrentState == GameState.GameOver)
 		{
-			SceneManager.LoadScene(""); // 씬 이름 추후에 추가
+			// SceneManager.LoadScene(""); // 씬 이름 추후에 추가
 			UnlockCursor();
 		}
 

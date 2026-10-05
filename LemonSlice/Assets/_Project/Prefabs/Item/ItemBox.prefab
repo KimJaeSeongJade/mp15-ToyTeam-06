@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6059313892700208069}
   - component: {fileID: 8733555682852525439}
   - component: {fileID: 7669845977704949983}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ItemBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,10 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17732faa2153f246bb49fa5268e075a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healItem: {fileID: 0}
-  InteractedLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  _healItem: {fileID: 3424695391542481708, guid: 38381d9ad15158f408dfab9570f6404d, type: 3}
+  _health: 0
 --- !u!1 &5822999888090131392
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +102,7 @@ GameObject:
   - component: {fileID: 2089348496812380467}
   - component: {fileID: 9189563274288040263}
   - component: {fileID: 7396580174251892116}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

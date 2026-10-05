@@ -4,6 +4,9 @@ public class HealItem : MonoBehaviour, IInteractable, IPoolable
 {
 	public LayerMask targetLayer;
 	private HealingPack healingPack;
+	private PlayerStat playerStat;
+
+
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -22,7 +25,11 @@ public class HealItem : MonoBehaviour, IInteractable, IPoolable
 		int layer = (1 << interactor.layer);
 		if ((targetLayer.value & layer) != 0)
 		{
-			// healingPack.Heal();
+			playerStat = GetComponent<PlayerStat>();
+			if (playerStat != null)
+			{
+				healingPack.Heal(playerStat);
+			}
 			PoolManager.Instance.TryReturn(gameObject);
 		}
 	}

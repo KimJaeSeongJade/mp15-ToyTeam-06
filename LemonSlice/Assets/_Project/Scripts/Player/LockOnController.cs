@@ -5,12 +5,9 @@ public class LockOnController : MonoBehaviour
 {
 	private List<Transform> enemyLists = new();
 
-	private int lockOnIndex;
+	private Transform currentTarget;
 
-	public bool CheckCanLockOn()
-	{
-		return enemyLists.Count > 0;
-	}
+	// ---------------------
 
 	public void AddEnemy(GameObject enemy)
 	{
@@ -29,22 +26,52 @@ public class LockOnController : MonoBehaviour
 			if (enemy == enemyLists[i].gameObject)
 			{
 				enemyLists.RemoveAt(i);
-				return;
+				break;
 			}
 		}
-	}
 
-	public Transform TempLockOn()
-	{
-		return enemyLists[lockOnIndex];
-	}
-
-	public void TempChangeLockOn()
-	{
-		lockOnIndex++;
-		if (lockOnIndex >= enemyLists.Count)
+		if (currentTarget != null && enemy == currentTarget.gameObject)
 		{
-			lockOnIndex = 0;
+			currentTarget = null;
 		}
+	}
+
+	public bool TryLockOn()
+	{
+
+		if (enemyLists.Count == 0) return false;
+
+		currentTarget = enemyLists[0];
+		return true;
+	}
+
+	public void ClearLockOn()
+	{
+		currentTarget = null;
+	}
+
+	public bool HasTarget()
+	{
+		return currentTarget != null;
+	}
+
+	public Transform LockOn()
+	{
+		return currentTarget;
+	}
+
+	public void ChangeLockOn()
+	{
+		if (currentTarget == null || enemyLists.Count == 0) return;
+
+		int currentIndex = enemyLists.IndexOf(currentTarget);
+
+		currentIndex++;
+		if (currentIndex >= enemyLists.Count)
+		{
+			currentIndex = 0;
+		}
+
+		currentTarget = enemyLists[currentIndex];
 	}
 }

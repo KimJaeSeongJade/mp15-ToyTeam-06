@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 	private Rigidbody _rigidbody;
 	private PlayerStat _stat;
 	private AttackHitBox _hitBox;
+	private LockOnController _lockOnController;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 		_animHandler = GetComponent<PlayerAnimHandler>();
 		_playerDetection = GetComponentInChildren<PlayerDetection>();
 		_hitBox = GetComponentInChildren<AttackHitBox>();
+		_lockOnController = GetComponentInChildren<LockOnController>();
 	}
 
 	public void TakeDamage(DamageInfo damageInfo)
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 			stat = _stat,
 			playerDetection = _playerDetection,
 			hitBox = _hitBox,
+			lockOnController = _lockOnController
 		};
 	}
 

@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class PlayerMoveState : StateBase<PlayerContext>
 {
-	private List<Transform> enemyList = new List<Transform>();
-
-	private int maxIndex;
-
 	public PlayerMoveState(PlayerContext context, StateMachine<PlayerContext> stateMachine) : base(context,
 		stateMachine)
 	{
@@ -40,20 +36,36 @@ public class PlayerMoveState : StateBase<PlayerContext>
 
 		_ctx.animHandler.SetMoveParam(_ctx.input.MoveAxisRaw);
 
-
 		if (_ctx.input.LockOnPressed)
 		{
-			_ctx.isLockOn = !_ctx.isLockOn;
-			_ctx.lockOnIndex = 0;
+			if (_ctx.isLockOn)
+			{
+				_ctx.lockOnController.ClearLockOn();
+				_ctx.isLockOn = false;
+			}
+			else
+			{
+				_ctx.isLockOn = _ctx.lockOnController.TryLockOn();
+			}
 		}
 
-		if (!_ctx.isLockOn)
+		if (_ctx.isLockOn && !_ctx.lockOnController.HasTarget())
 		{
-			Rotate();
+			_ctx.isLockOn = false;
+		}
+
+		if(_ctx.isLockOn)
+		{
+			if (_ctx.input.TargetChangePressed)
+			{
+				_ctx.lockOnController.ChangeLockOn();
+			}
+
+			_ctx.transform.LookAt(_ctx.lockOnController.LockOn());
 		}
 		else
 		{
-			LockOn();
+			Rotate();
 		}
 	}
 
@@ -83,41 +95,5 @@ public class PlayerMoveState : StateBase<PlayerContext>
 			moveDirection.x * _ctx.stat.MoveSpeed,
 			_ctx.rigidbody.velocity.y,
 			moveDirection.z * _ctx.stat.MoveSpeed);
-	}
-
-	private void LockOn()
-	{
-		enemyList = _ctx.playerDetection.GetEnemyList();
-
-		// 락온을 했지만 락온거리에 적이 없을 때
-		if (enemyList.Count == 0)
-		{
-			_ctx.isLockOn = false;
-			return;
-		}
-
-		maxIndex = enemyList.Count - 1;
-
-		if (Input.GetKeyDown(KeyCode.Tab))
-		{
-			enemyList[_ctx.lockOnIndex].GetComponent<MonsterController>().SetLockOnUi(false);
-
-			if (_ctx.lockOnIndex >= maxIndex)
-			{
-				_ctx.lockOnIndex = 0;
-			}
-			else
-			{
-				_ctx.lockOnIndex++;
-			}
-		}
-
-		if (enemyList.Count - 1 < _ctx.lockOnIndex)
-		{
-			return;
-		}
-
-		_ctx.transform.LookAt(enemyList[_ctx.lockOnIndex]);
-		enemyList[_ctx.lockOnIndex].GetComponent<MonsterController>().SetLockOnUi(true);
 	}
 }

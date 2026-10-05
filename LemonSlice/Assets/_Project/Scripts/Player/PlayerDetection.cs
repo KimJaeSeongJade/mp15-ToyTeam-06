@@ -7,6 +7,7 @@ public class PlayerDetection : MonoBehaviour
 	[SerializeField] private List<Transform> intriggerEnemies;
 
 	private SphereCollider sphereCollider;
+	private LockOnController lockOnController;
 
 	private float detectRange => sphereCollider.radius;
 
@@ -31,6 +32,8 @@ public class PlayerDetection : MonoBehaviour
 		if (IsInPlayerLayer(other.gameObject))
 		{
 			intriggerEnemies.Add(other.transform);
+
+			lockOnController.AddEnemy(other.gameObject);
 		}
 	}
 
@@ -38,8 +41,9 @@ public class PlayerDetection : MonoBehaviour
 	{
 		if (IsInPlayerLayer(other.gameObject))
 		{
-			other.GetComponent<MonsterController>().SetLockOnUi(false);
 			intriggerEnemies.Remove(other.transform);
+
+			lockOnController.RemoveEnemy(other.gameObject);
 		}
 	}
 
@@ -81,5 +85,6 @@ public class PlayerDetection : MonoBehaviour
 	private void CacheComponents()
 	{
 		sphereCollider = GetComponent<SphereCollider>();
+		lockOnController = GetComponent<LockOnController>();
 	}
 }

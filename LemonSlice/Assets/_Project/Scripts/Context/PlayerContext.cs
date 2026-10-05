@@ -7,9 +7,10 @@ public class PlayerContext : IContext
 	public PlayerInput input;
 	public AttackHitBox hitBox;
 
-	public bool isLockOn;
-	public int lockOnIndex;
 	public Rigidbody rigidbody;
 	public PlayerStat stat;
 	public Transform transform;
+
+	public bool isLockOn;
+	public LockOnController lockOnController;
 }

@@ -38,6 +38,7 @@ public class PlayerDetection : MonoBehaviour
 	{
 		if (IsInPlayerLayer(other.gameObject))
 		{
+			other.GetComponent<MonsterController>().SetLockOnUi(false);
 			intriggerEnemies.Remove(other.transform);
 		}
 	}

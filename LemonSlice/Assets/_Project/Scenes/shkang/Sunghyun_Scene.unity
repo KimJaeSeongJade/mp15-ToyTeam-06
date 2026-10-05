@@ -182,6 +182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NormalMonster (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8734294305976311291, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+      propertyPath: _lockOnUi
+      value: 
+      objectReference: {fileID: 902496176}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -255,6 +259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NormalMonster (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8734294305976311291, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+      propertyPath: _lockOnUi
+      value: 
+      objectReference: {fileID: 1340869781}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -703,7 +711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &902496175
 RectTransform:
   m_ObjectHideFlags: 0
@@ -941,7 +949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1340869780
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1021,12 +1029,12 @@ GameObject:
   - component: {fileID: 1733706573}
   - component: {fileID: 1733706572}
   m_Layer: 5
-  m_Name: Image
+  m_Name: LockOnUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1733706571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1246,6 +1254,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NormalMonster
       objectReference: {fileID: 0}
+    - target: {fileID: 8734294305976311291, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+      propertyPath: _lockOnUi
+      value: 
+      objectReference: {fileID: 1733706572}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

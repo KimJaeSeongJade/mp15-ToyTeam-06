@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 {
 	[SerializeField] private string _stateType;
 	[SerializeField] private GameObject _coin;
+	[SerializeField] private Image _lockOnUi;
 
 	private MonsterAnimHandler _animHandler;
 	private MonsterContext _ctx;
@@ -77,6 +79,11 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 		{
 			_machine.ChangeState(StateType.Die);
 		}
+	}
+
+	public void SetLockOnUi(bool lockOn)
+	{
+		_lockOnUi.gameObject.SetActive(lockOn);
 	}
 
 	public PoolType PoolId => PoolType.Monster;

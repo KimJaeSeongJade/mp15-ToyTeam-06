@@ -29,15 +29,7 @@ public class BossAttackState : StateBase<BossContext>
 
 		if (CanAttack)
 		{
-			float distance = Vector3.Distance(_ctx.transform.position, _ctx.monsterDetection.TargetTransform.position);
-
-			if (distance > _ctx.stat.AttackDistance)
-			{
-				_fsm.ChangeState(StateType.Move);
-			}
-
-			_ctx.animHandler.PlayAttackAnim(_ctx.attackIndex);
-			attackTime = 0;
+			_fsm.ChangeState(StateType.Move);
 		}
 	}
 

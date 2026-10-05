@@ -112,7 +112,7 @@ public class PlayerMoveState : StateBase<PlayerContext>
 
 		// 락온 중에 몬스터가 감지거리 밖으로 나가졌을때 예외처리
 		// TODO 제가 10/3에 고쳐보겠습니다...(강성현)
-		if (enemyList[_ctx.lockOnIndex] == null)
+		if (enemyList.Count - 1 < _ctx.lockOnIndex)
 		{
 			return;
 		}

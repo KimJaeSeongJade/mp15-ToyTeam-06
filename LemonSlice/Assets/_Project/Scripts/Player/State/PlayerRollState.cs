@@ -33,7 +33,6 @@ public class PlayerRollState : StateBase<PlayerContext>
 		}
 	}
 
-
 	public override void Exit()
 	{
 		// PlayerLayerMask 원복
@@ -67,7 +66,6 @@ public class PlayerRollState : StateBase<PlayerContext>
 	{
 		enemyList = _ctx.playerDetection.GetEnemyList();
 
-		// 락온을 했지만 락온거리에 적이 없을 때
 		if (enemyList.Count == 0)
 		{
 			_ctx.isLockOn = false;

@@ -1,12 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerIdleState : StateBase<PlayerContext>
 {
-	private List<Transform> enemyList = new List<Transform>();
-
-	private int maxIndex;
-
 	public PlayerIdleState(PlayerContext context, StateMachine<PlayerContext> stateMachine) : base(context,
 		stateMachine)
 	{
@@ -40,17 +35,34 @@ public class PlayerIdleState : StateBase<PlayerContext>
 
 		if (_ctx.input.LockOnPressed)
 		{
-			_ctx.isLockOn = !_ctx.isLockOn;
-			_ctx.lockOnIndex = 0;
+			if (_ctx.isLockOn)
+			{
+				_ctx.lockOnController.ClearLockOn();
+				_ctx.isLockOn = false;
+			}
+			else
+			{
+				_ctx.isLockOn = _ctx.lockOnController.TryLockOn();
+			}
 		}
 
-		if (!_ctx.isLockOn)
+		if (_ctx.isLockOn && !_ctx.lockOnController.HasTarget())
 		{
-			Rotate();
+			_ctx.isLockOn = false;
+		}
+
+		if(_ctx.isLockOn)
+		{
+			if (_ctx.input.TargetChangePressed)
+			{
+				_ctx.lockOnController.ChangeLockOn();
+			}
+
+			_ctx.transform.LookAt(_ctx.lockOnController.LockOn());
 		}
 		else
 		{
-			LockOn();
+			Rotate();
 		}
 	}
 	//----------------State Method------------------
@@ -58,40 +70,5 @@ public class PlayerIdleState : StateBase<PlayerContext>
 	private void Rotate()
 	{
 		_ctx.transform.Rotate(0, _ctx.input.MouseDelta.y, 0, Space.Self);
-	}
-
-	private void LockOn()
-	{
-		enemyList = _ctx.playerDetection.GetEnemyList();
-
-		if (enemyList.Count == 0)
-		{
-			_ctx.isLockOn = false;
-			return;
-		}
-
-		maxIndex = enemyList.Count - 1;
-
-		if (Input.GetKeyDown(KeyCode.Tab))
-		{
-			enemyList[_ctx.lockOnIndex].GetComponent<MonsterController>().SetLockOnUi(false);
-
-			if (_ctx.lockOnIndex >= maxIndex)
-			{
-				_ctx.lockOnIndex = 0;
-			}
-			else
-			{
-				_ctx.lockOnIndex++;
-			}
-		}
-
-		if (enemyList.Count - 1 < _ctx.lockOnIndex)
-		{
-			return;
-		}
-
-		_ctx.transform.LookAt(enemyList[_ctx.lockOnIndex]);
-		enemyList[_ctx.lockOnIndex].GetComponent<MonsterController>().SetLockOnUi(true);
 	}
 }

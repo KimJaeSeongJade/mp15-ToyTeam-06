@@ -4,7 +4,7 @@ public class MonsterAttackState : StateBase<MonsterContext>
 {
 	private float attackTime;
 	private bool isAttacking;
-
+	private int downValue = 10;
 	public MonsterAttackState(MonsterContext context, StateMachine<MonsterContext> stateMachine) : base(context,
 		stateMachine)
 	{
@@ -17,6 +17,7 @@ public class MonsterAttackState : StateBase<MonsterContext>
 		attackTime = 0f;
 		_ctx.animHandler.PlayAttackAnim();
 		isAttacking = true;
+		_ctx.hitBox.Open(_ctx.stat.AttackPower, downValue);
 	}
 
 	public override void Tick()
@@ -56,6 +57,11 @@ public class MonsterAttackState : StateBase<MonsterContext>
 		{
 			_ctx.animHandler.PlayIdleAnim();
 		}
+	}
+
+	public override void Exit()
+	{
+		_ctx.hitBox.Close();
 	}
 
 	public override void OnAnimEvent(string animEvent)

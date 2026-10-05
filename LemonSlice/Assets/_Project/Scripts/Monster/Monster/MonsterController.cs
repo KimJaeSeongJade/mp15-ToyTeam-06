@@ -11,6 +11,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 	private MonsterDetection _monsterDetection;
 	private Rigidbody _rigidbody;
 	private MonsterStat _stat;
+	private AttackHitBox _hitBox;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -35,6 +36,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 		_rigidbody = GetComponent<Rigidbody>();
 		_animHandler = GetComponent<MonsterAnimHandler>();
 		_monsterDetection = GetComponentInChildren<MonsterDetection>();
+		_hitBox = GetComponentInChildren<AttackHitBox>();
 	}
 
 	private void BindContext()
@@ -46,7 +48,8 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 			stat = _stat,
 			rigidbody = _rigidbody,
 			monsterDetection = _monsterDetection,
-			coin = _coin
+			coin = _coin,
+			hitBox = _hitBox
 		};
 	}
 

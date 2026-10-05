@@ -25,7 +25,6 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 	private void Update()
 	{
 		_machine.Tick();
-		if (Input.GetKeyDown(KeyCode.Alpha1)) TakeDamage(new DamageInfo());
 	}
 
 	// --------------------------------

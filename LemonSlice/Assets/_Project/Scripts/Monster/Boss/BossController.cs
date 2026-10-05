@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BossController : MonoBehaviour, ILockonable
+public class BossController : MonoBehaviour, IDamageable
 {
 	[SerializeField] private string _stateType;
 
@@ -28,8 +28,6 @@ public class BossController : MonoBehaviour, ILockonable
 		_machine.Tick();
 		_stateType = _machine.Current.GetType().ToString();
 	}
-
-	public GameObject GameObject { get; }
 
 	// --------------------------------
 
@@ -65,5 +63,15 @@ public class BossController : MonoBehaviour, ILockonable
 	public void OnAnimEvent(string animEvent)
 	{
 		_machine.OnAnimEvent(animEvent);
+	}
+
+	public void TakeDamage(DamageInfo damageInfo)
+	{
+		_stat.currentHealth.Value -= damageInfo.Damage;
+
+		if (_stat.currentHealth.Value <= 0)
+		{
+			_machine.ChangeState(StateType.Die);
+		}
 	}
 }

@@ -56,14 +56,15 @@ public class PlayerRollState : StateBase<PlayerContext>
 
 	public override void OnAnimEvent(string animEvent)
 	{
-		if (animEvent == _ctx.animHandler.EndRollAnim)
+		switch (animEvent)
 		{
-			_fsm.ChangeState(StateType.Idle);
+			case AnimEvents.EndRollAnim:
+				EndRollState();
+				break;
 		}
 	}
 
 	//----------------State Method------------------
-
 
 	private void SetRollVelocity()
 	{
@@ -73,5 +74,10 @@ public class PlayerRollState : StateBase<PlayerContext>
 			moveDirection.x * _ctx.stat.MoveSpeed * _ctx.stat.RollSpeed,
 			_ctx.rigidbody.velocity.y,
 			moveDirection.z * _ctx.stat.MoveSpeed * _ctx.stat.RollSpeed);
+	}
+
+	private void EndRollState()
+	{
+		_fsm.ChangeState(StateType.Idle);
 	}
 }

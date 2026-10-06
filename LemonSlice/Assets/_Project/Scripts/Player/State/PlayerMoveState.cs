@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMoveState : StateBase<PlayerContext>
@@ -16,21 +15,8 @@ public class PlayerMoveState : StateBase<PlayerContext>
 
 	public override void Tick()
 	{
-		if (_ctx.input.MoveAxisRaw == Vector3.zero)
+		if (TryChangeState())
 		{
-			_fsm.ChangeState(StateType.Idle);
-			return;
-		}
-
-		if (_ctx.input.IsRollPressed)
-		{
-			_fsm.ChangeState(StateType.Roll);
-			return;
-		}
-
-		if (_ctx.input.IsAttackPressed)
-		{
-			_fsm.ChangeState(StateType.Attack);
 			return;
 		}
 
@@ -55,7 +41,7 @@ public class PlayerMoveState : StateBase<PlayerContext>
 			_ctx.lockOnController.ClearLockOn();
 		}
 
-		if(_ctx.isLockOn)
+		if (_ctx.isLockOn)
 		{
 			if (_ctx.input.TargetChangePressed)
 			{
@@ -82,6 +68,29 @@ public class PlayerMoveState : StateBase<PlayerContext>
 	}
 
 	//----------------State Method------------------
+
+	private bool TryChangeState()
+	{
+		if (_ctx.input.MoveAxisRaw == Vector3.zero)
+		{
+			_fsm.ChangeState(StateType.Idle);
+			return true;
+		}
+
+		if (_ctx.input.IsRollPressed)
+		{
+			_fsm.ChangeState(StateType.Roll);
+			return true;
+		}
+
+		if (_ctx.input.IsAttackPressed)
+		{
+			_fsm.ChangeState(StateType.Attack);
+			return true;
+		}
+
+		return false;
+	}
 
 	private void Rotate()
 	{

@@ -64,6 +64,12 @@ public class PlayerAttackState : StateBase<PlayerContext>
 			case AnimEvents.CloseCombo:
 				CloseCombo();
 				break;
+			case AnimEvents.OpenHitBox:
+				OpenHitBox();
+				break;
+			case AnimEvents.CloseHitBox:
+				CloseHitBox();
+				break;
 		}
 	}
 	//----------------State Method------------------
@@ -79,29 +85,12 @@ public class PlayerAttackState : StateBase<PlayerContext>
 		_ctx.rigidbody.AddForce(direction * moveForce[comboIndex - 1], ForceMode.Impulse);
 	}
 
-	private void OpenCombo()
-	{
-		int baseDamage = _ctx.stat.AttackPower;
-		int extraDamage = weaponDamage[comboIndex - 1];
-		canCombo = true;
-		_ctx.hitBox.Open(baseDamage + extraDamage, weaponDownValue[comboIndex - 1]);
-	}
-
-	private void CloseCombo()
-	{
-		canCombo = false;
-		_ctx.hitBox.Close();
-	}
-
 	private void EndAttackAnim()
 	{
 		if (canNextAttack)
 		{
 			canNextAttack = false;
-			if (comboIndex < MAX_COMBO)
-			{
-				comboIndex++;
-			}
+			comboIndex++;
 
 			_ctx.animHandler.PlayAttackAnim(comboIndex);
 			AddAttackForce(comboIndex);
@@ -111,4 +100,15 @@ public class PlayerAttackState : StateBase<PlayerContext>
 			_fsm.ChangeState(StateType.Idle);
 		}
 	}
+
+	public void OpenHitBox()
+	{
+		int baseDamage = _ctx.stat.AttackPower;
+		int extraDamage = weaponDamage[comboIndex - 1];
+		_ctx.hitBox.Open(baseDamage + extraDamage, weaponDownValue[comboIndex - 1]);
+	}
+
+	public void CloseHitBox() => _ctx.hitBox.Close();
+	private void OpenCombo() => canCombo = true;
+	private void CloseCombo() => canCombo = false;
 }

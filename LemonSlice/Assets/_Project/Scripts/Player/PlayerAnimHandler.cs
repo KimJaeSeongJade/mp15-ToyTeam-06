@@ -11,16 +11,6 @@ public class PlayerAnimHandler : MonoBehaviour
 	[SerializeField] private string attackAnimParam;
 	[SerializeField] private string dieAnimParam;
 
-	[SerializeField] private string endRollAnim;
-	[SerializeField] private string endAttackAnim;
-	[SerializeField] private string openCombo;
-	[SerializeField] private string closeCombo;
-
-	public string EndRollAnim => endRollAnim;
-	public string EndAttackAnim => endAttackAnim;
-	public string OpenCombo => openCombo;
-	public string CloseCombo => closeCombo;
-
 	private void Awake()
 	{
 		CacheComponents();
@@ -28,12 +18,12 @@ public class PlayerAnimHandler : MonoBehaviour
 
 	public void PlayIdleAndMoveAnim()
 	{
-		animator.Play(moveAnimParam);
+		animator.CrossFade(moveAnimParam,0.1f);
 	}
 
 	public void PlayRollAnim()
 	{
-		animator.Play(rollAnimParam);
+		animator.CrossFade(rollAnimParam,0.1f);
 	}
 
 	public void PlayAttackAnim(int animIndex)

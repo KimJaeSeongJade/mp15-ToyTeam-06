@@ -9,14 +9,23 @@ public class MonsterDieState : StateBase<MonsterContext>
 	{
 	}
 	private Coin _coin;
-
+	private GameObject gameObject => _ctx.rigidbody.gameObject;
+	private float delay;
 	public override void Enter()
 	{
 		_ctx.animHandler.PlayDieAnim();
-		// TODO
-		// 몬스터를 풀로 반환
-		DropCoin();
 	}
+
+	public override void Tick()
+	{
+		delay += Time.deltaTime;
+		if (delay >= 1)
+		{
+			PoolManager.Instance.TryReturn(gameObject);
+			DropCoin();
+		}
+	}
+
 
 	private void DropCoin()
 	{

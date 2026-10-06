@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MonsterAnimHandler : MonoBehaviour
@@ -37,6 +38,7 @@ public class MonsterAnimHandler : MonoBehaviour
 	{
 		animator.Play(dieAnimParam);
 	}
+
 
 	private void CacheComponents()
 	{

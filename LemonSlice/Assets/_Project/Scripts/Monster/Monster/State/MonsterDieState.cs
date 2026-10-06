@@ -1,35 +1,43 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class MonsterDieState : StateBase<MonsterContext>
 {
+
 	public MonsterDieState(MonsterContext context, StateMachine<MonsterContext> stateMachine) : base(context,
 		stateMachine)
 	{
 	}
-	private Coin _coin;
+
+	private GameObject gameObject => _ctx.rigidbody.gameObject;
 
 	public override void Enter()
 	{
 		_ctx.animHandler.PlayDieAnim();
-		// TODO
-		// 몬스터를 풀로 반환
-		DropCoin();
 	}
 
+
+	public override void OnAnimEvent(string animEvent)
+	{
+		if (animEvent == _ctx.animHandler.EndDieAnim)
+		{
+			PoolManager.Instance.TryReturn(gameObject);
+			DropCoin();
+      
+      _ctx.monsterDetection.TargetTransform.GetComponentInChildren<LockOnController>()
+			.RemoveEnemy(_ctx.transform.gameObject);
+		}
+	}
+  
 	private void DropCoin()
 	{
-		_ctx.monsterDetection.TargetTransform.GetComponentInChildren<LockOnController>()
-			.RemoveEnemy(_ctx.transform.gameObject);
-
 		int count = Random.Range(1, 5);
 
 		for (int i = 0; i < count; i++)
 		{
 			Vector3 coinPosition = new Vector3(
 				_ctx.transform.position.x,
-				_ctx.transform.position.y+3,
+				_ctx.transform.position.y + 3,
 				_ctx.transform.position.z
 			);
 

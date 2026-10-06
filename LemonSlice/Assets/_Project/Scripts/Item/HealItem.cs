@@ -6,8 +6,6 @@ public class HealItem : MonoBehaviour, IInteractable, IPoolable
 	private HealingPack healingPack;
 	private PlayerStat playerStat;
 
-
-
 	private void OnTriggerEnter(Collider other)
 	{
 		int layer = (1 << other.gameObject.layer);

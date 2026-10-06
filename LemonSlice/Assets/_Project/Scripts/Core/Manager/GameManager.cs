@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
@@ -21,7 +22,7 @@ public class GameManager : SingletonBehaviour<GameManager>
 		{
 			PlayTime += Time.deltaTime;
 		}
-		Debug.Log($"{CurrentScore}");
+		// Debug.Log($"{CurrentScore}");
 	}
 
 	public void ChangeState(GameState state)
@@ -29,8 +30,6 @@ public class GameManager : SingletonBehaviour<GameManager>
 		CurrentState = state; // 게임 상태 변경
 		if (CurrentState == GameState.Playing)
 		{
-			// 씬 이름 추후에 추가
-			// SceneManager.LoadScene("");
 			PlayingTime();
 			LockCursor();
 
@@ -39,13 +38,13 @@ public class GameManager : SingletonBehaviour<GameManager>
 
 		if (CurrentState == GameState.StageClear)
 		{
-			// stageClear 처리
-			// 스테이지 추가가 없다면 여기서 게임 클리어
+			SceneManager.LoadScene("Ending");
+			UnlockCursor();
 		}
 
 		if (CurrentState == GameState.GameOver)
 		{
-			// SceneManager.LoadScene(""); // 씬 이름 추후에 추가
+			SceneManager.LoadScene("Ending");
 			UnlockCursor();
 		}
 

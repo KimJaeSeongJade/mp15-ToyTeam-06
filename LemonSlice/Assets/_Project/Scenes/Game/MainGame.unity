@@ -565,6 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd626cab0279b424a803a733c75ba10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isDestroyedOnManager: 0
   spawnPoint: {fileID: 1171965952}
   itemBoxPrefab: {fileID: 3566777353912687509, guid: 9e06cb185aaac3448b1eaac255da6e53, type: 3}
   itemBoxList:
@@ -582,6 +583,10 @@ PrefabInstance:
     - target: {fileID: 2365371217989604741, guid: 78732d1dbb81de1468265a51cffa6371, type: 3}
       propertyPath: m_Name
       value: PlayerUIController
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365371217989604741, guid: 78732d1dbb81de1468265a51cffa6371, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2373476473429874959, guid: 78732d1dbb81de1468265a51cffa6371, type: 3}
       propertyPath: m_LocalPosition.x

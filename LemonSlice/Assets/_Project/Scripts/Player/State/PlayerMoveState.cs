@@ -52,6 +52,7 @@ public class PlayerMoveState : StateBase<PlayerContext>
 		if (_ctx.isLockOn && !_ctx.lockOnController.HasTarget())
 		{
 			_ctx.isLockOn = false;
+			_ctx.lockOnController.ClearLockOn();
 		}
 
 		if(_ctx.isLockOn)

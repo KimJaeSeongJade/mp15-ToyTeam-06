@@ -75,7 +75,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 	public void TakeDamage(DamageInfo damageInfo)
 	{
 		_stat.currentHealth.Value -= damageInfo.Damage;
-
+		_machine.ChangeState(StateType.Knockback);
 		if (_stat.currentHealth.Value <= 0)
 		{
 			_machine.ChangeState(StateType.Die);

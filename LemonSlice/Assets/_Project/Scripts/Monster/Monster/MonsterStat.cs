@@ -8,13 +8,21 @@ public class MonsterStat : MonoBehaviour
 	[SerializeField] private float rotationSpeed;
 	[SerializeField] private float attackDelay;
 	[SerializeField] private float attackDistance;
+	[SerializeField] private int downPoint;
+	[SerializeField] private int maxDownPoint;
 
+	private bool _isInvincible;
 
 	public ObservableProperty<int> currentHealth = new(0);
 	public float MoveSpeed => moveSpeed;
 	public float AttackDelay => attackDelay;
 	public float AttackDistance => attackDistance;
 	public int AttackPower => attackPower;
+	public int MaxDownPoint => maxDownPoint;
+	public bool IsInvincible { get => _isInvincible; set => _isInvincible = value; }
+	public int DownPoint { get => downPoint; set => downPoint = value; }
+
+
 	private void Awake() => Init();
 
 	private void Init()

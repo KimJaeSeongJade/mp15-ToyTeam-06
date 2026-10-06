@@ -39,6 +39,7 @@ public class BossAttackState : StateBase<BossContext>
 		if (animEvent == _ctx.animHandler.EndMinoAttack)
 		{
 			isAttacking = false;
+			_ctx.hitBox.Close();
 		}
 	}
 

@@ -17,7 +17,7 @@ public class MonsterAttackState : StateBase<MonsterContext>
 		attackTime = 0f;
 		_ctx.animHandler.PlayAttackAnim();
 		isAttacking = true;
-		_ctx.hitBox.Open(_ctx.stat.AttackPower, downValue);
+		OpenHitBoxes();
 	}
 
 	public override void Tick()
@@ -56,12 +56,8 @@ public class MonsterAttackState : StateBase<MonsterContext>
 		else if (!isAttacking)
 		{
 			_ctx.animHandler.PlayIdleAnim();
+			OpenHitBoxes();
 		}
-	}
-
-	public override void Exit()
-	{
-		_ctx.hitBox.Close();
 	}
 
 	public override void OnAnimEvent(string animEvent)
@@ -69,6 +65,19 @@ public class MonsterAttackState : StateBase<MonsterContext>
 		if (animEvent == _ctx.animHandler.EndAttackAnim)
 		{
 			isAttacking = false;
+			CloseHitBoxes();
 		}
+	}
+
+	private void OpenHitBoxes()
+	{
+		_ctx.leftHitBox.Open(_ctx.stat.AttackPower, downValue);
+		_ctx.rightHitBox.Open(_ctx.stat.AttackPower, downValue);
+	}
+
+	private void CloseHitBoxes()
+	{
+		_ctx.leftHitBox.Close();
+		_ctx.rightHitBox.Close();
 	}
 }

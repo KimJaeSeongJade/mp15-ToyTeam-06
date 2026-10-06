@@ -10,6 +10,7 @@ public class PlayerContext : IContext
 	public Rigidbody rigidbody;
 	public PlayerStat stat;
 	public Transform transform;
+	public Vector3 hitDirection;
 
 	public bool isLockOn;
 	public LockOnController lockOnController;

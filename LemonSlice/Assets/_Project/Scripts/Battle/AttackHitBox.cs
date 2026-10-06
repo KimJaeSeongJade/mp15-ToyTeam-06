@@ -22,7 +22,6 @@ public class AttackHitBox : MonoBehaviour
 			return;
 		}
 
-		Debug.Log("플레이어 맞는중");
 		_targets.Add(other);
 		IDamageable target = other.GetComponent<IDamageable>();
 

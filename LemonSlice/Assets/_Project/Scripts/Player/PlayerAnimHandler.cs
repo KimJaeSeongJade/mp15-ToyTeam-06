@@ -6,21 +6,15 @@ public class PlayerAnimHandler : MonoBehaviour
 
 	[SerializeField] private string moveXParam;
 	[SerializeField] private string moveZParam;
-	[SerializeField] private string moveAnimParam;
-	[SerializeField] private string rollAnimParam;
-	[SerializeField] private string attackAnimParam;
-	[SerializeField] private string dieAnimParam;
+	[SerializeField] private string idleAndMoveAnimName;
+	[SerializeField] private string rollAnimName;
+	[SerializeField] private string attackAnimName;
+	[SerializeField] private string dieAnimName;
+	[SerializeField] private string hitAnimName;
+	[SerializeField] private string knockDownAnimName;
+	[SerializeField] private string standUpAnimName;
 
-	[SerializeField] private string endRollAnim;
-	[SerializeField] private string endAttackAnim;
-	[SerializeField] private string openCombo;
-	[SerializeField] private string closeCombo;
-
-	public string EndRollAnim => endRollAnim;
-	public string EndAttackAnim => endAttackAnim;
-	public string OpenCombo => openCombo;
-	public string CloseCombo => closeCombo;
-
+	[SerializeField] private int hitAnimCount;
 	private void Awake()
 	{
 		CacheComponents();
@@ -28,22 +22,41 @@ public class PlayerAnimHandler : MonoBehaviour
 
 	public void PlayIdleAndMoveAnim()
 	{
-		animator.Play(moveAnimParam);
+		// animator.CrossFade(idleAndMoveAnimName,0.1f);
+		animator.Play(idleAndMoveAnimName);
 	}
 
 	public void PlayRollAnim()
 	{
-		animator.Play(rollAnimParam);
+		// animator.CrossFade(rollAnimName,0.5f);
+		animator.Play(rollAnimName);
 	}
 
 	public void PlayAttackAnim(int animIndex)
 	{
-		animator.Play($"{attackAnimParam}{animIndex}");
+		animator.Play($"{attackAnimName}{animIndex}");
 	}
 
 	public void PlayDieAnim()
 	{
-		animator.Play(dieAnimParam);
+		animator.Play(dieAnimName);
+	}
+
+	public void PlayHitAnim()
+	{
+		int maxRandomValue = hitAnimCount + 1;
+		int index = Random.Range(1, maxRandomValue);
+		animator.Play($"{hitAnimName}{index}");
+	}
+
+	public void PlayKnockDownAnim()
+	{
+		animator.Play(knockDownAnimName);
+	}
+
+	public void PlayStandUpAnim()
+	{
+		animator.Play(standUpAnimName);
 	}
 
 	public void SetMoveParam(Vector3 input)

@@ -10,9 +10,9 @@ public class PlayerRollState : StateBase<PlayerContext>
 
 	public override void Enter()
 	{
+		_ctx.stat.IsInvincible = true;
 		_ctx.animHandler.PlayRollAnim();
 		SetRollVelocity();
-		// PlayerLayerMask 변경으로 무적처리
 	}
 
 	public override void Tick()
@@ -48,7 +48,7 @@ public class PlayerRollState : StateBase<PlayerContext>
 
 	public override void Exit()
 	{
-		// PlayerLayerMask 원복
+		_ctx.stat.IsInvincible = false;
 		_ctx.animHandler.PlayIdleAndMoveAnim();
 		_ctx.rigidbody.velocity = Vector3.zero;
 		_ctx.animHandler.SetMoveParam(Vector3.zero);
@@ -56,14 +56,15 @@ public class PlayerRollState : StateBase<PlayerContext>
 
 	public override void OnAnimEvent(string animEvent)
 	{
-		if (animEvent == _ctx.animHandler.EndRollAnim)
+		switch (animEvent)
 		{
-			_fsm.ChangeState(StateType.Idle);
+			case AnimEvents.EndRollAnim:
+				EndRollState();
+				break;
 		}
 	}
 
 	//----------------State Method------------------
-
 
 	private void SetRollVelocity()
 	{
@@ -73,5 +74,10 @@ public class PlayerRollState : StateBase<PlayerContext>
 			moveDirection.x * _ctx.stat.MoveSpeed * _ctx.stat.RollSpeed,
 			_ctx.rigidbody.velocity.y,
 			moveDirection.z * _ctx.stat.MoveSpeed * _ctx.stat.RollSpeed);
+	}
+
+	private void EndRollState()
+	{
+		_fsm.ChangeState(StateType.Idle);
 	}
 }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class MonsterAnimHandler : MonoBehaviour
@@ -12,6 +11,13 @@ public class MonsterAnimHandler : MonoBehaviour
 
 	[SerializeField] private string endAttackAnim;
 	[SerializeField] private string endDieAnim;
+
+	[SerializeField] private string hitAnimName;
+	[SerializeField] private string knockDownAnimName;
+	[SerializeField] private string standUpAnimName;
+
+	[SerializeField] private int hitAnimCount;
+
 	public string EndAttackAnim => endAttackAnim;
 	public string EndDieAnim => endDieAnim;
 
@@ -40,6 +46,22 @@ public class MonsterAnimHandler : MonoBehaviour
 		animator.Play(dieAnimParam);
 	}
 
+	public void PlayHitAnim()
+	{
+		int maxRandomValue = hitAnimCount + 1;
+		int index = Random.Range(1, maxRandomValue);
+		animator.Play($"{hitAnimName}{index}");
+	}
+
+	public void PlayKnockDownAnim()
+	{
+		animator.Play(knockDownAnimName);
+	}
+
+	public void PlayStandUpAnim()
+	{
+		animator.Play(standUpAnimName);
+	}
 
 	private void CacheComponents()
 	{

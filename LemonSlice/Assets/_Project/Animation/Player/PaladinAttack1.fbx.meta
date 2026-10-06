@@ -57,21 +57,35 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.24444444
+      - time: 0.10147209
+        functionName: OnAnimEvent
+        data: OpenHitBox
+        objectReferenceParameter: {fileID: 11500000, guid: 722bc14c1c6b60b4db537b578ac969ea, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.26979008
         functionName: OnAnimEvent
         data: OpenCombo
         objectReferenceParameter: {fileID: 11500000, guid: 722bc14c1c6b60b4db537b578ac969ea, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6861111
+      - time: 0.72758573
         functionName: OnAnimEvent
         data: CloseCombo
         objectReferenceParameter: {fileID: 11500000, guid: 722bc14c1c6b60b4db537b578ac969ea, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.91944444
+      - time: 0.87096775
+        functionName: OnAnimEvent
+        data: CloseHitBox
+        objectReferenceParameter: {fileID: 11500000, guid: 722bc14c1c6b60b4db537b578ac969ea, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.96774197
         functionName: OnAnimEvent
         data: EndAttackAnim
         objectReferenceParameter: {fileID: 11500000, guid: 722bc14c1c6b60b4db537b578ac969ea, type: 3}

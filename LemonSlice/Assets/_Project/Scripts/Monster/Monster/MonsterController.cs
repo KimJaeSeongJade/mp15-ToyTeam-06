@@ -6,6 +6,8 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 	[SerializeField] private string _stateType;
 	[SerializeField] private GameObject _coin;
 	[SerializeField] private Image _lockOnUi;
+	[SerializeField] private string _leftHitBoxTag;
+	[SerializeField] private string _rightHitBoxTag;
 
 	private MonsterAnimHandler _animHandler;
 	private MonsterContext _ctx;
@@ -13,7 +15,9 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 	private MonsterDetection _monsterDetection;
 	private Rigidbody _rigidbody;
 	private MonsterStat _stat;
-	private AttackHitBox _hitBox;
+	private AttackHitBox _leftHitBox;
+	private AttackHitBox _rightHitBox;
+	private AttackHitBox[] _hitBoxes;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -39,7 +43,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 		_rigidbody = GetComponent<Rigidbody>();
 		_animHandler = GetComponent<MonsterAnimHandler>();
 		_monsterDetection = GetComponentInChildren<MonsterDetection>();
-		_hitBox = GetComponentInChildren<AttackHitBox>();
+		GetComponentHitBoxes();
 	}
 
 	private void BindContext()
@@ -52,7 +56,8 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 			rigidbody = _rigidbody,
 			monsterDetection = _monsterDetection,
 			coin = _coin,
-			hitBox = _hitBox
+			leftHitBox = _leftHitBox,
+			rightHitBox = _rightHitBox,
 		};
 	}
 
@@ -65,6 +70,8 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 		_machine.Add(StateType.Attack, new MonsterAttackState(_ctx, _machine));
 		_machine.Add(StateType.Die, new MonsterDieState(_ctx, _machine));
 		_machine.Add(StateType.Knockback, new MonsterKnockbackState(_ctx, _machine));
+		_machine.Add(StateType.Hit, new MonsterHitState(_ctx, _machine));
+		_machine.Add(StateType.KnockDown, new MonsterKnockDownState(_ctx, _machine));
 	}
 
 	public void OnAnimEvent(string animEvent)
@@ -74,11 +81,28 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 
 	public void TakeDamage(DamageInfo damageInfo)
 	{
+		if (_ctx.stat.IsInvincible)
+		{
+			return;
+		}
+
 		_stat.currentHealth.Value -= damageInfo.Damage;
-		_machine.ChangeState(StateType.Knockback);
+		_stat.DownPoint -= damageInfo.DownValue;
+		_ctx.hitDirection = damageInfo.HitDirection;
+
+		//_machine.ChangeState(StateType.Knockback);
+
 		if (_stat.currentHealth.Value <= 0)
 		{
 			_machine.ChangeState(StateType.Die);
+		}
+		else if (_stat.DownPoint <= 0)
+		{
+			_machine.ChangeState(StateType.KnockDown);
+		}
+		else
+		{
+			_machine.ChangeState(StateType.Hit);
 		}
 	}
 
@@ -89,11 +113,30 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 
 	private void RotateUI()
 	{
-		if (!_lockOnUi.gameObject.activeSelf) return;
+		if (!_lockOnUi.gameObject.activeSelf)
+		{
+			return;
+		}
 
 		Transform cameraTransform = Camera.main.transform;
 
 		_lockOnUi.rectTransform.LookAt(cameraTransform);
+	}
+
+	private void GetComponentHitBoxes()
+	{
+		AttackHitBox[] hitBoxes = GetComponentsInChildren<AttackHitBox>();
+		for (int i = 0; i < hitBoxes.Length; i++)
+		{
+			if (hitBoxes[i].gameObject.tag.Equals(_leftHitBoxTag))
+			{
+				_leftHitBox = hitBoxes[i];
+			}
+			else
+			{
+				_rightHitBox = hitBoxes[i];
+			}
+		}
 	}
 
 	public PoolType PoolId => PoolType.Monster;

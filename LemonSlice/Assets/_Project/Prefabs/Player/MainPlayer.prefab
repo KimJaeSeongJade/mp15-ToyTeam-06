@@ -1873,12 +1873,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fae3aeff6bbdfc48ba498ab4037c7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 50
   maxStamina: 0
   attackPower: 10
   moveSpeed: 5
   invincibleTime: 0
   rollSpeed: 1.5
+  downPoint: 100
+  maxDownPoint: 100
 --- !u!114 &2742753561888817850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1894,14 +1896,14 @@ MonoBehaviour:
   animator: {fileID: 1123290915511357033}
   moveXParam: moveX
   moveZParam: moveZ
-  moveAnimParam: IdleAndMove
-  rollAnimParam: PaladinRoll
-  attackAnimParam: PaladinAttack
-  dieAnimParam: PaladinDeath
-  endRollAnim: EndRollAnim
-  endAttackAnim: EndAttackAnim
-  openCombo: OpenCombo
-  closeCombo: CloseCombo
+  idleAndMoveAnimName: IdleAndMove
+  rollAnimName: PaladinRoll
+  attackAnimName: PaladinAttack
+  dieAnimName: PaladinDeath
+  hitAnimName: Hit
+  knockDownAnimName: KnockDown
+  standUpAnimName: StandUp
+  hitAnimCount: 2
 --- !u!1 &6357094980701122142
 GameObject:
   m_ObjectHideFlags: 0

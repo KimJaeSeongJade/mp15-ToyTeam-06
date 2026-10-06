@@ -1127,6 +1127,7 @@ MonoBehaviour:
   _creditButton: {fileID: 802392779}
   _exitCreditButton: {fileID: 569642147}
   _creditPanel: {fileID: 778233204}
+  _clearTimeText: {fileID: 21030588}
 --- !u!1 &887735670
 GameObject:
   m_ObjectHideFlags: 0

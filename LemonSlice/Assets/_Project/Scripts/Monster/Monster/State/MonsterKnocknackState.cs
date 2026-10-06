@@ -17,7 +17,7 @@ public class MonsterKnockbackState : StateBase<MonsterContext>
 	}
 
 	public override void Tick()
-	{
+	{/*
 		_timer += Time.deltaTime;
 
 
@@ -33,6 +33,6 @@ public class MonsterKnockbackState : StateBase<MonsterContext>
 			direction.y = 0;
 
 			_ctx.transform.Translate(direction * (_knockbackSpeed * Time.deltaTime), Space.World);
-		}
+		}*/
 	}
 }

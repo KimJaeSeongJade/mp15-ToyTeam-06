@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MonsterController : MonoBehaviour, IPoolable, IDamageable
+public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockonable
 {
 	[SerializeField] private string _stateType;
 	[SerializeField] private GameObject _coin;

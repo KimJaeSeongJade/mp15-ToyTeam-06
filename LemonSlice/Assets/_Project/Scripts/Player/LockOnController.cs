@@ -5,7 +5,7 @@ public class LockOnController : MonoBehaviour
 {
 	private Transform currentTarget;
 	private List<Transform> enemyLists = new();
-	private MonsterController monster;
+	private ILockonable monster;
 
 	// ---------------------
 
@@ -28,7 +28,7 @@ public class LockOnController : MonoBehaviour
 		{
 			if (enemy == enemyLists[i].gameObject)
 			{
-				monster = enemy.GetComponent<MonsterController>();
+				monster = enemy.GetComponent<ILockonable>();
 				monster.SetLockOnUi(false);
 
 				enemyLists.RemoveAt(i);
@@ -57,7 +57,7 @@ public class LockOnController : MonoBehaviour
 	{
 		for (int i = 0; i < enemyLists.Count; i++)
 		{
-			monster = enemyLists[i].GetComponent<MonsterController>();
+			monster = enemyLists[i].GetComponent<ILockonable>();
 			monster.SetLockOnUi(false);
 		}
 
@@ -71,7 +71,7 @@ public class LockOnController : MonoBehaviour
 
 	public Transform LockOn()
 	{
-		monster = currentTarget.GetComponent<MonsterController>();
+		monster = currentTarget.GetComponent<ILockonable>();
 		monster.SetLockOnUi(true);
 
 		return currentTarget;

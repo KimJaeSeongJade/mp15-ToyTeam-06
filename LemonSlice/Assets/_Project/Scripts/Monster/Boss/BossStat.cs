@@ -9,9 +9,8 @@ public class BossStat : MonoBehaviour
 	[SerializeField] private int attackPower; // 공격력
 	[SerializeField] private float attackDelay;
 	[SerializeField] private float attackDistance;
+
 	public ObservableProperty<int> CurrentGroggy = new(0);
-
-
 	public ObservableProperty<int> CurrentHealth = new(0);
 	public ObservableProperty<int> MaxGroggy = new(0);
 	public ObservableProperty<int> MaxHealth = new(0);

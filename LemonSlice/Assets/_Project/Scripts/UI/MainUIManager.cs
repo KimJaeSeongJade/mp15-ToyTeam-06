@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MainUIManager : MonoBehaviour
+public class MainUIManager : SingletonBehaviour<MainUIManager>
 {
 	[SerializeField] private TextMeshProUGUI scoreUI;
 	[SerializeField] private TextMeshProUGUI totalTimeUI;
+	[SerializeField] private GameObject bossUI;
 
 	private void Update()
 	{
@@ -36,5 +34,10 @@ public class MainUIManager : MonoBehaviour
 		int sec = totalTime % 60;
 
 		totalTimeUI.text = $"PlayTime - {min:00} : {sec:00}";
+	}
+
+	public void SetBossUI(bool isActive)
+	{
+		bossUI.SetActive(isActive);
 	}
 }

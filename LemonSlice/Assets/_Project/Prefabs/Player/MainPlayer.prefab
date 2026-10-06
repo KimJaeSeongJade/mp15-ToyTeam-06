@@ -1873,9 +1873,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fae3aeff6bbdfc48ba498ab4037c7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 100
   maxStamina: 0
-  attackPower: 0
+  attackPower: 10
   moveSpeed: 5
   invincibleTime: 0
   rollSpeed: 1.5
@@ -2818,37 +2818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722bc14c1c6b60b4db537b578ac969ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &9080536979060602482
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2473153173330385728}
-  m_Layer: 0
-  m_Name: CameraPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2473153173330385728
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9080536979060602482}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.05, z: -1.957}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7861243302710342825}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9099444531218168461
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,7 +2914,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 64482606567966812}
-  - {fileID: 2473153173330385728}
   m_Father: {fileID: 8559092701867311980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6504943572108492074

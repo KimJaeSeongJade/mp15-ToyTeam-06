@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class HealItem : MonoBehaviour, IInteractable, IPoolable
 {
+	[SerializeField] private GameObject healEffectPrefab;
 	public LayerMask targetLayer;
 	public GameObject GameObject => gameObject;
 	private HealingPack healingPack;
@@ -25,6 +26,11 @@ public class HealItem : MonoBehaviour, IInteractable, IPoolable
 			if (playerStat != null)
 			{
 				healingPack.Heal(playerStat);
+				if (healEffectPrefab != null)
+				{
+					Vector3 spawnPosition = interactor.transform.position;
+					PoolManager.Instance.Take(healEffectPrefab).SetPosition(spawnPosition).Build();
+				}
 			}
 			PoolManager.Instance.TryReturn(gameObject);
 		}

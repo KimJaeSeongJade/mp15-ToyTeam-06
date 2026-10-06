@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MonsterAnimHandler : MonoBehaviour
@@ -10,8 +11,9 @@ public class MonsterAnimHandler : MonoBehaviour
 	[SerializeField] private string dieAnimParam;
 
 	[SerializeField] private string endAttackAnim;
-
+	[SerializeField] private string endDieAnim;
 	public string EndAttackAnim => endAttackAnim;
+	public string EndDieAnim => endDieAnim;
 
 	private void Awake()
 	{
@@ -37,6 +39,7 @@ public class MonsterAnimHandler : MonoBehaviour
 	{
 		animator.Play(dieAnimParam);
 	}
+
 
 	private void CacheComponents()
 	{

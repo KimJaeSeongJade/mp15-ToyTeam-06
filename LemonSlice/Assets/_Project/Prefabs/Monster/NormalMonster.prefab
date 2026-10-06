@@ -360,6 +360,7 @@ MonoBehaviour:
   attackAnimParam: ZombieAttack
   dieAnimParam: ZombieDie
   endAttackAnim: EndAttackAnim
+  endDieAnim: EndDieAnim
 --- !u!54 &3361702422341419856
 Rigidbody:
   m_ObjectHideFlags: 0

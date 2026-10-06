@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6afb1cd9c6b7d49a58656e545aa659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isDestroyedOnManager: 0
+  _isDestroyedOnManager: 1
 --- !u!4 &767246344
 Transform:
   m_ObjectHideFlags: 0
@@ -609,6 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd626cab0279b424a803a733c75ba10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isDestroyedOnManager: 0
   spawnPoint: {fileID: 1171965952}
   itemBoxPrefab: {fileID: 3566777353912687509, guid: 9e06cb185aaac3448b1eaac255da6e53, type: 3}
   itemBoxList:

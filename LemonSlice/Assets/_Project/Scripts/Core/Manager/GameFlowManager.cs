@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameFlowManager : MonoBehaviour
+public class GameFlowManager : SingletonBehaviour<GameFlowManager>
 {
 	[SerializeField] private GameObject spawnPoint;
 	[SerializeField] private GameObject itemBoxPrefab;
 	[SerializeField] private List<Transform> itemBoxList;
-	private bool _isStageClear;
+
+	public bool IsPlayerDead { get; set; }
+	public bool IsBossDead { get; set; }
 
 	private void Start()
 	{
@@ -15,19 +17,24 @@ public class GameFlowManager : MonoBehaviour
 
 	private void Update()
 	{
-		CheckStageClear();
+		CheckStageState();
 	}
 
-	private void CheckStageClear()
+	private void CheckStageState()
 	{
-		if (_isStageClear)
+		if (IsBossDead)
 		{
 			GameManager.Instance.ChangeState(GameState.StageClear);
+		} else if (IsPlayerDead)
+		{
+			GameManager.Instance.ChangeState(GameState.GameOver);
 		}
 	}
 
 	private void InitStage()
 	{
+		IsPlayerDead = false;
+		IsBossDead = false;
 		spawnPoint.SetActive(false);
 		Spawn(itemBoxList, itemBoxPrefab);
 	}

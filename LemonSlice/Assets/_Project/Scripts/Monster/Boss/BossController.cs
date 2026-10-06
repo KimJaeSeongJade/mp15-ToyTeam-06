@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class BossController : MonoBehaviour, IDamageable
+public class BossController : MonoBehaviour, IDamageable, ILockonable
 {
 	[SerializeField] private string _stateType;
+	[SerializeField] private Image _lockOnUi;
 
 	private BossAnimationHandler _animHandler;
 	private BossContext _ctx;
@@ -27,6 +29,7 @@ public class BossController : MonoBehaviour, IDamageable
 	private void Update()
 	{
 		_machine.Tick();
+		RotateUI();
 		_stateType = _machine.Current.GetType().ToString();
 	}
 
@@ -85,4 +88,19 @@ public class BossController : MonoBehaviour, IDamageable
 			_machine.ChangeState(StateType.Die);
 		}
 	}
+
+	public void SetLockOnUi(bool lockOn)
+	{
+		_lockOnUi.gameObject.SetActive(lockOn);
+	}
+
+	private void RotateUI()
+	{
+		if (!_lockOnUi.gameObject.activeSelf) return;
+
+		Transform cameraTransform = Camera.main.transform;
+
+		_lockOnUi.rectTransform.LookAt(cameraTransform);
+	}
+
 }

@@ -60,6 +60,11 @@ public class MonsterAttackState : StateBase<MonsterContext>
 		}
 	}
 
+	public override void Exit()
+	{
+		CloseHitBoxes();
+	}
+
 	public override void OnAnimEvent(string animEvent)
 	{
 		if (animEvent == _ctx.animHandler.EndAttackAnim)

@@ -11,6 +11,7 @@ public class AreaTrigger : MonoBehaviour
 	[SerializeField] private List<Transform> spawnList;
 
 	private bool _canActivate;
+
 	private void Start()
 	{
 		_canActivate = true;
@@ -18,6 +19,11 @@ public class AreaTrigger : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if (!_canActivate)
+		{
+			return;
+		}
+
 		if (targetLayerMask.Contains(other.gameObject.layer))
 		{
 			_canActivate = false;

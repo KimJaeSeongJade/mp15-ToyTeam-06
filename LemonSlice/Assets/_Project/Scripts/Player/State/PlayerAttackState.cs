@@ -49,6 +49,7 @@ public class PlayerAttackState : StateBase<PlayerContext>
 
 	public override void Exit()
 	{
+		CloseHitBox();
 	}
 
 	public override void OnAnimEvent(string animEvent)

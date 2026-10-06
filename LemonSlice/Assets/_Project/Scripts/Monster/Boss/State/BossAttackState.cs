@@ -34,6 +34,11 @@ public class BossAttackState : StateBase<BossContext>
 		}
 	}
 
+	public override void Exit()
+	{
+		_ctx.hitBox.Close();
+	}
+
 	public override void OnAnimEvent(string animEvent)
 	{
 		if (animEvent == _ctx.animHandler.EndMinoAttack)

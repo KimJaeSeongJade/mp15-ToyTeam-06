@@ -21,7 +21,7 @@ public class AttackHitBox : MonoBehaviour
 		{
 			return;
 		}
-		
+
 		_targets.Add(other);
 		IDamageable target = other.GetComponent<IDamageable>();
 

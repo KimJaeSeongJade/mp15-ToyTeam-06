@@ -6,3 +6,5 @@ public enum GameState
 	GameOver, // 게임 오버
 	StageClear,
 }
+
+

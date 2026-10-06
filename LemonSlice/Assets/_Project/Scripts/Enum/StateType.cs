@@ -6,5 +6,8 @@ public enum StateType
 	Roll,
 	Knockback,
 	Groggy,
-	Die
+	Die,
+	Chase,
+	Hit,
+	KnockDown,
 }

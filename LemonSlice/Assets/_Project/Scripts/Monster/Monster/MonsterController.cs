@@ -6,6 +6,8 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 	[SerializeField] private string _stateType;
 	[SerializeField] private GameObject _coin;
 	[SerializeField] private Image _lockOnUi;
+	[SerializeField] private string _leftHitBoxTag;
+	[SerializeField] private string _rightHitBoxTag;
 
 	private MonsterAnimHandler _animHandler;
 	private MonsterContext _ctx;
@@ -13,7 +15,9 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 	private MonsterDetection _monsterDetection;
 	private Rigidbody _rigidbody;
 	private MonsterStat _stat;
-	private AttackHitBox _hitBox;
+	private AttackHitBox _leftHitBox;
+	private AttackHitBox _rightHitBox;
+	private AttackHitBox[] _hitBoxes;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -39,7 +43,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 		_rigidbody = GetComponent<Rigidbody>();
 		_animHandler = GetComponent<MonsterAnimHandler>();
 		_monsterDetection = GetComponentInChildren<MonsterDetection>();
-		_hitBox = GetComponentInChildren<AttackHitBox>();
+		GetComponentHitBoxes();
 	}
 
 	private void BindContext()
@@ -52,7 +56,8 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 			rigidbody = _rigidbody,
 			monsterDetection = _monsterDetection,
 			coin = _coin,
-			hitBox = _hitBox
+			leftHitBox = _leftHitBox,
+			rightHitBox = _rightHitBox,
 		};
 	}
 
@@ -89,11 +94,30 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 
 	private void RotateUI()
 	{
-		if (!_lockOnUi.gameObject.activeSelf) return;
+		if (!_lockOnUi.gameObject.activeSelf)
+		{
+			return;
+		}
 
 		Transform cameraTransform = Camera.main.transform;
 
 		_lockOnUi.rectTransform.LookAt(cameraTransform);
+	}
+
+	private void GetComponentHitBoxes()
+	{
+		AttackHitBox[] hitBoxes = GetComponentsInChildren<AttackHitBox>();
+		for (int i = 0; i < hitBoxes.Length; i++)
+		{
+			if (hitBoxes[i].gameObject.tag.Equals(_leftHitBoxTag))
+			{
+				_leftHitBox = hitBoxes[i];
+			}
+			else
+			{
+				_rightHitBox = hitBoxes[i];
+			}
+		}
 	}
 
 	public PoolType PoolId => PoolType.Monster;

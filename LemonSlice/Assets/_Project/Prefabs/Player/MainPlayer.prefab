@@ -1894,14 +1894,13 @@ MonoBehaviour:
   animator: {fileID: 1123290915511357033}
   moveXParam: moveX
   moveZParam: moveZ
-  moveAnimParam: IdleAndMove
-  rollAnimParam: PaladinRoll
-  attackAnimParam: PaladinAttack
-  dieAnimParam: PaladinDeath
-  endRollAnim: EndRollAnim
-  endAttackAnim: EndAttackAnim
-  openCombo: OpenCombo
-  closeCombo: CloseCombo
+  idleAndMoveAnimName: IdleAndMove
+  rollAnimName: PaladinRoll
+  attackAnimName: PaladinAttack
+  dieAnimName: PaladinDeath
+  hitAnimName: Hit
+  knockDownAnimName: KnockDown
+  hitAnimCount: 2
 --- !u!1 &6357094980701122142
 GameObject:
   m_ObjectHideFlags: 0

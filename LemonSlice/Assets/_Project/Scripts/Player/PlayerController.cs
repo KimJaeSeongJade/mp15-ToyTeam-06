@@ -53,14 +53,23 @@ public class PlayerController : MonoBehaviour, IDamageable
 
 	public void TakeDamage(DamageInfo damageInfo)
 	{
+
+		if (_stat.IsInvincible)
+		{
+			return;
+		}
+
 		_stat.currentHealth.Value -= damageInfo.Damage;
-		Debug.Log($"HP - {_stat.currentHealth.Value}");
-		// // TODO 플레이어 그로기관련 데이터 추가 후 구현
-		// Debug.Log(damageInfo.DownValue);
+		_stat.DownPoint -= damageInfo.DownValue;
+		_ctx.hitDirection = damageInfo.HitDirection;
 
 		if (_stat.currentHealth.Value <= 0)
 		{
 			_machine.ChangeState(StateType.Die);
+		}
+		else if (_stat.DownPoint <= 0)
+		{
+			_machine.ChangeState(StateType.KnockDown);
 		}
 		else
 		{
@@ -93,6 +102,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 		_machine.Add(StateType.Attack, new PlayerAttackState(_ctx, _machine));
 		_machine.Add(StateType.Die, new PlayerDieState(_ctx, _machine));
 		_machine.Add(StateType.Hit, new PlayerHitState(_ctx, _machine));
+		_machine.Add(StateType.KnockDown, new PlayerKnockDownState(_ctx, _machine));
 	}
 
 	public void OnAnimEvent(string animEvent)

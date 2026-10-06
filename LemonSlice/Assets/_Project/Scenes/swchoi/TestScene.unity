@@ -330,13 +330,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2742753561888817850, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
+      propertyPath: standUpAnimName
+      value: StandUp
+      objectReference: {fileID: 0}
     - target: {fileID: 6334943611611487210, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
       propertyPath: m_Name
       value: MainPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 6409730923320831175, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
-      propertyPath: maxHealth
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8527259389980699356, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
       propertyPath: m_LocalPosition.x

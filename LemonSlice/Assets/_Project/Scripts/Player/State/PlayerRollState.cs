@@ -10,6 +10,7 @@ public class PlayerRollState : StateBase<PlayerContext>
 
 	public override void Enter()
 	{
+		_ctx.stat.SetInvincible(true);
 		_ctx.animHandler.PlayRollAnim();
 		SetRollVelocity();
 		// PlayerLayerMask 변경으로 무적처리
@@ -48,7 +49,7 @@ public class PlayerRollState : StateBase<PlayerContext>
 
 	public override void Exit()
 	{
-		// PlayerLayerMask 원복
+		_ctx.stat.SetInvincible(false);
 		_ctx.animHandler.PlayIdleAndMoveAnim();
 		_ctx.rigidbody.velocity = Vector3.zero;
 		_ctx.animHandler.SetMoveParam(Vector3.zero);

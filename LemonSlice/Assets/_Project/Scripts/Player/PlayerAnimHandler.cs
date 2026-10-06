@@ -12,6 +12,7 @@ public class PlayerAnimHandler : MonoBehaviour
 	[SerializeField] private string dieAnimName;
 	[SerializeField] private string hitAnimName;
 	[SerializeField] private string knockDownAnimName;
+	[SerializeField] private string standUpAnimName;
 
 	[SerializeField] private int hitAnimCount;
 	private void Awake()
@@ -21,12 +22,14 @@ public class PlayerAnimHandler : MonoBehaviour
 
 	public void PlayIdleAndMoveAnim()
 	{
-		animator.CrossFade(idleAndMoveAnimName,0.1f);
+		// animator.CrossFade(idleAndMoveAnimName,0.1f);
+		animator.Play(idleAndMoveAnimName);
 	}
 
 	public void PlayRollAnim()
 	{
-		animator.CrossFade(rollAnimName,0.1f);
+		// animator.CrossFade(rollAnimName,0.5f);
+		animator.Play(rollAnimName);
 	}
 
 	public void PlayAttackAnim(int animIndex)
@@ -49,6 +52,11 @@ public class PlayerAnimHandler : MonoBehaviour
 	public void PlayKnockDownAnim()
 	{
 		animator.Play(knockDownAnimName);
+	}
+
+	public void PlayStandUpAnim()
+	{
+		animator.Play(standUpAnimName);
 	}
 
 	public void SetMoveParam(Vector3 input)

@@ -11,4 +11,6 @@ public class MonsterContext : IContext
 	public GameObject coin;
 	public AttackHitBox leftHitBox;
 	public AttackHitBox rightHitBox;
+
+	public Vector3 hitDirection;
 }

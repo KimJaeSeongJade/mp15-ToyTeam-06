@@ -1,17 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerKnockDownState : StateBase<PlayerContext>
+public class MonsterKnockDownState : StateBase<MonsterContext>
 {
-
-	private bool canRollUp;
-	public PlayerKnockDownState(PlayerContext context, StateMachine<PlayerContext> stateMachine) : base(context,
+	public MonsterKnockDownState(MonsterContext context, StateMachine<MonsterContext> stateMachine) : base(context,
 		stateMachine)
 	{
 	}
 
 	public override void Enter()
 	{
-		canRollUp = false;
 		_ctx.stat.DownPoint = _ctx.stat.MaxDownPoint;
 		_ctx.stat.IsInvincible = true;
 		_ctx.animHandler.PlayKnockDownAnim();
@@ -19,24 +18,11 @@ public class PlayerKnockDownState : StateBase<PlayerContext>
 		_ctx.rigidbody.AddForce(_ctx.hitDirection * 3.0f, ForceMode.Impulse);
 	}
 
-	public override void Tick()
-	{
-		if (_ctx.input.IsRollPressed && canRollUp)
-		{
-			_fsm.ChangeState(StateType.Roll);
-			return;
-		}
-	}
-
 	public override void OnAnimEvent(string animEvent)
 	{
 		switch (animEvent)
 		{
-			case AnimEvents.CanRollUp:
-				canRollUp = true;
-				break;
 			case AnimEvents.EndKnockDownAnim:
-				canRollUp = false;
 				_ctx.animHandler.PlayStandUpAnim();
 				break;
 			case AnimEvents.EndStandUpAnim:

@@ -13,14 +13,17 @@ public class PlayerStat : MonoBehaviour
 
 	public ObservableProperty<int> currentHealth = new(0); // 현재 체력
 	public ObservableProperty<int> currentStamina = new(0); // 현재 스테미나
+
 	private bool _isInvincible;
 
 	public float MoveSpeed => moveSpeed;
 	public float RollSpeed => rollSpeed;
 	public int AttackPower => attackPower;
 	public int MaxDownPoint => maxDownPoint;
-	public int DownPoint { get; set; }
-	public bool IsInvincible => _isInvincible;
+	public bool IsInvincible { get => _isInvincible; set => _isInvincible = value; }
+	public int DownPoint { get => downPoint; set => downPoint = value; }
+
+
 
 	// -------이벤트 함수--------
 
@@ -32,10 +35,5 @@ public class PlayerStat : MonoBehaviour
 	{
 		currentHealth.Value = maxHealth;
 		currentStamina.Value = maxStamina;
-	}
-
-	public void SetInvincible(bool invincible)
-	{
-		_isInvincible = invincible;
 	}
 }

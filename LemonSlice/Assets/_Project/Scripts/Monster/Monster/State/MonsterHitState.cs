@@ -1,6 +1,11 @@
-public class PlayerHitState : StateBase<PlayerContext>
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MonsterHitState : StateBase<MonsterContext>
 {
-	public PlayerHitState(PlayerContext context, StateMachine<PlayerContext> stateMachine) : base(context, stateMachine)
+	public MonsterHitState(MonsterContext monsterContext, StateMachine<MonsterContext> stateMachine) : base(
+		monsterContext, stateMachine)
 	{
 	}
 

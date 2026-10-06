@@ -338,12 +338,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8234f50d011b5438ccf8e903a11a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 10000
   moveSpeed: 3
   attackPower: 1
   rotationSpeed: 3
   attackDelay: 0.7
   attackDistance: 1
+  downPoint: 100
+  maxDownPoint: 100
 --- !u!114 &6898748341372869017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +365,10 @@ MonoBehaviour:
   dieAnimParam: ZombieDie
   endAttackAnim: EndAttackAnim
   endDieAnim: EndDieAnim
+  hitAnimName: Hit
+  knockDownAnimName: KnockDown
+  standUpAnimName: StandUp
+  hitAnimCount: 2
 --- !u!54 &3361702422341419856
 Rigidbody:
   m_ObjectHideFlags: 0

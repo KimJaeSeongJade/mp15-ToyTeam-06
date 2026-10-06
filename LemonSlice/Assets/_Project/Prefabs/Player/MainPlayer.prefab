@@ -1873,14 +1873,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fae3aeff6bbdfc48ba498ab4037c7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 50
   maxStamina: 0
   attackPower: 10
   moveSpeed: 5
   invincibleTime: 0
   rollSpeed: 1.5
-  downPoint: 1
-  maxDownPoint: 3
+  downPoint: 100
+  maxDownPoint: 100
 --- !u!114 &2742753561888817850
 MonoBehaviour:
   m_ObjectHideFlags: 0

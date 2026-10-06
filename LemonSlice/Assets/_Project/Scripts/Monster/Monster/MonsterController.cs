@@ -70,6 +70,8 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 		_machine.Add(StateType.Attack, new MonsterAttackState(_ctx, _machine));
 		_machine.Add(StateType.Die, new MonsterDieState(_ctx, _machine));
 		_machine.Add(StateType.Knockback, new MonsterKnockbackState(_ctx, _machine));
+		_machine.Add(StateType.Hit, new MonsterHitState(_ctx, _machine));
+		_machine.Add(StateType.KnockDown, new MonsterKnockDownState(_ctx, _machine));
 	}
 
 	public void OnAnimEvent(string animEvent)
@@ -79,11 +81,26 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 
 	public void TakeDamage(DamageInfo damageInfo)
 	{
+		if (_ctx.stat.IsInvincible)
+		{
+			return;
+		}
+
 		_stat.currentHealth.Value -= damageInfo.Damage;
+		_stat.DownPoint -= damageInfo.DownValue;
+		_ctx.hitDirection = damageInfo.HitDirection;
 
 		if (_stat.currentHealth.Value <= 0)
 		{
 			_machine.ChangeState(StateType.Die);
+		}
+		else if (_stat.DownPoint <= 0)
+		{
+			_machine.ChangeState(StateType.KnockDown);
+		}
+		else
+		{
+			_machine.ChangeState(StateType.Hit);
 		}
 	}
 

@@ -24,7 +24,7 @@ public class MonsterChaseState : StateBase<MonsterContext>
 
 		if (distance < _ctx.stat.AttackDistance)
 		{
-			_fsm.ChangeState(StateType.Attack);
+			// _fsm.ChangeState(StateType.Attack);
 		}
 
 		Vector3 direction = (_ctx.monsterDetection.TargetTransform.position - _ctx.transform.position).normalized;

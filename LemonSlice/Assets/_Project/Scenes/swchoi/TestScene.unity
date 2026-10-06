@@ -330,10 +330,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2742753561888817850, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
-      propertyPath: standUpAnimName
-      value: StandUp
-      objectReference: {fileID: 0}
     - target: {fileID: 6334943611611487210, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
       propertyPath: m_Name
       value: MainPlayer
@@ -391,6 +387,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2452185569834478213, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+      propertyPath: downPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452185569834478213, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+      propertyPath: maxHealth
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452185569834478213, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+      propertyPath: maxDownPoint
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6834765088764081975, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.8778188
@@ -430,6 +438,22 @@ PrefabInstance:
     - target: {fileID: 6834765088764081975, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898748341372869017, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+      propertyPath: hitAnimName
+      value: Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898748341372869017, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+      propertyPath: hitAnimCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898748341372869017, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+      propertyPath: standUpAnimName
+      value: StandUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898748341372869017, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+      propertyPath: knockDownAnimName
+      value: KnockDown
       objectReference: {fileID: 0}
     - target: {fileID: 8472229039808612870, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
       propertyPath: m_Name

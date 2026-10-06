@@ -71,16 +71,16 @@ public class BossController : MonoBehaviour, IDamageable
 
 	public void TakeDamage(DamageInfo damageInfo)
 	{
-		_stat.currentHealth.Value -= damageInfo.Damage;
-		_stat.currentGroggy.Value -= damageInfo.DownValue;
+		_stat.CurrentHealth.Value -= damageInfo.Damage;
+		_stat.CurrentGroggy.Value -= damageInfo.DownValue;
 
-		if (_stat.currentHealth.Value > 0 && _stat.currentGroggy.Value <= 0)
+		if (_stat.CurrentHealth.Value > 0 && _stat.CurrentGroggy.Value <= 0)
 		{
 			_stat.SetFullGroggy();
 			_machine.ChangeState(StateType.Groggy);
 		}
 
-		if (_stat.currentHealth.Value <= 0)
+		if (_stat.CurrentHealth.Value <= 0)
 		{
 			_machine.ChangeState(StateType.Die);
 		}

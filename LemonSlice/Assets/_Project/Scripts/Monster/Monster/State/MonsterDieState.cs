@@ -20,6 +20,8 @@ public class MonsterDieState : StateBase<MonsterContext>
 
 	private void DropCoin()
 	{
+		_ctx.monsterDetection.TargetTransform.GetComponentInChildren<LockOnController>()
+			.RemoveEnemy(_ctx.transform.gameObject);
 
 		int count = Random.Range(1, 5);
 
@@ -33,8 +35,8 @@ public class MonsterDieState : StateBase<MonsterContext>
 
 			GameObject go = PoolManager.Instance.Take(_ctx.coin).SetPosition(coinPosition
 			).Build();
-			/*Rigidbody rigidbody = go.GetComponent<Rigidbody>();
-			rigidbody.AddForce(coinPosition, ForceMode.VelocityChange);*/
+			Rigidbody rigidbody = go.GetComponent<Rigidbody>();
+			rigidbody.AddForce(coinPosition, ForceMode.VelocityChange);
 		}
 	}
 }

@@ -10,12 +10,14 @@ public class EndingUIController : MonoBehaviour
 	[SerializeField] private Button _exitCreditButton;
 	[SerializeField] private GameObject _creditPanel; // 크레딧 판넬
 	[SerializeField] private TextMeshProUGUI _clearTimeText; // 클리어타임 텍스트
+	[SerializeField] private TextMeshProUGUI _totalCoinText; // 총 코인 텍스트
 
 	private void Start()
 	{
 		CloseCredit();
 		BindButtonEvents();
-		CheckClearTime(0);
+		RefreshClearTime();
+		RefreshTotalCoin();
 	}
 
 	private void OnDisable()
@@ -23,12 +25,18 @@ public class EndingUIController : MonoBehaviour
 		UnBindButtonEvents();
 	}
 
-	public void CheckClearTime(int totalSeconds)
+	private void RefreshClearTime()
 	{
-		totalSeconds = (int)GameManager.Instance.PlayTime; // 소수점 안 찍히게 Int로 전환
+		int totalSeconds = (int)GameManager.Instance.PlayTime; // 소수점 안 찍히게 Int로 전환
 		int min = totalSeconds / 60; // 60초로 나눠서 분 계산
 		int sec = totalSeconds % 60; // 60초로 나누고 나머지로 초 계산
 		_clearTimeText.text = $"Clear Time : {min:00} : {sec:00}";
+	}
+
+	private void RefreshTotalCoin()
+	{
+		int totalCoin = GameManager.Instance.CurrentScore;
+		_totalCoinText.text = $"Total Coin : {totalCoin:00}";
 	}
 
 	private void BindButtonEvents()

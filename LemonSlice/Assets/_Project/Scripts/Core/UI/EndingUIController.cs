@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,21 +11,6 @@ public class EndingUIController : MonoBehaviour
 	[SerializeField] private GameObject _creditPanel; // 크레딧 판넬
 	[SerializeField] private TextMeshProUGUI _clearTimeText; // 클리어타임 텍스트
 
-	//private GameManager _gameManager;
-
-	public void CheckClearTime(int totalSeconds)
-	{
-		totalSeconds = (int)GameManager.Instance.PlayTime; // 소수점 안 찍히게 Int로 전환
-		int min = totalSeconds / 60; // 60초로 나눠서 분 계산
-		int sec = totalSeconds % 60; // 60초로 나누고 나머지로 초 계산
-		_clearTimeText.text = $"Clear Time : {min:00} : {sec:00}";
-	}
-
-	private void Awake()
-	{
-		//_gameManager = FindObjectOfType<GameManager>();
-	}
-
 	private void Start()
 	{
 		CloseCredit();
@@ -37,6 +21,14 @@ public class EndingUIController : MonoBehaviour
 	private void OnDisable()
 	{
 		UnBindButtonEvents();
+	}
+
+	public void CheckClearTime(int totalSeconds)
+	{
+		totalSeconds = (int)GameManager.Instance.PlayTime; // 소수점 안 찍히게 Int로 전환
+		int min = totalSeconds / 60; // 60초로 나눠서 분 계산
+		int sec = totalSeconds % 60; // 60초로 나누고 나머지로 초 계산
+		_clearTimeText.text = $"Clear Time : {min:00} : {sec:00}";
 	}
 
 	private void BindButtonEvents()

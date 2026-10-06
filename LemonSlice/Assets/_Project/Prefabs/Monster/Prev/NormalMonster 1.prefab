@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.3}
-  m_SizeDelta: {x: 0.4, y: 0.6}
+  m_AnchoredPosition: {x: 0, y: 2.5}
+  m_SizeDelta: {x: 0.2, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6226651481552176816
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d3c7d37aa28f9594fb6e3d631039e77a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 6898748341372869017}
   - component: {fileID: 3361702422341419856}
   m_Layer: 8
-  m_Name: NormalMonster
+  m_Name: NormalMonster 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ Transform:
   - {fileID: 1313477017535409964}
   - {fileID: 5807088651025709316}
   - {fileID: 3599822418713810800}
-  - {fileID: 7345676800529367089}
+  - {fileID: 2753244094078733483}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &4161469801413997880
@@ -389,7 +389,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!1001 &5612155356734301999
+--- !u!1001 &1019514756552518581
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -397,9 +397,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6834765088764081975}
     m_Modifications:
+    - target: {fileID: 1046863752393118590, guid: e84c40719cee66744925cce01bef28fc, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046863752393118590, guid: e84c40719cee66744925cce01bef28fc, type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2705533495200665743, guid: e84c40719cee66744925cce01bef28fc, type: 3}
       propertyPath: m_Name
       value: vfx_Lightning_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705533495200665743, guid: e84c40719cee66744925cce01bef28fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2887783377230210846, guid: e84c40719cee66744925cce01bef28fc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -407,7 +419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2887783377230210846, guid: e84c40719cee66744925cce01bef28fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.98
+      value: 3.595
       objectReference: {fileID: 0}
     - target: {fileID: 2887783377230210846, guid: e84c40719cee66744925cce01bef28fc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -446,10 +458,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e84c40719cee66744925cce01bef28fc, type: 3}
---- !u!4 &7345676800529367089 stripped
+--- !u!4 &2753244094078733483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2887783377230210846, guid: e84c40719cee66744925cce01bef28fc, type: 3}
-  m_PrefabInstance: {fileID: 5612155356734301999}
+  m_PrefabInstance: {fileID: 1019514756552518581}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5734652938412017569
 PrefabInstance:

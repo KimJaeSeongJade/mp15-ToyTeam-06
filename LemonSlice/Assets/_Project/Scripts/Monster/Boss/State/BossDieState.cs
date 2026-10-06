@@ -12,6 +12,7 @@ public class BossDieState : StateBase<BossContext>
 		_ctx.animHandler.PlayDieAnim();
 
 		_ctx.transform.GetComponent<CapsuleCollider>().enabled = false;
-		// 아이템 드랍 or 게임 클리어
+
+		GameFlowManager.Instance.IsBossDead = true;
 	}
 }

@@ -10,10 +10,17 @@ public class AreaTrigger : MonoBehaviour
 	[SerializeField] private GameObject prefab;
 	[SerializeField] private List<Transform> spawnList;
 
+	private bool _canActivate;
+	private void Start()
+	{
+		_canActivate = true;
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
 		if (targetLayerMask.Contains(other.gameObject.layer))
 		{
+			_canActivate = false;
 			flowManager.EnterArea(spawnList, prefab);
 		}
 	}

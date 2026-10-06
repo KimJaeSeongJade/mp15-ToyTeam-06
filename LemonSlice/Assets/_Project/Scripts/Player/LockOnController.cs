@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class LockOnController : MonoBehaviour
 {
-	private List<Transform> enemyLists = new();
-
 	private Transform currentTarget;
+	private List<Transform> enemyLists = new();
+	private MonsterController monster;
 
 	// ---------------------
 
@@ -13,7 +13,10 @@ public class LockOnController : MonoBehaviour
 	{
 		for (int i = 0; i < enemyLists.Count; i++)
 		{
-			if (enemy == enemyLists[i].gameObject) return;
+			if (enemy == enemyLists[i].gameObject)
+			{
+				return;
+			}
 		}
 
 		enemyLists.Add(enemy.transform);
@@ -25,6 +28,9 @@ public class LockOnController : MonoBehaviour
 		{
 			if (enemy == enemyLists[i].gameObject)
 			{
+				monster = enemy.GetComponent<MonsterController>();
+				monster.SetLockOnUi(false);
+
 				enemyLists.RemoveAt(i);
 				break;
 			}
@@ -32,14 +38,16 @@ public class LockOnController : MonoBehaviour
 
 		if (currentTarget != null && enemy == currentTarget.gameObject)
 		{
-			currentTarget = null;
+			ClearLockOn();
 		}
 	}
 
 	public bool TryLockOn()
 	{
-
-		if (enemyLists.Count == 0) return false;
+		if (enemyLists.Count == 0)
+		{
+			return false;
+		}
 
 		currentTarget = enemyLists[0];
 		return true;
@@ -47,6 +55,12 @@ public class LockOnController : MonoBehaviour
 
 	public void ClearLockOn()
 	{
+		for (int i = 0; i < enemyLists.Count; i++)
+		{
+			monster = enemyLists[i].GetComponent<MonsterController>();
+			monster.SetLockOnUi(false);
+		}
+
 		currentTarget = null;
 	}
 
@@ -57,12 +71,18 @@ public class LockOnController : MonoBehaviour
 
 	public Transform LockOn()
 	{
+		monster = currentTarget.GetComponent<MonsterController>();
+		monster.SetLockOnUi(true);
+
 		return currentTarget;
 	}
 
 	public void ChangeLockOn()
 	{
-		if (currentTarget == null || enemyLists.Count == 0) return;
+		if (currentTarget == null || enemyLists.Count == 0)
+		{
+			return;
+		}
 
 		int currentIndex = enemyLists.IndexOf(currentTarget);
 
@@ -71,6 +91,8 @@ public class LockOnController : MonoBehaviour
 		{
 			currentIndex = 0;
 		}
+
+		ClearLockOn();
 
 		currentTarget = enemyLists[currentIndex];
 	}

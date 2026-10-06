@@ -28,6 +28,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 	private void Update()
 	{
 		_machine.Tick();
+		RotateUI();
 	}
 
 	// --------------------------------
@@ -84,6 +85,15 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 	public void SetLockOnUi(bool lockOn)
 	{
 		_lockOnUi.gameObject.SetActive(lockOn);
+	}
+
+	private void RotateUI()
+	{
+		if (!_lockOnUi.gameObject.activeSelf) return;
+
+		Transform cameraTransform = Camera.main.transform;
+
+		_lockOnUi.rectTransform.LookAt(cameraTransform);
 	}
 
 	public PoolType PoolId => PoolType.Monster;

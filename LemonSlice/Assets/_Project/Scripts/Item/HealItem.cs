@@ -3,6 +3,7 @@ using UnityEngine;
 public class HealItem : MonoBehaviour, IInteractable, IPoolable
 {
 	public LayerMask targetLayer;
+	public GameObject GameObject => gameObject;
 	private HealingPack healingPack;
 	private PlayerStat playerStat;
 
@@ -14,9 +15,6 @@ public class HealItem : MonoBehaviour, IInteractable, IPoolable
 			Interact(other.gameObject);
 		}
 	}
-
-	public GameObject GameObject => gameObject;
-
 
 	public void Interact(GameObject interactor)
 	{

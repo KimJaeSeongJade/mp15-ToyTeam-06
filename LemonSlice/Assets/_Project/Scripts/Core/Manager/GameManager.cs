@@ -20,9 +20,8 @@ public class GameManager : SingletonBehaviour<GameManager>
 	{
 		if (CurrentState == GameState.Playing)
 		{
-			PlayTime += Time.deltaTime;
+			PlayingTime();
 		}
-		// Debug.Log($"{CurrentScore}");
 	}
 
 	public void ChangeState(GameState state)
@@ -30,7 +29,8 @@ public class GameManager : SingletonBehaviour<GameManager>
 		CurrentState = state; // 게임 상태 변경
 		if (CurrentState == GameState.Playing)
 		{
-			PlayingTime();
+			// 씬 이름 추후에 추가
+			// SceneManager.LoadScene("");
 			LockCursor();
 
 			Time.timeScale = 1;
@@ -62,10 +62,7 @@ public class GameManager : SingletonBehaviour<GameManager>
 
 	private void PlayingTime()
 	{
-		if (CurrentState == GameState.Playing)
-		{
-			PlayTime += Time.deltaTime;
-		}
+		PlayTime += Time.deltaTime;
 	}
 
 	public void ResetGameData()

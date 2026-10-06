@@ -10,9 +10,10 @@ public class BossStat : MonoBehaviour
 	[SerializeField] private float attackDelay;
 	[SerializeField] private float attackDistance;
 
-
-	public ObservableProperty<int> currentGroggy = new(0);
-	public ObservableProperty<int> currentHealth = new(0);
+	public ObservableProperty<int> CurrentGroggy = new(0);
+	public ObservableProperty<int> CurrentHealth = new(0);
+	public ObservableProperty<int> MaxGroggy = new(0);
+	public ObservableProperty<int> MaxHealth = new(0);
 
 	public float GroggyTime => groggyTime;
 	public float MoveSpeed => moveSpeed;
@@ -28,12 +29,14 @@ public class BossStat : MonoBehaviour
 
 	private void Init()
 	{
-		currentHealth.Value = maxHealth;
-		currentGroggy.Value = maxGroggy;
+		CurrentHealth.Value = maxHealth;
+		MaxHealth.Value = maxHealth;
+		CurrentGroggy.Value = maxGroggy;
+		MaxGroggy.Value = maxGroggy;
 	}
 
 	public void SetFullGroggy()
 	{
-		currentGroggy.Value = maxGroggy;
+		CurrentGroggy.Value = maxGroggy;
 	}
 }

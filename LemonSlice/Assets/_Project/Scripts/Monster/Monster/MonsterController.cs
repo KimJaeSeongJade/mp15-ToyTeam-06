@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MonsterController : MonoBehaviour, IPoolable, IDamageable
+public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockonable
 {
 	[SerializeField] private string _stateType;
 	[SerializeField] private GameObject _coin;
@@ -89,6 +89,8 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable
 		_stat.currentHealth.Value -= damageInfo.Damage;
 		_stat.DownPoint -= damageInfo.DownValue;
 		_ctx.hitDirection = damageInfo.HitDirection;
+
+		//_machine.ChangeState(StateType.Knockback);
 
 		if (_stat.currentHealth.Value <= 0)
 		{

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerUIController : MonoBehaviour
 {
+	/*
 	[SerializeField] private Image _playerHeart; // 하트 UI 프리팹 참조
 	[SerializeField] private Sprite _filledHeart;
 	[SerializeField] private Sprite _blankHeart; // 빈하트 UI 프리팹 참조
@@ -133,4 +134,5 @@ public class PlayerUIController : MonoBehaviour
 			HideStamina();
 		}
 	}
+	*/
 }

@@ -14,5 +14,7 @@ public class BossDieState : StateBase<BossContext>
 		_ctx.transform.GetComponent<CapsuleCollider>().enabled = false;
 
 		GameFlowManager.Instance.IsBossDead = true;
+
+		MainUIManager.Instance.SetBossUI(false);
 	}
 }

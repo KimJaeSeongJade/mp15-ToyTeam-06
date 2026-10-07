@@ -14,7 +14,13 @@ public class HealItem : MonoBehaviour, IInteractable, IPoolable
 		if ((targetLayer.value & layer) != 0)
 		{
 			Interact(other.gameObject);
+			if (healEffectPrefab != null)
+			{
+				Vector3 spawnPosition = new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y + 1f, other.gameObject.transform.position.z);
+				PoolManager.Instance.Take(healEffectPrefab).SetPosition(spawnPosition).Build();
+			}
 		}
+
 	}
 
 	public void Interact(GameObject interactor)
@@ -26,11 +32,6 @@ public class HealItem : MonoBehaviour, IInteractable, IPoolable
 			if (playerStat != null)
 			{
 				healingPack.Heal(playerStat);
-				if (healEffectPrefab != null)
-				{
-					Vector3 spawnPosition = interactor.transform.position;
-					PoolManager.Instance.Take(healEffectPrefab).SetPosition(spawnPosition).Build();
-				}
 			}
 			PoolManager.Instance.TryReturn(gameObject);
 		}

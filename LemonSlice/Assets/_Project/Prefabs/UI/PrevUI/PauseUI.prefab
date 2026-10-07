@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d3320137f101e4a8ceb8bea28b3440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countinueButton: {fileID: 7723037379548497953}
+  _continueButton: {fileID: 7723037379548497953}
   _quitButton: {fileID: 2636253538907825682}
   _titleButton: {fileID: 7988806866283412783}
 --- !u!1 &6808286683687945123

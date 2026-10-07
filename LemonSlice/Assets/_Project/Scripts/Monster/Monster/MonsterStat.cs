@@ -15,6 +15,7 @@ public class MonsterStat : MonoBehaviour
 	private bool _isInvincible;
 
 	public ObservableProperty<int> currentHealth = new(0);
+	public int MaxHealth => maxHealth;
 	public float MoveSpeed => moveSpeed;
 	public float AttackDelay => attackDelay;
 	public float AttackDistance => attackDistance;

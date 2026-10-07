@@ -73,7 +73,6 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_healPotionPool = GetPool(healPotionPrefab, healPotionPoolSize);
 		_healEffectPool = GetPool(healEffectPrefab, effectPoolSize);
 		_slashEffectPool = GetPool(slashEffectPrefab, slashEffectPoolSize);
-		_healPotionPool = GetPool(healEffectPrefab, effectPoolSize);
 		_bloodEffectPool = GetPool(bloodEffectPrefab, bloodEffectPoolSize);
 
 

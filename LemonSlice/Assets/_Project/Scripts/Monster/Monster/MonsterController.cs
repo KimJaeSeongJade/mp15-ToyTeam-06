@@ -33,6 +33,8 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 		{
 			_machine.ChangeState(StateType.Idle);
 		}
+
+		_ctx.stat.currentHealth.Value = _ctx.stat.MaxHealth;
 	}
 	private void Update()
 	{

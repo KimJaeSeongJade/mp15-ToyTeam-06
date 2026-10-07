@@ -1971,7 +1971,7 @@ MonoBehaviour:
   knockDownAnimName: KnockDown
   standUpAnimName: StandUp
   hitAnimCount: 2
-  slashEffect: {fileID: 5503505460791601945, guid: c7e1abc891ae02c4ca9d4139a47d7ef0, type: 3}
+  slashEffect: {fileID: 5503505460791601945, guid: 74c549d1b06b6b140a1fd9536eea637f, type: 3}
 --- !u!114 &49845405784521031
 MonoBehaviour:
   m_ObjectHideFlags: 0

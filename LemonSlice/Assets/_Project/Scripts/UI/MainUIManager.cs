@@ -8,6 +8,11 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	[SerializeField] private GameObject bossUI;
 	[SerializeField] private GameObject gameOverUI;
 
+	private void Start()
+	{
+		RefreshGameState();
+	}
+
 	private void Update()
 	{
 		RefreshTimeUI();
@@ -36,6 +41,11 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 		int sec = totalTime % 60;
 
 		totalTimeUI.text = $"PlayTime - {min:00} : {sec:00}";
+	}
+
+	private void RefreshGameState()
+	{
+		GameManager.Instance.ChangeState(GameState.Playing);
 	}
 
 	public void SetBossUI(bool isActive)

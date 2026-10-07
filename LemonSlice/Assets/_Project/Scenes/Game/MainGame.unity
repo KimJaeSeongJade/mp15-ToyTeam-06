@@ -605,7 +605,7 @@ MonoBehaviour:
   scoreUI: {fileID: 343800644}
   totalTimeUI: {fileID: 180794762}
   bossUI: {fileID: 2068444787}
-  pauseUI: {fileID: 1857792878}
+  pauseUI: {fileID: 1356868746}
   gameOverUI: {fileID: 496005576}
 --- !u!4 &1227391621
 Transform:
@@ -622,6 +622,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1356868746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3975940457460481593, guid: 8c28560a85cefc642944b2b1709e5e1a, type: 3}
+  m_PrefabInstance: {fileID: 1857792877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1418152755
 GameObject:
   m_ObjectHideFlags: 0

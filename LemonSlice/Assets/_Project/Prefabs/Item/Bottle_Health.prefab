@@ -5013,7 +5013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e8c6cf9bebbed4c9e9d7ac072152a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healEffectPrefab: {fileID: 2705533495200665743, guid: e84c40719cee66744925cce01bef28fc, type: 3}
+  healEffectPrefab: {fileID: 5290222006034240090, guid: 6c79bb67b4878bf4b999164f8c5b6d8f, type: 3}
   targetLayer:
     serializedVersion: 2
     m_Bits: 128

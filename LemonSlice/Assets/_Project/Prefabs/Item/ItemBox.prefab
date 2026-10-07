@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17732faa2153f246bb49fa5268e075a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healItem: {fileID: 3424695391542481708, guid: 38381d9ad15158f408dfab9570f6404d, type: 3}
+  _healItem: {fileID: 7909986089514754791, guid: 38381d9ad15158f408dfab9570f6404d, type: 3}
   _health: 1
 --- !u!54 &8358284384094845900
 Rigidbody:

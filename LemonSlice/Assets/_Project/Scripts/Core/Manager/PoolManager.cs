@@ -83,7 +83,6 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_dict.Add(PoolType.HealPotion, _healPotionPool);
 		_dict.Add(PoolType.HealEffect, _healEffectPool);
 		_dict.Add(PoolType.SlashEffect, _slashEffectPool);
-		_dict.Add(PoolType.HealEffect, _healPotionPool);
 		_dict.Add(PoolType.BloodEffect, _bloodEffectPool);
 
 	}

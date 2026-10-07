@@ -50,7 +50,14 @@ public class PlayerHitState : StateBase<PlayerContext>
 
 	private void PlayHitEffect()
 	{
-		// TODO 잘 보이지 않음
+		// TODO 이펙트 변경 필요함
+		// 플레이어 앞으로 표시되서 잘 안보임
+
+		if (_bloodEffect != null)
+		{
+			StopHitEffect();
+		}
+
 		Vector3 pos = _ctx.hitPoint;
 		Vector3 dir = _ctx.hitDirection;
 		_bloodEffect = EffectManager.Instance.PlayBloodEffect(pos, dir);

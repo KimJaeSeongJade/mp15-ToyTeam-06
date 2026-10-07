@@ -46,6 +46,11 @@ public class MonsterHitState : StateBase<MonsterContext>
 
 	private void PlayHitEffect()
 	{
+		if (_bloodEffect != null)
+		{
+			StopHitEffect();
+		}
+		
 		Vector3 pos = _ctx.hitPoint;
 		Vector3 dir = _ctx.hitDirection;
 		_bloodEffect = EffectManager.Instance.PlayBloodEffect(pos, dir);

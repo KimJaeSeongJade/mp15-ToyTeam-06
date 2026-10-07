@@ -90,27 +90,8 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 		{
 			return;
 		}
-
-		_stat.currentHealth.Value -= damageInfo.Damage;
-		_stat.DownPoint -= damageInfo.DownValue;
-		_ctx.hitDirection = damageInfo.HitDirection;
-		_ctx.knockDownDirection = damageInfo.KnockDownDirection;
-		_ctx.isUnderAttack = true;
-
-		//_machine.ChangeState(StateType.Knockback);
-
-		if (_stat.currentHealth.Value <= 0)
-		{
-			_machine.ChangeState(StateType.Die);
-		}
-		else if (_stat.DownPoint <= 0)
-		{
-			_machine.ChangeState(StateType.KnockDown);
-		}
-		else
-		{
-			_machine.ChangeState(StateType.Hit);
-		}
+		BindDamageInfo(damageInfo);
+		TryChangeState();
 	}
 
 	public void SetLockOnUi(bool lockOn)
@@ -143,6 +124,32 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 			{
 				_rightHitBox = hitBoxes[i];
 			}
+		}
+	}
+
+	private void BindDamageInfo(DamageInfo damageInfo)
+	{
+		_stat.currentHealth.Value -= damageInfo.Damage;
+		_stat.DownPoint -= damageInfo.DownValue;
+		_ctx.hitPoint = damageInfo.HitPoint;
+		_ctx.hitDirection = damageInfo.HitDirection;
+		_ctx.knockDownDirection = damageInfo.KnockDownDirection;
+		_ctx.isUnderAttack = true;
+	}
+
+	private void TryChangeState()
+	{
+		if (_stat.currentHealth.Value <= 0)
+		{
+			_machine.ChangeState(StateType.Die);
+		}
+		else if (_stat.DownPoint <= 0)
+		{
+			_machine.ChangeState(StateType.KnockDown);
+		}
+		else
+		{
+			_machine.ChangeState(StateType.Hit);
 		}
 	}
 

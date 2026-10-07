@@ -15,6 +15,8 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 	[SerializeField] private GameObject healPotionPrefab;
 	[SerializeField] private int healPotionPoolSize;
 
+	[SerializeField] private GameObject slashEffectPrefab;
+	[SerializeField] private int slashEffectPoolSize;
 	[SerializeField] private GameObject healEffectPrefab;
 	[SerializeField] private int effectPoolSize;
 
@@ -24,6 +26,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 	private Stack<GameObject> _coinPool;
 	private Stack<GameObject> _itemBoxPool;
 	private Stack<GameObject> _healPotionPool;
+	private Stack<GameObject> _slashEffectPool;
 	private Stack<GameObject> _healEffectPool;
 
 	private void Awake()
@@ -63,12 +66,14 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_coinPool = GetPool(coinPrefab, coinPoolSize);
 		_itemBoxPool = GetPool(itemBoxPrefab, itemBoxPoolSize);
 		_healPotionPool = GetPool(healPotionPrefab, healPotionPoolSize);
+		_slashEffectPool = GetPool(slashEffectPrefab, slashEffectPoolSize);
 		_healPotionPool = GetPool(healEffectPrefab, effectPoolSize);
 
 		_dict.Add(PoolType.Monster, _monsterPool);
 		_dict.Add(PoolType.Coin, _coinPool);
 		_dict.Add(PoolType.ItemBox, _itemBoxPool);
 		_dict.Add(PoolType.HealPotion, _healPotionPool);
+		_dict.Add(PoolType.SlashEffect, _slashEffectPool);
 		_dict.Add(PoolType.HealEffect, _healPotionPool);
 	}
 

@@ -15,6 +15,9 @@ public class PlayerAnimHandler : MonoBehaviour
 	[SerializeField] private string standUpAnimName;
 
 	[SerializeField] private int hitAnimCount;
+
+	[SerializeField] private GameObject slashEffect;
+
 	private void Awake()
 	{
 		CacheComponents();
@@ -35,6 +38,10 @@ public class PlayerAnimHandler : MonoBehaviour
 	public void PlayAttackAnim(int animIndex)
 	{
 		animator.Play($"{attackAnimName}{animIndex}");
+		PoolManager.Instance.Take(slashEffect).SetPosition(new Vector3(
+			this.gameObject.transform.position.x,
+			this.gameObject.transform.position.y + 1,
+			this.gameObject.transform.position.z)).Build();
 	}
 
 	public void PlayDieAnim()

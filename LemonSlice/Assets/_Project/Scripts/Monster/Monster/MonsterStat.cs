@@ -28,5 +28,7 @@ public class MonsterStat : MonoBehaviour
 	private void Init()
 	{
 		currentHealth.Value = maxHealth;
+		downPoint = maxDownPoint;
+		_isInvincible = false;
 	}
 }

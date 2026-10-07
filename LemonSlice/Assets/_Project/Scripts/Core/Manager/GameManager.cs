@@ -40,7 +40,6 @@ public class GameManager : SingletonBehaviour<GameManager>
 
 		if (CurrentState == GameState.GameOver)
 		{
-			SceneManager.LoadScene("Ending");
 			UnlockCursor();
 		}
 

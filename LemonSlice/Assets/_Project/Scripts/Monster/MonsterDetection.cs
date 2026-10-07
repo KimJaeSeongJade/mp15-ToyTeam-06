@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MonsterDetection : MonoBehaviour
@@ -17,6 +18,13 @@ public class MonsterDetection : MonoBehaviour
 	private void Awake() => CacheComponents();
 
 	private void Start() => Init();
+
+	private void OnDisable()
+	{
+		IsPlayerEnter = false;
+		TargetTransform = null;
+
+	}
 
 	private void OnDrawGizmos()
 	{

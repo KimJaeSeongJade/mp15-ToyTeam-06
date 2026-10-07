@@ -7,6 +7,12 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	[SerializeField] private TextMeshProUGUI totalTimeUI;
 	[SerializeField] private GameObject bossUI;
 	[SerializeField] private GameObject pauseUI;
+	[SerializeField] private GameObject gameOverUI;
+
+	private void Start()
+	{
+		RefreshGameState();
+	}
 
 	private void Awake()
 	{
@@ -21,6 +27,7 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 			pauseUI.gameObject.SetActive(true);
 			GameManager.Instance.ChangeState(GameState.Paused);
 		}
+		ShowGameOver();
 	}
 
 	public void RefreshScoreUI()
@@ -46,13 +53,26 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 		totalTimeUI.text = $"PlayTime - {min:00} : {sec:00}";
 	}
 
+	private void RefreshGameState()
+	{
+		GameManager.Instance.ChangeState(GameState.Playing);
+	}
+
 	public void SetBossUI(bool isActive)
 	{
 		bossUI.SetActive(isActive);
 	}
-
 	public void SetPauseUI(bool isActive)
 	{
 		pauseUI.SetActive(isActive);
+  }  
+  
+	private void ShowGameOver()
+	{
+		if (GameManager.Instance.CurrentState == GameState.GameOver)
+		{
+			gameOverUI.SetActive(true);
+		}
 	}
+  
 }

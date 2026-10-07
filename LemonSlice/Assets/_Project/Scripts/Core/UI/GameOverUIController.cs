@@ -35,18 +35,20 @@ public class GameOverUIController : MonoBehaviour
 
 	// TODO : ShowPanel은 게임 오버가 되었을 때 밖에서 호출해주어야 합니다
 
-	public void ShowPanel()
-	{
-		gameObject.SetActive(true);
-	}
-
 	private void LoadTitle()
 	{
+		GameFlowManager.Instance.IsPlayerDead = false;
+		GameManager.Instance.ResetGameData();
+		GameManager.Instance.ChangeState(GameState.Title);
 		SceneManager.LoadScene("Title");
 	}
 
 	private void LoadMain()
 	{
+		GameFlowManager.Instance.IsPlayerDead = false;
+		GameManager.Instance.ResetGameData();
+		GameManager.Instance.ChangeState(GameState.Playing);
+		gameObject.SetActive(false);
 		SceneManager.LoadScene("MainGame");
 	}
 }

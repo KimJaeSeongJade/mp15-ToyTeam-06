@@ -27,8 +27,13 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 		InitStateMachine();
 	}
 
-	private void Start() => _machine.ChangeState(StateType.Idle);
-
+	private void OnEnable()
+	{
+		if(_machine != null)
+		{
+			_machine.ChangeState(StateType.Idle);
+		}
+	}
 	private void Update()
 	{
 		_machine.Tick();

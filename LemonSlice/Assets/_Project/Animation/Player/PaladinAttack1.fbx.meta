@@ -78,14 +78,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.90891415
+      - time: 0.766057
         functionName: OnAnimEvent
         data: CloseHitBox
         objectReferenceParameter: {fileID: 11500000, guid: 722bc14c1c6b60b4db537b578ac969ea, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.96774197
+      - time: 0.84720623
         functionName: OnAnimEvent
         data: EndAttackAnim
         objectReferenceParameter: {fileID: 11500000, guid: 722bc14c1c6b60b4db537b578ac969ea, type: 3}

@@ -24,7 +24,8 @@ public class StateMachine<T> where T : IContext
 
 		if (_current != null)
 		{
-			Debug.Log($"{_current.GetType().Name} => {next.GetType().Name}");
+			// TODO 현재상태 로그 비활성화
+			// Debug.Log($"{_current.GetType().Name} => {next.GetType().Name}");
 		}
 
 		_current?.Exit();

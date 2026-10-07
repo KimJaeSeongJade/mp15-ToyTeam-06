@@ -57,7 +57,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.10147209
+      - time: 0.061293516
         functionName: OnAnimEvent
         data: OpenHitBox
         objectReferenceParameter: {fileID: 11500000, guid: 722bc14c1c6b60b4db537b578ac969ea, type: 3}
@@ -78,7 +78,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.87096775
+      - time: 0.90891415
         functionName: OnAnimEvent
         data: CloseHitBox
         objectReferenceParameter: {fileID: 11500000, guid: 722bc14c1c6b60b4db537b578ac969ea, type: 3}

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
+	[SerializeField] private string paladinTag;
+
 	private PlayerAnimHandler _animHandler;
 	private PlayerContext _ctx;
 	private PlayerInput _input;
@@ -12,6 +14,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 	private PlayerStat _stat;
 	private AttackHitBox _hitBox;
 	private LockOnController _lockOnController;
+	private Transform _paladinTransform;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -45,6 +48,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 		_playerDetection = GetComponentInChildren<PlayerDetection>();
 		_hitBox = GetComponentInChildren<AttackHitBox>();
 		_lockOnController = GetComponentInChildren<LockOnController>();
+		_paladinTransform = GetComponentInChildren<Animator>().transform;
 	}
 
 	public void TakeDamage(DamageInfo damageInfo)
@@ -55,22 +59,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 			return;
 		}
 
-		_stat.currentHealth.Value -= damageInfo.Damage;
-		_stat.DownPoint -= damageInfo.DownValue;
-		_ctx.hitDirection = damageInfo.HitDirection;
-
-		if (_stat.currentHealth.Value <= 0)
-		{
-			_machine.ChangeState(StateType.Die);
-		}
-		else if (_stat.DownPoint <= 0)
-		{
-			_machine.ChangeState(StateType.KnockDown);
-		}
-		else
-		{
-			_machine.ChangeState(StateType.Hit);
-		}
+		BindDamageInfo(damageInfo);
+		TryChangeState();
 	}
 
 	private void BindContext()
@@ -84,7 +74,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 			stat = _stat,
 			playerDetection = _playerDetection,
 			hitBox = _hitBox,
-			lockOnController = _lockOnController
+			lockOnController = _lockOnController,
+			paladin =  _paladinTransform,
 		};
 	}
 
@@ -99,6 +90,31 @@ public class PlayerController : MonoBehaviour, IDamageable
 		_machine.Add(StateType.Die, new PlayerDieState(_ctx, _machine));
 		_machine.Add(StateType.Hit, new PlayerHitState(_ctx, _machine));
 		_machine.Add(StateType.KnockDown, new PlayerKnockDownState(_ctx, _machine));
+	}
+
+	private void BindDamageInfo(DamageInfo damageInfo)
+	{
+		_stat.currentHealth.Value -= damageInfo.Damage;
+		_stat.DownPoint -= damageInfo.DownValue;
+		_ctx.hitDirection = damageInfo.HitDirection;
+		_ctx.isUnderAttack = true;
+		_ctx.knockDownDirection = damageInfo.KnockDownDirection;
+	}
+
+	private void TryChangeState()
+	{
+		if (_stat.currentHealth.Value <= 0)
+		{
+			_machine.ChangeState(StateType.Die);
+		}
+		else if (_stat.DownPoint <= 0)
+		{
+			_machine.ChangeState(StateType.KnockDown);
+		}
+		else
+		{
+			_machine.ChangeState(StateType.Hit);
+		}
 	}
 
 	public void OnAnimEvent(string animEvent)

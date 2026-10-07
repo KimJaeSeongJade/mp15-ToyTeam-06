@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LeftHitBox
   - RightHitBox
+  - Paladin
   layers:
   - Default
   - TransparentFX

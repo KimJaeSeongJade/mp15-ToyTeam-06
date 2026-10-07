@@ -340,7 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 150
   moveSpeed: 3
-  attackPower: 1
+  attackPower: 5
   rotationSpeed: 3
   attackDelay: 0.7
   attackDistance: 1

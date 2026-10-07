@@ -14,5 +14,6 @@ public class PlayerContext : IContext
 	public Transform paladin;
 
 	public bool isLockOn;
+	public bool isUnderAttack;
 	public LockOnController lockOnController;
 }

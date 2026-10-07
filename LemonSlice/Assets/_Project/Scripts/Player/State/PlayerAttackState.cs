@@ -11,7 +11,7 @@ public class PlayerAttackState : StateBase<PlayerContext>
 	// Inspector에서 리스트로 더하더록?
 	private const int MAX_COMBO = 3;
 	private int[] weaponDamage = { 20, 30, 50 };
-	private int[] weaponDownValue = { 10, 20, 50 };
+	private int[] weaponDownValue = { 10, 30, 60 };
 	private float[] moveForce = { 0, 3.5f, 5f };
 
 

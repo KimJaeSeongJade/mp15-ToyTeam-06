@@ -8,6 +8,10 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	[SerializeField] private GameObject bossUI;
 	[SerializeField] private GameObject pauseUI;
 
+	private void Awake()
+	{
+		pauseUI.SetActive(false);
+	}
 	private void Update()
 	{
 		RefreshTimeUI();
@@ -15,6 +19,7 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			pauseUI.gameObject.SetActive(true);
+			GameManager.Instance.ChangeState(GameState.Paused);
 		}
 	}
 

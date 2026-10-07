@@ -544,7 +544,7 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  owner: {fileID: 0}
+  owner: {fileID: 3760173861702002831}
 --- !u!1 &8475101392756217864 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4414871115779392492, guid: aef9a3e063e740f4d8100584de73ceb4, type: 3}
@@ -588,4 +588,4 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  owner: {fileID: 0}
+  owner: {fileID: 3760173861702002831}

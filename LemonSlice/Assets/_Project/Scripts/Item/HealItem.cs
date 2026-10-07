@@ -5,7 +5,6 @@ public class HealItem : MonoBehaviour, IInteractable, IPoolable
 	[SerializeField] private GameObject healEffectPrefab;
 	public LayerMask targetLayer;
 	public GameObject GameObject => gameObject;
-	private HealingPack healingPack;
 	private PlayerStat playerStat;
 
 	private void OnTriggerEnter(Collider other)

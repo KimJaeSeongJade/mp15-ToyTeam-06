@@ -700,8 +700,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 3, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2980126601567236450}
+  m_Children: []
   m_Father: {fileID: 7861243302710342825}
   m_LocalEulerAnglesHint: {x: -14, y: 0, z: 0}
 --- !u!1 &2698365601102957655
@@ -1822,6 +1821,7 @@ GameObject:
   - component: {fileID: 2399499429369943420}
   - component: {fileID: 6409730923320831175}
   - component: {fileID: 2742753561888817850}
+  - component: {fileID: 49845405784521031}
   m_Layer: 7
   m_Name: MainPlayer
   m_TagString: Untagged
@@ -1939,7 +1939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fae3aeff6bbdfc48ba498ab4037c7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 100
   maxStamina: 0
   attackPower: 10
   moveSpeed: 5
@@ -1971,6 +1971,20 @@ MonoBehaviour:
   knockDownAnimName: KnockDown
   standUpAnimName: StandUp
   hitAnimCount: 2
+  slashEffect: {fileID: 5503505460791601945, guid: c7e1abc891ae02c4ca9d4139a47d7ef0, type: 3}
+--- !u!114 &49845405784521031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334943611611487210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c18f826c2850a40973c4748824cb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHp: {fileID: 0}
 --- !u!1 &6357094980701122142
 GameObject:
   m_ObjectHideFlags: 0
@@ -2982,7 +2996,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 64482606567966812}
   m_Father: {fileID: 8559092701867311980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6504943572108492074

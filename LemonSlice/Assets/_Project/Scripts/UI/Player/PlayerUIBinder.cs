@@ -7,21 +7,21 @@ public class PlayerUIBinder : MonoBehaviour
 	private PlayerStat playerStat;
 
 	private void Awake() => CacheComponents();
-	private void OnEnable() => BindBossStatChangeEvents();
-	private void OnDisable() => UnBindBossStatChangeEvents();
+	private void OnEnable() => BindPlayerStatChangeEvents();
+	private void OnDisable() => UnBindPlayerStatChangeEvents();
 
 	private void CacheComponents()
 	{
 		playerStat = GetComponent<PlayerStat>();
 	}
 
-	private void BindBossStatChangeEvents()
+	private void BindPlayerStatChangeEvents()
 	{
 		playerStat.CurrentHealth.AddListener(playerHp.RefreshCurrentHp);
 		playerStat.MaxHealth.AddListener(playerHp.InitMaxHp);
 	}
 
-	private void UnBindBossStatChangeEvents()
+	private void UnBindPlayerStatChangeEvents()
 	{
 		playerStat.CurrentHealth.RemoveListener(playerHp.RefreshCurrentHp);
 		playerStat.MaxHealth.RemoveListener(playerHp.InitMaxHp);

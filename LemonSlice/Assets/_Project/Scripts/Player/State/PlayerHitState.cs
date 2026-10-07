@@ -11,6 +11,12 @@ public class PlayerHitState : StateBase<PlayerContext>
 
 	public override void Tick()
 	{
+		if (_ctx.input.IsRollPressed)
+		{
+			_fsm.ChangeState(StateType.Roll);
+			return;
+		}
+		
 		if (_ctx.isUnderAttack)
 		{
 			PlayHitAnim();

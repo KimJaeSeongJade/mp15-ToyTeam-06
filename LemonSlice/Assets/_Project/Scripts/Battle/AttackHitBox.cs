@@ -27,6 +27,7 @@ public class AttackHitBox : MonoBehaviour
 
 		Vector3 hitDirection = transform.forward;
 		Vector3 hitPoint = other.ClosestPoint(transform.position);
+
 		target.TakeDamage(new DamageInfo(_damage, _downValue, hitPoint, hitDirection));
 	}
 

@@ -16,7 +16,7 @@ public class PlayerHitState : StateBase<PlayerContext>
 			_fsm.ChangeState(StateType.Roll);
 			return;
 		}
-		
+
 		if (_ctx.isUnderAttack)
 		{
 			PlayHitAnim();

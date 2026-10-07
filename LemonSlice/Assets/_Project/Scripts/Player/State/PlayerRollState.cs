@@ -73,9 +73,9 @@ public class PlayerRollState : StateBase<PlayerContext>
 		Vector3 moveDirection = _ctx.transform.TransformDirection(_ctx.input.MoveAxisRaw).normalized;
 
 		_ctx.rigidbody.velocity = new Vector3(
-			moveDirection.x * _ctx.stat.MoveSpeed * _ctx.stat.RollSpeed,
+			moveDirection.x * _ctx.stat.MoveSpeed * _ctx.stat.RollForce,
 			_ctx.rigidbody.velocity.y,
-			moveDirection.z * _ctx.stat.MoveSpeed * _ctx.stat.RollSpeed);
+			moveDirection.z * _ctx.stat.MoveSpeed * _ctx.stat.RollForce);
 
 		_ctx.paladin.rotation = Quaternion.LookRotation(moveDirection);
 	}

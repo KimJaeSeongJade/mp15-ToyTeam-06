@@ -10,6 +10,7 @@ public class MonsterStat : MonoBehaviour
 	[SerializeField] private float attackDistance;
 	[SerializeField] private int downPoint;
 	[SerializeField] private int maxDownPoint;
+	[SerializeField] private float knockDownForce;
 
 	private bool _isInvincible;
 
@@ -19,6 +20,7 @@ public class MonsterStat : MonoBehaviour
 	public float AttackDistance => attackDistance;
 	public int AttackPower => attackPower;
 	public int MaxDownPoint => maxDownPoint;
+	public float KnockDownForce => knockDownForce;
 	public bool IsInvincible { get => _isInvincible; set => _isInvincible = value; }
 	public int DownPoint { get => downPoint; set => downPoint = value; }
 

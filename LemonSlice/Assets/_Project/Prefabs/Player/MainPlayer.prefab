@@ -1912,9 +1912,10 @@ MonoBehaviour:
   attackPower: 10
   moveSpeed: 5
   invincibleTime: 0
-  rollSpeed: 1.5
   downPoint: 100
   maxDownPoint: 100
+  knockDownForce: 3.5
+  rollForce: 1.5
 --- !u!114 &2742753561888817850
 MonoBehaviour:
   m_ObjectHideFlags: 0

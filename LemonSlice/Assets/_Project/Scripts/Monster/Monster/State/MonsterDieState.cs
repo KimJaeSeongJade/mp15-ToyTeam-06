@@ -14,6 +14,9 @@ public class MonsterDieState : StateBase<MonsterContext>
 	public override void Enter()
 	{
 		_ctx.animHandler.PlayDieAnim();
+
+		_ctx.monsterDetection.TargetTransform.GetComponentInChildren<LockOnController>()
+			.RemoveEnemy(_ctx.transform.gameObject);
 	}
 
 
@@ -23,9 +26,6 @@ public class MonsterDieState : StateBase<MonsterContext>
 		{
 			PoolManager.Instance.TryReturn(gameObject);
 			DropCoin();
-
-			_ctx.monsterDetection.TargetTransform.GetComponentInChildren<LockOnController>()
-			.RemoveEnemy(_ctx.transform.gameObject);
 		}
 	}
 

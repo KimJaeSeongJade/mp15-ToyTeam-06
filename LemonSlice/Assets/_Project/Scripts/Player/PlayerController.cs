@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
 	private void Update()
 	{
+		if (Time.timeScale == 0) return;
+
 		_input.Read();
 		_machine.Tick();
 	}

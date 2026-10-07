@@ -37,12 +37,14 @@ public class GameOverUIController : MonoBehaviour
 
 	private void LoadTitle()
 	{
-		SceneManager.LoadScene("Title");
+		GameFlowManager.Instance.IsPlayerDead = false;
 		GameManager.Instance.ChangeState(GameState.Title);
+		SceneManager.LoadScene("Title");
 	}
 
 	private void LoadMain()
 	{
+		GameFlowManager.Instance.IsPlayerDead = false;
 		GameManager.Instance.ChangeState(GameState.Playing);
 		gameObject.SetActive(false);
 		SceneManager.LoadScene("MainGame");

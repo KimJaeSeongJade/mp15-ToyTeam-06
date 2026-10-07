@@ -51,9 +51,9 @@ public class PlayerInput : MonoBehaviour
 	private void ReadMoveAxisRaw()
 	{
 		MoveAxisRaw = new Vector3(
-			Input.GetAxis("Horizontal"),
+			Input.GetAxisRaw("Horizontal"),
 			0,
-			Input.GetAxis("Vertical")
+			Input.GetAxisRaw("Vertical")
 		);
 	}
 }

@@ -6,11 +6,13 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	[SerializeField] private TextMeshProUGUI scoreUI;
 	[SerializeField] private TextMeshProUGUI totalTimeUI;
 	[SerializeField] private GameObject bossUI;
+	[SerializeField] private GameObject gameOverUI;
 
 	private void Update()
 	{
 		RefreshTimeUI();
 		RefreshScoreUI();
+		ShowGameOver();
 	}
 
 	public void RefreshScoreUI()
@@ -39,5 +41,13 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	public void SetBossUI(bool isActive)
 	{
 		bossUI.SetActive(isActive);
+	}
+
+	private void ShowGameOver()
+	{
+		if (GameManager.Instance.CurrentState == GameState.GameOver)
+		{
+			gameOverUI.SetActive(true);
+		}
 	}
 }

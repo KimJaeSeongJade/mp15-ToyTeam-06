@@ -63,13 +63,13 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_coinPool = GetPool(coinPrefab, coinPoolSize);
 		_itemBoxPool = GetPool(itemBoxPrefab, itemBoxPoolSize);
 		_healPotionPool = GetPool(healPotionPrefab, healPotionPoolSize);
-		_healPotionPool = GetPool(healEffectPrefab, effectPoolSize);
+		_healEffectPool = GetPool(healEffectPrefab, effectPoolSize);
 
 		_dict.Add(PoolType.Monster, _monsterPool);
 		_dict.Add(PoolType.Coin, _coinPool);
 		_dict.Add(PoolType.ItemBox, _itemBoxPool);
 		_dict.Add(PoolType.HealPotion, _healPotionPool);
-		_dict.Add(PoolType.HealEffect, _healPotionPool);
+		_dict.Add(PoolType.HealEffect, _healEffectPool);
 	}
 
 	public Stack<GameObject> GetPool(GameObject go, int poolSize)

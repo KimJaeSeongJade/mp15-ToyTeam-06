@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ItemBox : MonoBehaviour, IInteractable, IPoolable,IDamageable
 {
-	[SerializeField] private HealItem _healItem;
+	[SerializeField] private GameObject _healItem;
 	[SerializeField] private int _health;
-	public GameObject GameObject => this.gameObject;
+	public GameObject GameObject => gameObject;
 
 
 	private void Update()
@@ -21,7 +21,7 @@ public class ItemBox : MonoBehaviour, IInteractable, IPoolable,IDamageable
 
 	private void SpawnHealPotion()
 	{
-		PoolManager.Instance.Take(_healItem.gameObject).SetPosition(this.gameObject.transform.position).Build();
+		PoolManager.Instance.Take(_healItem.gameObject).SetPosition(gameObject.transform.position).Build();
 	}
 
 

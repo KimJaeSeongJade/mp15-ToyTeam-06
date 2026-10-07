@@ -2218,7 +2218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   owner: {fileID: 8527259389980699356}
 --- !u!1 &6565341601730959071
 GameObject:

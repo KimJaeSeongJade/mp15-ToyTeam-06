@@ -4,5 +4,6 @@ public enum PoolType
 	Coin,
 	ItemBox,
 	HealPotion,
+	SlashEffect,
 	HealEffect
 }

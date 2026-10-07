@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,13 +6,13 @@ public class BossController : MonoBehaviour, IDamageable, ILockonable
 {
 	[SerializeField] private string _stateType;
 	[SerializeField] private Image _lockOnUi;
+	[SerializeField] private List<AttackHitBox> _hitBoxes;
 
 	private BossAnimationHandler _animHandler;
 	private BossContext _ctx;
 	private StateMachine<BossContext> _machine;
 	private MonsterDetection _monsterDetection;
 	private BossStat _stat;
-	private AttackHitBox _hitBox;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -40,7 +41,6 @@ public class BossController : MonoBehaviour, IDamageable, ILockonable
 		_stat = GetComponent<BossStat>();
 		_animHandler = GetComponent<BossAnimationHandler>();
 		_monsterDetection = GetComponentInChildren<MonsterDetection>();
-		_hitBox = GetComponentInChildren<AttackHitBox>();
 	}
 
 	private void BindContext()
@@ -51,7 +51,7 @@ public class BossController : MonoBehaviour, IDamageable, ILockonable
 			animHandler = _animHandler,
 			stat = _stat,
 			monsterDetection = _monsterDetection,
-			hitBox = _hitBox
+			hitBoxes = _hitBoxes
 		};
 	}
 

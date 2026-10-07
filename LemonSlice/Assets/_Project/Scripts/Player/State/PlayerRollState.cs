@@ -52,6 +52,8 @@ public class PlayerRollState : StateBase<PlayerContext>
 		_ctx.animHandler.PlayIdleAndMoveAnim();
 		_ctx.rigidbody.velocity = Vector3.zero;
 		_ctx.animHandler.SetMoveParam(Vector3.zero);
+
+		_ctx.paladin.rotation = Quaternion.LookRotation(_ctx.transform.forward);
 	}
 
 	public override void OnAnimEvent(string animEvent)
@@ -74,6 +76,8 @@ public class PlayerRollState : StateBase<PlayerContext>
 			moveDirection.x * _ctx.stat.MoveSpeed * _ctx.stat.RollSpeed,
 			_ctx.rigidbody.velocity.y,
 			moveDirection.z * _ctx.stat.MoveSpeed * _ctx.stat.RollSpeed);
+
+		_ctx.paladin.rotation = Quaternion.LookRotation(moveDirection);
 	}
 
 	private void EndRollState()

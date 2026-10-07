@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
+	[SerializeField] private string paladinTag;
+
 	private PlayerAnimHandler _animHandler;
 	private PlayerContext _ctx;
 	private PlayerInput _input;
@@ -12,6 +14,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 	private PlayerStat _stat;
 	private AttackHitBox _hitBox;
 	private LockOnController _lockOnController;
+	private Transform _paladinTransform;
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -49,6 +52,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 		_playerDetection = GetComponentInChildren<PlayerDetection>();
 		_hitBox = GetComponentInChildren<AttackHitBox>();
 		_lockOnController = GetComponentInChildren<LockOnController>();
+		_paladinTransform = GetComponentInChildren<Animator>().transform;
 	}
 
 	public void TakeDamage(DamageInfo damageInfo)
@@ -88,7 +92,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 			stat = _stat,
 			playerDetection = _playerDetection,
 			hitBox = _hitBox,
-			lockOnController = _lockOnController
+			lockOnController = _lockOnController,
+			paladin =  _paladinTransform,
 		};
 	}
 

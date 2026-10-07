@@ -11,9 +11,11 @@ public class BossAnimationHandler : MonoBehaviour
 	[SerializeField] private string groggyAnimParam;
 	[SerializeField] private string dieAnimParam;
 
-	[SerializeField] private string endMinoAttack;
+	[SerializeField] private string startAttack;
+	[SerializeField] private string endAttack;
 
-	public string EndMinoAttack => endMinoAttack;
+	public string StartAttack => startAttack;
+	public string EndAttack => endAttack;
 
 	private void Awake()
 	{

@@ -5,7 +5,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: MinoAttack1
+    second: MinoAttack0
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,7 +36,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: MinoAttack1
+      name: MinoAttack0
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 0
@@ -60,9 +60,16 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 1
+      - time: 0.24418604
         functionName: OnAnimEvent
-        data: EndMinoAttack
+        data: StartMinoAttack0
+        objectReferenceParameter: {fileID: 11500000, guid: 8544089868cb62049bdc4cdac0a3bd4a, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.51744187
+        functionName: OnAnimEvent
+        data: EndMinoAttack0
         objectReferenceParameter: {fileID: 11500000, guid: 8544089868cb62049bdc4cdac0a3bd4a, type: 3}
         floatParameter: 0
         intParameter: 0

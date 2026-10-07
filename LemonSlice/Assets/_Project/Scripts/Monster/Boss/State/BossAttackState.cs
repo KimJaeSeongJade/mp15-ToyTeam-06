@@ -4,7 +4,9 @@ public class BossAttackState : StateBase<BossContext>
 {
 	private float attackTime;
 	private bool isAttacking;
-	private int groggyDamage = 30;
+	private int randIndex;
+	private int[] extraDamage = { 0, 5 };
+	private int[] groggyDamage = { 30, 100 };
 
 	public BossAttackState(BossContext context, StateMachine<BossContext> stateMachine) : base(context,
 		stateMachine)
@@ -16,7 +18,6 @@ public class BossAttackState : StateBase<BossContext>
 	public override void Enter()
 	{
 		attackTime = 0f;
-		_ctx.attackIndex = 1;
 		isAttacking = true;
 		Attack();
 	}
@@ -36,21 +37,29 @@ public class BossAttackState : StateBase<BossContext>
 
 	public override void Exit()
 	{
-		_ctx.hitBox.Close();
+		_ctx.hitBoxes[randIndex].Close();
 	}
 
 	public override void OnAnimEvent(string animEvent)
 	{
-		if (animEvent == _ctx.animHandler.EndMinoAttack)
+		if (animEvent == _ctx.animHandler.StartAttack + randIndex)
 		{
+			Debug.Log($"지금 {randIndex} 공격시작 {_ctx.animHandler.StartAttack + randIndex}");
+			_ctx.hitBoxes[randIndex].Open(_ctx.stat.AttackPower + extraDamage[randIndex], groggyDamage[randIndex]);
+		}
+
+		if (animEvent == _ctx.animHandler.EndAttack+randIndex)
+		{
+			Debug.Log($"지금 {randIndex} 공격끝 {_ctx.animHandler.EndAttack+randIndex}");
 			isAttacking = false;
-			_ctx.hitBox.Close();
+			_ctx.hitBoxes[randIndex].Close();
 		}
 	}
 
 	private void Attack()
 	{
-		_ctx.hitBox.Open(_ctx.stat.AttackPower, groggyDamage);
-		_ctx.animHandler.PlayAttackAnim(_ctx.attackIndex);
+		randIndex = Random.Range(0, extraDamage.Length);
+
+		_ctx.animHandler.PlayAttackAnim(randIndex);
 	}
 }

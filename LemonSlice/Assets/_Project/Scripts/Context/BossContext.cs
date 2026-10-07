@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BossContext : IContext
@@ -7,5 +8,5 @@ public class BossContext : IContext
 	public MonsterDetection monsterDetection;
 	public BossStat stat;
 	public Transform transform;
-	public AttackHitBox hitBox;
+	public List<AttackHitBox> hitBoxes;
 }

@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class PauseUIController : MonoBehaviour
 {
-	[SerializeField] private GameObject _pausePanel;
 	[SerializeField] private Button _countinueButton;
 	[SerializeField] private Button _quitButton;
 	[SerializeField] private Button _titleButton;
@@ -35,7 +34,6 @@ public class PauseUIController : MonoBehaviour
 
 	private void QuitGame()
 	{
-
 	}
 
 	private void TitleGame()
@@ -43,13 +41,5 @@ public class PauseUIController : MonoBehaviour
 		GameManager.Instance.ChangeState(GameState.Title);
 	}
 
-	public void OnPausePanel()
-	{
-		_pausePanel.SetActive(true);
-	}
-	public void OffPausePanel()
-	{
-		_pausePanel.SetActive(false);
-	}
 
 }

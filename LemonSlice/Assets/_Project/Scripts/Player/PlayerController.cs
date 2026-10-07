@@ -27,10 +27,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 	{
 		_input.Read();
 		_machine.Tick();
-		if (Input.GetKeyDown(KeyCode.R))
-		{
-			_machine.ChangeState(StateType.Die);
-		}
 	}
 
 	private void FixedUpdate()

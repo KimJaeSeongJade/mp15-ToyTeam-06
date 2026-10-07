@@ -6,11 +6,16 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	[SerializeField] private TextMeshProUGUI scoreUI;
 	[SerializeField] private TextMeshProUGUI totalTimeUI;
 	[SerializeField] private GameObject bossUI;
+	[SerializeField] private GameObject pauseUI;
 
 	private void Update()
 	{
 		RefreshTimeUI();
 		RefreshScoreUI();
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			pauseUI.gameObject.SetActive(true);
+		}
 	}
 
 	public void RefreshScoreUI()
@@ -39,5 +44,10 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	public void SetBossUI(bool isActive)
 	{
 		bossUI.SetActive(isActive);
+	}
+
+	public void SetPauseUI(bool isActive)
+	{
+		pauseUI.SetActive(isActive);
 	}
 }

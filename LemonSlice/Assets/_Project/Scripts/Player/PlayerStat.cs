@@ -13,7 +13,8 @@ public class PlayerStat : MonoBehaviour
 	[SerializeField] private float knockDownForce;
 	[SerializeField] private float rollForce;
 
-	public ObservableProperty<int> currentHealth = new(0); // 현재 체력
+	public ObservableProperty<int> CurrentHealth = new(0); // 현재 체력
+	public ObservableProperty<int> MaxHealth = new(0);
 	public ObservableProperty<int> currentStamina = new(0); // 현재 스테미나
 
 	private bool _isInvincible;
@@ -36,7 +37,7 @@ public class PlayerStat : MonoBehaviour
 
 	private void Init()
 	{
-		currentHealth.Value = maxHealth;
-		currentStamina.Value = maxStamina;
+		CurrentHealth.Value = maxHealth;
+		MaxHealth.Value = maxHealth;
 	}
 }

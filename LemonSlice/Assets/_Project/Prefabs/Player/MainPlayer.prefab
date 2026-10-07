@@ -1821,6 +1821,7 @@ GameObject:
   - component: {fileID: 2399499429369943420}
   - component: {fileID: 6409730923320831175}
   - component: {fileID: 2742753561888817850}
+  - component: {fileID: 49845405784521031}
   m_Layer: 7
   m_Name: MainPlayer
   m_TagString: Untagged
@@ -1938,7 +1939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fae3aeff6bbdfc48ba498ab4037c7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 100
   maxStamina: 0
   attackPower: 10
   moveSpeed: 5
@@ -1970,7 +1971,20 @@ MonoBehaviour:
   knockDownAnimName: KnockDown
   standUpAnimName: StandUp
   hitAnimCount: 2
-  slashEffect: {fileID: 5503505460791601945, guid: 74c549d1b06b6b140a1fd9536eea637f, type: 3}
+  slashEffect: {fileID: 5503505460791601945, guid: c7e1abc891ae02c4ca9d4139a47d7ef0, type: 3}
+--- !u!114 &49845405784521031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334943611611487210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c18f826c2850a40973c4748824cb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHp: {fileID: 0}
 --- !u!1 &6357094980701122142
 GameObject:
   m_ObjectHideFlags: 0

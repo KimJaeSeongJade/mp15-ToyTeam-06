@@ -5,7 +5,6 @@ public class HealItem : MonoBehaviour, IInteractable, IPoolable
 	[SerializeField] private GameObject healEffectPrefab;
 	public LayerMask targetLayer;
 	public GameObject GameObject => gameObject;
-	private HealingPack healingPack;
 	private PlayerStat playerStat;
 
 	private void OnTriggerEnter(Collider other)
@@ -28,13 +27,19 @@ public class HealItem : MonoBehaviour, IInteractable, IPoolable
 		int layer = (1 << interactor.layer);
 		if ((targetLayer.value & layer) != 0)
 		{
-			playerStat = GetComponent<PlayerStat>();
+			playerStat = interactor.GetComponent<PlayerStat>();
 			if (playerStat != null)
 			{
-				healingPack.Heal(playerStat);
+				Heal(playerStat);
 			}
+
 			PoolManager.Instance.TryReturn(gameObject);
 		}
+	}
+
+	public void Heal(PlayerStat playerStat)
+	{
+		playerStat.CurrentHealth.Value += 20;
 	}
 
 	public PoolType PoolId => PoolType.HealPotion;

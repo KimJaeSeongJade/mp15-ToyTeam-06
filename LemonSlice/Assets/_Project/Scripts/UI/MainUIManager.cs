@@ -17,6 +17,7 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	private void Awake()
 	{
 		pauseUI.SetActive(false);
+		bossUI.SetActive(false);
 	}
 	private void Update()
 	{
@@ -65,8 +66,8 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	public void SetPauseUI(bool isActive)
 	{
 		pauseUI.SetActive(isActive);
-  }  
-  
+  }
+
 	private void ShowGameOver()
 	{
 		if (GameManager.Instance.CurrentState == GameState.GameOver)
@@ -74,5 +75,5 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 			gameOverUI.SetActive(true);
 		}
 	}
-  
+
 }

@@ -44,13 +44,11 @@ public class BossAttackState : StateBase<BossContext>
 	{
 		if (animEvent == _ctx.animHandler.StartAttack + randIndex)
 		{
-			Debug.Log($"지금 {randIndex} 공격시작 {_ctx.animHandler.StartAttack + randIndex}");
 			_ctx.hitBoxes[randIndex].Open(_ctx.stat.AttackPower + extraDamage[randIndex], groggyDamage[randIndex]);
 		}
 
 		if (animEvent == _ctx.animHandler.EndAttack+randIndex)
 		{
-			Debug.Log($"지금 {randIndex} 공격끝 {_ctx.animHandler.EndAttack+randIndex}");
 			isAttacking = false;
 			_ctx.hitBoxes[randIndex].Close();
 		}

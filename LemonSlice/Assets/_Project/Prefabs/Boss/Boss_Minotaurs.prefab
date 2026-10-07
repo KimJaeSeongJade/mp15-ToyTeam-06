@@ -342,7 +342,7 @@ MonoBehaviour:
   maxGroggy: 100
   groggyTime: 5
   moveSpeed: 5
-  attackPower: 10
+  attackPower: 20
   attackDelay: 0.8
   attackDistance: 2
 --- !u!114 &5269475017913358649
@@ -544,6 +544,7 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  owner: {fileID: 3760173861702002831}
 --- !u!1 &8475101392756217864 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4414871115779392492, guid: aef9a3e063e740f4d8100584de73ceb4, type: 3}
@@ -587,3 +588,4 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  owner: {fileID: 3760173861702002831}

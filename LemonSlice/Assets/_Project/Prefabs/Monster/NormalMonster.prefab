@@ -571,6 +571,7 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  owner: {fileID: 6834765088764081975}
 --- !u!135 &4548682237376882622
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -676,3 +677,4 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  owner: {fileID: 6834765088764081975}

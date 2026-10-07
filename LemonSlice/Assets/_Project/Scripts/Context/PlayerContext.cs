@@ -10,6 +10,7 @@ public class PlayerContext : IContext
 	public Rigidbody rigidbody;
 	public PlayerStat stat;
 	public Transform transform;
+	public Vector3 hitPoint;
 	public Vector3 hitDirection;
 	public Vector3 knockDownDirection;
 	public Transform paladin;

@@ -17,8 +17,12 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 
 	[SerializeField] private GameObject slashEffectPrefab;
 	[SerializeField] private int slashEffectPoolSize;
+
 	[SerializeField] private GameObject healEffectPrefab;
 	[SerializeField] private int effectPoolSize;
+
+	[SerializeField] private GameObject bloodEffectPrefab;
+	[SerializeField] private int bloodEffectPoolSize;
 
 	private Dictionary<PoolType, Stack<GameObject>> _dict;
 
@@ -28,6 +32,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 	private Stack<GameObject> _healPotionPool;
 	private Stack<GameObject> _slashEffectPool;
 	private Stack<GameObject> _healEffectPool;
+	private Stack<GameObject> _bloodEffectPool;
 
 	private void Awake()
 	{
@@ -68,6 +73,8 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_healPotionPool = GetPool(healPotionPrefab, healPotionPoolSize);
 		_healEffectPool = GetPool(healEffectPrefab, effectPoolSize);
 		_slashEffectPool = GetPool(slashEffectPrefab, slashEffectPoolSize);
+		_healPotionPool = GetPool(healEffectPrefab, effectPoolSize);
+		_bloodEffectPool = GetPool(bloodEffectPrefab, bloodEffectPoolSize);
 
 
 		_dict.Add(PoolType.Monster, _monsterPool);
@@ -76,6 +83,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_dict.Add(PoolType.HealPotion, _healPotionPool);
 		_dict.Add(PoolType.HealEffect, _healEffectPool);
 		_dict.Add(PoolType.SlashEffect, _slashEffectPool);
+		_dict.Add(PoolType.BloodEffect, _bloodEffectPool);
 
 	}
 

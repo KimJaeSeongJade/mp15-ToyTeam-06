@@ -5,6 +5,7 @@ public class AnimEvents
 	public const string EndHitAnim = "EndHitAnim";
 	public const string EndKnockDownAnim = "EndKnockDownAnim";
 	public const string EndStandUpAnim = "EndStandUpAnim";
+	public const string EndDieAnim = "EndDieAnim";
 
 	public const string OpenCombo = "OpenCombo";
 	public const string CloseCombo = "CloseCombo";

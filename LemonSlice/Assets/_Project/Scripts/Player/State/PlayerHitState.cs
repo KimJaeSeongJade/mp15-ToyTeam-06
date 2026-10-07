@@ -1,5 +1,8 @@
+using UnityEngine;
+
 public class PlayerHitState : StateBase<PlayerContext>
 {
+	private GameObject _bloodEffect;
 	public PlayerHitState(PlayerContext context, StateMachine<PlayerContext> stateMachine) : base(context, stateMachine)
 	{
 	}
@@ -7,6 +10,7 @@ public class PlayerHitState : StateBase<PlayerContext>
 	public override void Enter()
 	{
 		PlayHitAnim();
+		PlayHitEffect();
 	}
 
 	public override void Tick()
@@ -20,13 +24,21 @@ public class PlayerHitState : StateBase<PlayerContext>
 		if (_ctx.isUnderAttack)
 		{
 			PlayHitAnim();
+			PlayHitEffect();
 		}
 	}
+
+	public override void Exit()
+	{
+		StopHitEffect();
+	}
+
 	public override void OnAnimEvent(string animEvent)
 	{
 		if (animEvent == AnimEvents.EndHitAnim)
 		{
 			_fsm.ChangeState(StateType.Idle);
+			StopHitEffect();
 		}
 	}
 
@@ -34,5 +46,25 @@ public class PlayerHitState : StateBase<PlayerContext>
 	{
 		_ctx.animHandler.PlayHitAnim();
 		_ctx.isUnderAttack = false;
+	}
+
+	private void PlayHitEffect()
+	{
+		// TODO 이펙트 변경 필요함
+		// 플레이어 앞으로 표시되서 잘 안보임
+
+		if (_bloodEffect != null)
+		{
+			StopHitEffect();
+		}
+
+		Vector3 pos = _ctx.hitPoint;
+		Vector3 dir = _ctx.hitDirection;
+		_bloodEffect = EffectManager.Instance.PlayBloodEffect(pos, dir);
+	}
+
+	private void StopHitEffect()
+	{
+		EffectManager.Instance.StopBloodEffect(_bloodEffect);
 	}
 }

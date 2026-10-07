@@ -29,7 +29,7 @@ public class AttackHitBox : MonoBehaviour
 		Vector3 direction = other.transform.position - owner.position;
 
 		Vector3 knockDownDirection = new Vector3(direction.x, 1, direction.z).normalized;
-		Vector3 hitDirection = transform.forward;
+		Vector3 hitDirection = new Vector3(-direction.x, 0, -direction.z).normalized;
 		Vector3 hitPoint = other.ClosestPoint(transform.position);
 		target.TakeDamage(new DamageInfo(_damage, _downValue, hitPoint, hitDirection, knockDownDirection));
 	}

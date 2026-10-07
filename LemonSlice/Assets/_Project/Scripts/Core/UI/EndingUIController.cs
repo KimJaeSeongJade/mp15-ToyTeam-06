@@ -55,6 +55,8 @@ public class EndingUIController : MonoBehaviour
 
 	private void LoadTitle() // 타이틀 씬 전환
 	{
+		GameManager.Instance.ChangeState(GameState.Title);
+		GameManager.Instance.ResetGameData();
 		SceneManager.LoadScene("Title");
 	}
 

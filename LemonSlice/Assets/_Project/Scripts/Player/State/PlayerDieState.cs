@@ -11,7 +11,13 @@ public class PlayerDieState : StateBase<PlayerContext>
 	public override void Enter()
 	{
 		_ctx.animHandler.PlayDieAnim();
+	}
 
-		GameFlowManager.Instance.IsPlayerDead = true;
+	public override void OnAnimEvent(string animEvent)
+	{
+		if (animEvent == AnimEvents.EndDieAnim)
+		{
+			GameFlowManager.Instance.IsPlayerDead = true;
+		}
 	}
 }

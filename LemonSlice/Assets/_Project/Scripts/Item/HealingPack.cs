@@ -7,7 +7,7 @@ public class HealingPack : MonoBehaviour
 
 	public void Heal(PlayerStat playerStat)
 	{
-		playerStat.currentHealth.Value += 1;
+		playerStat.CurrentHealth.Value += 20;
 	}
 
 }

@@ -302,7 +302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3126433021426806560
 RectTransform:
   m_ObjectHideFlags: 0
@@ -377,7 +377,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _restartButton: {fileID: 3664430264001749144}
   _backToTitleButton: {fileID: 7849015203163117726}
-  _playTimeText: {fileID: 0}
 --- !u!1 &5009394629678505663
 GameObject:
   m_ObjectHideFlags: 0

@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
 	private void BindDamageInfo(DamageInfo damageInfo)
 	{
-		_stat.currentHealth.Value -= damageInfo.Damage;
+		_stat.CurrentHealth.Value -= damageInfo.Damage;
 		_stat.DownPoint -= damageInfo.DownValue;
 		_ctx.hitDirection = damageInfo.HitDirection;
 		_ctx.isUnderAttack = true;
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
 	private void TryChangeState()
 	{
-		if (_stat.currentHealth.Value <= 0)
+		if (_stat.CurrentHealth.Value <= 0)
 		{
 			_machine.ChangeState(StateType.Die);
 		}

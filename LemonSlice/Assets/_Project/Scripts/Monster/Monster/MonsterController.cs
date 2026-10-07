@@ -94,6 +94,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 		_stat.currentHealth.Value -= damageInfo.Damage;
 		_stat.DownPoint -= damageInfo.DownValue;
 		_ctx.hitDirection = damageInfo.HitDirection;
+		_ctx.knockDownDirection = damageInfo.KnockDownDirection;
 		_ctx.isUnderAttack = true;
 
 		//_machine.ChangeState(StateType.Knockback);

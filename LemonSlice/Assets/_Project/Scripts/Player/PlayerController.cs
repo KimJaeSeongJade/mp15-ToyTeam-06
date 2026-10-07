@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 		_stat.DownPoint -= damageInfo.DownValue;
 		_ctx.hitDirection = damageInfo.HitDirection;
 		_ctx.isUnderAttack = true;
+		_ctx.knockDownDirection = damageInfo.KnockDownDirection;
 	}
 
 	private void TryChangeState()

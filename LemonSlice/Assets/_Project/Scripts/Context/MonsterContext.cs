@@ -14,4 +14,5 @@ public class MonsterContext : IContext
 	public bool isUnderAttack;
 
 	public Vector3 hitDirection;
+	public Vector3 knockDownDirection;
 }

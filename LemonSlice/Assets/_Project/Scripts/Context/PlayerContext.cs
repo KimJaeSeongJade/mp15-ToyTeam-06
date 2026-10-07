@@ -11,6 +11,7 @@ public class PlayerContext : IContext
 	public PlayerStat stat;
 	public Transform transform;
 	public Vector3 hitDirection;
+	public Vector3 knockDownDirection;
 	public Transform paladin;
 
 	public bool isLockOn;

@@ -4,6 +4,7 @@ using UnityEngine;
 public class AttackHitBox : MonoBehaviour
 {
 	[SerializeField] private LayerMask targetLayerMask;
+	[SerializeField] private Transform owner;
 
 	private HashSet<Collider> _targets = new();
 	private bool _isActive;
@@ -25,10 +26,12 @@ public class AttackHitBox : MonoBehaviour
 		_targets.Add(other);
 		IDamageable target = other.GetComponent<IDamageable>();
 
+		Vector3 direction = other.transform.position - owner.position;
+
+		Vector3 knockDownDirection = new Vector3(direction.x, 1, direction.z).normalized;
 		Vector3 hitDirection = transform.forward;
 		Vector3 hitPoint = other.ClosestPoint(transform.position);
-
-		target.TakeDamage(new DamageInfo(_damage, _downValue, hitPoint, hitDirection));
+		target.TakeDamage(new DamageInfo(_damage, _downValue, hitPoint, hitDirection, knockDownDirection));
 	}
 
 	public void Open(int damage, int downValue)

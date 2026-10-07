@@ -16,7 +16,7 @@ public class PlayerKnockDownState : StateBase<PlayerContext>
 		_ctx.stat.IsInvincible = true;
 		_ctx.animHandler.PlayKnockDownAnim();
 
-		_ctx.rigidbody.AddForce(_ctx.hitDirection * _ctx.stat.KnockDownForce, ForceMode.Impulse);
+		_ctx.rigidbody.AddForce(_ctx.knockDownDirection * _ctx.stat.KnockDownForce, ForceMode.Impulse);
 	}
 
 	public override void Tick()

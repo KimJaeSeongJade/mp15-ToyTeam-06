@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class MonsterHitState : StateBase<MonsterContext>
 {
 	public MonsterHitState(MonsterContext monsterContext, StateMachine<MonsterContext> stateMachine) : base(
@@ -11,8 +7,15 @@ public class MonsterHitState : StateBase<MonsterContext>
 
 	public override void Enter()
 	{
-		_ctx.animHandler.PlayHitAnim();
-		_ctx.stat.IsInvincible = true;
+		PlayHitAnim();
+	}
+
+	public override void Tick()
+	{
+		if (_ctx.isUnderAttack)
+		{
+			PlayHitAnim();
+		}
 	}
 
 	public override void OnAnimEvent(string animEvent)
@@ -20,7 +23,12 @@ public class MonsterHitState : StateBase<MonsterContext>
 		if (animEvent == AnimEvents.EndHitAnim)
 		{
 			_fsm.ChangeState(StateType.Idle);
-			_ctx.stat.IsInvincible = false;
 		}
+	}
+
+	private void PlayHitAnim()
+	{
+		_ctx.animHandler.PlayHitAnim();
+		_ctx.isUnderAttack = false;
 	}
 }

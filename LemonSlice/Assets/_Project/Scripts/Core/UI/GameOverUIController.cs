@@ -38,6 +38,7 @@ public class GameOverUIController : MonoBehaviour
 	private void LoadTitle()
 	{
 		GameFlowManager.Instance.IsPlayerDead = false;
+		GameManager.Instance.ResetGameData();
 		GameManager.Instance.ChangeState(GameState.Title);
 		SceneManager.LoadScene("Title");
 	}
@@ -45,6 +46,7 @@ public class GameOverUIController : MonoBehaviour
 	private void LoadMain()
 	{
 		GameFlowManager.Instance.IsPlayerDead = false;
+		GameManager.Instance.ResetGameData();
 		GameManager.Instance.ChangeState(GameState.Playing);
 		gameObject.SetActive(false);
 		SceneManager.LoadScene("MainGame");

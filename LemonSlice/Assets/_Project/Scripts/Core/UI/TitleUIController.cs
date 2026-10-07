@@ -21,6 +21,7 @@ public class TitleUIController : MonoBehaviour
 		_startButton.onClick.AddListener(LoadMainGame);
 		_creditButton.onClick.AddListener(OnCreditPanel);
 		_closeCreditButton.onClick.AddListener(OffCreditPanel);
+		_exitButton.onClick.AddListener(QuitGame);
 	}
 
 	private void UnBindButtonEvents()
@@ -28,6 +29,7 @@ public class TitleUIController : MonoBehaviour
 		_startButton.onClick.RemoveListener(LoadMainGame);
 		_creditButton.onClick.RemoveListener(OnCreditPanel);
 		_closeCreditButton.onClick.RemoveListener(OffCreditPanel);
+		_exitButton.onClick.RemoveListener(QuitGame);
 	}
 
 	private void LoadMainGame()
@@ -47,5 +49,6 @@ public class TitleUIController : MonoBehaviour
 
 	private void QuitGame()
 	{
+		Application.Quit();
 	}
 }

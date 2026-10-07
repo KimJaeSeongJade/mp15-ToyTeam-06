@@ -13,7 +13,6 @@ public class GameManager : SingletonBehaviour<GameManager>
 	private void Start()
 	{
 		ChangeState(GameState.Playing);
-		Debug.Log("GameManager Start");
 	}
 
 	private void Update()
@@ -29,10 +28,7 @@ public class GameManager : SingletonBehaviour<GameManager>
 		CurrentState = state; // 게임 상태 변경
 		if (CurrentState == GameState.Playing)
 		{
-			// 씬 이름 추후에 추가
-			// SceneManager.LoadScene("");
 			LockCursor();
-
 			Time.timeScale = 1;
 		}
 

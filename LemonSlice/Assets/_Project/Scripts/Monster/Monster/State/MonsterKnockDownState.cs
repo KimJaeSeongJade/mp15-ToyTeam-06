@@ -15,7 +15,7 @@ public class MonsterKnockDownState : StateBase<MonsterContext>
 		_ctx.stat.IsInvincible = true;
 		_ctx.animHandler.PlayKnockDownAnim();
 
-		_ctx.rigidbody.AddForce(_ctx.hitDirection * 3.0f, ForceMode.Impulse);
+		_ctx.rigidbody.AddForce(_ctx.knockDownDirection * _ctx.stat.KnockDownForce, ForceMode.Impulse);
 	}
 
 	public override void OnAnimEvent(string animEvent)

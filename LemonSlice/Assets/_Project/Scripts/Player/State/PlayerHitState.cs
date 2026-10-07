@@ -6,16 +6,33 @@ public class PlayerHitState : StateBase<PlayerContext>
 
 	public override void Enter()
 	{
-		_ctx.animHandler.PlayHitAnim();
-		_ctx.stat.IsInvincible = true;
+		PlayHitAnim();
 	}
 
+	public override void Tick()
+	{
+		if (_ctx.input.IsRollPressed)
+		{
+			_fsm.ChangeState(StateType.Roll);
+			return;
+		}
+
+		if (_ctx.isUnderAttack)
+		{
+			PlayHitAnim();
+		}
+	}
 	public override void OnAnimEvent(string animEvent)
 	{
 		if (animEvent == AnimEvents.EndHitAnim)
 		{
 			_fsm.ChangeState(StateType.Idle);
-			_ctx.stat.IsInvincible = false;
 		}
+	}
+
+	private void PlayHitAnim()
+	{
+		_ctx.animHandler.PlayHitAnim();
+		_ctx.isUnderAttack = false;
 	}
 }

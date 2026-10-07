@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerStat : MonoBehaviour
 {
@@ -7,9 +8,10 @@ public class PlayerStat : MonoBehaviour
 	[SerializeField] private int attackPower; // 공격력
 	[SerializeField] private float moveSpeed; // 이동 속도
 	[SerializeField] private float invincibleTime; // 무적 시간
-	[SerializeField] private float rollSpeed;
 	[SerializeField] private int downPoint;
 	[SerializeField] private int maxDownPoint;
+	[SerializeField] private float knockDownForce;
+	[SerializeField] private float rollForce;
 
 	public ObservableProperty<int> currentHealth = new(0); // 현재 체력
 	public ObservableProperty<int> currentStamina = new(0); // 현재 스테미나
@@ -17,9 +19,10 @@ public class PlayerStat : MonoBehaviour
 	private bool _isInvincible;
 
 	public float MoveSpeed => moveSpeed;
-	public float RollSpeed => rollSpeed;
+	public float RollForce => rollForce;
 	public int AttackPower => attackPower;
 	public int MaxDownPoint => maxDownPoint;
+	public float KnockDownForce => knockDownForce;
 	public bool IsInvincible { get => _isInvincible; set => _isInvincible = value; }
 	public int DownPoint { get => downPoint; set => downPoint = value; }
 

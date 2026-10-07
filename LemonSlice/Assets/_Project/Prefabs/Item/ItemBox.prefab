@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healItem: {fileID: 3424695391542481708, guid: 38381d9ad15158f408dfab9570f6404d, type: 3}
-  _health: 0
+  _health: 1
 --- !u!54 &8358284384094845900
 Rigidbody:
   m_ObjectHideFlags: 0

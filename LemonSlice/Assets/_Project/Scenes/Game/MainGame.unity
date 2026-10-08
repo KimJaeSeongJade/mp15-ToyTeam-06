@@ -289,37 +289,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1538673386217602092, guid: e892767ed51502648bb3e9eb22b6c6b5, type: 3}
   m_PrefabInstance: {fileID: 1631556785484933346}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &355261245
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 355261246}
-  m_Layer: 0
-  m_Name: NewMonster
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &355261246
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355261245}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &361904137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -929,6 +898,8 @@ MonoBehaviour:
   _isDestroyedOnManager: 0
   monsterPrefab: {fileID: 8472229039808612870, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
   monsterPoolSize: 20
+  newMonsterPrefab: {fileID: 6880885931590180816, guid: 9b03a29b207aa0949bc4fa630620049c, type: 3}
+  newMonsterPoolSize: 10
   coinPrefab: {fileID: 7101525390938221927, guid: bb29638f33527924083fc7626676e18e, type: 3}
   coinPoolSize: 20
   itemBoxPrefab: {fileID: 3566777353912687509, guid: 9e06cb185aaac3448b1eaac255da6e53, type: 3}
@@ -1762,4 +1733,3 @@ SceneRoots:
   - {fileID: 1857792877}
   - {fileID: 620222925}
   - {fileID: 576407104}
-  - {fileID: 355261246}

@@ -1,6 +1,7 @@
 public enum PoolType
 {
 	Monster,
+	NewMonster,
 	Coin,
 	ItemBox,
 	HealPotion,

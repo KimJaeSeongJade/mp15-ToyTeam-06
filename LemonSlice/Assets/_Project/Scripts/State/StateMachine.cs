@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public class StateMachine<T> where T : IContext
 {
@@ -25,7 +24,7 @@ public class StateMachine<T> where T : IContext
 		if (_current != null)
 		{
 			// TODO 현재상태 로그 비활성화
-			// Debug.Log($"{_current.GetType().Name} => {next.GetType().Name}");
+			//Debug.Log($"{_current.GetType().Name} => {next.GetType().Name}");
 		}
 
 		_current?.Exit();

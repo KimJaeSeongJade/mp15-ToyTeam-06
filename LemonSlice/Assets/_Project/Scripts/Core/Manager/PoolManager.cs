@@ -6,6 +6,9 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 	[SerializeField] private GameObject monsterPrefab;
 	[SerializeField] private int monsterPoolSize;
 
+	[SerializeField] private GameObject newMonsterPrefab;
+	[SerializeField] private int newMonsterPoolSize;
+
 	[SerializeField] private GameObject coinPrefab;
 	[SerializeField] private int coinPoolSize;
 
@@ -27,6 +30,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 	private Dictionary<PoolType, Stack<GameObject>> _dict;
 
 	private Stack<GameObject> _monsterPool;
+	private Stack<GameObject> _newMonsterPool;
 	private Stack<GameObject> _coinPool;
 	private Stack<GameObject> _itemBoxPool;
 	private Stack<GameObject> _healPotionPool;
@@ -68,6 +72,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_dict = new();
 
 		_monsterPool = GetPool(monsterPrefab, monsterPoolSize);
+		_newMonsterPool = GetPool(newMonsterPrefab, newMonsterPoolSize);
 		_coinPool = GetPool(coinPrefab, coinPoolSize);
 		_itemBoxPool = GetPool(itemBoxPrefab, itemBoxPoolSize);
 		_healPotionPool = GetPool(healPotionPrefab, healPotionPoolSize);
@@ -77,6 +82,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 
 
 		_dict.Add(PoolType.Monster, _monsterPool);
+		_dict.Add(PoolType.NewMonster, _newMonsterPool);
 		_dict.Add(PoolType.Coin, _coinPool);
 		_dict.Add(PoolType.ItemBox, _itemBoxPool);
 		_dict.Add(PoolType.HealPotion, _healPotionPool);

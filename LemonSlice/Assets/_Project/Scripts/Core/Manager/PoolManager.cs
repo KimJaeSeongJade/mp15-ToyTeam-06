@@ -82,7 +82,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 
 
 		_dict.Add(PoolType.Monster, _monsterPool);
-		_dict.Add(PoolType.Monster, _newMonsterPool);
+		_dict.Add(PoolType.NewMonster, _newMonsterPool);
 		_dict.Add(PoolType.Coin, _coinPool);
 		_dict.Add(PoolType.ItemBox, _itemBoxPool);
 		_dict.Add(PoolType.HealPotion, _healPotionPool);

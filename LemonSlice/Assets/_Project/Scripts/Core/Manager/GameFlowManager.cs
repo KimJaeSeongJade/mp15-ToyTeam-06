@@ -4,7 +4,6 @@ using UnityEngine;
 public class GameFlowManager : SingletonBehaviour<GameFlowManager>
 {
 	[SerializeField] private GameObject spawnPoint;
-	[SerializeField] private GameObject spawnPoint2;
 	[SerializeField] private GameObject itemBoxPrefab;
 	[SerializeField] private List<Transform> itemBoxList;
 
@@ -37,7 +36,6 @@ public class GameFlowManager : SingletonBehaviour<GameFlowManager>
 		IsPlayerDead = false;
 		IsBossDead = false;
 		spawnPoint.SetActive(false);
-		spawnPoint2.SetActive(false);
 		Spawn(itemBoxList, itemBoxPrefab);
 	}
 

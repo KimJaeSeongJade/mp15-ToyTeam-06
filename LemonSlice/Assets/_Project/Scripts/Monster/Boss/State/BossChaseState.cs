@@ -15,21 +15,10 @@ public class BossChaseState : StateBase<BossContext>
 
 	public override void Tick()
 	{
-		// TODO Die 테스트용 추후에 지워야 함
-		if (Input.GetKeyDown(KeyCode.P))
-		{
-			_fsm.ChangeState(StateType.Die);
-		}
-
 		float distance = Vector3.Distance(
 			_ctx.transform.position,
 			_ctx.monsterDetection.TargetTransform.position
 		);
-
-		if (distance < _ctx.stat.AttackDistance)
-		{
-			_fsm.ChangeState(StateType.Attack);
-		}
 
 		Vector3 direction = (_ctx.monsterDetection.TargetTransform.position - _ctx.transform.position).normalized;
 		direction.y = 0;
@@ -42,5 +31,17 @@ public class BossChaseState : StateBase<BossContext>
 		}
 
 		_ctx.transform.Translate(Vector3.forward * (_ctx.stat.MoveSpeed * Time.deltaTime));
+
+		_ctx.isInAttackRange = distance < _ctx.stat.AttackDistance;
+
+
+		if (_ctx.isInAttackRange && _ctx.monsterDetection.IsInSight)
+		{
+			_fsm.ChangeState(StateType.Attack);
+		}
+		else if (_ctx.isInAttackRange && !_ctx.monsterDetection.IsInSight)
+		{
+			_fsm.ChangeState(StateType.Searching);
+		}
 	}
 }

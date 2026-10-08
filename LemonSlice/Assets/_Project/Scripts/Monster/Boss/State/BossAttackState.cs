@@ -27,6 +27,10 @@ public class BossAttackState : StateBase<BossContext>
 		if (!isAttacking)
 		{
 			attackTime += Time.deltaTime;
+			if (_ctx.isInAttackRange && !_ctx.monsterDetection.IsInSight)
+			{
+				_fsm.ChangeState(StateType.Searching);
+			}
 		}
 
 		if (CanAttack)
@@ -47,10 +51,14 @@ public class BossAttackState : StateBase<BossContext>
 			_ctx.hitBoxes[randIndex].Open(_ctx.stat.AttackPower + extraDamage[randIndex], groggyDamage[randIndex]);
 		}
 
-		if (animEvent == _ctx.animHandler.EndAttack+randIndex)
+		if (animEvent == _ctx.animHandler.EndHitBox+randIndex)
+		{
+			_ctx.hitBoxes[randIndex].Close();
+		}
+
+		if (animEvent == _ctx.animHandler.EndAttack + randIndex)
 		{
 			isAttacking = false;
-			_ctx.hitBoxes[randIndex].Close();
 		}
 	}
 

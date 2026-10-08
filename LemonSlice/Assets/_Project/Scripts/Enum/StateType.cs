@@ -7,7 +7,7 @@ public enum StateType
 	Knockback,
 	Groggy,
 	Die,
-	Chase,
 	Hit,
 	KnockDown,
+	Searching
 }

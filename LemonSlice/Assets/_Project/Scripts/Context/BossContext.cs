@@ -9,4 +9,5 @@ public class BossContext : IContext
 	public BossStat stat;
 	public Transform transform;
 	public List<AttackHitBox> hitBoxes;
+	public bool isInAttackRange;
 }

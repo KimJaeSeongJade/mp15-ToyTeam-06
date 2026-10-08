@@ -27,6 +27,15 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 	[SerializeField] private GameObject bloodEffectPrefab;
 	[SerializeField] private int bloodEffectPoolSize;
 
+	[SerializeField] private GameObject playerAttack1Clip;
+	[SerializeField] private int playerAttack1PoolSize;
+
+	[SerializeField] private GameObject playerAttack2Clip;
+	[SerializeField] private int playerAttack2PoolSize;
+
+	[SerializeField] private GameObject playerAttack3Clip;
+	[SerializeField] private int playerAttack3PoolSize;
+
 	private Dictionary<PoolType, Stack<GameObject>> _dict;
 
 	private Stack<GameObject> _monsterPool;
@@ -37,6 +46,9 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 	private Stack<GameObject> _slashEffectPool;
 	private Stack<GameObject> _healEffectPool;
 	private Stack<GameObject> _bloodEffectPool;
+	private Stack<GameObject> _playerAttack1ClipPool;
+	private Stack<GameObject> _playerAttack2ClipPool;
+	private Stack<GameObject> _playerAttack3ClipPool;
 
 	private void Awake()
 	{
@@ -79,6 +91,9 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_healEffectPool = GetPool(healEffectPrefab, effectPoolSize);
 		_slashEffectPool = GetPool(slashEffectPrefab, slashEffectPoolSize);
 		_bloodEffectPool = GetPool(bloodEffectPrefab, bloodEffectPoolSize);
+		_playerAttack1ClipPool = GetPool(playerAttack1Clip, playerAttack1PoolSize);
+		_playerAttack2ClipPool = GetPool(playerAttack2Clip, playerAttack2PoolSize);
+		_playerAttack2ClipPool = GetPool(playerAttack3Clip, playerAttack3PoolSize);
 
 
 		_dict.Add(PoolType.Monster, _monsterPool);
@@ -89,6 +104,9 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_dict.Add(PoolType.HealEffect, _healEffectPool);
 		_dict.Add(PoolType.SlashEffect, _slashEffectPool);
 		_dict.Add(PoolType.BloodEffect, _bloodEffectPool);
+		_dict.Add(PoolType.PlayerAttack1, _playerAttack1ClipPool);
+		_dict.Add(PoolType.PlayerAttack2, _playerAttack2ClipPool);
+		_dict.Add(PoolType.PlayerAttack3, _playerAttack3ClipPool);
 
 	}
 

@@ -13,4 +13,6 @@ public class AnimEvents
 	public const string CloseHitBox = "CloseHitBox";
 
 	public const string CanRollUp = "CanRollUp";
+
+	public const string PlaySlashEffect = "PlaySlashEffect";
 }

@@ -1,13 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SlashEffect : MonoBehaviour, IPoolable
 {
 	private Coroutine slashEffectRoutine;
 	private WaitForSeconds slashEffectWait;
-	
-	public PoolType PoolId =>  PoolType.SlashEffect;
+
+	public PoolType PoolId => PoolType.SlashEffect;
 
 	private void OnEnable()
 	{

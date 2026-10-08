@@ -3,12 +3,16 @@ using UnityEngine;
 public class PlayerHitState : StateBase<PlayerContext>
 {
 	private GameObject _bloodEffect;
+	private int _hitIndex;
+	private const int HIT_COUNT = 2;
+
 	public PlayerHitState(PlayerContext context, StateMachine<PlayerContext> stateMachine) : base(context, stateMachine)
 	{
 	}
 
 	public override void Enter()
 	{
+		_hitIndex = 1;
 		PlayHitAnim();
 		PlayHitEffect();
 	}
@@ -23,6 +27,7 @@ public class PlayerHitState : StateBase<PlayerContext>
 
 		if (_ctx.isUnderAttack)
 		{
+			_hitIndex = (_hitIndex % HIT_COUNT) + 1;
 			PlayHitAnim();
 			PlayHitEffect();
 		}
@@ -44,7 +49,7 @@ public class PlayerHitState : StateBase<PlayerContext>
 
 	private void PlayHitAnim()
 	{
-		_ctx.animHandler.PlayHitAnim();
+		_ctx.animHandler.PlayHitAnim(_hitIndex);
 		_ctx.isUnderAttack = false;
 	}
 

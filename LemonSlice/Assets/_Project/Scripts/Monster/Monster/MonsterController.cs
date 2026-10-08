@@ -36,6 +36,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 		}
 
 		_ctx.stat.currentHealth.Value = _ctx.stat.MaxHealth;
+		_ctx.stat.DownPoint = _ctx.stat.MaxDownPoint;
 	}
 	private void Update()
 	{

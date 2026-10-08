@@ -37,6 +37,7 @@ public class GameFlowManager : SingletonBehaviour<GameFlowManager>
 		IsPlayerDead = false;
 		IsBossDead = false;
 		spawnPoint.SetActive(false);
+		spawnPoint2.SetActive(false);
 		Spawn(itemBoxList, itemBoxPrefab);
 	}
 

@@ -984,7 +984,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 7101525390938221927, guid: bb29638f33527924083fc7626676e18e, type: 3}
   coinPoolSize: 20
   itemBoxPrefab: {fileID: 3566777353912687509, guid: 9e06cb185aaac3448b1eaac255da6e53, type: 3}
-  itemBoxPoolSize: 5
+  itemBoxPoolSize: 12
   healPotionPrefab: {fileID: 7909986089514754791, guid: 38381d9ad15158f408dfab9570f6404d, type: 3}
   healPotionPoolSize: 5
   slashEffectPrefab: {fileID: 5503505460791601945, guid: 74c549d1b06b6b140a1fd9536eea637f, type: 3}
@@ -1056,6 +1056,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1729517639572797116, guid: d32773b0fa3f33f449362a1852536e53, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 8472229039808612870, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
     - target: {fileID: 1729517639572797116, guid: d32773b0fa3f33f449362a1852536e53, type: 3}
       propertyPath: flowManager
       value: 
@@ -1900,6 +1904,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1729517639572797116, guid: d32773b0fa3f33f449362a1852536e53, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 8472229039808612870, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+    - target: {fileID: 1729517639572797116, guid: d32773b0fa3f33f449362a1852536e53, type: 3}
       propertyPath: flowManager
       value: 
       objectReference: {fileID: 1675736981}
@@ -2058,6 +2066,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1729517639572797116, guid: d32773b0fa3f33f449362a1852536e53, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 8472229039808612870, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
     - target: {fileID: 1729517639572797116, guid: d32773b0fa3f33f449362a1852536e53, type: 3}
       propertyPath: flowManager
       value: 

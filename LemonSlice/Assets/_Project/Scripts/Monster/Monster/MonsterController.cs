@@ -8,6 +8,7 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 	[SerializeField] private Image _lockOnUi;
 	[SerializeField] private string _leftHitBoxTag;
 	[SerializeField] private string _rightHitBoxTag;
+	[SerializeField] private PoolType _poolType;
 
 	private MonsterAnimHandler _animHandler;
 	private MonsterContext _ctx;
@@ -155,5 +156,5 @@ public class MonsterController : MonoBehaviour, IPoolable, IDamageable, ILockona
 		}
 	}
 
-	public PoolType PoolId => PoolType.Monster;
+	public PoolType PoolId => _poolType;
 }

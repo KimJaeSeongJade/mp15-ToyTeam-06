@@ -273,6 +273,7 @@ MonoBehaviour:
   _lockOnUi: {fileID: 5608981360196118627}
   _leftHitBoxTag: LeftHitBox
   _rightHitBoxTag: RightHitBox
+  _poolType: 1
 --- !u!114 &1631935328748028607
 MonoBehaviour:
   m_ObjectHideFlags: 0

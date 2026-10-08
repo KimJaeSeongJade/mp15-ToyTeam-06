@@ -3,6 +3,8 @@ using UnityEngine;
 public class MonsterHitState : StateBase<MonsterContext>
 {
 	private GameObject _bloodEffect;
+	private int _hitIndex;
+	private const int HIT_COUNT = 2;
 
 	public MonsterHitState(MonsterContext monsterContext, StateMachine<MonsterContext> stateMachine) : base(
 		monsterContext, stateMachine)
@@ -11,6 +13,7 @@ public class MonsterHitState : StateBase<MonsterContext>
 
 	public override void Enter()
 	{
+		_hitIndex = 1;
 		PlayHitAnim();
 		PlayHitEffect();
 	}
@@ -19,6 +22,7 @@ public class MonsterHitState : StateBase<MonsterContext>
 	{
 		if (_ctx.isUnderAttack)
 		{
+			_hitIndex = (_hitIndex % HIT_COUNT) + 1;
 			PlayHitAnim();
 			PlayHitEffect();
 		}
@@ -40,7 +44,7 @@ public class MonsterHitState : StateBase<MonsterContext>
 
 	private void PlayHitAnim()
 	{
-		_ctx.animHandler.PlayHitAnim();
+		_ctx.animHandler.PlayHitAnim(_hitIndex);
 		_ctx.isUnderAttack = false;
 	}
 
@@ -50,7 +54,7 @@ public class MonsterHitState : StateBase<MonsterContext>
 		{
 			StopHitEffect();
 		}
-		
+
 		Vector3 pos = _ctx.hitPoint;
 		Vector3 dir = _ctx.hitDirection;
 		_bloodEffect = EffectManager.Instance.PlayBloodEffect(pos, dir);

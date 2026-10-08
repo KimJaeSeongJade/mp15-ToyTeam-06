@@ -50,11 +50,9 @@ public class PlayerAnimHandler : MonoBehaviour
 		animator.Play(dieAnimName);
 	}
 
-	public void PlayHitAnim()
+	public void PlayHitAnim(int hitIndex)
 	{
-		int maxRandomValue = hitAnimCount + 1;
-		int index = Random.Range(1, maxRandomValue);
-		animator.Play($"{hitAnimName}{index}");
+		animator.Play($"{hitAnimName}{hitIndex}");
 	}
 
 	public void PlayKnockDownAnim()

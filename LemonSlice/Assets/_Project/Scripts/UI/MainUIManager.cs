@@ -34,15 +34,7 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	public void RefreshScoreUI()
 	{
 		int score = GameManager.Instance.CurrentScore;
-
-		if (score < 10)
-		{
-			scoreUI.text = $": 0{score}";
-		}
-		else
-		{
-			scoreUI.text = $": {score}";
-		}
+		scoreUI.text = $"{score: 0 0}";
 	}
 
 	public void RefreshTimeUI()
@@ -51,7 +43,7 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 		int min = totalTime / 60;
 		int sec = totalTime % 60;
 
-		totalTimeUI.text = $"PlayTime - {min:00} : {sec:00}";
+		totalTimeUI.text = $"{min:0 0} : {sec:0 0}";
 	}
 
 	private void RefreshGameState()

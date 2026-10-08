@@ -4,6 +4,7 @@ public class BossAnimEventSender : MonoBehaviour
 {
 	private BossController _bossController;
 
+
 	private void Awake()
 	{
 		CacheComponents();
@@ -12,7 +13,12 @@ public class BossAnimEventSender : MonoBehaviour
 	private void CacheComponents()
 	{
 		_bossController = GetComponentInParent<BossController>();
+
 	}
 
-	public void OnAnimEvent(string animEvent) => _bossController.OnAnimEvent(animEvent);
+	public void OnAnimEvent(string animEvent)
+	{
+		_bossController.OnAnimEvent(animEvent);
+
+	}
 }

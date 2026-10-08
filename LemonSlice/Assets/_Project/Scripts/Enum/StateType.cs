@@ -9,5 +9,6 @@ public enum StateType
 	Die,
 	Hit,
 	KnockDown,
-	Searching
+	Searching,
+	PhaseChange
 }

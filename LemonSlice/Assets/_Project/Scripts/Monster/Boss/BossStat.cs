@@ -15,6 +15,7 @@ public class BossStat : MonoBehaviour
 	public ObservableProperty<int> MaxGroggy = new(0);
 	public ObservableProperty<int> MaxHealth = new(0);
 
+	public bool IsInvincible { get; set; }
 	public float GroggyTime => groggyTime;
 	public float MoveSpeed => moveSpeed;
 	public int AttackPower => attackPower;

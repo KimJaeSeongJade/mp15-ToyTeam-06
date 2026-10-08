@@ -33,6 +33,7 @@ public class PlayerAttackState : StateBase<PlayerContext>
 		if (comboIndex < MAX_COMBO)
 		{
 			Rotate();
+			Debug.Log($"안녕");
 		}
 
 		if (_ctx.input.IsRollPressed && comboIndex < MAX_COMBO)

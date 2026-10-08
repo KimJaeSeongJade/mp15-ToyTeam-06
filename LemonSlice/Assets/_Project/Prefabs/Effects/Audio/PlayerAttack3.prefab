@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1911583098091521667}
   - component: {fileID: 2233376200545711314}
+  - component: {fileID: -8643295681069071273}
   m_Layer: 0
   m_Name: PlayerAttack3
   m_TagString: Untagged
@@ -43,7 +44,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c067c247a5a92db49b855dd284a21369, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -128,3 +129,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8643295681069071273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6988420273321091470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9599ff2935c8fe4b8cf6795108eedf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _poolType: 10

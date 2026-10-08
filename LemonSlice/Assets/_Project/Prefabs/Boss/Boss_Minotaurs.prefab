@@ -172,6 +172,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isBoss: 1
+  detectAngle: 70
 --- !u!1 &3588387426953936966
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +345,7 @@ MonoBehaviour:
   moveSpeed: 5
   attackPower: 20
   attackDelay: 0.8
-  attackDistance: 2
+  attackDistance: 3
 --- !u!114 &5269475017913358649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,6 +367,7 @@ MonoBehaviour:
   dieAnimParam: MinoDie
   startAttack: StartMinoAttack
   endAttack: EndMinoAttack
+  endHitBox: EndHitBox
 --- !u!114 &6325849862732576931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +375,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9085860942653895676}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1556d27df22987d4384739e58988f5cc, type: 3}
   m_Name: 

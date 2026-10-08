@@ -65,6 +65,7 @@ public class BossController : MonoBehaviour, IDamageable, ILockonable
 		_machine.Add(StateType.Knockback, new BossKnockbackState(_ctx, _machine));
 		_machine.Add(StateType.Groggy, new BossGroggyState(_ctx, _machine));
 		_machine.Add(StateType.Die, new BossDieState(_ctx, _machine));
+		_machine.Add(StateType.Searching, new BossSearchingState(_ctx, _machine));
 	}
 
 	public void OnAnimEvent(string animEvent)

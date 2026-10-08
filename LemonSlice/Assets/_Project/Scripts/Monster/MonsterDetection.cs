@@ -5,11 +5,13 @@ public class MonsterDetection : MonoBehaviour
 {
 	[SerializeField] private LayerMask targetLayer;
 	[SerializeField] private bool isBoss; // 보스가 아니라면 체크 해제
+	[SerializeField] private float detectAngle;
 
-	private SphereCollider _sphereCollider;
+	private SphereCollider sphereCollider;
 	private float detectRange;
 
 	public bool IsPlayerEnter { get; private set; }
+	public bool IsInSight { get; private set; }
 	public Transform TargetTransform { get; private set; }
 
 
@@ -19,11 +21,12 @@ public class MonsterDetection : MonoBehaviour
 
 	private void Start() => Init();
 
+	private void Update() => Detecting();
+
 	private void OnDisable()
 	{
 		IsPlayerEnter = false;
 		TargetTransform = null;
-
 	}
 
 	private void OnDrawGizmos()
@@ -35,6 +38,14 @@ public class MonsterDetection : MonoBehaviour
 
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(transform.position, detectRange);
+
+		if (transform.parent == null) return;
+		if (detectAngle == 0) return;
+		Vector3 leftDir = Quaternion.Euler(0f,-detectAngle / 2 , 0f) * transform.parent.forward;
+		Vector3 rightDir = Quaternion.Euler(0f,detectAngle / 2 , 0f) * transform.parent.forward;
+
+		Gizmos.DrawRay(transform.position, leftDir * detectRange);
+		Gizmos.DrawRay(transform.position, rightDir * detectRange);
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -64,16 +75,41 @@ public class MonsterDetection : MonoBehaviour
 
 	private void CacheComponents()
 	{
-		_sphereCollider = GetComponent<SphereCollider>();
+		sphereCollider = GetComponent<SphereCollider>();
 	}
 
 	private void Init()
 	{
-		detectRange = _sphereCollider.radius;
+		detectRange = sphereCollider.radius;
+	}
+
+	private void Detecting()
+	{
+		if (!IsPlayerEnter) return;
+
+		if (IsPlayerInSight(TargetTransform))
+		{
+			IsInSight = true;
+		}
+		else
+		{
+			IsInSight = false;
+		}
 	}
 
 	private bool IsInPlayerLayer(GameObject target)
 	{
 		return (targetLayer.value & (1 << target.layer)) != 0;
+	}
+
+	private bool IsPlayerInSight(Transform target)
+	{
+		Vector3 vectorToTarget = (target.position - transform.position).normalized;
+
+		float targetDot = Vector3.Dot(transform.forward, vectorToTarget);
+
+		float threshold = Mathf.Cos(detectAngle * 0.5f * Mathf.Deg2Rad);
+
+		return (targetDot >= threshold);
 	}
 }

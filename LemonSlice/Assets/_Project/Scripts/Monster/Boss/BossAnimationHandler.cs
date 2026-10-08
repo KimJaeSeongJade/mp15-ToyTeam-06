@@ -13,9 +13,11 @@ public class BossAnimationHandler : MonoBehaviour
 
 	[SerializeField] private string startAttack;
 	[SerializeField] private string endAttack;
+	[SerializeField] private string endHitBox;
 
 	public string StartAttack => startAttack;
 	public string EndAttack => endAttack;
+	public string EndHitBox => endHitBox;
 
 	private void Awake()
 	{

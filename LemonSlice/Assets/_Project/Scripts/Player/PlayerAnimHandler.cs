@@ -25,8 +25,8 @@ public class PlayerAnimHandler : MonoBehaviour
 
 	public void PlayIdleAndMoveAnim()
 	{
-		// animator.CrossFade(idleAndMoveAnimName,0.1f);
-		animator.Play(idleAndMoveAnimName);
+		animator.CrossFade(idleAndMoveAnimName,0.1f);
+		//animator.Play(idleAndMoveAnimName);
 	}
 
 	public void PlayRollAnim()

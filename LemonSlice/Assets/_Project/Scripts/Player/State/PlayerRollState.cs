@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class PlayerRollState : StateBase<PlayerContext>
 {
+	private bool isRolled;
+	private bool isRotated => (_ctx.paladin.rotation == _ctx.transform.rotation);
+	private float rotateSpeed = 1200f;
+
 	public PlayerRollState(PlayerContext context, StateMachine<PlayerContext> stateMachine) : base(context,
 		stateMachine)
 	{
@@ -44,6 +48,20 @@ public class PlayerRollState : StateBase<PlayerContext>
 
 			_ctx.transform.LookAt(_ctx.lockOnController.LockOn());
 		}
+
+		if (isRolled)
+		{
+			_ctx.paladin.rotation = Quaternion.RotateTowards(
+				_ctx.paladin.rotation,
+				_ctx.transform.rotation,
+				rotateSpeed * Time.deltaTime);
+		}
+
+		if (isRolled && isRotated)
+		{
+			isRolled = false;
+			EndRollState();
+		}
 	}
 
 	public override void Exit()
@@ -61,7 +79,7 @@ public class PlayerRollState : StateBase<PlayerContext>
 		switch (animEvent)
 		{
 			case AnimEvents.EndRollAnim:
-				EndRollState();
+				isRolled = true;
 				break;
 		}
 	}

@@ -71,6 +71,9 @@ public class PlayerAttackState : StateBase<PlayerContext>
 			case AnimEvents.CloseHitBox:
 				CloseHitBox();
 				break;
+			case AnimEvents.PlaySlashEffect:
+				PlaySlashEffect();
+				break;
 		}
 	}
 	//----------------State Method------------------
@@ -112,4 +115,13 @@ public class PlayerAttackState : StateBase<PlayerContext>
 	public void CloseHitBox() => _ctx.hitBox.Close();
 	private void OpenCombo() => canCombo = true;
 	private void CloseCombo() => canCombo = false;
+	private void PlaySlashEffect()
+	{
+		Vector3 pos = new Vector3(
+			_ctx.transform.position.x,
+			_ctx.transform.position.y + 1,
+			_ctx.transform.position.z);
+		Vector3 dir = _ctx.transform.forward;
+		EffectManager.Instance.PlaySlashEffect(pos, dir);
+	}
 }

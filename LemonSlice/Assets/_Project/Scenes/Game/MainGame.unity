@@ -593,6 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isDestroyedOnManager: 0
   bloodPrefab: {fileID: 1124293326532804700, guid: 0aaa3bcb1ef07c248b790b5b73874934, type: 3}
+  slashPrefab: {fileID: 3891072298104667133, guid: 9b6a38ea2688dd44eaca562ee4da020e, type: 3}
 --- !u!4 &1078335735
 Transform:
   m_ObjectHideFlags: 0

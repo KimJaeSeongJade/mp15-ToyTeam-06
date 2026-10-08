@@ -6,6 +6,9 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 	[SerializeField] private GameObject monsterPrefab;
 	[SerializeField] private int monsterPoolSize;
 
+	[SerializeField] private GameObject newMonsterPrefab;
+	[SerializeField] private int newMonsterPoolSize;
+
 	[SerializeField] private GameObject coinPrefab;
 	[SerializeField] private int coinPoolSize;
 

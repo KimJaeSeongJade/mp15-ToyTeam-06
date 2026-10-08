@@ -251,7 +251,7 @@ MonoBehaviour:
   moveSpeed: 3
   attackPower: 5
   rotationSpeed: 3
-  attackDelay: 2
+  attackDelay: 1
   attackDistance: 1.3
   downPoint: 100
   maxDownPoint: 100
@@ -289,11 +289,11 @@ MonoBehaviour:
   idleAnimParam: NewMonsterIdle
   chaseAnimParam: NewMonsterChase
   attackAnimParam: NewMonsterAttack
-  dieAnimParam: NewMonsterDIe
+  dieAnimParam: NewMonsterDie
   endAttackAnim: EndAttackAnim
   endDieAnim: EndDieAnim
-  hitAnimName: NewMonsterHit
-  knockDownAnimName: NewMonsterKnockDown
+  hitAnimName: Hit
+  knockDownAnimName: KnockDown
   standUpAnimName: StandUp
   hitAnimCount: 2
 --- !u!54 &2286168166716293980

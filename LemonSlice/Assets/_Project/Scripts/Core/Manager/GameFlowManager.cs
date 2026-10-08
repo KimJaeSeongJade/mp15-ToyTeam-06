@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameFlowManager : SingletonBehaviour<GameFlowManager>
 {
 	[SerializeField] private GameObject spawnPoint;
+	[SerializeField] private GameObject spawnPoint2;
 	[SerializeField] private GameObject itemBoxPrefab;
 	[SerializeField] private List<Transform> itemBoxList;
 

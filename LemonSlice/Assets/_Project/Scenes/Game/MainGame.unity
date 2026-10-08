@@ -912,6 +912,12 @@ MonoBehaviour:
   effectPoolSize: 10
   bloodEffectPrefab: {fileID: 1124293326532804700, guid: 0aaa3bcb1ef07c248b790b5b73874934, type: 3}
   bloodEffectPoolSize: 20
+  playerAttack1Clip: {fileID: 6845497913569079208, guid: 39b3557989b2502479745a46d7499781, type: 3}
+  playerAttack1PoolSize: 3
+  playerAttack2Clip: {fileID: 2711492302860891163, guid: 1473b2226b60d0d4e8aa76e2ccefff72, type: 3}
+  playerAttack2PoolSize: 3
+  playerAttack3Clip: {fileID: 6988420273321091470, guid: ff2da4c6abd43d04681f8841884e4a7c, type: 3}
+  playerAttack3PoolSize: 3
 --- !u!4 &1744928213
 Transform:
   m_ObjectHideFlags: 0

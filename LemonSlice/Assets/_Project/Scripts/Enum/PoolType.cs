@@ -8,4 +8,6 @@ public enum PoolType
 	SlashEffect,
 	HealEffect,
 	BloodEffect,
+	PlayerHitEffect,
+	MonsterHitEffect,
 }

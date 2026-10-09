@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ public class BossController : MonoBehaviour, IDamageable, ILockonable
 	private StateMachine<BossContext> _machine;
 	private MonsterDetection _monsterDetection;
 	private BossStat _stat;
+	private GameObject _hitEffect;
+	private WaitForSeconds _hitEffectWait = new(1f);
 
 	// --------- 이벤트 함수 ------------
 	private void Awake()
@@ -75,6 +78,7 @@ public class BossController : MonoBehaviour, IDamageable, ILockonable
 
 	public void TakeDamage(DamageInfo damageInfo)
 	{
+		_hitEffect = EffectManager.Instance.PlayMonsterHitEffect(damageInfo.HitPoint);
 		_stat.CurrentHealth.Value -= damageInfo.Damage;
 		_stat.CurrentGroggy.Value -= damageInfo.DownValue;
 
@@ -102,6 +106,12 @@ public class BossController : MonoBehaviour, IDamageable, ILockonable
 		Transform cameraTransform = Camera.main.transform;
 
 		_lockOnUi.rectTransform.LookAt(cameraTransform);
+	}
+
+	private IEnumerator hitEffectRoutine()
+	{
+		yield return _hitEffectWait;
+		PoolManager.Instance.TryReturn(_hitEffect);
 	}
 
 }

@@ -6,7 +6,7 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 {
 	[SerializeField] private string _stateType;
 	[SerializeField] private Image _lockOnUi;
-	[SerializeField] private List<AttackHitBox> _hitBoxes;
+	[SerializeField] private AttackHitBox _hitBoxes;
 
 	public int CurrentPhase { get; private set; } = 1;
 
@@ -14,7 +14,7 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
     private MutantContext _ctx;
     private StateMachine<MutantContext> _machine;
 	private MonsterDetection _monsterDetection;
-    private BossStat _stat;
+    private MutantStat _stat;
 
     private void Awake()
     {
@@ -36,13 +36,13 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
     private void Update()
     {
         _machine?.Tick();
-        RotateUI();
+	    RotateUI();
         _stateType = _machine.Current.GetType().ToString();
     }
 
     private void CacheComponents()
     {
-	    _stat = GetComponent<BossStat>();
+	    _stat = GetComponent<MutantStat>();
         _monsterDetection = GetComponentInChildren<MonsterDetection>();
         _animHandler = GetComponentInChildren<MutantAnimationHandler>();
     }
@@ -58,8 +58,6 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 	        monsterDetection = _monsterDetection,
 	        stat = _stat,
 	        hitBoxes = _hitBoxes,
-	        attackIndex = 0,
-	        isInAttackRange = false
         };
     }
 
@@ -72,22 +70,26 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
         _machine.Add(StateType.Attack, new MutantAttackState(_ctx, _machine));
         _machine.Add(StateType.PhaseChange, new MutantPhaseChangeState(_ctx, _machine));
         _machine.Add(StateType.Die, new MutantDieState(_ctx, _machine));
+        _machine.Add(StateType.Groggy, new MutantGroggyState(_ctx, _machine));
+        _machine.Add(StateType.Searching, new MutantSearchingState(_ctx, _machine));
     }
 
     public void TakeDamage(DamageInfo damageInfo)
     {
-	    if (_stat == null) return;
-
-	    if (_stat.IsInvincible) return;
-
 	    _stat.CurrentHealth.Value -= damageInfo.Damage;
 	    _stat.CurrentGroggy.Value -= damageInfo.DownValue;
+
+	    if (_stat.CurrentGroggy.Value <= 0)
+	    {
+		    _stat.SetFullGroggy();
+		    _machine.ChangeState(StateType.Groggy);
+	    }
 
 	    if (_stat.CurrentHealth.Value <= 0)
 	    {
 		    if (CurrentPhase == 1)
 		    {
-			    _machine.ChangeState(StateType.PhaseChange);
+			    //_machine.ChangeState(StateType.PhaseChange);
 		    }
 		    else if (CurrentPhase == 2)
 		    {
@@ -95,15 +97,7 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 		    }
 		    return;
 	    }
-
-	    if (_stat.CurrentGroggy.Value <= 0)
-	    {
-		    _stat.SetFullGroggy();
-		    _machine.ChangeState(StateType.Groggy);
-	    }
     }
-
-
 
     public void SetPhase(int phase)
     {
@@ -118,10 +112,10 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 
     private void RotateUI()
     {
-        if (_lockOnUi != null && _lockOnUi.gameObject.activeSelf)
-        {
-            _lockOnUi.rectTransform.LookAt(Camera.main.transform);
-        }
+	    if (!_lockOnUi.gameObject.activeSelf) return;
+
+        _lockOnUi.rectTransform.LookAt(Camera.main.transform);
+
     }
     public void OnAnimEvent(string animEvent) => _machine?.OnAnimEvent(animEvent);
 

@@ -60,7 +60,21 @@ ModelImporter:
       - time: 1
         functionName: OnAnimEvent
         data: EndAttack1
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: d228a9549a9be3943bc31bbb35ee549b, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.49041817
+        functionName: OnAnimEvent
+        data: StartAttack
+        objectReferenceParameter: {fileID: 11500000, guid: d228a9549a9be3943bc31bbb35ee549b, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5879891
+        functionName: OnAnimEvent
+        data: EndHitBox
+        objectReferenceParameter: {fileID: 11500000, guid: d228a9549a9be3943bc31bbb35ee549b, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

@@ -5,10 +5,10 @@ public class MutantContext : IContext
 {
 	public MutantAnimationHandler animHandler;
 	public MonsterDetection monsterDetection;
-	public BossStat stat;
+	public MutantStat stat;
 	public Transform transform;
-	public List<AttackHitBox> hitBoxes;
-	
-	public int attackIndex;
+	public AttackHitBox hitBoxes;
 	public bool isInAttackRange;
+	public int attackIndex;
+
 }

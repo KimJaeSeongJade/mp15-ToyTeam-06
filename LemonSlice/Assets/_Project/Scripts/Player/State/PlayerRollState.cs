@@ -88,7 +88,15 @@ public class PlayerRollState : StateBase<PlayerContext>
 
 	private void SetRollVelocity()
 	{
-		Vector3 moveDirection = _ctx.transform.TransformDirection(_ctx.input.MoveAxisRaw).normalized;
+		Vector3 moveDirection;
+		if (_ctx.input.MoveAxisRaw != Vector3.zero)
+		{
+			moveDirection = _ctx.transform.TransformDirection(_ctx.input.MoveAxisRaw).normalized;
+		}
+		else
+		{
+			moveDirection = _ctx.transform.forward;
+		}
 
 		_ctx.rigidbody.velocity = new Vector3(
 			moveDirection.x * _ctx.stat.MoveSpeed * _ctx.stat.RollForce,

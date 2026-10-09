@@ -66,5 +66,7 @@ public class MonsterHitState : StateBase<MonsterContext>
 	{
 		EffectManager.Instance.StopEffect(_bloodEffect);
 		EffectManager.Instance.StopEffect(_hitEffect);
+		_bloodEffect = null;
+		_hitEffect = null;
 	}
 }

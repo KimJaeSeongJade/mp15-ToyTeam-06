@@ -3,6 +3,7 @@ using Random = UnityEngine.Random;
 
 public class MonsterDieState : StateBase<MonsterContext>
 {
+	private GameObject _hitEffect;
 
 	public MonsterDieState(MonsterContext context, StateMachine<MonsterContext> stateMachine) : base(context,
 		stateMachine)
@@ -17,6 +18,8 @@ public class MonsterDieState : StateBase<MonsterContext>
 
 		_ctx.monsterDetection.TargetTransform.GetComponentInChildren<LockOnController>()
 			.RemoveEnemy(_ctx.transform.gameObject);
+
+		PlayHitEffect();
 	}
 
 
@@ -59,6 +62,22 @@ public class MonsterDieState : StateBase<MonsterContext>
 				rigidbody.AddForce(randomDirection * dropForce, ForceMode.Impulse);
 			}
 		}
+	}
+
+	private void PlayHitEffect()
+	{
+		if (_hitEffect != null)
+		{
+			StopHitEffect();
+		}
+
+		Vector3 pos = _ctx.hitPoint;
+		_hitEffect = EffectManager.Instance.PlayMonsterHitEffect(pos);
+	}
+
+	private void StopHitEffect()
+	{
+		EffectManager.Instance.StopEffect(_hitEffect);
 	}
 }
 

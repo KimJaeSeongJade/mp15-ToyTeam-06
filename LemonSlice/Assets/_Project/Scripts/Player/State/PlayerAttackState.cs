@@ -72,7 +72,7 @@ public class PlayerAttackState : StateBase<PlayerContext>
 				CloseHitBox();
 				break;
 			case AnimEvents.PlaySlashEffect:
-				PlaySlashEffect();
+				PlaySlashEffect(comboIndex);
 				break;
 		}
 	}
@@ -115,13 +115,36 @@ public class PlayerAttackState : StateBase<PlayerContext>
 	public void CloseHitBox() => _ctx.hitBox.Close();
 	private void OpenCombo() => canCombo = true;
 	private void CloseCombo() => canCombo = false;
-	private void PlaySlashEffect()
+
+	private void PlaySlashEffect(int comboIndex)
 	{
-		Vector3 pos = new Vector3(
-			_ctx.transform.position.x,
-			_ctx.transform.position.y + 1,
-			_ctx.transform.position.z);
-		Vector3 dir = _ctx.transform.forward;
-		EffectManager.Instance.PlaySlashEffect(pos, dir);
+		Vector3 pos = _ctx.transform.position;
+		pos.y += 1;
+		Quaternion rot = GetSlashDir(comboIndex);
+
+		EffectManager.Instance.PlaySlashEffect(pos, rot);
+	}
+
+	private Quaternion GetSlashDir(int comboIndex)
+	{
+		Quaternion baseRot = Quaternion.LookRotation(_ctx.transform.forward, Vector3.up);
+		Quaternion resultRot = new();
+		switch (comboIndex)
+		{
+			case 1:
+				resultRot = baseRot *
+				            Quaternion.AngleAxis(180, Vector3.forward) *
+				            Quaternion.AngleAxis(-90, Vector3.up) *
+				            Quaternion.AngleAxis(45, Vector3.right);
+				break;
+			case 2:
+				resultRot = baseRot *
+				            Quaternion.AngleAxis(75, Vector3.forward);
+				break;
+			case 3:
+				resultRot = baseRot;
+				break;
+		}
+		return resultRot;
 	}
 }

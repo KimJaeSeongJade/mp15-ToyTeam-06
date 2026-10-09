@@ -3,6 +3,7 @@ using UnityEngine;
 public class MonsterHitState : StateBase<MonsterContext>
 {
 	private GameObject _bloodEffect;
+	private GameObject _hitEffect;
 	private int _hitIndex;
 	private const int HIT_COUNT = 2;
 
@@ -58,10 +59,14 @@ public class MonsterHitState : StateBase<MonsterContext>
 		Vector3 pos = _ctx.hitPoint;
 		Vector3 dir = _ctx.hitDirection;
 		_bloodEffect = EffectManager.Instance.PlayBloodEffect(pos, dir);
+		_hitEffect = EffectManager.Instance.PlayMonsterHitEffect(pos);
 	}
 
 	private void StopHitEffect()
 	{
-		EffectManager.Instance.StopBloodEffect(_bloodEffect);
+		EffectManager.Instance.StopEffect(_bloodEffect);
+		EffectManager.Instance.StopEffect(_hitEffect);
+		_bloodEffect = null;
+		_hitEffect = null;
 	}
 }

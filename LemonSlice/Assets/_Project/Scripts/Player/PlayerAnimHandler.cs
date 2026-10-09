@@ -17,6 +17,9 @@ public class PlayerAnimHandler : MonoBehaviour
 	[SerializeField] private int hitAnimCount;
 
 	[SerializeField] private GameObject slashEffect;
+	[SerializeField] private GameObject[] attackAudio;
+
+	private GameObject currentAtatckSound;
 
 	private void Awake()
 	{
@@ -38,21 +41,40 @@ public class PlayerAnimHandler : MonoBehaviour
 	public void PlayAttackAnim(int animIndex)
 	{
 		animator.Play($"{attackAnimName}{animIndex}");
+		if (animIndex >= 1)
+		{
+			int audioNumber = animIndex - 1;
+			Debug.Log(audioNumber);
+			currentAtatckSound = AttackSound(audioNumber);
+		}
+	}
+
+	private GameObject AttackSound(int audioNumber)
+	{
+		return PoolManager.Instance.Take(attackAudio[audioNumber]).Build();
+	}
+
+	private void StopAttackSound()
+	{
+		if (currentAtatckSound != null) PoolManager.Instance.TryReturn(currentAtatckSound);
 	}
 
 	public void PlayDieAnim()
 	{
 		animator.Play(dieAnimName);
+		StopAttackSound();
 	}
 
 	public void PlayHitAnim(int hitIndex)
 	{
 		animator.Play($"{hitAnimName}{hitIndex}");
+		StopAttackSound();
 	}
 
 	public void PlayKnockDownAnim()
 	{
 		animator.Play(knockDownAnimName);
+		StopAttackSound();
 	}
 
 	public void PlayStandUpAnim()

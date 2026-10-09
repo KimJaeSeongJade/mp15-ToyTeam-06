@@ -93,7 +93,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_bloodEffectPool = GetPool(bloodEffectPrefab, bloodEffectPoolSize);
 		_playerAttack1ClipPool = GetPool(playerAttack1Clip, playerAttack1PoolSize);
 		_playerAttack2ClipPool = GetPool(playerAttack2Clip, playerAttack2PoolSize);
-		_playerAttack2ClipPool = GetPool(playerAttack3Clip, playerAttack3PoolSize);
+		_playerAttack3ClipPool = GetPool(playerAttack3Clip, playerAttack3PoolSize);
 
 
 		_dict.Add(PoolType.Monster, _monsterPool);

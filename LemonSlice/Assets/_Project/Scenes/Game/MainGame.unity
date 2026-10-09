@@ -301,6 +301,22 @@ PrefabInstance:
       propertyPath: playerHp
       value: 
       objectReference: {fileID: 706507405}
+    - target: {fileID: 2742753561888817850, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
+      propertyPath: attackAudio.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2742753561888817850, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
+      propertyPath: attackAudio.Array.data[0]
+      value: 
+      objectReference: {fileID: 6845497913569079208, guid: 39b3557989b2502479745a46d7499781, type: 3}
+    - target: {fileID: 2742753561888817850, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
+      propertyPath: attackAudio.Array.data[1]
+      value: 
+      objectReference: {fileID: 2711492302860891163, guid: 1473b2226b60d0d4e8aa76e2ccefff72, type: 3}
+    - target: {fileID: 2742753561888817850, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
+      propertyPath: attackAudio.Array.data[2]
+      value: 
+      objectReference: {fileID: 6988420273321091470, guid: ff2da4c6abd43d04681f8841884e4a7c, type: 3}
     - target: {fileID: 6334943611611487210, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
       propertyPath: m_Name
       value: MainPlayer
@@ -345,7 +361,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1282269340694351089, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -913,11 +930,11 @@ MonoBehaviour:
   bloodEffectPrefab: {fileID: 1124293326532804700, guid: 0aaa3bcb1ef07c248b790b5b73874934, type: 3}
   bloodEffectPoolSize: 20
   playerAttack1Clip: {fileID: 6845497913569079208, guid: 39b3557989b2502479745a46d7499781, type: 3}
-  playerAttack1PoolSize: 3
+  playerAttack1PoolSize: 5
   playerAttack2Clip: {fileID: 2711492302860891163, guid: 1473b2226b60d0d4e8aa76e2ccefff72, type: 3}
-  playerAttack2PoolSize: 3
+  playerAttack2PoolSize: 5
   playerAttack3Clip: {fileID: 6988420273321091470, guid: ff2da4c6abd43d04681f8841884e4a7c, type: 3}
-  playerAttack3PoolSize: 3
+  playerAttack3PoolSize: 5
 --- !u!4 &1744928213
 Transform:
   m_ObjectHideFlags: 0
@@ -1264,11 +1281,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9171159480965077215, guid: 8c28560a85cefc642944b2b1709e5e1a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 82.4
+      value: 82.3999
       objectReference: {fileID: 0}
     - target: {fileID: 9171159480965077215, guid: 8c28560a85cefc642944b2b1709e5e1a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.8
+      value: -107.80005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -7,6 +7,7 @@ public class EffectManager : SingletonBehaviour<EffectManager>
 	[SerializeField] private GameObject slashPrefab;
 	[SerializeField] private GameObject playerHitEffectPrefab;
 	[SerializeField] private GameObject monsterHitEffectPrefab;
+	[SerializeField] private GameObject mutantJumpEffectPrefab;
 
 public GameObject PlayBloodEffect(Vector3 pos, Vector3 direction)
 	{
@@ -46,5 +47,10 @@ public GameObject PlayBloodEffect(Vector3 pos, Vector3 direction)
 			.Take(monsterHitEffectPrefab)
 			.SetPosition(pos)
 			.Build();
+	}
+
+	public GameObject PlayMutantJumpEffect(Vector3 pos)
+	{
+		return PoolManager.Instance.Take(mutantJumpEffectPrefab).SetPosition(pos).Build();
 	}
 }

@@ -94,10 +94,12 @@ MonoBehaviour:
   - Swing
   - JumpAttack
   dieAnimParam: Die
+  phaseChangeAnimParam: EndPhaseChange
   startAttackEventKey: StartAttack
   endHitBoxEventKey: EndHitBox
   endAttackEventKey: EndAttack
   endPhaseChangeEventKey: EndPhaseChange
+  a: 0
 --- !u!114 &2510770052842074530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +132,7 @@ MonoBehaviour:
   moveSpeed: 8
   attackPower: 30
   attackDelay: 0.8
-  attackDistance: 2
+  attackDistance: 3
 --- !u!1 &9201402638060428370
 GameObject:
   m_ObjectHideFlags: 0

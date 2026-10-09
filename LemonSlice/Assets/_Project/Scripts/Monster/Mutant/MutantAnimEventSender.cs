@@ -15,6 +15,9 @@ public class MutantAnimEventSender : MonoBehaviour
 
 	public void OnAnimEvent(string animEvent)
 	{
-		_mutantController.OnAnimEvent(animEvent);
+		if (_mutantController != null)
+		{
+			_mutantController.OnAnimEvent(animEvent);
+		}
 	}
 }

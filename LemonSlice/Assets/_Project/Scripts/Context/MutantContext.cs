@@ -10,5 +10,6 @@ public class MutantContext : IContext
 	public AttackHitBox hitBoxes;
 	public bool isInAttackRange;
 	public int attackIndex;
+	public bool isPhase2;
 
 }

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class MutantPhaseChangeState : StateBase<MutantContext>
 {
-	private MutantController _controller;
-
 	public MutantPhaseChangeState(MutantContext context, StateMachine<MutantContext> stateMachine) : base(context, stateMachine)
 	{
 	}
@@ -11,17 +9,15 @@ public class MutantPhaseChangeState : StateBase<MutantContext>
 	public override void Enter()
 	{
 
-		Rigidbody rb = _ctx.transform.GetComponent<Rigidbody>();
-		if (rb != null)
+		Rigidbody rigidbody = _ctx.transform.GetComponent<Rigidbody>();
+		if (rigidbody != null)
 		{
-			rb.velocity = Vector3.zero;
+			rigidbody.velocity = Vector3.zero;
 		}
 
 		_ctx.stat.IsInvincible = true;
-
 		_ctx.stat.CurrentHealth.Value = _ctx.stat.MaxHealth.Value;
-
-		_controller.SetPhase(2);
+		_ctx.isPhase2 = true;
 
 		_ctx.animHandler.PlayPhaseChangeAnim();
 	}

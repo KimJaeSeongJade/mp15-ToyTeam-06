@@ -22,16 +22,19 @@ public class AttackHitBox : MonoBehaviour
 		{
 			return;
 		}
+		if ((targetLayerMask.value & (1 << other.gameObject.layer)) == 0) return;
 
 		_targets.Add(other);
 		IDamageable target = other.GetComponent<IDamageable>();
 
-		Vector3 direction = other.transform.position - owner.position;
-
-		Vector3 knockDownDirection = new Vector3(direction.x, 1, direction.z).normalized;
-		Vector3 hitDirection = new Vector3(-direction.x, 0, -direction.z).normalized;
-		Vector3 hitPoint = other.ClosestPoint(transform.position);
-		target.TakeDamage(new DamageInfo(_damage, _downValue, hitPoint, hitDirection, knockDownDirection));
+		if (target != null)
+		{
+			Vector3 direction = other.transform.position - owner.position;
+			Vector3 knockDownDirection = new Vector3(direction.x, 1, direction.z).normalized;
+			Vector3 hitDirection = new Vector3(-direction.x, 0, -direction.z).normalized;
+			Vector3 hitPoint = other.ClosestPoint(transform.position);
+			target.TakeDamage(new DamageInfo(_damage, _downValue, hitPoint, hitDirection, knockDownDirection));
+		}
 	}
 
 	public void Open(int damage, int downValue)

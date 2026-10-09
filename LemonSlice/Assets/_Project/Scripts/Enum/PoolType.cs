@@ -13,4 +13,5 @@ public enum PoolType
 	PlayerAttack3,
 	PlayerHitEffect,
 	MonsterHitEffect,
+	MutantJumpEffect
 }

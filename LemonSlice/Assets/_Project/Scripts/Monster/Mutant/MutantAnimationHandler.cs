@@ -8,13 +8,13 @@ public class MutantAnimationHandler : MonoBehaviour
 	[SerializeField] private string chaseAnimParam;
 	[SerializeField] private string[] attackAnimParams;
 	[SerializeField] private string dieAnimParam;
-
-
+	[SerializeField] private string phaseChangeAnimParam;
 	[SerializeField] private string startAttackEventKey;
 	[SerializeField] private string endHitBoxEventKey;
 	[SerializeField] private string endAttackEventKey;
 	[SerializeField] private string endPhaseChangeEventKey;
 
+	public int a;
 	public string StartAttack => startAttackEventKey;
 	public string EndHitBox => endHitBoxEventKey;
 	public string EndAttack => endAttackEventKey;
@@ -37,11 +37,13 @@ public class MutantAnimationHandler : MonoBehaviour
 
 	public void PlayAttackAnim(int animIndex)
 	{
+		a = animIndex;
 		animator.Play(attackAnimParams[animIndex]);
 	}
 
 	public void PlayPhaseChangeAnim()
 	{
+		animator.Play(phaseChangeAnimParam);
 	}
 
 	public void PlayDieAnim()
@@ -51,9 +53,6 @@ public class MutantAnimationHandler : MonoBehaviour
 
 	private void CacheComponents()
 	{
-		if (animator == null)
-		{
 			animator = GetComponent<Animator>();
-		}
 	}
 }

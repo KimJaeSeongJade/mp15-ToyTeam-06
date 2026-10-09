@@ -8,8 +8,6 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 	[SerializeField] private Image _lockOnUi;
 	[SerializeField] private AttackHitBox _hitBoxes;
 
-	public int CurrentPhase { get; private set; } = 1;
-
 	private MutantAnimationHandler _animHandler;
     private MutantContext _ctx;
     private StateMachine<MutantContext> _machine;
@@ -23,21 +21,18 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
         InitStateMachine();
     }
 
-    private void Start()
-    {
-	    _machine.ChangeState(StateType.Idle);
-    }
+    private void Start() => _machine.ChangeState(StateType.Idle);
 
     private void OnEnable()
     {
-        CurrentPhase = 1;
+	    _ctx.isPhase2 = false;
     }
 
     private void Update()
     {
         _machine?.Tick();
 	    RotateUI();
-        _stateType = _machine.Current.GetType().ToString();
+       _stateType = _machine.Current.GetType().ToString();
     }
 
     private void CacheComponents()
@@ -49,9 +44,7 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 
     private void BindContext()
     {
-        List<AttackHitBox> hitBoxes = new List<AttackHitBox>(GetComponentsInChildren<AttackHitBox>());
-
-        _ctx = new ()
+        _ctx = new MutantContext()
         {
 	        transform = transform,
 	        animHandler = _animHandler,
@@ -64,7 +57,6 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
     private void InitStateMachine()
     {
         _machine = new StateMachine<MutantContext>();
-
         _machine.Add(StateType.Idle, new MutantIdleState(_ctx, _machine));
         _machine.Add(StateType.Move, new MutantChaseState(_ctx, _machine));
         _machine.Add(StateType.Attack, new MutantAttackState(_ctx, _machine));
@@ -84,26 +76,18 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 		    _stat.SetFullGroggy();
 		    _machine.ChangeState(StateType.Groggy);
 	    }
-
 	    if (_stat.CurrentHealth.Value <= 0)
 	    {
-		    if (CurrentPhase == 1)
+		    if (!_ctx.isPhase2)
 		    {
-			    //_machine.ChangeState(StateType.PhaseChange);
+			    _machine.ChangeState(StateType.PhaseChange);
 		    }
-		    else if (CurrentPhase == 2)
+		    else
 		    {
 			    _machine.ChangeState(StateType.Die);
 		    }
-		    return;
 	    }
     }
-
-    public void SetPhase(int phase)
-    {
-        CurrentPhase = phase;
-    }
-
 
     public void SetLockOnUi(bool lockOn)
     {
@@ -112,11 +96,8 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 
     private void RotateUI()
     {
-	    if (!_lockOnUi.gameObject.activeSelf) return;
-
         _lockOnUi.rectTransform.LookAt(Camera.main.transform);
-
     }
-    public void OnAnimEvent(string animEvent) => _machine?.OnAnimEvent(animEvent);
 
+    public void OnAnimEvent(string animEvent) => _machine?.OnAnimEvent(animEvent);
 }

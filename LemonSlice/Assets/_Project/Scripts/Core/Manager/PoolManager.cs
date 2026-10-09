@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PoolManager : SingletonBehaviour<PoolManager>
 {
@@ -27,6 +28,12 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 	[SerializeField] private GameObject bloodEffectPrefab;
 	[SerializeField] private int bloodEffectPoolSize;
 
+	[SerializeField] private GameObject playerHitEffectPrefab;
+	[SerializeField] private int playerHitEffectPoolSize;
+
+	[SerializeField] private GameObject monsterHitEffectPrefab;
+	[SerializeField] private int monsterHitEffectPoolSize;
+
 	private Dictionary<PoolType, Stack<GameObject>> _dict;
 
 	private Stack<GameObject> _monsterPool;
@@ -37,6 +44,8 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 	private Stack<GameObject> _slashEffectPool;
 	private Stack<GameObject> _healEffectPool;
 	private Stack<GameObject> _bloodEffectPool;
+	private Stack<GameObject> _playerHitEffectPool;
+	private Stack<GameObject> _monsterHitEffectPool;
 
 	private void Awake()
 	{
@@ -79,6 +88,8 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_healEffectPool = GetPool(healEffectPrefab, effectPoolSize);
 		_slashEffectPool = GetPool(slashEffectPrefab, slashEffectPoolSize);
 		_bloodEffectPool = GetPool(bloodEffectPrefab, bloodEffectPoolSize);
+		_playerHitEffectPool = GetPool(playerHitEffectPrefab, playerHitEffectPoolSize);
+		_monsterHitEffectPool = GetPool(monsterHitEffectPrefab, monsterHitEffectPoolSize);
 
 
 		_dict.Add(PoolType.Monster, _monsterPool);
@@ -89,6 +100,8 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_dict.Add(PoolType.HealEffect, _healEffectPool);
 		_dict.Add(PoolType.SlashEffect, _slashEffectPool);
 		_dict.Add(PoolType.BloodEffect, _bloodEffectPool);
+		_dict.Add(PoolType.PlayerHitEffect, _playerHitEffectPool);
+		_dict.Add(PoolType.MonsterHitEffect, _monsterHitEffectPool);
 
 	}
 

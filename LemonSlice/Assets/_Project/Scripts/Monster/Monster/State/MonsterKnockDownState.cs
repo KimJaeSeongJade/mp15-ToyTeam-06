@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterKnockDownState : StateBase<MonsterContext>
 {
+	private GameObject _hitEffect;
 	public MonsterKnockDownState(MonsterContext context, StateMachine<MonsterContext> stateMachine) : base(context,
 		stateMachine)
 	{
@@ -16,6 +17,8 @@ public class MonsterKnockDownState : StateBase<MonsterContext>
 		_ctx.animHandler.PlayKnockDownAnim();
 
 		_ctx.rigidbody.AddForce(_ctx.knockDownDirection * _ctx.stat.KnockDownForce, ForceMode.Impulse);
+
+		PlayHitEffect();
 	}
 
 	public override void OnAnimEvent(string animEvent)
@@ -24,11 +27,29 @@ public class MonsterKnockDownState : StateBase<MonsterContext>
 		{
 			case AnimEvents.EndKnockDownAnim:
 				_ctx.animHandler.PlayStandUpAnim();
+				StopHitEffect();
 				break;
 			case AnimEvents.EndStandUpAnim:
 				_fsm.ChangeState(StateType.Idle);
 				_ctx.stat.IsInvincible = false;
 				break;
 		}
+	}
+
+	private void PlayHitEffect()
+	{
+		if (_hitEffect != null)
+		{
+			StopHitEffect();
+		}
+
+		Vector3 pos = _ctx.hitPoint;
+		Vector3 dir = _ctx.hitDirection;
+		_hitEffect = EffectManager.Instance.PlayMonsterHitEffect(pos);
+	}
+
+	private void StopHitEffect()
+	{
+		EffectManager.Instance.StopEffect(_hitEffect);
 	}
 }

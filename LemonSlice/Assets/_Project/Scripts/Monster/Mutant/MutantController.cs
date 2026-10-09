@@ -57,6 +57,7 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
     private void InitStateMachine()
     {
         _machine = new StateMachine<MutantContext>();
+
         _machine.Add(StateType.Idle, new MutantIdleState(_ctx, _machine));
         _machine.Add(StateType.Move, new MutantChaseState(_ctx, _machine));
         _machine.Add(StateType.Attack, new MutantAttackState(_ctx, _machine));

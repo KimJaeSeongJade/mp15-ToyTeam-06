@@ -13,7 +13,7 @@ public class MutantGroggyState : StateBase<MutantContext>
 
 	public override void Enter()
 	{
-		//_ctx.animHandler.PlayGroggyAnim();
+		_ctx.animHandler.PlayGroggyAnim();
 		groggyTime = 0f;
 	}
 
@@ -23,7 +23,7 @@ public class MutantGroggyState : StateBase<MutantContext>
 
 		if (groggyTime >= _ctx.stat.GroggyTime)
 		{
-			_fsm.ChangeState(StateType.Idle);
+			_fsm.ChangeState(StateType.Move);
 		}
 	}
 }

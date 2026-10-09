@@ -46,20 +46,19 @@ public class MutantAttackState : StateBase<MutantContext>
 
     public override void OnAnimEvent(string animEvent)
     {
-	    // 유저님의 원래 스타일 그대로 직관적인 조건문으로 되돌렸습니다.
 	    if (animEvent == _ctx.animHandler.StartAttack + randIndex)
 	    {
 		    _ctx.hitBoxes.Open(_ctx.stat.AttackPower + extraDamage[randIndex], groggyDamage[randIndex]);
+		    if (randIndex == 2)
+		    {
+			    Vector3 pos = new Vector3(_ctx.transform.position.x + 0.5f, _ctx.transform.position.y, _ctx.transform.position.z);
+			    EffectManager.Instance.PlayMutantJumpEffect(pos);
+		    }
 	    }
 	    else if (animEvent == _ctx.animHandler.EndHitBox + randIndex)
 	    {
 		    _ctx.hitBoxes.Close();
 
-		    if (_ctx.animHandler.a == randIndex)
-		    {
-			    Vector3 pos = new Vector3(_ctx.transform.position.x + 0.5f, _ctx.transform.position.y, _ctx.transform.position.z);
-			    EffectManager.Instance.PlayMutantJumpEffect(pos);
-		    }
 	    }
 	    else if (animEvent == _ctx.animHandler.EndAttack + randIndex)
 	    {

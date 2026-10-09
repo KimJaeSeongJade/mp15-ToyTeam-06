@@ -6,19 +6,23 @@ public class MutantAnimationHandler : MonoBehaviour
 
 	[SerializeField] private string idleAnimParam;
 	[SerializeField] private string chaseAnimParam;
-	[SerializeField] private string[] attackAnimParams;
+	[SerializeField] private string attackAnimParam;
+	[SerializeField] private string groggyAnimParam;
 	[SerializeField] private string dieAnimParam;
 	[SerializeField] private string phaseChangeAnimParam;
-	[SerializeField] private string startAttackEventKey;
-	[SerializeField] private string endHitBoxEventKey;
-	[SerializeField] private string endAttackEventKey;
-	[SerializeField] private string endPhaseChangeEventKey;
+	[SerializeField] private string screamAnimParam;
 
-	public int a;
-	public string StartAttack => startAttackEventKey;
-	public string EndHitBox => endHitBoxEventKey;
-	public string EndAttack => endAttackEventKey;
-	public string EndPhaseChange => endPhaseChangeEventKey;
+	[SerializeField] private string startAttack;
+	[SerializeField] private string endHitBox;
+	[SerializeField] private string endAttack;
+	[SerializeField] private string endPhaseChange;
+	[SerializeField] private string endScream;
+
+	public string StartAttack => startAttack;
+	public string EndHitBox => endHitBox;
+	public string EndAttack => endAttack;
+	public string EndPhaseChange => endPhaseChange;
+	public string EndScream => endScream;
 
 	private void Awake()
 	{
@@ -37,13 +41,22 @@ public class MutantAnimationHandler : MonoBehaviour
 
 	public void PlayAttackAnim(int animIndex)
 	{
-		a = animIndex;
-		animator.Play(attackAnimParams[animIndex]);
+		animator.Play($"{attackAnimParam}{animIndex}");
+	}
+
+	public void PlayGroggyAnim()
+	{
+		animator.Play(groggyAnimParam);
 	}
 
 	public void PlayPhaseChangeAnim()
 	{
 		animator.Play(phaseChangeAnimParam);
+	}
+
+	public void PlayScreamAnim()
+	{
+		animator.Play(screamAnimParam);
 	}
 
 	public void PlayDieAnim()
@@ -53,6 +66,9 @@ public class MutantAnimationHandler : MonoBehaviour
 
 	private void CacheComponents()
 	{
+		if (animator == null)
+		{
 			animator = GetComponent<Animator>();
+		}
 	}
 }

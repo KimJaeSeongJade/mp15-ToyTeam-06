@@ -44,7 +44,6 @@ public class MonsterKnockDownState : StateBase<MonsterContext>
 		}
 
 		Vector3 pos = _ctx.hitPoint;
-		Vector3 dir = _ctx.hitDirection;
 		_hitEffect = EffectManager.Instance.PlayMonsterHitEffect(pos);
 	}
 

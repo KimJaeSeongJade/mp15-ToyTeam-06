@@ -725,7 +725,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10
+  m_Radius: 13
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &982690489703018753
 MonoBehaviour:
@@ -1836,7 +1836,7 @@ MonoBehaviour:
   attack: 323
   roll: 32
   changeLockOn: 9
-  lcokOn: 325
+  lockOn: 325
 --- !u!54 &2399499429369943420
 Rigidbody:
   m_ObjectHideFlags: 0

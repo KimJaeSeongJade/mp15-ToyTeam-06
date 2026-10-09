@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MainUIManager : SingletonBehaviour<MainUIManager>
 {
+	[SerializeField] private KeyCode isPressedPause = KeyCode.Escape;
 	[SerializeField] private TextMeshProUGUI scoreUI;
 	[SerializeField] private TextMeshProUGUI totalTimeUI;
 	[SerializeField] private GameObject bossUI;
@@ -16,6 +17,7 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 
 	private void Awake()
 	{
+		GameManager.Instance.ResetGameData();
 		pauseUI.SetActive(false);
 		bossUI.SetActive(false);
 	}
@@ -23,12 +25,34 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	{
 		RefreshTimeUI();
 		RefreshScoreUI();
-		if (Input.GetKeyDown(KeyCode.Escape))
+		if (Input.GetKeyDown(isPressedPause))
 		{
-			pauseUI.gameObject.SetActive(true);
-			GameManager.Instance.ChangeState(GameState.Paused);
+			ControlPauseUI();
 		}
 		ShowGameOver();
+	}
+
+	private void ControlPauseUI()
+	{
+		bool isActive = !pauseUI.activeSelf;
+
+		if (!isActive)
+		{
+			if (GameManager.Instance.isTutorial)
+			{
+				GameManager.Instance.ChangeState(GameState.Tutorial);
+			}
+			else
+			{
+				GameManager.Instance.ChangeState(GameState.PlayMain);
+			}
+		}
+		else
+		{
+			GameManager.Instance.ChangeState(GameState.Paused);
+		}
+
+		pauseUI.gameObject.SetActive(isActive);
 	}
 
 	public void RefreshScoreUI()
@@ -48,7 +72,7 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 
 	private void RefreshGameState()
 	{
-		GameManager.Instance.ChangeState(GameState.Playing);
+		GameManager.Instance.ChangeState(GameState.PlayMain);
 	}
 
 	public void SetBossUI(bool isActive)

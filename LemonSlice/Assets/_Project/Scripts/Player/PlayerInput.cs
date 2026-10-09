@@ -5,7 +5,7 @@ public class PlayerInput : MonoBehaviour
 	[SerializeField] private KeyCode attack = KeyCode.Mouse0;
 	[SerializeField] private KeyCode roll = KeyCode.Space;
 	[SerializeField] private KeyCode changeLockOn = KeyCode.Tab;
-	[SerializeField] private KeyCode lcokOn = KeyCode.Mouse2;
+	[SerializeField] private KeyCode lockOn = KeyCode.Mouse2;
 
 	public Vector3 MouseDelta { get; private set; }
 	public Vector3 MoveAxis { get; private set; }
@@ -23,7 +23,7 @@ public class PlayerInput : MonoBehaviour
 		ReadMoveAxisRaw();
 
 		IsRollPressed = Input.GetKeyDown(roll);
-		LockOnPressed = Input.GetKeyDown(lcokOn);
+		LockOnPressed = Input.GetKeyDown(lockOn);
 		TargetChangePressed = Input.GetKeyDown(changeLockOn);
 		IsAttackPressed = Input.GetKeyDown(attack);
 	}

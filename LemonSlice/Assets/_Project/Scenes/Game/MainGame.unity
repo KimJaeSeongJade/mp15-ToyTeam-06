@@ -512,51 +512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7167d37202b9f5d44b16d0de2686b895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &767246342
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 767246344}
-  - component: {fileID: 767246343}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &767246343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767246342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e6afb1cd9c6b7d49a58656e545aa659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isDestroyedOnManager: 1
---- !u!4 &767246344
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767246342}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &937627363 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4079611001723969125, guid: e892767ed51502648bb3e9eb22b6c6b5, type: 3}
@@ -929,6 +884,8 @@ MonoBehaviour:
   _isDestroyedOnManager: 0
   monsterPrefab: {fileID: 8472229039808612870, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
   monsterPoolSize: 20
+  newMonsterPrefab: {fileID: 0}
+  newMonsterPoolSize: 0
   coinPrefab: {fileID: 7101525390938221927, guid: bb29638f33527924083fc7626676e18e, type: 3}
   coinPoolSize: 20
   itemBoxPrefab: {fileID: 3566777353912687509, guid: 9e06cb185aaac3448b1eaac255da6e53, type: 3}
@@ -1748,7 +1705,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 2008033033}
   - {fileID: 1744928213}
-  - {fileID: 767246344}
   - {fileID: 1418152756}
   - {fileID: 1227391621}
   - {fileID: 1078335735}

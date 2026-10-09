@@ -1,9 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class TutorialCollider0 : MonoBehaviour
+public class TutorialCollider3 : MonoBehaviour
 {
 	[SerializeField] private LayerMask targetLayer;
 
@@ -11,7 +11,7 @@ public class TutorialCollider0 : MonoBehaviour
 	{
 		if (IsInPlayerLayer(other.gameObject))
 		{
-			TutorialManager.Instance.ShowTutorialUI(0);
+			SceneManager.LoadScene("MainGame");
 		}
 	}
 

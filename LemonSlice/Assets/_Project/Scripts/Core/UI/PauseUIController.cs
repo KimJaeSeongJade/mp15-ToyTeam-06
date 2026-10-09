@@ -29,7 +29,15 @@ public class PauseUIController : MonoBehaviour
 	}
 	private void CountinueGame()
 	{
-		GameManager.Instance.ChangeState(GameState.Playing);
+		if (GameManager.Instance.isTutorial)
+		{
+			GameManager.Instance.ChangeState(GameState.Tutorial);
+		}
+		else
+		{
+			GameManager.Instance.ChangeState(GameState.PlayMain);
+		}
+
 		gameObject.SetActive(false);
 	}
 

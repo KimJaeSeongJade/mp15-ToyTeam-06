@@ -47,7 +47,7 @@ public class GameOverUIController : MonoBehaviour
 	{
 		GameFlowManager.Instance.IsPlayerDead = false;
 		GameManager.Instance.ResetGameData();
-		GameManager.Instance.ChangeState(GameState.Playing);
+		GameManager.Instance.ChangeState(GameState.PlayMain);
 		gameObject.SetActive(false);
 		SceneManager.LoadScene("MainGame");
 	}

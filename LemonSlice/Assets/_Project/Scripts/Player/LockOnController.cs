@@ -63,7 +63,6 @@ public class LockOnController : MonoBehaviour
 
 		currentTarget = null;
 		transform.parent.rotation = Quaternion.Euler(0, transform.parent.eulerAngles.y, 0f);
-		Debug.Log(transform.parent.rotation.y);
 	}
 
 	public bool HasTarget()

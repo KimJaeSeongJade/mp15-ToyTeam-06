@@ -1,18 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TutorialCollider1 : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] private LayerMask targetLayer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void OnTriggerEnter(Collider other)
+	{
+		if (IsInPlayerLayer(other.gameObject))
+		{
+			TutorialUIManager.Instance.ShowTutorialUI(1);
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (IsInPlayerLayer(other.gameObject))
+		{
+			gameObject.SetActive(false);
+		}
+	}
+
+	private bool IsInPlayerLayer(GameObject target)
+	{
+		return (targetLayer.value & (1 << target.layer)) != 0;
+	}
 }

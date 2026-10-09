@@ -34,7 +34,7 @@ public class TitleUIController : MonoBehaviour
 
 	private void LoadMainGame()
 	{
-		SceneManager.LoadScene("MainGame");
+		SceneManager.LoadScene("Tutorial");
 	}
 
 	private void OnCreditPanel()

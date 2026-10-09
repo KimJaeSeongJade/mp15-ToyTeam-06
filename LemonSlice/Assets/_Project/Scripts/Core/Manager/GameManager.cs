@@ -7,17 +7,18 @@ public class GameManager : SingletonBehaviour<GameManager>
 
 	public int CurrentScore { get; private set; }
 	public float PlayTime { get; private set; }
+	public bool isTutorial;
 
 	private void Awake() => SetSingleton();
 
 	private void Start()
 	{
-		ChangeState(GameState.Playing);
+		isTutorial = true;
 	}
 
 	private void Update()
 	{
-		if (CurrentState == GameState.Playing)
+		if (CurrentState == GameState.PlayMain || CurrentState == GameState.Tutorial)
 		{
 			PlayingTime();
 		}
@@ -26,27 +27,39 @@ public class GameManager : SingletonBehaviour<GameManager>
 	public void ChangeState(GameState state)
 	{
 		CurrentState = state; // 게임 상태 변경
-		if (CurrentState == GameState.Playing)
-		{
-			LockCursor();
-			Time.timeScale = 1;
-		}
 
-		if (CurrentState == GameState.StageClear)
+		switch (CurrentState)
 		{
-			SceneManager.LoadScene("Ending");
-			UnlockCursor();
-		}
-
-		if (CurrentState == GameState.GameOver)
-		{
-			UnlockCursor();
-		}
-
-		if (CurrentState == GameState.Paused)
-		{
-			UnlockCursor();
-			Time.timeScale = 0;
+			case GameState.PlayMain:
+			{
+				LockCursor();
+				Time.timeScale = 1;
+				break;
+			}
+			case GameState.StageClear:
+			{
+				SceneManager.LoadScene("Ending");
+				UnlockCursor();
+				break;
+			}
+			case GameState.GameOver:
+			{
+				UnlockCursor();
+				break;
+			}
+			case GameState.Paused:
+			{
+				UnlockCursor();
+				Time.timeScale = 0;
+				break;
+			}
+			case GameState.Tutorial:
+			{
+				Debug.Log("case GameState.Tutorial");
+				LockCursor();
+				Time.timeScale = 1;
+				break;
+			}
 		}
 	}
 

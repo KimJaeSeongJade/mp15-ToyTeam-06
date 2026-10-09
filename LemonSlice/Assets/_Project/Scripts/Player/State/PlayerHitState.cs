@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerHitState : StateBase<PlayerContext>
 {
-	private GameObject _bloodEffect;
+	private GameObject _hitEffect;
+
 	private int _hitIndex;
 	private const int HIT_COUNT = 2;
 
@@ -55,21 +56,17 @@ public class PlayerHitState : StateBase<PlayerContext>
 
 	private void PlayHitEffect()
 	{
-		// TODO 이펙트 변경 필요함
-		// 플레이어 앞으로 표시되서 잘 안보임
-
-		if (_bloodEffect != null)
+		if (_hitEffect != null)
 		{
 			StopHitEffect();
 		}
 
 		Vector3 pos = _ctx.hitPoint;
-		Vector3 dir = _ctx.hitDirection;
-		_bloodEffect = EffectManager.Instance.PlayBloodEffect(pos, dir);
+		_hitEffect = EffectManager.Instance.PlayHitEffect(pos);
 	}
 
 	private void StopHitEffect()
 	{
-		EffectManager.Instance.StopBloodEffect(_bloodEffect);
+		EffectManager.Instance.StopEffect(_hitEffect);
 	}
 }

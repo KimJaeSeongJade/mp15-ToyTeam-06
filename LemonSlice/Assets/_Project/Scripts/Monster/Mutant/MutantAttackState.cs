@@ -28,39 +28,42 @@ public class MutantAttackState : StateBase<MutantContext>
        {
           attackTime += Time.deltaTime;
 
-          if (_ctx.isInAttackRange && _ctx.monsterDetection != null && !_ctx.monsterDetection.IsInSight)
+          if (_ctx.isInAttackRange && !_ctx.monsterDetection.IsInSight)
           {
-             _fsm.ChangeState(StateType.Move);
+             _fsm.ChangeState(StateType.Searching);
           }
        }
-       if (CanAttack && !isAttacking)
+       if (CanAttack)
        {
           _fsm.ChangeState(StateType.Move);
        }
     }
 
     public override void Exit()
-    {}
+    {
+	    _ctx.hitBoxes.Close();
+    }
 
     public override void OnAnimEvent(string animEvent)
     {
        if (animEvent == _ctx.animHandler.StartAttack + randIndex)
        {
+	       Debug.Log("fffff");
+	       _ctx.hitBoxes.Open(_ctx.stat.AttackPower + extraDamage[randIndex], groggyDamage[randIndex]);
        }
        else if (animEvent == _ctx.animHandler.EndHitBox + randIndex)
        {
+	       _ctx.hitBoxes.Close();
        }
        else if (animEvent == _ctx.animHandler.EndAttack + randIndex)
        {
           isAttacking = false;
-          _ctx.animHandler.PlayIdleAnim();
        }
     }
 
     private void Attack()
     {
        randIndex = Random.Range(0, extraDamage.Length);
-       _ctx.attackIndex = randIndex;
        _ctx.animHandler.PlayAttackAnim(randIndex);
     }
 }

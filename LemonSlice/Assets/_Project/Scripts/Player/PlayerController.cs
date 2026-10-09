@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 	{
 		_stat.CurrentHealth.Value -= damageInfo.Damage;
 		_stat.DownPoint -= damageInfo.DownValue;
+		_ctx.hitPoint = damageInfo.HitPoint;
 		_ctx.hitDirection = damageInfo.HitDirection;
 		_ctx.isUnderAttack = true;
 		_ctx.knockDownDirection = damageInfo.KnockDownDirection;

@@ -145,6 +145,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isBoss: 0
+  detectAngle: 0
 --- !u!1 &3723829479258493150
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +328,7 @@ MonoBehaviour:
   _lockOnUi: {fileID: 578918826972064124}
   _leftHitBoxTag: LeftHitBox
   _rightHitBoxTag: RightHitBox
+  _poolType: 0
 --- !u!114 &2452185569834478213
 MonoBehaviour:
   m_ObjectHideFlags: 0

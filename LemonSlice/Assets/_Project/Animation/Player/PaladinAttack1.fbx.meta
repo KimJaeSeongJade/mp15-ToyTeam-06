@@ -71,6 +71,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.3632222
+        functionName: OnAnimEvent
+        data: PlaySlashEffect
+        objectReferenceParameter: {fileID: 11500000, guid: 722bc14c1c6b60b4db537b578ac969ea, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.72758573
         functionName: OnAnimEvent
         data: CloseCombo

@@ -22,10 +22,7 @@ public class MutantAnimationHandler : MonoBehaviour
 
 	private void Awake()
 	{
-		if (animator == null)
-		{
-			animator = GetComponent<Animator>();
-		}
+		CacheComponents();
 	}
 
 	public void PlayIdleAnim()
@@ -40,10 +37,7 @@ public class MutantAnimationHandler : MonoBehaviour
 
 	public void PlayAttackAnim(int animIndex)
 	{
-		if (animIndex >= 0 && animIndex < attackAnimParams.Length)
-		{
-			animator.Play(attackAnimParams[animIndex]);
-		}
+		animator.Play(attackAnimParams[animIndex]);
 	}
 
 	public void PlayPhaseChangeAnim()
@@ -53,5 +47,13 @@ public class MutantAnimationHandler : MonoBehaviour
 	public void PlayDieAnim()
 	{
 		animator.Play(dieAnimParam);
+	}
+
+	private void CacheComponents()
+	{
+		if (animator == null)
+		{
+			animator = GetComponent<Animator>();
+		}
 	}
 }

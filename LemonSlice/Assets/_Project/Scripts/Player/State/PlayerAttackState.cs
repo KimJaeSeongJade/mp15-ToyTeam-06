@@ -72,7 +72,7 @@ public class PlayerAttackState : StateBase<PlayerContext>
 				CloseHitBox();
 				break;
 			case AnimEvents.PlaySlashEffect:
-				PlaySlashEffect();
+				PlaySlashEffect(comboIndex);
 				break;
 		}
 	}
@@ -115,13 +115,33 @@ public class PlayerAttackState : StateBase<PlayerContext>
 	public void CloseHitBox() => _ctx.hitBox.Close();
 	private void OpenCombo() => canCombo = true;
 	private void CloseCombo() => canCombo = false;
-	private void PlaySlashEffect()
+
+	private void PlaySlashEffect(int comboIndex)
 	{
-		Vector3 pos = new Vector3(
-			_ctx.transform.position.x,
-			_ctx.transform.position.y + 1,
-			_ctx.transform.position.z);
-		Vector3 dir = _ctx.transform.forward;
+		// TODO 1타 2타 효과 방향 적용하기
+		if (comboIndex < MAX_COMBO) return;
+		Vector3 pos = _ctx.transform.position;
+		pos.y += 1;
+		Vector3 dir = GetSlashDir(comboIndex);
+
 		EffectManager.Instance.PlaySlashEffect(pos, dir);
+	}
+
+	private Vector3 GetSlashDir(int comboIndex)
+	{
+		Vector3 dir = new();
+		switch (comboIndex)
+		{
+			case 1:
+				dir = _ctx.transform.forward;
+				break;
+			case 2:
+				dir = _ctx.transform.forward;
+				break;
+			case 3:
+				dir = _ctx.transform.forward;
+				break;
+		}
+		return dir;
 	}
 }

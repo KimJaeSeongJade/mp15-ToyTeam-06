@@ -6,6 +6,7 @@ public class MutantAttackState : StateBase<MutantContext>
     private bool isAttacking;
     private int randIndex;
 
+    private int current;
     private int[] extraDamage = { 0, 5, 15 };
     private int[] groggyDamage = { 30, 50, 100 };
 
@@ -48,12 +49,17 @@ public class MutantAttackState : StateBase<MutantContext>
     {
        if (animEvent == _ctx.animHandler.StartAttack + randIndex)
        {
-	       Debug.Log("fffff");
 	       _ctx.hitBoxes.Open(_ctx.stat.AttackPower + extraDamage[randIndex], groggyDamage[randIndex]);
        }
        else if (animEvent == _ctx.animHandler.EndHitBox + randIndex)
        {
 	       _ctx.hitBoxes.Close();
+	       if (_ctx.animHandler.a == randIndex)
+	       {
+		       Vector3 pos = new Vector3(_ctx.transform.position.x + 0.5f, _ctx.transform.position.y,
+			       _ctx.transform.position.z);
+		       EffectManager.Instance.PlayMutantJumpEffect(pos);
+	       }
        }
        else if (animEvent == _ctx.animHandler.EndAttack + randIndex)
        {

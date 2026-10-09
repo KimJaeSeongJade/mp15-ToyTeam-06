@@ -34,6 +34,9 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 	[SerializeField] private GameObject monsterHitEffectPrefab;
 	[SerializeField] private int monsterHitEffectPoolSize;
 
+	[SerializeField] private GameObject mutantJumpEffectPrefab;
+	[SerializeField] private int mutantJumpEffectPoolSize;
+
 	private Dictionary<PoolType, Stack<GameObject>> _dict;
 
 	private Stack<GameObject> _monsterPool;
@@ -46,6 +49,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 	private Stack<GameObject> _bloodEffectPool;
 	private Stack<GameObject> _playerHitEffectPool;
 	private Stack<GameObject> _monsterHitEffectPool;
+	private Stack<GameObject> _mutantJumpEffectPool;
 
 	private void Awake()
 	{
@@ -90,6 +94,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_bloodEffectPool = GetPool(bloodEffectPrefab, bloodEffectPoolSize);
 		_playerHitEffectPool = GetPool(playerHitEffectPrefab, playerHitEffectPoolSize);
 		_monsterHitEffectPool = GetPool(monsterHitEffectPrefab, monsterHitEffectPoolSize);
+		_mutantJumpEffectPool = GetPool(mutantJumpEffectPrefab, mutantJumpEffectPoolSize);
 
 
 		_dict.Add(PoolType.Monster, _monsterPool);
@@ -102,7 +107,7 @@ public class PoolManager : SingletonBehaviour<PoolManager>
 		_dict.Add(PoolType.BloodEffect, _bloodEffectPool);
 		_dict.Add(PoolType.PlayerHitEffect, _playerHitEffectPool);
 		_dict.Add(PoolType.MonsterHitEffect, _monsterHitEffectPool);
-
+		_dict.Add(PoolType.MutantJumpEffect, _mutantJumpEffectPool);
 	}
 
 	public Stack<GameObject> GetPool(GameObject go, int poolSize)

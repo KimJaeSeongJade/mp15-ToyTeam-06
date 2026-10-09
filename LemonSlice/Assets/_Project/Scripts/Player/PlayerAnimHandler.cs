@@ -19,7 +19,10 @@ public class PlayerAnimHandler : MonoBehaviour
 	[SerializeField] private GameObject slashEffect;
 	[SerializeField] private GameObject[] attackAudio;
 
+	[SerializeField] private PlayerAudioClip playerAudioClip;
+
 	private GameObject currentAtatckSound;
+	private AudioSource audioSource;
 
 	private void Awake()
 	{
@@ -28,7 +31,7 @@ public class PlayerAnimHandler : MonoBehaviour
 
 	public void PlayIdleAndMoveAnim()
 	{
-		animator.CrossFade(idleAndMoveAnimName,0.1f);
+		animator.CrossFade(idleAndMoveAnimName, 0.1f);
 		//animator.Play(idleAndMoveAnimName);
 	}
 
@@ -36,6 +39,7 @@ public class PlayerAnimHandler : MonoBehaviour
 	{
 		// animator.CrossFade(rollAnimName,0.5f);
 		animator.Play(rollAnimName);
+		audioSource.PlayOneShot(playerAudioClip.RollSoundClip());
 	}
 
 	public void PlayAttackAnim(int animIndex)
@@ -56,7 +60,10 @@ public class PlayerAnimHandler : MonoBehaviour
 
 	private void StopAttackSound()
 	{
-		if (currentAtatckSound != null) PoolManager.Instance.TryReturn(currentAtatckSound);
+		if (currentAtatckSound != null)
+		{
+			PoolManager.Instance.TryReturn(currentAtatckSound);
+		}
 	}
 
 	public void PlayDieAnim()
@@ -69,6 +76,7 @@ public class PlayerAnimHandler : MonoBehaviour
 	{
 		animator.Play($"{hitAnimName}{hitIndex}");
 		StopAttackSound();
+		audioSource.PlayOneShot(playerAudioClip.HitSoundClip());
 	}
 
 	public void PlayKnockDownAnim()
@@ -90,5 +98,6 @@ public class PlayerAnimHandler : MonoBehaviour
 
 	private void CacheComponents()
 	{
+		audioSource = GetComponent<AudioSource>();
 	}
 }

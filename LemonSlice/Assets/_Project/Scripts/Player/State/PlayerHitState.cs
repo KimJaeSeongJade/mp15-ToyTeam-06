@@ -56,16 +56,12 @@ public class PlayerHitState : StateBase<PlayerContext>
 
 	private void PlayHitEffect()
 	{
-		// TODO 이펙트 변경 필요함
-		// 플레이어 앞으로 표시되서 잘 안보임
-
 		if (_hitEffect != null)
 		{
 			StopHitEffect();
 		}
 
 		Vector3 pos = _ctx.hitPoint;
-		Debug.Log($"PlayerHitPoint: {pos.x},{pos.y},{pos.z}");
 		_hitEffect = EffectManager.Instance.PlayHitEffect(pos);
 	}
 

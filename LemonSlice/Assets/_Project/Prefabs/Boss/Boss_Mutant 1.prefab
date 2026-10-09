@@ -74,7 +74,7 @@ MonoBehaviour:
   maxHealth: 100
   maxGroggy: 100
   groggyTime: 5
-  moveSpeed: 3
+  moveSpeed: 7
   attackPower: 1
   attackDelay: 1
   attackDistance: 2

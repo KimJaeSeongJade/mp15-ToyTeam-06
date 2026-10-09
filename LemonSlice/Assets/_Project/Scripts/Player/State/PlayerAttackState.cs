@@ -118,30 +118,33 @@ public class PlayerAttackState : StateBase<PlayerContext>
 
 	private void PlaySlashEffect(int comboIndex)
 	{
-		// TODO 1타 2타 효과 방향 적용하기
-		if (comboIndex < MAX_COMBO) return;
 		Vector3 pos = _ctx.transform.position;
 		pos.y += 1;
-		Vector3 dir = GetSlashDir(comboIndex);
+		Quaternion rot = GetSlashDir(comboIndex);
 
-		EffectManager.Instance.PlaySlashEffect(pos, dir);
+		EffectManager.Instance.PlaySlashEffect(pos, rot);
 	}
 
-	private Vector3 GetSlashDir(int comboIndex)
+	private Quaternion GetSlashDir(int comboIndex)
 	{
-		Vector3 dir = new();
+		Quaternion baseRot = Quaternion.LookRotation(_ctx.transform.forward, Vector3.up);
+		Quaternion resultRot = new();
 		switch (comboIndex)
 		{
 			case 1:
-				dir = _ctx.transform.forward;
+				resultRot = baseRot *
+				            Quaternion.AngleAxis(180, Vector3.forward) *
+				            Quaternion.AngleAxis(-90, Vector3.up) *
+				            Quaternion.AngleAxis(45, Vector3.right);
 				break;
 			case 2:
-				dir = _ctx.transform.forward;
+				resultRot = baseRot *
+				            Quaternion.AngleAxis(75, Vector3.forward);
 				break;
 			case 3:
-				dir = _ctx.transform.forward;
+				resultRot = baseRot;
 				break;
 		}
-		return dir;
+		return resultRot;
 	}
 }

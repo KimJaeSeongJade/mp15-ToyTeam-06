@@ -23,9 +23,8 @@ public GameObject PlayBloodEffect(Vector3 pos, Vector3 direction)
 		PoolManager.Instance.TryReturn(go);
 	}
 
-	public GameObject PlaySlashEffect(Vector3 pos, Vector3 direction)
+	public GameObject PlaySlashEffect(Vector3 pos, Quaternion rot)
 	{
-		Quaternion rot = Quaternion.LookRotation(direction);
 		return PoolManager.Instance
 			.Take(slashPrefab)
 			.SetPosition(pos)

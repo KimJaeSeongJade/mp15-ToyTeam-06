@@ -6,7 +6,7 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 {
 	[SerializeField] private string _stateType;
 	[SerializeField] private Image _lockOnUi;
-	[SerializeField] private AttackHitBox _hitBoxes;
+	[SerializeField] private List<AttackHitBox> _hitBoxes;
 
 	private MutantAnimationHandler _animHandler;
     private MutantContext _ctx;
@@ -57,6 +57,7 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
     private void InitStateMachine()
     {
         _machine = new StateMachine<MutantContext>();
+
         _machine.Add(StateType.Idle, new MutantIdleState(_ctx, _machine));
         _machine.Add(StateType.Move, new MutantChaseState(_ctx, _machine));
         _machine.Add(StateType.Attack, new MutantAttackState(_ctx, _machine));
@@ -64,10 +65,13 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
         _machine.Add(StateType.Die, new MutantDieState(_ctx, _machine));
         _machine.Add(StateType.Groggy, new MutantGroggyState(_ctx, _machine));
         _machine.Add(StateType.Searching, new MutantSearchingState(_ctx, _machine));
+        _machine.Add(StateType.JumpAttack, new MutantJumpAttackState(_ctx, _machine));
     }
 
     public void TakeDamage(DamageInfo damageInfo)
     {
+	    if (_ctx.stat.IsInvincible == true) return;
+
 	    _stat.CurrentHealth.Value -= damageInfo.Damage;
 	    _stat.CurrentGroggy.Value -= damageInfo.DownValue;
 

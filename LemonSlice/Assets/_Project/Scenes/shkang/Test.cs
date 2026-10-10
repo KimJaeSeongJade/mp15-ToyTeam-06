@@ -5,17 +5,21 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-	[SerializeField] private Transform target;
+	//[SerializeField] private Transform target;
+	//
+	//private void Update()
+	//{
+	//	Vector3 dir = target.position - transform.position;
+	//
+	//	Quaternion direction = Quaternion.LookRotation(dir);
+	//	transform.rotation = Quaternion.RotateTowards(transform.rotation,
+	//		direction,
+	//		0.5f);
+	//	transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+	//}
 
-	private void Update()
+	private void OnTriggerEnter(Collider other)
 	{
-		Vector3 dir = target.position - transform.position;
-
-		Quaternion direction = Quaternion.LookRotation(dir);
-		transform.rotation = Quaternion.RotateTowards(transform.rotation,
-			direction,
-			0.5f);
-		transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+		Debug.Log("트리거 들어옴");
 	}
-
 }

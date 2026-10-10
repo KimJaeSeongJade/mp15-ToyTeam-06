@@ -16,8 +16,7 @@ public class MutantPhaseChangeState : StateBase<MutantContext>
 		}
 
 		_ctx.stat.IsInvincible = true;
-		_ctx.stat.CurrentHealth.Value = _ctx.stat.MaxHealth.Value;
-		_ctx.isPhase2 = true;
+		_ctx.stat.SetFullHealth();
 
 		_ctx.animHandler.PlayPhaseChangeAnim();
 	}
@@ -25,13 +24,19 @@ public class MutantPhaseChangeState : StateBase<MutantContext>
 	public override void Exit()
 	{
 		_ctx.stat.IsInvincible = false;
+		_ctx.isPhase2 = true;
 	}
 
 	public override void OnAnimEvent(string animEvent)
 	{
 		if (animEvent == _ctx.animHandler.EndPhaseChange)
 		{
-			_fsm.ChangeState(StateType.Idle);
+			_ctx.animHandler.PlayScreamAnim();
+		}
+
+		if (animEvent == _ctx.animHandler.EndScream)
+		{
+			_fsm.ChangeState(StateType.Move);
 		}
 	}
 }

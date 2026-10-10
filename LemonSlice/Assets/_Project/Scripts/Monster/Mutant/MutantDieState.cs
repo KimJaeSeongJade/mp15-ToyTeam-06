@@ -11,7 +11,7 @@ public class MutantDieState : StateBase<MutantContext>
 
 		_ctx.animHandler.PlayDieAnim();
 
-		CapsuleCollider collider = _ctx.transform.GetComponent<CapsuleCollider>();
+		BoxCollider collider = _ctx.transform.GetComponent<BoxCollider>();
 		if (collider != null)
 		{
 			collider.enabled = false;

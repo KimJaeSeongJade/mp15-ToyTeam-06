@@ -10,5 +10,6 @@ public enum StateType
 	Hit,
 	KnockDown,
 	Searching,
-	PhaseChange
+	PhaseChange,
+	JumpAttack
 }

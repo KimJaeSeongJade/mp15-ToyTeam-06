@@ -39,18 +39,18 @@ public class PlayerAnimHandler : MonoBehaviour
 	{
 		// animator.CrossFade(rollAnimName,0.5f);
 		animator.Play(rollAnimName);
-		audioSource.PlayOneShot(playerAudioClip.RollSoundClip());
+		//audioSource.PlayOneShot(playerAudioClip.RollSoundClip());
 	}
 
 	public void PlayAttackAnim(int animIndex)
 	{
 		animator.Play($"{attackAnimName}{animIndex}");
-		if (animIndex >= 1)
-		{
-			int audioNumber = animIndex - 1;
-			Debug.Log(audioNumber);
-			currentAtatckSound = AttackSound(audioNumber);
-		}
+		//if (animIndex >= 1)
+		//{
+		//	int audioNumber = animIndex - 1;
+		//	Debug.Log(audioNumber);
+		//	currentAtatckSound = AttackSound(audioNumber);
+		//}
 	}
 
 	private GameObject AttackSound(int audioNumber)
@@ -69,20 +69,20 @@ public class PlayerAnimHandler : MonoBehaviour
 	public void PlayDieAnim()
 	{
 		animator.Play(dieAnimName);
-		StopAttackSound();
+		//StopAttackSound();
 	}
 
 	public void PlayHitAnim(int hitIndex)
 	{
 		animator.Play($"{hitAnimName}{hitIndex}");
-		StopAttackSound();
-		audioSource.PlayOneShot(playerAudioClip.HitSoundClip());
+		//StopAttackSound();
+		//audioSource.PlayOneShot(playerAudioClip.HitSoundClip());
 	}
 
 	public void PlayKnockDownAnim()
 	{
 		animator.Play(knockDownAnimName);
-		StopAttackSound();
+		//StopAttackSound();
 	}
 
 	public void PlayStandUpAnim()

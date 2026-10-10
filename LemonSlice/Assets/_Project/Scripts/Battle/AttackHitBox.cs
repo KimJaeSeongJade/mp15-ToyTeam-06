@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,9 +11,17 @@ public class AttackHitBox : MonoBehaviour
 	private bool _isActive;
 	private int _damage;
 	private int _downValue;
+	private Collider _collider;
+
+	private void Awake()
+	{
+		CacheComponents();
+		_collider.enabled = false;
+	}
 
 	private void OnTriggerEnter(Collider other)
 	{
+
 		if (!_isActive)
 		{
 			return;
@@ -37,8 +46,14 @@ public class AttackHitBox : MonoBehaviour
 		}
 	}
 
+	private void CacheComponents()
+	{
+		_collider = GetComponent<Collider>();
+	}
+
 	public void Open(int damage, int downValue)
 	{
+		_collider.enabled = true;
 		_isActive = true;
 		_damage = damage;
 		_downValue = downValue;
@@ -46,6 +61,7 @@ public class AttackHitBox : MonoBehaviour
 
 	public void Close()
 	{
+		_collider.enabled = false;
 		_targets.Clear();
 		_isActive = false;
 	}

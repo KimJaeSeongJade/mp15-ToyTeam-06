@@ -23,7 +23,7 @@ public class BossGroggyState : StateBase<BossContext>
 
 		if (groggyTime >= _ctx.stat.GroggyTime)
 		{
-			_fsm.ChangeState(StateType.Idle);
+			_fsm.ChangeState(StateType.Move);
 		}
 	}
 }

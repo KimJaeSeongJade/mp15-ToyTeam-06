@@ -7,9 +7,9 @@ public class MutantContext : IContext
 	public MonsterDetection monsterDetection;
 	public MutantStat stat;
 	public Transform transform;
-	public AttackHitBox hitBoxes;
+	public List<AttackHitBox> hitBoxes;
 	public bool isInAttackRange;
-	public int attackIndex;
 	public bool isPhase2;
+	public float jumpSpeed = 15f;
 
 }

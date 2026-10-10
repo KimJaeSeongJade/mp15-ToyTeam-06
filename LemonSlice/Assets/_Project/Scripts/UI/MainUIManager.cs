@@ -79,6 +79,7 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	{
 		bossUI.SetActive(isActive);
 	}
+
 	public void SetPauseUI(bool isActive)
 	{
 		pauseUI.SetActive(isActive);

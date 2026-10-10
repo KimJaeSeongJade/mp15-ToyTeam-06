@@ -55,7 +55,6 @@ public class GameManager : SingletonBehaviour<GameManager>
 			}
 			case GameState.Tutorial:
 			{
-				Debug.Log("case GameState.Tutorial");
 				LockCursor();
 				Time.timeScale = 1;
 				break;

@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class MutantAttackState : StateBase<MutantContext>
 {
+    private int randIndex;
+    private int hitBoxIndex;
     private float attackTime;
     private bool isAttacking;
-    private int randIndex;
+    private bool isJumping;
+    private Vector3 jumpPos;
+    private GameObject jumpEffect;
 
-    private int[] extraDamage = { 0, 5, 15 };
-    private int[] groggyDamage = { 30, 50, 100 };
+
+    private int[] extraDamage = { 0, 5, 10 };
+    private int[] groggyDamage = { 20, 30, 100 };
 
     public MutantAttackState(MutantContext context, StateMachine<MutantContext> stateMachine) : base(context, stateMachine)
     {
@@ -37,33 +42,47 @@ public class MutantAttackState : StateBase<MutantContext>
 	    {
 		    _fsm.ChangeState(StateType.Move);
 	    }
+
+	    if (isJumping)
+	    {
+		    _ctx.transform.position = Vector3.MoveTowards(_ctx.transform.position, jumpPos, _ctx.jumpSpeed * Time.deltaTime);
+		    _ctx.transform.LookAt(jumpPos);
+	    }
     }
 
     public override void Exit()
     {
-	    _ctx.hitBoxes.Close();
+	    _ctx.hitBoxes[hitBoxIndex].Close();
+
+	    if (jumpEffect != null)
+	    {
+		    EffectManager.Instance.StopEffect(jumpEffect);
+	    }
     }
 
     public override void OnAnimEvent(string animEvent)
     {
-	    // 유저님의 원래 스타일 그대로 직관적인 조건문으로 되돌렸습니다.
 	    if (animEvent == _ctx.animHandler.StartAttack + randIndex)
 	    {
-		    _ctx.hitBoxes.Open(_ctx.stat.AttackPower + extraDamage[randIndex], groggyDamage[randIndex]);
-	    }
-	    else if (animEvent == _ctx.animHandler.EndHitBox + randIndex)
-	    {
-		    _ctx.hitBoxes.Close();
+		    _ctx.hitBoxes[hitBoxIndex].Open(_ctx.stat.AttackPower + extraDamage[randIndex], groggyDamage[randIndex]);
 
-		    if (_ctx.animHandler.a == randIndex)
+		    if (randIndex == 2)
 		    {
-			    Vector3 pos = new Vector3(_ctx.transform.position.x + 0.5f, _ctx.transform.position.y, _ctx.transform.position.z);
-			    EffectManager.Instance.PlayMutantJumpEffect(pos);
+			    jumpEffect = EffectManager.Instance.PlayMutantJumpEffect(jumpPos);
 		    }
+	    }
+	    else if (animEvent == _ctx.animHandler.EndHitBox + hitBoxIndex)
+	    {
+		    _ctx.hitBoxes[hitBoxIndex].Close();
+		    isJumping = false;
 	    }
 	    else if (animEvent == _ctx.animHandler.EndAttack + randIndex)
 	    {
 		    isAttacking = false;
+	    }
+	    else if (animEvent == _ctx.animHandler.StartJump)
+	    {
+		    isJumping = true;
 	    }
     }
 
@@ -79,5 +98,15 @@ public class MutantAttackState : StateBase<MutantContext>
         }
 
         _ctx.animHandler.PlayAttackAnim(randIndex);
+
+        if (randIndex == 2)
+        {
+	        jumpPos = _ctx.monsterDetection.TargetTransform.position;
+	        hitBoxIndex = 1;
+        }
+        else
+        {
+	        hitBoxIndex = 0;
+        }
     }
 }

@@ -37,6 +37,11 @@ public class MutantStat : MonoBehaviour
 		MaxGroggy.Value = maxGroggy;
 	}
 
+	public void SetFullHealth()
+	{
+		CurrentHealth.Value = maxHealth;
+	}
+
 	public void SetFullGroggy()
 	{
 		CurrentGroggy.Value = maxGroggy;

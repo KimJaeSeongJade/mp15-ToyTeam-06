@@ -31,6 +31,7 @@ public class MutantPhaseChangeState : StateBase<MutantContext>
 	{
 		if (animEvent == _ctx.animHandler.EndPhaseChange)
 		{
+			_ctx.transform.forward = _ctx.monsterDetection.TargetTransform.position - _ctx.transform.position;
 			_ctx.animHandler.PlayScreamAnim();
 		}
 

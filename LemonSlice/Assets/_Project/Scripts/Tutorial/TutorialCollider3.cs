@@ -11,6 +11,7 @@ public class TutorialCollider3 : MonoBehaviour
 	{
 		if (IsInPlayerLayer(other.gameObject))
 		{
+			GameManager.Instance.isTutorial = false;
 			SceneManager.LoadScene("MainGame");
 		}
 	}

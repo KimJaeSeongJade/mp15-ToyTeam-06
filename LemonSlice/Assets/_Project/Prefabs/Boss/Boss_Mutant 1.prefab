@@ -223,6 +223,7 @@ MonoBehaviour:
   _hitBoxes:
   - {fileID: 5021730078242502742}
   - {fileID: 1380624465273464181}
+  _changeEffectPrefab: {fileID: 4164398540360604994, guid: bffa8f814577e484ea5a17c7cd5973d0, type: 3}
 --- !u!114 &4596402224782788034
 MonoBehaviour:
   m_ObjectHideFlags: 0

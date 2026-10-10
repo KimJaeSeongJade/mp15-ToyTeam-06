@@ -8,8 +8,10 @@ public class MutantDieState : StateBase<MutantContext>
 
 	public override void Enter()
 	{
-
 		_ctx.animHandler.PlayDieAnim();
+
+		_ctx.monsterDetection.TargetTransform.GetComponentInChildren<LockOnController>()
+			.RemoveEnemy(_ctx.transform.gameObject);
 
 		BoxCollider collider = _ctx.transform.GetComponent<BoxCollider>();
 		if (collider != null)

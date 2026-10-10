@@ -8,6 +8,7 @@ public class BossController : MonoBehaviour, IDamageable, ILockonable
 	[SerializeField] private string _stateType;
 	[SerializeField] private Image _lockOnUi;
 	[SerializeField] private List<AttackHitBox> _hitBoxes;
+	[SerializeField] private GameObject _coin;
 
 	private BossAnimationHandler _animHandler;
 	private BossContext _ctx;
@@ -54,7 +55,8 @@ public class BossController : MonoBehaviour, IDamageable, ILockonable
 			animHandler = _animHandler,
 			stat = _stat,
 			monsterDetection = _monsterDetection,
-			hitBoxes = _hitBoxes
+			hitBoxes = _hitBoxes,
+			coin =  _coin,
 		};
 	}
 

@@ -327,6 +327,7 @@ MonoBehaviour:
   _hitBoxes:
   - {fileID: 1317201309093316671}
   - {fileID: 7847226104873190792}
+  _coin: {fileID: 7101525390938221927, guid: bb29638f33527924083fc7626676e18e, type: 3}
 --- !u!114 &1674432011145243247
 MonoBehaviour:
   m_ObjectHideFlags: 0

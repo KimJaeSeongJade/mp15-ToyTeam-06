@@ -10,4 +10,5 @@ public class BossContext : IContext
 	public Transform transform;
 	public List<AttackHitBox> hitBoxes;
 	public bool isInAttackRange;
+	public GameObject coin;
 }

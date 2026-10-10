@@ -13,6 +13,9 @@ public class BossDieState : StateBase<BossContext>
 
 		_ctx.transform.GetComponent<CapsuleCollider>().enabled = false;
 
+		_ctx.monsterDetection.TargetTransform.GetComponentInChildren<LockOnController>()
+			.RemoveEnemy(_ctx.transform.gameObject);
+
 		MainUIManager.Instance.SetBossUI(false);
 	}
 
@@ -21,7 +24,7 @@ public class BossDieState : StateBase<BossContext>
 		if (animEvent == AnimEvents.EndDieAnim)
 		{
 			DropCoin();
-			GameObject.Destroy(_ctx.transform.gameObject);
+			_ctx.transform.gameObject.SetActive(false);
 		}
 	}
 	private void DropCoin()

@@ -39,7 +39,7 @@ public class MonsterHitState : StateBase<MonsterContext>
 		if (animEvent == AnimEvents.EndHitAnim)
 		{
 			_fsm.ChangeState(StateType.Idle);
-			StopHitEffect();
+			//StopHitEffect();
 		}
 	}
 
@@ -64,6 +64,8 @@ public class MonsterHitState : StateBase<MonsterContext>
 
 	private void StopHitEffect()
 	{
+		Debug.Log(_bloodEffect.name);
+		Debug.Log(_hitEffect.name);
 		EffectManager.Instance.StopEffect(_bloodEffect);
 		EffectManager.Instance.StopEffect(_hitEffect);
 		_bloodEffect = null;

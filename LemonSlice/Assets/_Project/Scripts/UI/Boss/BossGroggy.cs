@@ -8,11 +8,15 @@ public class BossGroggy : MonoBehaviour
 	private int _currentGroggy;
 	private int _maxGroggy;
 
+	private void OnEnable()
+	{
+		RefreshCurrentGroggyBar();
+	}
 
 	public void RefreshCurrentGroggy(int currentGroggy)
 	{
 		_currentGroggy = currentGroggy;
-		RefreshCurrentHpBar();
+		RefreshCurrentGroggyBar();
 	}
 
 	public void InitMaxGroggy(int maxGroggy)
@@ -20,7 +24,7 @@ public class BossGroggy : MonoBehaviour
 		_maxGroggy = maxGroggy;
 	}
 
-	public void RefreshCurrentHpBar()
+	public void RefreshCurrentGroggyBar()
 	{
 		bossGroggyBar.fillAmount = (float)_currentGroggy / _maxGroggy;
 	}

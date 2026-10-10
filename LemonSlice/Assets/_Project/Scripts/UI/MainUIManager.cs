@@ -6,7 +6,8 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	[SerializeField] private KeyCode isPressedPause = KeyCode.Escape;
 	[SerializeField] private TextMeshProUGUI scoreUI;
 	[SerializeField] private TextMeshProUGUI totalTimeUI;
-	[SerializeField] private GameObject bossUI;
+	[SerializeField] private GameObject bossMinoUI;
+	[SerializeField] private GameObject bossMutantUI;
 	[SerializeField] private GameObject pauseUI;
 	[SerializeField] private GameObject gameOverUI;
 
@@ -19,7 +20,8 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 	{
 		GameManager.Instance.ResetGameData();
 		pauseUI.SetActive(false);
-		bossUI.SetActive(false);
+		bossMinoUI.SetActive(false);
+		bossMutantUI.SetActive(false);
 	}
 	private void Update()
 	{
@@ -75,9 +77,14 @@ public class MainUIManager : SingletonBehaviour<MainUIManager>
 		GameManager.Instance.ChangeState(GameState.PlayMain);
 	}
 
-	public void SetBossUI(bool isActive)
+	public void SetBossMinoUI(bool isActive)
 	{
-		bossUI.SetActive(isActive);
+		bossMinoUI.SetActive(isActive);
+	}
+
+	public void SetBossMutantUI(bool isActive)
+	{
+		bossMutantUI.SetActive(isActive);
 	}
 
 	public void SetPauseUI(bool isActive)

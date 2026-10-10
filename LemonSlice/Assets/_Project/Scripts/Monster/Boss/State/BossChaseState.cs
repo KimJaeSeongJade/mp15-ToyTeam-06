@@ -9,7 +9,7 @@ public class BossChaseState : StateBase<BossContext>
 
 	public override void Enter()
 	{
-		MainUIManager.Instance.SetBossUI(true);
+		MainUIManager.Instance.SetBossMinoUI(true);
 		_ctx.animHandler.PlayChaseAnim();
 	}
 

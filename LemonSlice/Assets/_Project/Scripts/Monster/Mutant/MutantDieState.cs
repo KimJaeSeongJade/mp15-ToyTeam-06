@@ -21,9 +21,9 @@ public class MutantDieState : StateBase<MutantContext>
 	public override void OnAnimEvent(string animEvent)
 	{
 
-		if (animEvent == "EndDieAnim")
+		if (animEvent == AnimEvents.EndDieAnim)
 		{
-
+			GameFlowManager.Instance.IsBossDead = true;
 		}
 	}
 }

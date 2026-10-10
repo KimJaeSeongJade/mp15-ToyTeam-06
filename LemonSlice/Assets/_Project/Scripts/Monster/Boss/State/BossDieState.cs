@@ -21,18 +21,19 @@ public class BossDieState : StateBase<BossContext>
 		if (animEvent == AnimEvents.EndDieAnim)
 		{
 			DropCoin();
+			GameObject.Destroy(_ctx.transform.gameObject);
 		}
 	}
 	private void DropCoin()
 	{
-		int count = 20;
+		int count = 10;
 
 		for (int i = 0; i < count; i++)
 		{
 			Vector3 coinPosition = new Vector3(
-				_ctx.transform.position.x,
-				_ctx.transform.position.y + 1f,
-				_ctx.transform.position.z
+				_ctx.transform.position.x + Random.Range(-0.5f, 0.5f),
+				_ctx.transform.position.y + Random.Range(1f, 1.5f),
+				_ctx.transform.position.z + Random.Range(-0.5f, 0.5f)
 			);
 
 			GameObject go = PoolManager.Instance.Take(_ctx.coin).SetPosition(coinPosition
@@ -44,12 +45,12 @@ public class BossDieState : StateBase<BossContext>
 				rigidbody.angularVelocity = Vector3.zero;
 
 				Vector3 randomDirection = new Vector3(
-					Random.Range(-2f, 2f),
-					Random.Range(1.5f, 2.5f),
-					Random.Range(-2f, 2f)
+					Random.Range(-0.5f, 0.5f),
+					Random.Range(0.5f, 1.5f),
+					Random.Range(-0.5f, 0.5f)
 				).normalized;
 
-				float dropForce = Random.Range(3f, 4f);
+				float dropForce = Random.Range(1f, 2f);
 				rigidbody.AddForce(randomDirection * dropForce, ForceMode.Impulse);
 			}
 		}

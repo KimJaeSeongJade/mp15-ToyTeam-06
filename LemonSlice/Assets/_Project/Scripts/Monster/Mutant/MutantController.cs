@@ -7,6 +7,7 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 	[SerializeField] private string _stateType;
 	[SerializeField] private Image _lockOnUi;
 	[SerializeField] private List<AttackHitBox> _hitBoxes;
+	[SerializeField] private GameObject _changeEffectPrefab;
 
 	private MutantAnimationHandler _animHandler;
     private MutantContext _ctx;
@@ -80,6 +81,9 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 		    if (!_ctx.isPhase2)
 		    {
 			    _machine.ChangeState(StateType.PhaseChange);
+			    Vector3 position = new Vector3(_ctx.transform.position.x, _ctx.transform.position.y, _ctx.transform.position.z);
+			    Instantiate(_changeEffectPrefab, position, Quaternion.identity);
+
 		    }
 		    else
 		    {

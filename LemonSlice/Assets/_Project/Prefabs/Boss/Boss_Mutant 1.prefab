@@ -249,6 +249,7 @@ MonoBehaviour:
   endPhaseChange: EndPhaseChange
   endScream: EndScream
   startJump: StartJump
+  endDieAnim: EndDieAnim
 --- !u!114 &2510770052842074530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +257,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5884528845677789745}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14c344efaa136d74e8608120aa583558, type: 3}
   m_Name: 
@@ -275,13 +276,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8463a792422b014ba1438673e957e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 200
   maxGroggy: 100
   groggyTime: 5
   moveSpeed: 8
   attackPower: 30
   attackDelay: 0.6
-  attackDistance: 2.5
+  attackDistance: 2
 --- !u!1 &7448218896456107764
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +434,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isBoss: 1
-  detectAngle: 40
+  detectAngle: 70
 --- !u!135 &4873018496415968025
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -679,7 +680,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.77
+  m_Radius: 0.6
   m_Height: 1.18
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

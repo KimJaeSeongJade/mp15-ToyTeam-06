@@ -1249,9 +1249,9 @@ MonoBehaviour:
   _isDestroyedOnManager: 0
   bloodPrefab: {fileID: 1124293326532804700, guid: 0aaa3bcb1ef07c248b790b5b73874934, type: 3}
   slashPrefab: {fileID: 3891072298104667133, guid: 9b6a38ea2688dd44eaca562ee4da020e, type: 3}
-  playerHitEffectPrefab: {fileID: 0}
-  monsterHitEffectPrefab: {fileID: 0}
-  mutantJumpEffectPrefab: {fileID: 0}
+  playerHitEffectPrefab: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b, type: 3}
+  monsterHitEffectPrefab: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
+  mutantJumpEffectPrefab: {fileID: 4994997792314849709, guid: 508a89918cf707b4ebffbb0bd092b555, type: 3}
 --- !u!4 &1078335735
 Transform:
   m_ObjectHideFlags: 0
@@ -1328,79 +1328,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
---- !u!1 &1365869371
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1365869373}
-  - component: {fileID: 1365869372}
-  m_Layer: 0
-  m_Name: EffectManager (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1365869372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1365869371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236cb68621bc8834b93caf7185da77cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isDestroyedOnManager: 0
-  monsterPrefab: {fileID: 8472229039808612870, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
-  monsterPoolSize: 20
-  newMonsterPrefab: {fileID: 6880885931590180816, guid: 9b03a29b207aa0949bc4fa630620049c, type: 3}
-  newMonsterPoolSize: 0
-  coinPrefab: {fileID: 7101525390938221927, guid: bb29638f33527924083fc7626676e18e, type: 3}
-  coinPoolSize: 20
-  itemBoxPrefab: {fileID: 3566777353912687509, guid: 9e06cb185aaac3448b1eaac255da6e53, type: 3}
-  itemBoxPoolSize: 5
-  healPotionPrefab: {fileID: 7909986089514754791, guid: 38381d9ad15158f408dfab9570f6404d, type: 3}
-  healPotionPoolSize: 5
-  slashEffectPrefab: {fileID: 3891072298104667133, guid: 9b6a38ea2688dd44eaca562ee4da020e, type: 3}
-  slashEffectPoolSize: 5
-  healEffectPrefab: {fileID: 5290222006034240090, guid: 6c79bb67b4878bf4b999164f8c5b6d8f, type: 3}
-  effectPoolSize: 10
-  bloodEffectPrefab: {fileID: 1124293326532804700, guid: 0aaa3bcb1ef07c248b790b5b73874934, type: 3}
-  bloodEffectPoolSize: 20
-  playerAttack1Clip: {fileID: 0}
-  playerAttack1PoolSize: 0
-  playerAttack2Clip: {fileID: 0}
-  playerAttack2PoolSize: 0
-  playerAttack3Clip: {fileID: 0}
-  playerAttack3PoolSize: 0
-  playerHitEffectPrefab: {fileID: 0}
-  playerHitEffectPoolSize: 0
-  monsterHitEffectPrefab: {fileID: 0}
-  monsterHitEffectPoolSize: 0
-  mutantJumpEffectPrefab: {fileID: 0}
-  mutantJumpEffectPoolSize: 0
---- !u!4 &1387520574
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1365869371}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18710765, y: 1.589298, z: -2.3383067}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1467984009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,6 +1632,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652706936}
   m_CullTransparentMesh: 1
+--- !u!1 &1674489156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674489158}
+  - component: {fileID: 1674489157}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1674489157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674489156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d950b0c4198eb054c8a807ee59e0400b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isDestroyedOnManager: 0
+  monsterPrefab: {fileID: 8472229039808612870, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+  monsterPoolSize: 6
+  newMonsterPrefab: {fileID: 6880885931590180816, guid: 9b03a29b207aa0949bc4fa630620049c, type: 3}
+  newMonsterPoolSize: 3
+  coinPrefab: {fileID: 7101525390938221927, guid: bb29638f33527924083fc7626676e18e, type: 3}
+  coinPoolSize: 20
+  itemBoxPrefab: {fileID: 3566777353912687509, guid: 9e06cb185aaac3448b1eaac255da6e53, type: 3}
+  itemBoxPoolSize: 3
+  healPotionPrefab: {fileID: 7909986089514754791, guid: 38381d9ad15158f408dfab9570f6404d, type: 3}
+  healPotionPoolSize: 5
+  slashEffectPrefab: {fileID: 3891072298104667133, guid: 9b6a38ea2688dd44eaca562ee4da020e, type: 3}
+  slashEffectPoolSize: 3
+  healEffectPrefab: {fileID: 5290222006034240090, guid: 6c79bb67b4878bf4b999164f8c5b6d8f, type: 3}
+  effectPoolSize: 1
+  bloodEffectPrefab: {fileID: 1124293326532804700, guid: 0aaa3bcb1ef07c248b790b5b73874934, type: 3}
+  bloodEffectPoolSize: 20
+  playerAttack1Clip: {fileID: 6845497913569079208, guid: 39b3557989b2502479745a46d7499781, type: 3}
+  playerAttack1PoolSize: 5
+  playerAttack2Clip: {fileID: 2711492302860891163, guid: 1473b2226b60d0d4e8aa76e2ccefff72, type: 3}
+  playerAttack2PoolSize: 5
+  playerAttack3Clip: {fileID: 6988420273321091470, guid: ff2da4c6abd43d04681f8841884e4a7c, type: 3}
+  playerAttack3PoolSize: 5
+  playerHitEffectPrefab: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b, type: 3}
+  playerHitEffectPoolSize: 5
+  monsterHitEffectPrefab: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
+  monsterHitEffectPoolSize: 10
+  mutantJumpEffectPrefab: {fileID: 4994997792314849709, guid: c99ed158ae17cc84ba5eae2c5ee82c5c, type: 3}
+  mutantJumpEffectPoolSize: 3
+--- !u!4 &1674489158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674489156}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1717073827
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,10 +2430,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2561,9 +2561,9 @@ SceneRoots:
   m_Roots:
   - {fileID: 2008033033}
   - {fileID: 767246344}
-  - {fileID: 1664571763}
-  - {fileID: 1365869373}
+  - {fileID: 1674489158}
   - {fileID: 21940483}
+  - {fileID: 1078335735}
   - {fileID: 279517669}
   - {fileID: 2023423534}
   - {fileID: 361904137}

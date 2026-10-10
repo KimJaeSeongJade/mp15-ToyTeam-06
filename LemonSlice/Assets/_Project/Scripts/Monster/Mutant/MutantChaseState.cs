@@ -8,6 +8,7 @@ public class MutantChaseState : StateBase<MutantContext>
 
 	public override void Enter()
 	{
+		MainUIManager.Instance.SetBossMutantUI(true);
 		_ctx.animHandler.PlayChaseAnim();
 	}
 

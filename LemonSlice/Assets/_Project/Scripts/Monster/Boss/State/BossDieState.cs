@@ -16,7 +16,7 @@ public class BossDieState : StateBase<BossContext>
 		_ctx.monsterDetection.TargetTransform.GetComponentInChildren<LockOnController>()
 			.RemoveEnemy(_ctx.transform.gameObject);
 
-		MainUIManager.Instance.SetBossUI(false);
+		MainUIManager.Instance.SetBossMinoUI(false);
 	}
 
 	public override void OnAnimEvent(string animEvent)

@@ -17,6 +17,7 @@ public class MutantPhaseChangeState : StateBase<MutantContext>
 
 		_ctx.stat.IsInvincible = true;
 		_ctx.stat.SetFullHealth();
+		_ctx.stat.SetFullGroggy();
 
 		_ctx.animHandler.PlayPhaseChangeAnim();
 	}

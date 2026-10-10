@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,11 @@ public class BossHp : MonoBehaviour
 
 	private int _currentHp;
 	private int _maxHp;
+
+	private void OnEnable()
+	{
+		RefreshCurrentHpBar();
+	}
 
 	public void RefreshCurrentHp(int currentHp)
 	{

@@ -26,4 +26,9 @@ public class BossGroggyState : StateBase<BossContext>
 			_fsm.ChangeState(StateType.Move);
 		}
 	}
+
+	public override void Exit()
+	{
+		_ctx.stat.SetFullGroggy();
+	}
 }

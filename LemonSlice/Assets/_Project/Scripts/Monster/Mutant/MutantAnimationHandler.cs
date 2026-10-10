@@ -53,6 +53,6 @@ public class MutantAnimationHandler : MonoBehaviour
 
 	private void CacheComponents()
 	{
-			animator = GetComponent<Animator>();
+			animator = GetComponentInChildren<Animator>();
 	}
 }

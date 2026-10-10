@@ -8,9 +8,9 @@ public class MutantDieState : StateBase<MutantContext>
 
 	public override void Enter()
 	{
-		
+
 		_ctx.animHandler.PlayDieAnim();
-		
+
 		CapsuleCollider collider = _ctx.transform.GetComponent<CapsuleCollider>();
 		if (collider != null)
 		{
@@ -20,10 +20,10 @@ public class MutantDieState : StateBase<MutantContext>
 
 	public override void OnAnimEvent(string animEvent)
 	{
-		
-		if (animEvent == "EndDieAnim")
+
+		if (animEvent == AnimEvents.EndDieAnim)
 		{
-			
+			GameFlowManager.Instance.IsBossDead = true;
 		}
 	}
 }

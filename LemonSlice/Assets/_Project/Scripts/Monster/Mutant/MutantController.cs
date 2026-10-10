@@ -88,6 +88,7 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 		    else
 		    {
 			    _machine.ChangeState(StateType.Die);
+			    return;
 		    }
 	    }
 

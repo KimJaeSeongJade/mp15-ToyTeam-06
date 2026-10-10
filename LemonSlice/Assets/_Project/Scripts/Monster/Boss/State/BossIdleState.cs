@@ -14,6 +14,7 @@ public class BossIdleState : StateBase<BossContext>
 	{
 		if (_ctx.monsterDetection.IsPlayerEnter)
 		{
+			MainUIManager.Instance.SetBossMinoUI(true);
 			_fsm.ChangeState(StateType.Move);
 		}
 	}

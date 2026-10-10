@@ -23,6 +23,7 @@ public class MutantGroggyState : StateBase<MutantContext>
 
 		if (groggyTime >= _ctx.stat.GroggyTime)
 		{
+			_ctx.stat.SetFullGroggy();
 			_fsm.ChangeState(StateType.Move);
 		}
 	}

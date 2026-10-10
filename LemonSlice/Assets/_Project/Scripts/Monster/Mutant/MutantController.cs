@@ -70,16 +70,11 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 
     public void TakeDamage(DamageInfo damageInfo)
     {
-	    if (_ctx.stat.IsInvincible == true) return;
+	    if (_ctx.stat.IsInvincible) return;
 
 	    _stat.CurrentHealth.Value -= damageInfo.Damage;
 	    _stat.CurrentGroggy.Value -= damageInfo.DownValue;
 
-	    if (_stat.CurrentGroggy.Value <= 0)
-	    {
-		    _stat.SetFullGroggy();
-		    _machine.ChangeState(StateType.Groggy);
-	    }
 	    if (_stat.CurrentHealth.Value <= 0)
 	    {
 		    if (!_ctx.isPhase2)
@@ -90,6 +85,11 @@ public class MutantController : MonoBehaviour, IDamageable, ILockonable
 		    {
 			    _machine.ChangeState(StateType.Die);
 		    }
+	    }
+
+	    if (_stat.CurrentGroggy.Value <= 0)
+	    {
+		    _machine.ChangeState(StateType.Groggy);
 	    }
     }
 

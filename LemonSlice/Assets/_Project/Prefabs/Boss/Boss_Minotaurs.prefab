@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  maxGroggy: 100
+  maxGroggy: 70
   groggyTime: 5
   moveSpeed: 5
   attackPower: 20

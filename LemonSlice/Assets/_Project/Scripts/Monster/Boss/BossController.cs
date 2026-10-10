@@ -86,7 +86,6 @@ public class BossController : MonoBehaviour, IDamageable, ILockonable
 
 		if (_stat.CurrentHealth.Value > 0 && _stat.CurrentGroggy.Value <= 0)
 		{
-			_stat.SetFullGroggy();
 			_machine.ChangeState(StateType.Groggy);
 		}
 

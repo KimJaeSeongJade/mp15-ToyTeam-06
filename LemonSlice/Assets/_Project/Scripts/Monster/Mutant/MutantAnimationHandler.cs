@@ -17,12 +17,14 @@ public class MutantAnimationHandler : MonoBehaviour
 	[SerializeField] private string endAttack;
 	[SerializeField] private string endPhaseChange;
 	[SerializeField] private string endScream;
+	[SerializeField] private string startJump;
 
 	public string StartAttack => startAttack;
 	public string EndHitBox => endHitBox;
 	public string EndAttack => endAttack;
 	public string EndPhaseChange => endPhaseChange;
 	public string EndScream => endScream;
+	public string StartJump => startJump;
 
 	private void Awake()
 	{

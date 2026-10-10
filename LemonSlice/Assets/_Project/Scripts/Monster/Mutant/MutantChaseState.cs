@@ -26,7 +26,10 @@ public class MutantChaseState : StateBase<MutantContext>
 		if (_ctx.isInAttackRange)
 		{
 			_fsm.ChangeState(StateType.Attack);
-			return;
+		}
+		else if (_ctx.isPhase2 && distance > 8)
+		{
+			_fsm.ChangeState(StateType.JumpAttack);
 		}
 
 		Vector3 direction = (_ctx.monsterDetection.TargetTransform.position - _ctx.transform.position).normalized;

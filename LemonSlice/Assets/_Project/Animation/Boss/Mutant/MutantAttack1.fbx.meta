@@ -73,7 +73,7 @@ ModelImporter:
         messageOptions: 0
       - time: 0.88117063
         functionName: OnAnimEvent
-        data: EndHitBox1
+        data: EndHitBox0
         objectReferenceParameter: {fileID: 11500000, guid: d228a9549a9be3943bc31bbb35ee549b, type: 3}
         floatParameter: 0
         intParameter: 0

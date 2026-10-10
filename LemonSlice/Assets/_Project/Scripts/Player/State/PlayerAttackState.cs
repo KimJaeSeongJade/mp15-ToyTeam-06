@@ -122,8 +122,7 @@ public class PlayerAttackState : StateBase<PlayerContext>
 		pos.y += 1;
 		Quaternion rot = GetSlashDir(comboIndex);
 
-		// TODO rot 부분 오류 발생
-		//EffectManager.Instance.PlaySlashEffect(pos, rot);
+		EffectManager.Instance.PlaySlashEffect(pos, rot);
 	}
 
 	private Quaternion GetSlashDir(int comboIndex)

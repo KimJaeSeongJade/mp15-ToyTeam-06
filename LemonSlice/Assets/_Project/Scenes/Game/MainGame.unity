@@ -1624,7 +1624,7 @@ MonoBehaviour:
   playerHitEffectPrefab: {fileID: 2955623459812423943, guid: bdc3345a9fc0b9f4a856ffeb3d268852, type: 3}
   playerHitEffectPoolSize: 5
   monsterHitEffectPrefab: {fileID: 5024009746357069194, guid: 6748241aa82676b4191a9ea23f5024e0, type: 3}
-  monsterHitEffectPoolSize: 10
+  monsterHitEffectPoolSize: 20
   mutantJumpEffectPrefab: {fileID: 4994997792314849709, guid: c99ed158ae17cc84ba5eae2c5ee82c5c, type: 3}
   mutantJumpEffectPoolSize: 3
 --- !u!4 &1744928213

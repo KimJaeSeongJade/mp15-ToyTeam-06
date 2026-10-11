@@ -11,7 +11,7 @@ public class PlayerAttackState : StateBase<PlayerContext>
 	// Inspector에서 리스트로 더하더록?
 	private const int MAX_COMBO = 3;
 	private int[] weaponDamage = { 5, 10, 15 };
-	private int[] weaponDownValue = { 10, 20, 40 };
+	private int[] weaponDownValue = { 20, 30, 80 };
 	private float[] moveForce = { 0, 3.5f, 5f };
 
 
@@ -139,7 +139,7 @@ public class PlayerAttackState : StateBase<PlayerContext>
 				break;
 			case 2:
 				resultRot = baseRot *
-				            Quaternion.AngleAxis(75, Vector3.forward);
+				            Quaternion.AngleAxis(-75, Vector3.forward);
 				break;
 			case 3:
 				resultRot = baseRot;

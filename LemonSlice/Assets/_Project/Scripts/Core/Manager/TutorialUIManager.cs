@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TutorialUIManager : SingletonBehaviour<TutorialUIManager>
 {
@@ -22,7 +19,7 @@ public class TutorialUIManager : SingletonBehaviour<TutorialUIManager>
 	{
 		RefreshGameState();
 
-		for(int i = 0; i < TutorialUI.Length; i++)
+		for (int i = 0; i < TutorialUI.Length; i++)
 		{
 			TutorialUI[i].SetActive(false);
 		}
@@ -34,6 +31,11 @@ public class TutorialUIManager : SingletonBehaviour<TutorialUIManager>
 	{
 		RefreshScoreUI();
 		RefreshTimeUI();
+
+		if (Input.GetKeyDown(KeyCode.Return))
+		{
+			SceneManager.LoadScene("MainGame");
+		}
 
 		if (Input.GetKeyDown(isPressedPause))
 		{
@@ -94,7 +96,10 @@ public class TutorialUIManager : SingletonBehaviour<TutorialUIManager>
 			}
 		}
 
-		if (openUI == null) return;
+		if (openUI == null)
+		{
+			return;
+		}
 
 		openUI.SetActive(false);
 

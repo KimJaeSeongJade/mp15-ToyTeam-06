@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttackAudio : MonoBehaviour, IPoolable
 {
-	[SerializeField] PoolType _poolType;
+	[SerializeField] private PoolType _poolType;
 	[SerializeField] private float audioDalay;
 
 	private AudioSource _audioSource;
@@ -13,16 +12,18 @@ public class PlayerAttackAudio : MonoBehaviour, IPoolable
 
 	private void Awake() => CacheComponents();
 
+	private void OnEnable()
+	{
+		StartCoroutine(PlayAttackAudioRoutine());
+	}
+
+	public PoolType PoolId => _poolType;
+
 	private void CacheComponents()
 	{
 		_audioSource = GetComponent<AudioSource>();
 		audioDalayWait = new WaitForSeconds(audioDalay);
-		audioReturnWait = new WaitForSeconds(_audioSource.clip.length);
-	}
-
-	private void OnEnable()
-	{
-		StartCoroutine(PlayAttackAudioRoutine());
+		//audioReturnWait = new WaitForSeconds(_audioSource.clip.length);
 	}
 
 	private IEnumerator PlayAttackAudioRoutine()
@@ -37,6 +38,4 @@ public class PlayerAttackAudio : MonoBehaviour, IPoolable
 		yield return audioReturnWait;
 		PoolManager.Instance.TryReturn(gameObject);
 	}
-
-	public PoolType PoolId => _poolType;
 }

@@ -5,11 +5,14 @@ public class PlayerAudioClip : MonoBehaviour
 {
 	[SerializeField] private AudioClip moveSound;
 	[SerializeField] private AudioClip rollSound1;
+
 	[SerializeField] private AudioClip rollSound2;
 	// [SerializeField] private AudioSource moveSoundManager;
 
 	[SerializeField] private AudioClip hitSound1;
+
 	[SerializeField] private AudioClip hitSound2;
+
 	// [SerializeField] private AudioSource hitSoundManager;
 	private Coroutine rollSound1Routine;
 
@@ -58,6 +61,6 @@ public class PlayerAudioClip : MonoBehaviour
 	{
 		// moveSoundManager = GetComponent<AudioSource>();
 		// hitSoundManager = GetComponent<AudioSource>();
-		rollSound1Wait = new WaitForSeconds(rollSound1.length);
+		// rollSound1Wait = new WaitForSeconds(rollSound1.length);
 	}
 }

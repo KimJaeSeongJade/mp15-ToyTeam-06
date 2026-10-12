@@ -277,9 +277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8463a792422b014ba1438673e957e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  maxGroggy: 100
-  groggyTime: 5
+  maxHealth: 300
+  maxGroggy: 130
+  groggyTime: 3
   moveSpeed: 8
   attackPower: 30
   attackDelay: 0.6

@@ -34,20 +34,11 @@ public class PlayerInputSystem : MonoBehaviour
 		_controls.Player.Disable();
 	}
 
-	public void OnMove(InputAction.CallbackContext context)
-	{
-			Vector2 move = context.ReadValue<Vector2>();
-			MoveAxisRaw = new Vector3(move.x, 0, move.y);
-	}
-
 	public void OnMoveStop(InputAction.CallbackContext context) => MoveAxisRaw = Vector3.zero;
 
-	public void OnJump(InputAction.CallbackContext context) => IsRollPressed = true;
-	public void OnJumpStop(InputAction.CallbackContext context) => IsRollPressed = false;
+	public void OnRoll(InputAction.CallbackContext context) => IsRollPressed = context.performed;
 
-	public void OnAttack(InputAction.CallbackContext context) => IsAttackPressed = true;
-
-	public void OnAttackStop(InputAction.CallbackContext context) => IsAttackPressed = false;
+	public void OnAttack(InputAction.CallbackContext context) => IsAttackPressed = context.performed;
 
 	public void OnMouseMove(InputAction.CallbackContext context)
 	{
@@ -59,21 +50,25 @@ public class PlayerInputSystem : MonoBehaviour
 		);
 	}
 
-	public void OnMouseMoveStop(InputAction.CallbackContext context) => MouseDelta = Vector3.zero;
+	public void OnMove(InputAction.CallbackContext context)
+	{
+		Vector2 move = context.ReadValue<Vector2>();
+		MoveAxisRaw = new Vector3(move.x, 0, move.y);
+	}
 
 	private void BindInputEvents()
 	{
 		_controls.Player.Move.performed += OnMove;
-		_controls.Player.Move.canceled += OnMoveStop;
+		_controls.Player.Move.canceled += OnMove;
 
-		_controls.Player.Jump.performed += OnJump;
-		_controls.Player.Jump.canceled += OnJumpStop;
+		_controls.Player.Roll.performed += OnRoll;
+		_controls.Player.Roll.canceled += OnRoll;
 
 		_controls.Player.Attack.performed += OnAttack;
-		_controls.Player.Attack.canceled += OnAttackStop;
+		_controls.Player.Attack.canceled += OnAttack;
 
 		_controls.Player.Mouse.performed += OnMouseMove;
-		_controls.Player.Mouse.canceled += OnMouseMoveStop;
+		_controls.Player.Mouse.canceled += OnMouseMove;
 	}
 
 	private void UnBindInputEvents()
@@ -81,13 +76,13 @@ public class PlayerInputSystem : MonoBehaviour
 		_controls.Player.Move.performed -= OnMove;
 		_controls.Player.Move.canceled -= OnMoveStop;
 
-		_controls.Player.Jump.performed -= OnJump;
-		_controls.Player.Jump.canceled -= OnJumpStop;
+		_controls.Player.Roll.performed -= OnRoll;
+		_controls.Player.Roll.canceled -= OnRoll;
 
 		_controls.Player.Attack.performed -= OnAttack;
-		_controls.Player.Attack.canceled -= OnAttackStop;
+		_controls.Player.Attack.canceled -= OnAttack;
 
 		_controls.Player.Mouse.performed -= OnMouseMove;
-		_controls.Player.Mouse.canceled -= OnMouseMoveStop;
+		_controls.Player.Mouse.canceled -= OnMouseMove;
 	}
 }

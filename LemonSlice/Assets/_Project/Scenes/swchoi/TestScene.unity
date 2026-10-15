@@ -354,6 +354,8 @@ MonoBehaviour:
   _isDestroyedOnManager: 0
   monsterPrefab: {fileID: 0}
   monsterPoolSize: 0
+  newMonsterPrefab: {fileID: 0}
+  newMonsterPoolSize: 0
   coinPrefab: {fileID: 0}
   coinPoolSize: 0
   itemBoxPrefab: {fileID: 0}
@@ -366,6 +368,18 @@ MonoBehaviour:
   effectPoolSize: 0
   bloodEffectPrefab: {fileID: 1124293326532804700, guid: 0aaa3bcb1ef07c248b790b5b73874934, type: 3}
   bloodEffectPoolSize: 5
+  playerAttack1Clip: {fileID: 0}
+  playerAttack1PoolSize: 0
+  playerAttack2Clip: {fileID: 0}
+  playerAttack2PoolSize: 0
+  playerAttack3Clip: {fileID: 0}
+  playerAttack3PoolSize: 0
+  playerHitEffectPrefab: {fileID: 0}
+  playerHitEffectPoolSize: 0
+  monsterHitEffectPrefab: {fileID: 0}
+  monsterHitEffectPoolSize: 0
+  mutantJumpEffectPrefab: {fileID: 0}
+  mutantJumpEffectPoolSize: 0
 --- !u!4 &1241266604
 Transform:
   m_ObjectHideFlags: 0
@@ -412,6 +426,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isDestroyedOnManager: 0
   bloodPrefab: {fileID: 1124293326532804700, guid: 0aaa3bcb1ef07c248b790b5b73874934, type: 3}
+  slashPrefab: {fileID: 0}
+  playerHitEffectPrefab: {fileID: 0}
+  monsterHitEffectPrefab: {fileID: 0}
+  mutantJumpEffectPrefab: {fileID: 0}
 --- !u!4 &1363606996
 Transform:
   m_ObjectHideFlags: 0
@@ -483,11 +501,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3135441434192055237, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6334943611611487210, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1472691349}
   m_SourcePrefab: {fileID: 100100000, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
+--- !u!1 &1472691348 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6334943611611487210, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
+  m_PrefabInstance: {fileID: 1424235336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1472691349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472691348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a461a00dacdac64b8f3bc8beda6d9a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1651268458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -543,6 +582,10 @@ PrefabInstance:
     - target: {fileID: 8472229039808612870, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
       propertyPath: m_Name
       value: NormalMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472229039808612870, guid: 1bc43c30d9bea8947a38ddf871e5982b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

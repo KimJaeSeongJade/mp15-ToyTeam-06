@@ -3,6 +3,7 @@
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "2.12.4",
     "com.unity.feature.development": "1.0.1",
+    "com.unity.inputsystem": "1.14.2",
     "com.unity.render-pipelines.core": "17.4.0",
     "com.unity.render-pipelines.universal": "17.4.0",
     "com.unity.render-pipelines.universal-config": "17.4.0",

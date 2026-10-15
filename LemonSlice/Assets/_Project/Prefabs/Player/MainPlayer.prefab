@@ -1755,11 +1755,11 @@ GameObject:
   - component: {fileID: 8527259389980699356}
   - component: {fileID: 5805529319030530387}
   - component: {fileID: 7012225834267770718}
-  - component: {fileID: 3135441434192055237}
   - component: {fileID: 2399499429369943420}
   - component: {fileID: 6409730923320831175}
   - component: {fileID: 2742753561888817850}
   - component: {fileID: 49845405784521031}
+  - component: {fileID: 2553882002767743221}
   m_Layer: 7
   m_Name: MainPlayer
   m_TagString: Untagged
@@ -1821,22 +1821,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paladinTag: 
---- !u!114 &3135441434192055237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6334943611611487210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f032b843356216e4a9290b76a0e5793e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack: 323
-  roll: 32
-  changeLockOn: 9
-  lockOn: 325
 --- !u!54 &2399499429369943420
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1924,6 +1908,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHp: {fileID: 0}
+--- !u!114 &2553882002767743221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334943611611487210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a461a00dacdac64b8f3bc8beda6d9a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 0.5
 --- !u!1 &6357094980701122142
 GameObject:
   m_ObjectHideFlags: 0

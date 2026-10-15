@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
 	private PlayerAnimHandler _animHandler;
 	private PlayerContext _ctx;
-	private PlayerInput _input;
+	// private PlayerInput _input;
+	private PlayerInputSystem _input;
 
 	private StateMachine<PlayerContext> _machine;
 	private PlayerDetection _playerDetection;
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 	{
 		if (Time.timeScale == 0) return;
 
-		_input.Read();
+		// _input.Read();
 		_machine.Tick();
 	}
 
@@ -44,7 +45,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 	private void CacheComponets()
 	{
 		_rigidbody = GetComponent<Rigidbody>();
-		_input = GetComponent<PlayerInput>();
+		// _input = GetComponent<PlayerInput>();
+		_input = GetComponent<PlayerInputSystem>();
 		_stat = GetComponent<PlayerStat>();
 		_animHandler = GetComponent<PlayerAnimHandler>();
 		_playerDetection = GetComponentInChildren<PlayerDetection>();

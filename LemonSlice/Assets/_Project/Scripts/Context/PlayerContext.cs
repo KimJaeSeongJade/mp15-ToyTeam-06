@@ -4,7 +4,8 @@ public class PlayerContext : IContext
 {
 	public PlayerDetection playerDetection;
 	public PlayerAnimHandler animHandler;
-	public PlayerInput input;
+	// public PlayerInput input;
+	public PlayerInputSystem input;
 	public AttackHitBox hitBox;
 
 	public Rigidbody rigidbody;

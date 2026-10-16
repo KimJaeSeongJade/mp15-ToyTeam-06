@@ -558,6 +558,10 @@ PrefabInstance:
       propertyPath: playerHp
       value: 
       objectReference: {fileID: 706507405}
+    - target: {fileID: 2553882002767743221, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
+      propertyPath: mouseSensitivity
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2742753561888817850, guid: d7f3c6ce6eed990499dfd304eb8ca02d, type: 3}
       propertyPath: playerAudioClip
       value: 

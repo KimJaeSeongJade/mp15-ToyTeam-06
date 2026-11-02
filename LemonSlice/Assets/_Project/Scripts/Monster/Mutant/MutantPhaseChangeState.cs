@@ -12,7 +12,7 @@ public class MutantPhaseChangeState : StateBase<MutantContext>
 		Rigidbody rigidbody = _ctx.transform.GetComponent<Rigidbody>();
 		if (rigidbody != null)
 		{
-			rigidbody.velocity = Vector3.zero;
+			rigidbody.linearVelocity = Vector3.zero;
 		}
 
 		_ctx.stat.IsInvincible = true;

@@ -63,7 +63,7 @@ public class PlayerMoveState : StateBase<PlayerContext>
 
 	public override void Exit()
 	{
-		_ctx.rigidbody.velocity = Vector3.zero;
+		_ctx.rigidbody.linearVelocity = Vector3.zero;
 		_ctx.animHandler.SetMoveParam(Vector3.zero);
 	}
 
@@ -101,9 +101,9 @@ public class PlayerMoveState : StateBase<PlayerContext>
 	{
 		Vector3 moveDirection = _ctx.transform.TransformDirection(_ctx.input.MoveAxisRaw).normalized;
 
-		_ctx.rigidbody.velocity = new Vector3(
+		_ctx.rigidbody.linearVelocity = new Vector3(
 			moveDirection.x * _ctx.stat.MoveSpeed,
-			_ctx.rigidbody.velocity.y,
+			_ctx.rigidbody.linearVelocity.y,
 			moveDirection.z * _ctx.stat.MoveSpeed);
 	}
 }

@@ -68,7 +68,7 @@ public class PlayerRollState : StateBase<PlayerContext>
 	{
 		_ctx.stat.IsInvincible = false;
 		_ctx.animHandler.PlayIdleAndMoveAnim();
-		_ctx.rigidbody.velocity = Vector3.zero;
+		_ctx.rigidbody.linearVelocity = Vector3.zero;
 		_ctx.animHandler.SetMoveParam(Vector3.zero);
 
 		_ctx.paladin.rotation = Quaternion.LookRotation(_ctx.transform.forward);
@@ -98,9 +98,9 @@ public class PlayerRollState : StateBase<PlayerContext>
 			moveDirection = _ctx.transform.forward;
 		}
 
-		_ctx.rigidbody.velocity = new Vector3(
+		_ctx.rigidbody.linearVelocity = new Vector3(
 			moveDirection.x * _ctx.stat.MoveSpeed * _ctx.stat.RollForce,
-			_ctx.rigidbody.velocity.y,
+			_ctx.rigidbody.linearVelocity.y,
 			moveDirection.z * _ctx.stat.MoveSpeed * _ctx.stat.RollForce);
 
 		_ctx.paladin.rotation = Quaternion.LookRotation(moveDirection);

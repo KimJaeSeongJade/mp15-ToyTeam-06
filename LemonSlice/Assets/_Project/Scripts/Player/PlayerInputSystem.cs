@@ -74,7 +74,7 @@ public class PlayerInputSystem : MonoBehaviour
 	private void UnBindInputEvents()
 	{
 		_controls.Player.Move.performed -= OnMove;
-		_controls.Player.Move.canceled -= OnMoveStop;
+		_controls.Player.Move.canceled -= OnMove;
 
 		_controls.Player.Roll.performed -= OnRoll;
 		_controls.Player.Roll.canceled -= OnRoll;

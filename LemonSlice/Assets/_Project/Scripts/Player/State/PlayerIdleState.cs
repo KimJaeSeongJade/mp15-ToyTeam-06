@@ -33,6 +33,26 @@ public class PlayerIdleState : StateBase<PlayerContext>
 			return;
 		}
 
+		LockOnCheck();
+
+		if(_ctx.isLockOn)
+		{
+			LockOnTarget();
+		}
+		else
+		{
+			Rotate();
+		}
+	}
+	//----------------State Method------------------
+
+	private void Rotate()
+	{
+		_ctx.transform.Rotate(0, _ctx.input.MouseDelta.y, 0, Space.Self);
+	}
+
+	private void LockOnCheck()
+	{
 		if (_ctx.input.LockOnPressed)
 		{
 			if (_ctx.isLockOn)
@@ -50,25 +70,15 @@ public class PlayerIdleState : StateBase<PlayerContext>
 		{
 			_ctx.isLockOn = false;
 		}
-
-		if(_ctx.isLockOn)
-		{
-			if (_ctx.input.TargetChangePressed)
-			{
-				_ctx.lockOnController.ChangeLockOn();
-			}
-
-			_ctx.transform.LookAt(_ctx.lockOnController.LockOn());
-		}
-		else
-		{
-			Rotate();
-		}
 	}
-	//----------------State Method------------------
 
-	private void Rotate()
+	private void LockOnTarget()
 	{
-		_ctx.transform.Rotate(0, _ctx.input.MouseDelta.y, 0, Space.Self);
+		if (_ctx.input.TargetChangePressed)
+		{
+			_ctx.lockOnController.ChangeLockOn();
+		}
+
+		_ctx.transform.LookAt(_ctx.lockOnController.LockOn());
 	}
 }

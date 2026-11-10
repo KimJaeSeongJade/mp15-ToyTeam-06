@@ -22,33 +22,11 @@ public class PlayerMoveState : StateBase<PlayerContext>
 
 		_ctx.animHandler.SetMoveParam(_ctx.input.MoveAxisRaw);
 
-		if (_ctx.input.LockOnPressed)
-		{
-			if (_ctx.isLockOn)
-			{
-				_ctx.lockOnController.ClearLockOn();
-				_ctx.isLockOn = false;
-			}
-			else
-			{
-				_ctx.isLockOn = _ctx.lockOnController.TryLockOn();
-			}
-		}
-
-		if (_ctx.isLockOn && !_ctx.lockOnController.HasTarget())
-		{
-			_ctx.isLockOn = false;
-			_ctx.lockOnController.ClearLockOn();
-		}
+		LockOnCheck();
 
 		if (_ctx.isLockOn)
 		{
-			if (_ctx.input.TargetChangePressed)
-			{
-				_ctx.lockOnController.ChangeLockOn();
-			}
-
-			_ctx.transform.LookAt(_ctx.lockOnController.LockOn());
+			LockOnTarget();
 		}
 		else
 		{
@@ -95,6 +73,37 @@ public class PlayerMoveState : StateBase<PlayerContext>
 	private void Rotate()
 	{
 		_ctx.transform.Rotate(0, _ctx.input.MouseDelta.y, 0, Space.Self);
+	}
+
+	private void LockOnCheck()
+	{
+		if (_ctx.input.LockOnPressed)
+		{
+			if (_ctx.isLockOn)
+			{
+				_ctx.lockOnController.ClearLockOn();
+				_ctx.isLockOn = false;
+			}
+			else
+			{
+				_ctx.isLockOn = _ctx.lockOnController.TryLockOn();
+			}
+		}
+
+		if (_ctx.isLockOn && !_ctx.lockOnController.HasTarget())
+		{
+			_ctx.isLockOn = false;
+		}
+	}
+
+	private void LockOnTarget()
+	{
+		if (_ctx.input.TargetChangePressed)
+		{
+			_ctx.lockOnController.ChangeLockOn();
+		}
+
+		_ctx.transform.LookAt(_ctx.lockOnController.LockOn());
 	}
 
 	private void Move()
